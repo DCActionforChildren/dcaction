@@ -43,3 +43,10 @@ function packMetros() {
 }
 
 }); // end document ready function
+
+function changeSchoolData(new_data) {
+  var scale = d3.scale.linear().domain([0,1000000]).range([1,5])
+  svg.selectAll("circle")
+    .transition().duration(600)
+    .attr("r", function(d) {return scale(d[new_data])})
+}
