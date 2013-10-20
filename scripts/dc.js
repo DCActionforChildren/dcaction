@@ -50,8 +50,8 @@ path = d3.geo.path().projection(projection)
 
 svg = d3.select("#content")
   .append("svg:svg")
-  .attr("width", 700)
-  .attr("height", 700)
+  .attr("width", 750)
+  .attr("height", 600)
 
 d3.json("data/dc.json", function(json) {
   svg.append("svg:g")
