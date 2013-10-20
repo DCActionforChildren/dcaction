@@ -62,13 +62,13 @@ d3.csv('data/schools.csv', function(data){
   d3.select("#school_allocation").on("click", function() {changeSchoolData("alloc")});
   d3.select("#school_location").on("click", noSchoolData);
   function noSchoolData() {
-    g.select("schools").selectAll("circle")
+    g.select("#schools").selectAll("circle")
       .transition().duration(600)
       .attr("r", 4)
   }
   function changeSchoolData(new_data_column) {
     matchScaleToData(scale, function(d){return +d[new_data_column];})
-    g.select("schools").selectAll("circle")
+    g.select("#schools").selectAll("circle")
       .transition().duration(600)
       .attr("r", function(d) {return scale(d[new_data_column])})
   }
