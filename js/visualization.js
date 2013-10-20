@@ -45,8 +45,8 @@ d3.csv('data/schools.csv', function(data){
   g.select("#schools").selectAll("circle")
     .data(data).enter().append("circle")
       .attr("r", 4)
-      .attr("fill-opacity", 0.5)
-      .attr("fill", "#FF0000")
+      .attr("fill-opacity", 0.7)
+      .attr("fill", "#000099")
       .attr("transform", function(d) {
         return "translate(" + 
           projection([d.long, d.lat]) +
