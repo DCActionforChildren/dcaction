@@ -1,26 +1,42 @@
 $(document).ready(function() {
 
+var width = 500,
+    height = 500,
+    centered;
+
 var packer = sm.packer();
 
 projection = d3.geo.albersUsa()
   .scale(160000)
   .translate([-41630, 4900]);
-path = d3.geo.path().projection(projection)
 
-svg = d3.select("#content")
+var path = d3.geo.path().projection(projection)
+
+var svg = d3.select("#content")
   .append("svg:svg")
-  .attr("width", 500)
-  .attr("height", 500)
+  .attr("width", width)
+  .attr("height", height)
 
-d3.json("data/neighborhood_boundaries.json", function(json) {
-  svg.append("svg:g")
-  .selectAll("path")
-    .data(json.features)
-  .enter().append("svg:path")
-    .attr("d", path)
-    .attr("fill-opacity", 0.5)
-	.attr("fill", "#000")
-    .attr("stroke", "#000")
+svg.append("rect")
+    .attr("class", "background")
+    .attr("width", width)
+    .attr("height", height)
+    .on("click", clicked);
+
+var g = svg.append("g");
+
+d3.json("data/neighborhood_boundaries.json", function(error, dc) {
+  g.append("g")
+      .attr("id", "neighborhoods")
+    .selectAll("path")
+      .data(dc.features)
+    .enter().append("path")
+      .attr("d", path)
+      .on("click", clicked);
+  g.append("path")
+      .datum(topojson.mesh(dc, dc.features, function(a, b) { return a !== b; }))
+      .attr("id", "state-borders")
+      .attr("d", path);
 });
 
 d3.csv('data/schools.csv', function(data){
@@ -42,6 +58,31 @@ function packMetros() {
 	packer.elements(elements).start();
 }
 
+function clicked(d) {
+  var x, y, k;
+
+  if (d && centered !== d) {
+    var centroid = path.centroid(d);
+    x = centroid[0];
+    y = centroid[1];
+    k = 4;
+    centered = d;
+  } else {
+    x = width / 2;
+    y = height / 2;
+    k = 1;
+    centered = null;
+  }
+
+  g.selectAll("path")
+      .classed("active", centered && function(d) { return d === centered; });
+
+  g.transition()
+      .duration(750)
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+      .style("stroke-width", 1.5 / k + "px");
+}
+
 }); // end document ready function
 
 function changeSchoolData(new_data) {
@@ -50,3 +91,4 @@ function changeSchoolData(new_data) {
     .transition().duration(600)
     .attr("r", function(d) {return scale(d[new_data])})
 }
+
