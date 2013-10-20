@@ -53,7 +53,7 @@ svg = d3.select("#content")
   .attr("width", 750)
   .attr("height", 600)
 
-d3.json("data/dc.json", function(json) {
+d3.json("data/neighborhood_boundaries.json", function(json) {
   svg.append("svg:g")
   .selectAll("path")
     .data(json.features)
