@@ -24,10 +24,11 @@ svg.append("rect")
     .on("click", clicked);
 
 var g = svg.append("g");
+g.append("g").attr("id", "neighborhoods");
+g.append("g").attr("id", "schools");
 
 d3.json("data/neighborhood_boundaries.json", function(error, dc) {
-  g.append("g")
-      .attr("id", "neighborhoods")
+  g.select("#neighborhoods")
     .selectAll("path")
       .data(dc.features)
     .enter().append("path")
@@ -41,7 +42,7 @@ d3.json("data/neighborhood_boundaries.json", function(error, dc) {
 
 d3.csv('data/schools.csv', function(data){
   var scale = d3.scale.sqrt().range([1,10])
-  svg.selectAll("circle")
+  g.select("#schools").selectAll("circle")
     .data(data).enter().append("circle")
       .attr("r", 4)
       .attr("fill-opacity", 0.5)
@@ -61,13 +62,13 @@ d3.csv('data/schools.csv', function(data){
   d3.select("#school_allocation").on("click", function() {changeSchoolData("alloc")});
   d3.select("#school_location").on("click", noSchoolData);
   function noSchoolData() {
-    svg.selectAll("circle")
+    g.select("schools").selectAll("circle")
       .transition().duration(600)
       .attr("r", 4)
   }
   function changeSchoolData(new_data_column) {
     matchScaleToData(scale, function(d){return +d[new_data_column];})
-    svg.selectAll("circle")
+    g.select("schools").selectAll("circle")
       .transition().duration(600)
       .attr("r", function(d) {return scale(d[new_data_column])})
   }
