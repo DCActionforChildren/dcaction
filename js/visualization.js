@@ -23,13 +23,19 @@ d3.json("data/neighborhood_boundaries.json", function(json) {
     .attr("stroke", "#000")
 });
 
-$.get('data/schools.json', function(point){
+d3.csv('data/schools.csv', function(data){
 	var scale = d3.scale.linear().domain([0,200]).range([1,5])
-	point.schools.forEach(function(point){
-	  svg.append("circle").attr("r",scale(point.enrollment)).attr("fill-opacity", 0.5).attr("fill", "#FF0000").attr("transform", function() {return "translate(" + projection([point.long, point.lat]) + ")";});
-	  packMetros();
-	})
-})
+  svg.selectAll("circle")
+    .data(data).enter().append("circle")
+      .attr("r", function(d) {return scale(d.enrollment)})
+      .attr("fill-opacity", 0.5)
+      .attr("fill", "#FF0000")
+      .attr("transform", function(d) {
+        return "translate(" + 
+          projection([d.long, d.lat]) +
+          ")";});
+	packMetros();
+});
 
 function packMetros() {
 	var elements = d3.selectAll('#content circle')[0];
