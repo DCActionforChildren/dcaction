@@ -49,7 +49,13 @@ d3.csv('data/schools.csv', function(data){
       .attr("transform", function(d) {
         return "translate(" + 
           projection([d.long, d.lat]) +
-          ")";});
+          ")";})
+      .on("click", function(d) {
+        $("#details").prepend("<div><h3>"+d.name+"</h3><h4>enrollment: " +
+                              d.enrollment + "</h4><h4>allocation: " +
+                              d.alloc + "</h4></div>");
+      })
+      .append("title").text(function(d){return d.name;});
 	packMetros();
   d3.select("#school_enrollment").on("click", function() {changeSchoolData("enrollment")});
   d3.select("#school_allocation").on("click", function() {changeSchoolData("alloc")});
