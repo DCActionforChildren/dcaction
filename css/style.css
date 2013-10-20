@@ -11,8 +11,8 @@ fill: #FFF;
 path {
   fill: #000;
   fill-opacity: .2;
-  stroke: #000;
-  stroke-width: 1.5px;
+  stroke: #FFF;
+  stroke-width: 1px;
 }
 
 .q0-9 { fill:rgb(229,255,199); }
