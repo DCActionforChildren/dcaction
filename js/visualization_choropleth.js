@@ -1,226 +1,155 @@
 $(document).ready(function() {
 
+var width = 500,
+    height = 500,
+    centered;
+	
+var poverty_threshold = d3.scale.threshold()
+    .domain([.01, .17, .27, .38])
+    .range(["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]);
+
+var diploma_threshold = d3.scale.threshold()
+    .domain([.06, .14, .19, .23])
+    .range(["#000", "#333", "#666", "#999", "#AAA"]);
+
+var packer = sm.packer();
+
 projection = d3.geo.albersUsa()
   .scale(160000)
-  .translate([-41500, 5000]);
-path = d3.geo.path().projection(projection)
+  .translate([-41630, 4900]);
 
+var path = d3.geo.path().projection(projection)
 
-var width = 960,
-    height = 500;
+svg = d3.select("#content")
+  .append("svg:svg")
+  .attr("width", width)
+  .attr("height", height)
 
-var rateById = d3.map();
-
-var quantize = d3.scale.quantize()
-    .domain([0, .15])
-    .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
-
-var path = d3.geo.path();
-
-var svg = d3.select("#content").append("svg")
+svg.append("rect")
+    .attr("class", "background")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+    .on("click", clicked);
+
+var g = svg.append("g");
+g.append("g").attr("id", "neighborhoods");
+g.append("g").attr("id", "schools");
 
 queue()
     .defer(d3.json, "data/neighborhood_boundaries.json")
-    .defer(d3.csv, "data/neighborhoods.csv", function(d) { rateById.set(d.id, +d.rate); })
+    .defer(d3.csv, "data/neighborhoods.csv")
     .await(ready);
 
-function ready(error, dc) {
-  svg.append("g")
-      .attr("class", "counties")
+function ready(error, dc, choropleth) {
+	var all_data = {};
+
+  choropleth.forEach(function(d) {
+	  all_data[d.gis_id] = d;
+	  choropleth[d.gis_id] = +d.poverty;
+  });
+
+  g.select("#neighborhoods")
     .selectAll("path")
       .data(dc.features)
     .enter().append("path")
-      .attr("class", function(d) { return quantize(rateById.get(d.id)); })
-      .attr("d", path);
-
-//  svg.append("path")
-//      .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
-//      .attr("class", "states")
-//      .attr("d", path);
+      .attr("d", path)
+      .on("click", clicked)
+      .style("fill", function(d) { return poverty_threshold(choropleth[d.properties.gis_id]); });
+  d3.select("#diploma").on("click", function() {changeNeighborhoodData("diploma")});
+  d3.select("#poverty").on("click", function() {changeNeighborhoodData("poverty")});
+  function noNeighborhoodData() {
+    g.select("#neighborhoods").selectAll("path")
+      .transition().duration(600)
+      .style("fill", "#333");
+  }
+  function changeNeighborhoodData(new_data_column) {
+	choropleth.forEach(function(d) {
+		choropleth[d.gis_id] = +d[new_data_column];
+	});
+	g.select("#neighborhoods").selectAll("path")
+      // .transition().duration(600)
+      .style("fill", function(d) { return diploma_threshold(all_data[d.properties.gis_id][new_data_column])})
+  }
 }
 
-//
-//
-//var color = d3.scale.threshold()
-//    .domain([0, 1, 2, 3, 4])
-//    .range(["#f2f0f7", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);
-//
-////var popChoro = d3.map();
-////
-////var quantize = d3.scale.quantize()
-////    .domain([0, 47378])
-////    .range(d3.range(5).map(function(i) { return "q" + i + "-9"; }));
-//
-//var width = 750,
-//    height = 600,
-//    centered;
-//
-//var projection = d3.geo.albersUsa()
-//.scale(160000)
-//.translate([-41500, 5000]);
-//
-//var path = d3.geo.path()
-//    .projection(projection);
-//
-//var svg = d3.select("#content").append("svg")
-//    .attr("width", width)
-//    .attr("height", height);
-//	
-//queue()
-//    .defer(d3.json, "data/neighborhood_boundaries.json")
-//    .defer(d3.csv, "data/neighborhoods.csv")
-//    .await(ready);
-//	
-//svg.append("rect")
-//    .attr("class", "background")
-//    .attr("width", width)
-//    .attr("height", height)
-//    .on("click", clicked);
-//
-//var g = svg.append("g");
-//
-//function ready(error, dc, recreation) {
-//  var rateById = {};
-//
-//  recreation.forEach(function(d) { rateById[d.gis_id] = +d.recreation; });
-//
-//  svg.append("g")
-//      .attr("class", "counties")
+
+//d3.json("data/neighborhood_boundaries.json", function(error, dc) {
+//  g.select("#neighborhoods")
 //    .selectAll("path")
-//      .data(topojson.feature(dc, dc.objects.counties).features)
+//      .data(dc.features)
 //    .enter().append("path")
 //      .attr("d", path)
-//      .style("fill", function(d) { return color(rateById[d.recreation]); });
-//
-////  svg.append("path")
-////      .datum(topojson.mesh(dc, dc.features, function(a, b) { return a.gis_id !== b.gis_id; }))
-////      .attr("class", "states")
-////      .attr("d", path);
-//}
-//
-////d3.json("data/neighborhood_boundaries.json", function(error, dc) {
-////  g.append("g")
-////      .attr("id", "neighborhoods")
-////    .selectAll("path")
-////      .data(dc.features)
-////    .enter().append("path")
-////      .attr("d", path)
-//////	.attr('fill', function(d){
-//////	 
-//////		$.each(state_data, function(key, data){
-//////			if(dc. == abbr){
-//////				state_president = data.president;
-//////			}
-//////		})
-//////	 
-//////		// Return colors
-//////		// based on data					
-//////		if(state_president == "Obama"){
-//////			return "blue"
-//////		}
-//////		else if(state_president == "McCain"){
-//////			return "red"
-//////		}
-//////		else {
-//////			return "#CCC"
-//////		}
-//////	})
-////	.on("click", clicked);
-////
-////  g.append("path")
-////      .datum(topojson.mesh(dc, dc.features, function(a, b) { return a !== b; }))
-////      .attr("id", "state-borders")
-////      .attr("d", path);
-////});
-//
-////function ready(error, dc) {
-////  svg.append("g")
-//////      .attr("class", "q0-9")
-////    .selectAll("path")
-////      .data(dc.features)
-////    .enter().append("path")
-//////      .attr("class", function(d) { return quantize(popChoro.get(d.gis_id)); })
-////      .attr("d", path);
-////	  console.log(quantize(popChoro))
-////}
-//
-//function clicked(d) {
-//  var x, y, k;
-//
-//  if (d && centered !== d) {
-//    var centroid = path.centroid(d);
-//    x = centroid[0];
-//    y = centroid[1];
-//    k = 4;
-//    centered = d;
-//  } else {
-//    x = width / 2;
-//    y = height / 2;
-//    k = 1;
-//    centered = null;
-//  }
-//
-//  g.selectAll("path")
-//      .classed("active", centered && function(d) { return d === centered; });
-//
-//  g.transition()
-//      .duration(750)
-//      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-//      .style("stroke-width", 1.5 / k + "px");
-//}
-//
-////d3.csv("data/neighborhoods.csv", function(csv) {
-////  data = csv;
-////  g.selectAll("path")
-////      .attr("class", quantize);
-////});
-//// 
-////function quantize(d) {
-////  return "q" + Math.min(8, ~~(data[d.population_total] * 9 / 12)) + "-9";
-////}
-//
-////var packer = sm.packer();
-////
-////
-////projection = d3.geo.albersUsa()
-////.scale(160000)
-////.translate([-41500, 5000]);
-////path = d3.geo.path().projection(projection)
-////
-////svg = d3.select("#content")
-////  .append("svg:svg")
-////  .attr("width", 750)
-////  .attr("height", 600)
-////
-////d3.json("data/neighborhood_boundaries.json", function(json) {
-////  svg.append("svg:g")
-////  .selectAll("path")
-////    .data(json.features)
-////  .enter().append("svg:path")
-////    .attr("d", path)
-////    .attr("fill-opacity", 0.5)
-////	.attr("fill", "#000")
-////    .attr("stroke", "#000")
-////});	
-////
-////$.get('data/schools.json', function(point){
-////	var scale = d3.scale.linear().domain([0,200]).range([1,5])
-////	point.schools.forEach(function(point){
-////	  svg.append("circle").attr("r",scale(point.enrollment)).attr("fill-opacity", 0.5).attr("fill", "#FF0000").attr("transform", function() {return "translate(" + projection([point.long, point.lat]) + ")";});
-////	  packMetros();
-////	})
-////})
-////
-////			function packMetros() {
-////			
-////				var elements = d3.selectAll('#content circle')[0];
-////				
-////				packer.elements(elements).start();
-////			
-////			}
-//
-////	  svg.append("circle").attr("r",5).attr("transform", function() {return "translate(" + projection([-77.01, 38.91]) + ")";});
+//      .on("click", clicked)
+//      .style("fill", function(d) { return color(choropleth[d.properties.gis_id]); });
+//});
 
-});		
+d3.csv('data/schools.csv', function(data){
+  var scale = d3.scale.sqrt().range([1,10]);
+  g.select("#schools").selectAll("circle")
+    .data(data).enter().append("circle")
+      .attr("r", 4)
+      .attr("fill-opacity", 0.7)
+      .attr("fill", "#000099")
+      .attr("transform", function(d) {
+        return "translate(" + 
+          projection([d.long, d.lat]) +
+          ")";})
+      .on("click", function(d) {
+        $("#details").prepend("<div><h3>"+d.name+"</h3><h4>enrollment: " +
+                              d.enrollment + "</h4><h4>allocation: " +
+                              d.alloc + "</h4></div>");
+      })
+      .append("title").text(function(d){return d.name;});
+	packMetros();
+  d3.select("#school_enrollment").on("click", function() {changeSchoolData("enrollment")});
+  d3.select("#school_allocation").on("click", function() {changeSchoolData("alloc")});
+  d3.select("#school_location").on("click", noSchoolData);
+  function noSchoolData() {
+    g.select("#schools").selectAll("circle")
+      .transition().duration(600)
+      .attr("r", 4)
+  }
+  function changeSchoolData(new_data_column) {
+    matchScaleToData(scale, function(d){return +d[new_data_column];})
+    g.select("#schools").selectAll("circle")
+      .transition().duration(600)
+      .attr("r", function(d) {return scale(d[new_data_column])})
+  }
+  function matchScaleToData(scale, fieldFunction) {
+    var minimum = d3.min(data, fieldFunction),
+        maximum = d3.max(data, fieldFunction);
+    scale.domain([minimum, maximum]);
+  }
+});
+
+function packMetros() {
+	var elements = d3.selectAll('#content circle')[0];
+	packer.elements(elements).start();
+}
+
+function clicked(d) {
+  var x, y, k;
+
+  if (d && centered !== d) {
+    var centroid = path.centroid(d);
+    x = centroid[0];
+    y = centroid[1];
+    k = 4;
+    centered = d;
+  } else {
+    x = width / 2;
+    y = height / 2;
+    k = 1;
+    centered = null;
+  }
+
+  g.selectAll("path")
+      .classed("active", centered && function(d) { return d === centered; });
+
+  g.transition()
+      .duration(750)
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+      .style("stroke-width", 1.5 / k + "px");
+}
+
+}); // end document ready function
