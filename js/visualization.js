@@ -72,17 +72,6 @@ function ready(error, dc, choropleth) {
   }
 }
 
-
-//d3.json("data/neighborhood_boundaries.json", function(error, dc) {
-//  g.select("#neighborhoods")
-//    .selectAll("path")
-//      .data(dc.features)
-//    .enter().append("path")
-//      .attr("d", path)
-//      .on("click", clicked)
-//      .style("fill", function(d) { return color(choropleth[d.properties.gis_id]); });
-//});
-
 d3.csv('data/schools.csv', function(data){
   var scale = d3.scale.sqrt().range([1,10]);
   g.select("#schools").selectAll("circle")
