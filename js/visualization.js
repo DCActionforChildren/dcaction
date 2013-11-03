@@ -83,11 +83,7 @@ d3.csv('data/schools.csv', function(data){
         return "translate(" + 
           projection([d.long, d.lat]) +
           ")";})
-      .on("click", function(d) {
-        $("#details").prepend("<div><h3>"+d.name+"</h3><h4>enrollment: " +
-                              d.enrollment + "</h4><h4>allocation: " +
-                              d.alloc + "</h4></div>");
-      })
+      .on("click", displaySchoolData)
       .append("title").text(function(d){return d.name;});
 	packMetros();
   d3.select("#school_enrollment").on("click", function() {changeSchoolData("enrollment")});
@@ -108,6 +104,11 @@ d3.csv('data/schools.csv', function(data){
     var minimum = d3.min(data, fieldFunction),
         maximum = d3.max(data, fieldFunction);
     scale.domain([minimum, maximum]);
+  }
+  function displaySchoolData(school) {
+    $("#details").prepend("<div class='well well-sm'><h3>"+school.name+"</h3><h4>enrollment: " +
+                              school.enrollment + "</h4><h4>allocation: " +
+                              school.alloc + "</h4></div>");
   }
 });
 
