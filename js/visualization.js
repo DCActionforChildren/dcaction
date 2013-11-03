@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-var width = 500,
-    height = 500,
+var width = 600,
+    height = 600,
     centered;
 	
 var poverty_threshold = d3.scale.threshold()
@@ -14,9 +14,10 @@ var diploma_threshold = d3.scale.threshold()
 
 var packer = sm.packer();
 
-projection = d3.geo.albersUsa()
-  .scale(160000)
-  .translate([-41630, 4900]);
+projection = d3.geo.mercator()
+  .center([-77.01551, 38.90755])
+  .scale(150000)
+  .translate([width/2, height/2]);
 
 var path = d3.geo.path().projection(projection)
 
