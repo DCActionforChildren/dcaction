@@ -67,7 +67,7 @@ function ready(error, dc, choropleth) {
 		choropleth[d.gis_id] = +d[new_data_column];
 	});
 	g.select("#neighborhoods").selectAll("path")
-      // .transition().duration(600)
+      .transition().duration(600)
       .style("fill", function(d) { return diploma_threshold(all_data[d.properties.gis_id][new_data_column])})
   }
 }
