@@ -12,6 +12,8 @@ var diploma_threshold = d3.scale.threshold()
     .domain([.06, .14, .19, .23])
     .range(["#AAA", "#999", "#666", "#333", "#000"]);
 
+var choro_color = poverty_threshold;
+
 var packer = sm.packer();
 
 projection = d3.geo.mercator()
@@ -37,11 +39,11 @@ g.append("g").attr("id", "neighborhoods");
 g.append("g").attr("id", "schools");
 
 queue()
-    .defer(d3.json, "data/neighborhood_boundaries.json")
-    .defer(d3.csv, "data/neighborhoods.csv")
-    .await(ready);
+  .defer(d3.json, "data/neighborhood_boundaries.json")
+  .defer(d3.csv, "data/neighborhoods.csv")
+  .await(setUpChoropleth);
 
-function ready(error, dc, choropleth) {
+function setUpChoropleth(error, dc, choropleth) {
 	var all_data = {};
 
   choropleth.forEach(function(d) {
@@ -55,23 +57,32 @@ function ready(error, dc, choropleth) {
     .enter().append("path")
       .attr("d", path)
       .on("click", clicked)
-      .style("fill", function(d) { return poverty_threshold(choropleth[d.properties.gis_id]); });
-  d3.select("#diploma").on("click", function() {changeNeighborhoodData("diploma")});
-  d3.select("#poverty").on("click", function() {changeNeighborhoodData("poverty")});
+      .style("fill", "#AAA");
+  d3.select("#no_neighborhood_data").on("click", noNeighborhoodData);
+  d3.select("#diploma").on("click", function() {
+    choro_color = diploma_threshold;
+    changeNeighborhoodData("diploma");
+  });
+  d3.select("#poverty").on("click", function() {
+    choro_color = poverty_threshold;
+    changeNeighborhoodData("poverty");
+  });
   function noNeighborhoodData() {
     g.select("#neighborhoods").selectAll("path")
       .transition().duration(600)
-      .style("fill", "#333");
+      .style("fill", "#AAA");
   }
   function changeNeighborhoodData(new_data_column) {
 	choropleth.forEach(function(d) {
 		choropleth[d.gis_id] = +d[new_data_column];
 	});
 	g.select("#neighborhoods").selectAll("path")
-      .transition().duration(600)
-      .style("fill", function(d) { return diploma_threshold(all_data[d.properties.gis_id][new_data_column])})
+    .transition().duration(600)
+    .style("fill", function(d) {
+      return choro_color(all_data[d.properties.gis_id][new_data_column]);
+    });
   }
-}
+} // setUpChoropleth function
 
 d3.csv('data/schools.csv', function(data){
   var scale = d3.scale.sqrt().range([1,10]);
@@ -89,7 +100,7 @@ d3.csv('data/schools.csv', function(data){
 	packMetros();
   d3.select("#school_enrollment").on("click", function() {changeSchoolData("enrollment")});
   d3.select("#school_allocation").on("click", function() {changeSchoolData("alloc")});
-  d3.select("#school_location").on("click", noSchoolData);
+  d3.select("#no_school_data").on("click", noSchoolData);
   function noSchoolData() {
     g.select("#schools").selectAll("circle")
       .transition().duration(600)
