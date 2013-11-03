@@ -15,7 +15,7 @@ var diploma_threshold = d3.scale.threshold()
 var packer = sm.packer();
 
 projection = d3.geo.mercator()
-  .center([-77.01551, 38.90755])
+  .center([-77.01551, 38.90755]) // Dunbar High School
   .scale(150000)
   .translate([width/2, height/2]);
 
