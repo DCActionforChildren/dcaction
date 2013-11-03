@@ -10,7 +10,7 @@ var poverty_threshold = d3.scale.threshold()
 
 var diploma_threshold = d3.scale.threshold()
     .domain([.06, .14, .19, .23])
-    .range(["#000", "#333", "#666", "#999", "#AAA"]);
+    .range(["#AAA", "#999", "#666", "#333", "#000"]);
 
 var packer = sm.packer();
 
