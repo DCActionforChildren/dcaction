@@ -23,20 +23,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Neighborhoods <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">High poverty</a></li>
-            <li><a href="#">Access to healthy food</a></li>
-            <li><a href="#">Recreation centers</a></li>
-            <li><a href="#">No HS degree (25+)</a></li>
-            <li><a href="#">No HS degree (18-24)</a></li>
-            <li><a href="#">Homeownership</a></li>
-            <li><a href="#">Youth ready to work</a></li>
-            <li><a href="#">Environmental health</a></li>
-            <li><a href="#">Violent crime</a></li>
-            <li><a href="#">Libraries</a></li>
-            <li><a href="#">Single-mother families</a></li>
-            <li><a href="#">Math scores</a></li>
-            <li><a href="#">Reading scores</a></li>
-            <li><a href="#">Graduation rates</a></li>
+            <li><a id="poverty" href="#">High poverty</a></li>
+            <li><a id="diploma" href="#">No HS degree (25+)</a></li>
           </ul>
         </li>
         <li class="dropdown">
@@ -50,10 +38,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Childcare centers <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Locations</a></li>
-            <li><a href="#">Budget allocation</a></li>
-            <li><a href="#">Enrollment</a></li>
-            <li><a href="#">Allocation per child</a></li>
+            <li><a href="#">Nothing yet</a></li>
           </ul>
         </li>
       </ul>
@@ -64,8 +49,8 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8">
-      <div id="content"></div>
-    </div> <!-- d3 viz written in here -->
+      <div id="content"></div> <!-- d3 viz written in here -->
+    </div>
     <div class="col-lg-4" id="details">
       <h3 id="#sidebar-header">#sidebar-header</h3>
       <h2 id="#selection-title">#selection-title</h2>
@@ -111,7 +96,6 @@
       </div>
     </div> <!-- selected detail cards here -->
   </div> <!-- row -->
-  <!--
   <div class="row">
     <div class="col-lg-8">
       <div class="well clearfix">
@@ -122,9 +106,8 @@
         <button id="bubble" type="button" class="btn btn-default btn-lg btn-block">#bubble</button>
         </div>
       </div>
-    </div> // col-lg-8
-  </div>
-  --> <!-- row -->
+    </div> <!-- col-lg-8 -->
+  </div> <!-- row -->
 
   <div class="row">
     <div class="col-lg-3">
@@ -176,6 +159,7 @@
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8" type="text/javascript"></script>
   <script src="http://d3js.org/d3.geo.projection.v0.min.js" type="text/javascript"></script>
   <script src="http://d3js.org/topojson.v1.min.js" type="text/javascript"></script>
+  <script src="http://d3js.org/queue.v1.min.js"></script>
   <script src="js/bootstrap.min.js" type="text/javascript"></script>
   <script src="js/underscore-min.js" type="text/javascript"></script>
   <!-- Project scripts -->
