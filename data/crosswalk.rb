@@ -1,3 +1,10 @@
+# This script requires the following ruby gems:
+#   rubyXL, nokogiri
+#
+
+# TODO: currently this script performs weighted sums of tract-level variables.
+# It doesn't do any other kind of aggregateion (e.g., weighted average)
+
 require 'json'
 require 'rubyXL'
 
@@ -10,7 +17,8 @@ tract_data = JSON.parse IO.read(TRACT_FILE)
 
 # using the crosswalk file, we build a hash of the form: 
 #   { nbhd_id => { tract_id => portion, tract_id => portion, ... }, ...} 
-# where portion indicates the portion of the tract that should be assigned to the given neighborhood.
+# where portion indicates the portion of the tract that should be assigned 
+# to the given neighborhood.
 
 crosswalk = {}
 
@@ -58,7 +66,7 @@ crosswalk.each do |nbhd_id, tracts|
         nbhds[nbhd_id][var] += val * portion.to_f
       end
     else
-      # puts "No tract: '#{tract_id}'"
+      puts "No tract: '#{tract_id}'"
     end
   end
 end
