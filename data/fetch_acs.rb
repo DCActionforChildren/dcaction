@@ -90,7 +90,7 @@ fields_sub = {
 
 # build the get-string
 
-all_acs_fields = (fields_rename.values + fields_sum.values).flatten.uniq
+all_acs_fields = (fields_rename.values + fields_sum.values + fields_sub.values).flatten.uniq
 url = [BASE_URL, "get=" + all_acs_fields.join(','), GEO].join('&')
 
 # get the response, the first element in the response is the column names
@@ -112,7 +112,7 @@ data.each do |row|
     outrow[outname] = acsrow[acsname].to_i
   end
 
-fields_sum.each do |outname, acsfields|
+  fields_sum.each do |outname, acsfields|
     outrow[outname] = 0
 
     acsfields.each do |acsname|
