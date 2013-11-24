@@ -1,18 +1,64 @@
+.posrel { position: relative; }
+.posabs { position: absolute; }
+.posfixed { position: fixed; }
+/* navbar */
+.navbar {
+  margin-bottom: 0px;
+}
+#nav-panel {
+  background-color: #f8f8f8;
+  width: 200px;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+#nav-panel h4 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.nav-pills > li > a {
+  border-radius: 0px;
+}
+.nav-pills > li.selected > a {
+  background-color: #ccc;
+}
+#main-container {
+  top: 0px;
+  left: 0px;
+  background-color: #FFF;
+  width: 100%;
+  -webkit-box-shadow: 0px 0px 15px #CCC;
+  -moz-box-shadow: 0px 0px 15px #CCC;
+  box-shadow: 0px 0px 15px #CCC;
+}
+.menu-toggle {
+  cursor: pointer;
+  left: 0px;
+  top: 25px;
+  padding: 10px;
+  background-color: #ccc;
+}
+
 svg {
   fill: #FFF;
 }
 
-path {
+path.nbhd {
+  cursor: pointer;
   fill: #ccc;
   fill-opacity: .75;
   stroke: #FFF;
   stroke-width: 1px;
 }
-
-circle {
+path.nbhd:hover {
+  stroke: #000;
+}
+circle.school {
   cursor: pointer;
+  fill-opacity: 0.5;
+  fill: #000099;
 }
 
-circle:hover {
+circle.school:hover {
   fill-opacity: 1;
 }

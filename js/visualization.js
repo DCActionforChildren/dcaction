@@ -44,17 +44,28 @@ function init(){
   drawChoropleth();
   drawSchools();
 
-  // event listeners for dropdown items
+  // slide out menu
+  $('.menu-toggle').on('click', function(){
+    if ($(this).parent().hasClass('toggled')){
+      $(this).parent().animate({ 'left' : 0 }, 500, function(){ $('#main-container').removeClass('toggled') });
+    } else {
+      $(this).parent().animate({ 'left' : $('#nav-panel').width() }, 500, function(){ $('#main-container').addClass('toggled') });
+    }
+  });
+
+  // event listeners for changing d3
   // choropleth color change
   $('.neighborhood-menu > li').on('click', 'a', function(e){
     e.preventDefault();
     changeNeighborhoodData($(this).attr('id'));
+    $(this).parent().addClass('selected').siblings().removeClass('selected');
   });
   // circle changes
   $('.school-menu > li').on('click', 'a', function(e){
     e.preventDefault();
     var value = $(this).attr('id') === 'no_school_data' ? 4 : $(this).attr('id');
     changeSchoolData(value);
+    $(this).parent().addClass('selected').siblings().removeClass('selected');
   });
 }
 
@@ -99,6 +110,7 @@ function drawChoropleth(){
         .data(dc.features)
       .enter().append("path")
         .attr("d", path)
+        .attr('class', 'nbhd')
         .on("click", clicked)
         .style("fill", "#AAA");
 
@@ -129,9 +141,8 @@ function drawSchools(){
     school_scale = d3.scale.sqrt().range([1,10]);
     g.select("#schools").selectAll("circle")
       .data(data).enter().append("circle")
+        .attr('class', 'school')
         .attr("r", 4)
-        .attr("fill-opacity", 0.7)
-        .attr("fill", "#000099")
         .attr("transform", function(d) {
           return "translate(" + 
             projection([d.long, d.lat]) +
