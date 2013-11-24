@@ -1,6 +1,5 @@
 require 'json'
 require 'rubyXL'
-require 'pp'
 
 CROSSWALK_FILE = 'Neighborhood Cluster - Census Tract 2010 Equivalency File - 7-11-2012.xlsx'
 TRACT_FILE = 'tracts.json'
@@ -9,9 +8,14 @@ NBHD_FILE = 'nbhds.json'
 book = RubyXL::Parser.parse CROSSWALK_FILE
 tract_data = JSON.parse IO.read(TRACT_FILE)
 
+# using the crosswalk file, we build a hash of the form: 
+#   { nbhd_id => { tract_id => portion, tract_id => portion, ... }, ...} 
+# where portion indicates the portion of the tract that should be assigned to the given neighborhood.
+
 crosswalk = {}
 
-# get the nonsplit tracts
+# get the nonsplit tracts from the first worksheet
+
 sheet = book[0].extract_data
 sheet.shift # remove first row
 
@@ -25,7 +29,8 @@ sheet.each do |row|
   end
 end
 
-# get the split tracts
+# get the split tracts from the second worksheet
+
 sheet = book[1].extract_data
 sheet.shift
 
@@ -39,9 +44,8 @@ sheet.each do |row|
   end
 end
 
-# crosswalk: 
-#
-# { nbhd_id => { tract_id => portion, ...}
+# create a hash that aggregates variables to the neighborhood level using the
+# above portions
 
 nbhds = {}
 
