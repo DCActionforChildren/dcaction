@@ -4,7 +4,7 @@ require 'json'
 require 'open-uri'
 
 API_KEY = '4578df5c991e1f7d74624f849bb5a1167d652b23'
-BASE_URL = "http://api.census.gov/data/2010/acs5?key=#{API_KEY}"
+BASE_URL = "http://api.census.gov/data/2011/acs5?key=#{API_KEY}"
 GEO = 'for=tract:*&in=state:11'
 TRACT_FILE = 'tracts.json'
 
