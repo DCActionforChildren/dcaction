@@ -1,5 +1,5 @@
-var width = 600,
-    height = 600,
+var width = $('#content').parent().width(),
+    height = 700,
     centered;
 
 var svg, projection, path, g;
