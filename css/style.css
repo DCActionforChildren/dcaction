@@ -5,6 +5,9 @@
 .navbar {
   margin-bottom: 0px;
 }
+.navbar-brand img {
+  width: 80px;
+}
 #nav-panel {
   background-color: #f8f8f8;
   width: 200px;
@@ -18,9 +21,15 @@
 }
 .nav-pills > li > a {
   border-radius: 0px;
+  color: #444;
+  background-color: #F0F4F8;
+}
+.nav-pills > li > a:hover {
+  background-color: #D8DCE2
 }
 .nav-pills > li.selected > a {
-  background-color: #ccc;
+  background-color: #C6CEDA;
+  color: #000;
 }
 #main-container {
   top: 0px;
@@ -35,7 +44,7 @@
   cursor: pointer;
   left: 0px;
   top: 25px;
-  padding: 10px;
+  padding: 10px 10px 10px 20px;
   background-color: #ccc;
 }
 
