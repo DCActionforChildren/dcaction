@@ -1,12 +1,16 @@
 svg {
-fill: #FFF;
+  fill: #FFF;
 }
 
 path {
-  fill: #000;
+  fill: #ccc;
   fill-opacity: .75;
   stroke: #FFF;
   stroke-width: 1px;
+}
+
+circle {
+  cursor: pointer;
 }
 
 circle:hover {
