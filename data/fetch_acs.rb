@@ -4,7 +4,7 @@ require 'json'
 require 'open-uri'
 
 API_KEY = '4578df5c991e1f7d74624f849bb5a1167d652b23'
-BASE_URL = "http://api.census.gov/data/2010/acs5?key=#{API_KEY}"
+BASE_URL = "http://api.census.gov/data/2011/acs5?key=#{API_KEY}"
 GEO = 'for=tract:*&in=state:11'
 TRACT_FILE = 'tracts.json'
 
@@ -14,7 +14,7 @@ fields_rename = {
   'population_total' => 'B01003_001E',
   'population_under_18' => 'B09001_001E',
   'median_family_income' => 'B19013_001E',
-  'single_moether_families' => 'B09002_015E',
+  'single_mother_families' => 'B09002_015E',
   'children_in_poverty' => 'B17006_001E',
   'population_white_total' => 'B03002_003E',
   'population_black_total' => 'B03002_004E',
