@@ -5,12 +5,13 @@
 # TODO: currently this script performs weighted sums of tract-level variables.
 # It doesn't do any other kind of aggregateion (e.g., weighted average)
 
+require 'csv'
 require 'json'
 require 'rubyXL'
 
 CROSSWALK_FILE = 'Neighborhood Cluster - Census Tract 2010 Equivalency File - 7-11-2012.xlsx'
 TRACT_FILE = 'tracts.json'
-NBHD_FILE = 'nbhds.json'
+NBHD_FILE = 'nbhds.csv'
 
 book = RubyXL::Parser.parse CROSSWALK_FILE
 tract_data = JSON.parse IO.read(TRACT_FILE)
@@ -71,6 +72,14 @@ crosswalk.each do |nbhd_id, tracts|
   end
 end
 
-File.open(NBHD_FILE, 'w') do |f|
-  f.puts JSON.pretty_generate(nbhds)
+# write result to a CSV file
+
+colnames = nbhds.first[1].keys
+
+CSV.open(NBHD_FILE, 'w') do |csv|
+  csv << ["neighborhood_id"] + colnames
+
+  nbhds.each do |nbhd_id, vars|
+    csv << [nbhd_id] + colnames.map {|s| vars[s]}
+  end
 end
