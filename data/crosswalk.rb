@@ -16,7 +16,7 @@ sheet = book[0].extract_data
 sheet.shift # remove first row
 
 sheet.each do |row|
-  tract_id, nbhd_id = row
+  tract_id, nbhd_id = row.map(&:to_s)
 
   if crosswalk.include? nbhd_id
     crosswalk[nbhd_id][tract_id] = 1
@@ -30,7 +30,7 @@ sheet = book[1].extract_data
 sheet.shift
 
 sheet.each do |row|
-  tract_id, nbhd_id, portion = row
+  tract_id, nbhd_id, portion = row.map(&:to_s)
 
   if crosswalk.include? nbhd_id
     crosswalk[nbhd_id][tract_id] = portion
@@ -49,13 +49,12 @@ crosswalk.each do |nbhd_id, tracts|
   nbhds[nbhd_id] = Hash.new {0}
 
   tracts.each do |tract_id, portion|
-    unless tract_data.include? tract_id
-      puts "No tract: #{tract_id}"
-      next
-    end
-
-    tract_data[tract_id].each do |var, val|
-      nbhds[nbhd_id][var] += val * portion
+    if tract_data.include? tract_id
+      tract_data[tract_id].each do |var, val|
+        nbhds[nbhd_id][var] += val * portion.to_f
+      end
+    else
+      # puts "No tract: '#{tract_id}'"
     end
   end
 end
