@@ -1,9 +1,16 @@
+body, h1, h2, h3, h4, h5 {
+  font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+}
 .posrel { position: relative; }
 .posabs { position: absolute; }
 .posfixed { position: fixed; }
 /* navbar */
 .navbar {
   margin-bottom: 0px;
+  padding-right: 15px;
 }
 .navbar-brand img {
   width: 80px;

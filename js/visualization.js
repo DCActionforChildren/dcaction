@@ -47,9 +47,9 @@ function init(){
   // slide out menu
   $('.menu-toggle').on('click', function(){
     if ($(this).parent().hasClass('toggled')){
-      $(this).parent().animate({ 'left' : 0 }, 500, function(){ $('#main-container').removeClass('toggled') });
+      $(this).parent().animate({ 'left' : 0 }, 350, function(){ $('#main-container').removeClass('toggled') });
     } else {
-      $(this).parent().animate({ 'left' : $('#nav-panel').width() }, 500, function(){ $('#main-container').addClass('toggled') });
+      $(this).parent().animate({ 'left' : $('#nav-panel').width() }, 350, function(){ $('#main-container').addClass('toggled') });
     }
   });
 
