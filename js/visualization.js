@@ -16,21 +16,12 @@ var identifiers = {
   },
   'diploma' : {
     'domain' : [.06, .14, .19, .23],
-    'range' : ["#AAA", "#999", "#666", "#333", "#000"]
+    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+  },
+  'population_total' : {
+    'domain' : [2566, 7928, 17362, 28207],
+    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
   }
-  // ,
-  // 'no_school_data' : {
-  //   'domain' : [],
-  //   'range' : []
-  // },
-  // 'alloc' : {
-  //   'domain' : [],
-  //   'range' : []
-  // },
-  // 'enrollment' : {
-  //   'domain' : [],
-  //   'range' : []
-  // }
 }
 
 var all_data = {},
@@ -95,7 +86,7 @@ function drawChoropleth(){
 
   queue()
     .defer(d3.json, "data/neighborhood_boundaries.json")
-    .defer(d3.csv, "data/neighborhoods.csv")
+    .defer(d3.csv, "data/neighborhoods44.csv")
     .await(setUpChoropleth);
 
   function setUpChoropleth(error, dc, choropleth) {
