@@ -71,14 +71,22 @@ fields_sub = {
     'B01001H_003E',
     'B01001H_004E',
     'B01001H_005E',
-    'B01001H_006E'
+    'B01001H_006E',
+    'B01001H_018E',
+    'B01001H_019E',
+    'B01001H_020E',
+    'B01001H_021E'
   ],
   'hispanic_18' => [
     'B01001I_001E',
     'B01001I_003E',
     'B01001I_004E',
     'B01001I_005E',
-    'B01001I_006E'
+    'B01001I_006E',
+    'B01001I_018E',
+    'B01001I_019E',
+    'B01001I_020E',
+    'B01001I_021E'
   ],
   'no_hs_degree_18_24' => [
     'B15001_001E',
@@ -94,8 +102,9 @@ fields_sub = {
 all_acs_fields = (fields_rename.values + fields_sum.values + fields_sub.values).flatten.uniq
 
 #Change all the Es to Ms to get the margins of error.
+
 all_acs_errors = all_acs_fields.map do |ff|
-ff.sub("E", "M")
+  ff.sub("E", "M")
 end
 
 url = [BASE_URL, "get=" + all_acs_fields.join(','), GEO].join('&')
@@ -127,10 +136,10 @@ data.zip(data_e).each do |row|
     outrow[outname+"_margin"] = acsrow_e[acsname].to_i
   end
 
-  #We found some Census documentation suggesting that we use the sqrt(sum of squares) for
-  #the margin of error for aggregate estimates.
-  #https://www.census.gov/acs/www/Downloads/data_documentation/Statistical_Testing/ACS_2008_Statistical_Testing.pdf
-  #So that's what I'm doing here.
+  # We found some Census documentation suggesting that we use the sqrt(sum of squares) for
+  # the margin of error for aggregate estimates.
+  # https://www.census.gov/acs/www/Downloads/data_documentation/Statistical_Testing/ACS_2008_Statistical_Testing.pdf
+  # So that's what I'm doing here.
   fields_sum.each do |outname, acsfields|
     outrow[outname] = 0
     outrow[outname+"_margin"] = 0
