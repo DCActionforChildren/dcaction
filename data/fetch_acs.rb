@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # TODO: remove assumption that all ACS data is integral?
 
 require 'json'
@@ -36,7 +37,7 @@ fields_sum = {
     'B03002_008E',
     'B03002_009E',
     'B03002_010E',
-    'B03002_011M'
+    'B03002_011E'
   ],
   'white_under_18' => [
     'B01001H_003E',
@@ -91,7 +92,14 @@ fields_sub = {
 # build the get-string
 
 all_acs_fields = (fields_rename.values + fields_sum.values + fields_sub.values).flatten.uniq
+
+#Change all the Es to Ms to get the margins of error.
+all_acs_errors = all_acs_fields.map do |ff|
+ff.sub("E", "M")
+end
+
 url = [BASE_URL, "get=" + all_acs_fields.join(','), GEO].join('&')
+url_e = [BASE_URL, "get=" + all_acs_errors.join(','), GEO].join('&')
 
 # get the response, the first element in the response is the column names
 
@@ -100,33 +108,52 @@ puts "URL: #{url}"
 resp = JSON.parse open(url).read
 colnames, *data = *resp
 
+puts "Fetching #{all_acs_errors.length} margins of error from ACS..."
+puts "URL: #{url_e}"
+resp_e = JSON.parse open(url_e).read
+colnames_e, *data_e = *resp_e
+
 # build a hash of values keyed by tract name
 
 tracts = {}
 
-data.each do |row|
-  acsrow = Hash[colnames.zip row]
+data.zip(data_e).each do |row|
+  acsrow = Hash[colnames.zip row[0]]
+  acsrow_e = Hash[colnames.zip row[1]]
   outrow = {}
 
   fields_rename.each do |outname, acsname|
     outrow[outname] = acsrow[acsname].to_i
+    outrow[outname+"_margin"] = acsrow_e[acsname].to_i
   end
 
+  #We found some Census documentation suggesting that we use the sqrt(sum of squares) for
+  #the margin of error for aggregate estimates.
+  #https://www.census.gov/acs/www/Downloads/data_documentation/Statistical_Testing/ACS_2008_Statistical_Testing.pdf
+  #So that's what I'm doing here.
   fields_sum.each do |outname, acsfields|
     outrow[outname] = 0
+    outrow[outname+"_margin"] = 0
 
     acsfields.each do |acsname|
       outrow[outname] += acsrow[acsname].to_i
+      outrow[outname+"_margin"] += (acsrow_e[acsname].to_i/1.645)**2
     end
+    outrow[outname+"_margin"] = Math.sqrt(outrow[outname+"_margin"])*1.645
   end
+
+
 
   fields_sub.each do |outname, acsfields|
     first, *rest = *acsfields
     outrow[outname] = acsrow[first].to_i
+    outrow[outname+"_margin"] = (acsrow_e[first].to_i/1.645)**2
 
     rest.each do |acsname|
       outrow[outname] -= acsrow[acsname].to_i
+      outrow[outname+"_margin"] += (acsrow_e[acsname].to_i/1.645)**2 #Yes, +=. Using other data elmts may give us a smaller MoE by the sum-of-squares methods.
     end
+    outrow[outname+"_margin"] = Math.sqrt(outrow[outname+"_margin"])*1.645
   end
 
   # tract ids in the neighborhood file include the state and county number
@@ -136,5 +163,3 @@ end
 File.open(TRACT_FILE, 'w') do |f|
   f.puts JSON.pretty_generate(tracts)
 end
-
-
