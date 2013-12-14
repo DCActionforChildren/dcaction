@@ -1,9 +1,19 @@
+body, h1, h2, h3, h4, h5 {
+  font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+}
 .posrel { position: relative; }
 .posabs { position: absolute; }
 .posfixed { position: fixed; }
 /* navbar */
 .navbar {
   margin-bottom: 0px;
+  padding-right: 15px;
+}
+.navbar-brand img {
+  width: 80px;
 }
 #nav-panel {
   background-color: #f8f8f8;
@@ -18,9 +28,15 @@
 }
 .nav-pills > li > a {
   border-radius: 0px;
+  color: #444;
+  background-color: #F0F4F8;
+}
+.nav-pills > li > a:hover {
+  background-color: #D8DCE2
 }
 .nav-pills > li.selected > a {
-  background-color: #ccc;
+  background-color: #C6CEDA;
+  color: #000;
 }
 #main-container {
   top: 0px;
@@ -35,8 +51,9 @@
   cursor: pointer;
   left: 0px;
   top: 25px;
-  padding: 10px;
+  padding: 10px 10px 10px 20px;
   background-color: #ccc;
+  z-index: 5;
 }
 
 svg {
@@ -50,7 +67,8 @@ path.nbhd {
   stroke: #FFF;
   stroke-width: 1px;
 }
-path.nbhd:hover {
+path.nbhd:hover,
+path.nbhd.active {
   stroke: #000;
 }
 circle.school {

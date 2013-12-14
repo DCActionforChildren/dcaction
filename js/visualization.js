@@ -1,5 +1,5 @@
-var width = 600,
-    height = 600,
+var width = $('#content').parent().width(),
+    height = 700,
     centered;
 
 var svg, projection, path, g;
@@ -16,21 +16,12 @@ var identifiers = {
   },
   'diploma' : {
     'domain' : [.06, .14, .19, .23],
-    'range' : ["#AAA", "#999", "#666", "#333", "#000"]
+    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+  },
+  'population_total' : {
+    'domain' : [2566, 7928, 17362, 28207],
+    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
   }
-  // ,
-  // 'no_school_data' : {
-  //   'domain' : [],
-  //   'range' : []
-  // },
-  // 'alloc' : {
-  //   'domain' : [],
-  //   'range' : []
-  // },
-  // 'enrollment' : {
-  //   'domain' : [],
-  //   'range' : []
-  // }
 }
 
 var all_data = {},
@@ -47,9 +38,9 @@ function init(){
   // slide out menu
   $('.menu-toggle').on('click', function(){
     if ($(this).parent().hasClass('toggled')){
-      $(this).parent().animate({ 'left' : 0 }, 500, function(){ $('#main-container').removeClass('toggled') });
+      $(this).parent().animate({ 'left' : 0 }, 350, function(){ $('#main-container').removeClass('toggled') });
     } else {
-      $(this).parent().animate({ 'left' : $('#nav-panel').width() }, 500, function(){ $('#main-container').addClass('toggled') });
+      $(this).parent().animate({ 'left' : $('#nav-panel').width() }, 350, function(){ $('#main-container').addClass('toggled') });
     }
   });
 
@@ -95,7 +86,7 @@ function drawChoropleth(){
 
   queue()
     .defer(d3.json, "data/neighborhood_boundaries.json")
-    .defer(d3.csv, "data/neighborhoods.csv")
+    .defer(d3.csv, "data/neighborhoods44.csv")
     .await(setUpChoropleth);
 
   function setUpChoropleth(error, dc, choropleth) {
