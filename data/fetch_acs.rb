@@ -55,13 +55,13 @@ fields_sum = {
   ],
   'hispanic_under_18' => [
     'B01001I_003E',
-    'B01001I_004EE',
-    'B01001I_005EE',
-    'B01001I_006EE',
-    'B01001I_018EE',
-    'B01001I_019EE',
-    'B01001I_020EE',
-    'B01001I_021EE'
+    'B01001I_004E',
+    'B01001I_005E',
+    'B01001I_006E',
+    'B01001I_018E',
+    'B01001I_019E',
+    'B01001I_020E',
+    'B01001I_021E'
   ],
   'no_hs_degree_25_plus' => [
     'B15001_004E',
@@ -121,9 +121,15 @@ fields_sub = {
   ]
 }
 
-# build the get-string
+# We can only pull 50 fields at a time from the Census API so I'm going to get
+# the fields in fields_rename and fields_sum first.
+# TODO it would make more sense to download the fields in increments of 50,
+# accumulate them into a single array of arrays, and then create our variables
+# in a single loop
 
-all_acs_fields = (fields_rename.values + fields_sum.values + fields_sub.values).flatten.uniq
+# build the get-string for renamed and subtracted fields
+
+all_acs_fields = (fields_rename.values + fields_sub.values).flatten.uniq
 
 #Change all the Es to Ms to get the margins of error.
 
@@ -160,21 +166,6 @@ data.zip(data_e).each do |row|
     outrow[outname+"_margin"] = acsrow_e[acsname].to_i
   end
 
-  # We found some Census documentation suggesting that we use the sqrt(sum of squares) for
-  # the margin of error for aggregate estimates.
-  # https://www.census.gov/acs/www/Downloads/data_documentation/Statistical_Testing/ACS_2008_Statistical_Testing.pdf
-  # So that's what I'm doing here.
-  fields_sum.each do |outname, acsfields|
-    outrow[outname] = 0
-    outrow[outname+"_margin"] = 0
-
-    acsfields.each do |acsname|
-      outrow[outname] += acsrow[acsname].to_i
-      outrow[outname+"_margin"] += (acsrow_e[acsname].to_i/1.645)**2
-    end
-    outrow[outname+"_margin"] = Math.sqrt(outrow[outname+"_margin"])*1.645
-  end
-
   fields_sub.each do |outname, acsfields|
     first, *rest = *acsfields
     outrow[outname] = acsrow[first].to_i
@@ -190,6 +181,73 @@ data.zip(data_e).each do |row|
   # tract ids in the neighborhood file include the state and county number
   tracts['11001' + acsrow['tract']] = outrow
 end
+
+# build the get-string for summed fields
+
+all_acs_fields = fields_sum.values.flatten.uniq
+
+#Change all the Es to Ms to get the margins of error.
+
+all_acs_errors = all_acs_fields.map do |ff|
+  ff.sub("E", "M")
+end
+
+url = [BASE_URL, "get=" + all_acs_fields.join(','), GEO].join('&')
+url_e = [BASE_URL, "get=" + all_acs_errors.join(','), GEO].join('&')
+
+# get the response, the first element in the response is the column names
+
+puts "Fetching #{all_acs_fields.length} fields from ACS..."
+puts "URL: #{url}"
+resp = JSON.parse open(url).read
+colnames, *data = *resp
+
+puts "Fetching #{all_acs_errors.length} margins of error from ACS..."
+puts "URL: #{url_e}"
+resp_e = JSON.parse open(url_e).read
+colnames_e, *data_e = *resp_e
+
+data.zip(data_e).each do |row|
+  acsrow = Hash[colnames.zip row[0]]
+  acsrow_e = Hash[colnames.zip row[1]]
+  outrow = {}
+
+  # We found some Census documentation suggesting that we use the sqrt(sum of squares) for
+  # the margin of error for aggregate estimates.
+  # https://www.census.gov/acs/www/Downloads/data_documentation/Statistical_Testing/ACS_2008_Statistical_Testing.pdf
+  # So that's what I'm doing here.
+  fields_sum.each do |outname, acsfields|
+    outrow[outname] = 0
+    outrow[outname+"_margin"] = 0
+
+    acsfields.each do |acsname|
+      outrow[outname] += acsrow[acsname].to_i
+      outrow[outname+"_margin"] += (acsrow_e[acsname].to_i/1.645)**2
+    end
+    outrow[outname+"_margin"] = Math.sqrt(outrow[outname+"_margin"])*1.645
+  end
+
+  tracts['11001' + acsrow['tract']].merge! outrow
+end
+
+# compute ratios
+
+all_acs_fields = (fields_rename.keys + fields_sum.keys + fields_sub.keys).flatten.uniq
+all_acs_fields.each do |f|
+  if f =~ /_numer$/
+    fbase = f[0...-6]
+    puts "computing #{fbase}"
+    tracts.each do |t, hash|
+      if hash[fbase+'_denom'] != 0
+        hash[fbase] = hash[f].to_f / hash[fbase+'_denom']
+      else
+        hash[fbase] = -1
+      end
+    end
+  end
+end
+
+# write the result to a json file
 
 File.open(TRACT_FILE, 'w') do |f|
   f.puts JSON.pretty_generate(tracts)
