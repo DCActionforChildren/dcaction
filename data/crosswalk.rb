@@ -77,6 +77,10 @@ crosswalk.each do |nbhd_id, tracts|
     end
   end
 
+  # create gis_id Nbclus_123
+
+  nbhds[nbhd_id]['gis_id'] = sprintf("Nbclus_%03d", nbhd_id)
+
   # compute averages
 
   tract_total_weight = tracts.values.map{|v| v.to_f}.inject(&:+)
