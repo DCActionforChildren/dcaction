@@ -230,23 +230,6 @@ data.zip(data_e).each do |row|
   tracts['11001' + acsrow['tract']].merge! outrow
 end
 
-# compute ratios
-
-all_acs_fields = (fields_rename.keys + fields_sum.keys + fields_sub.keys).flatten.uniq
-all_acs_fields.each do |f|
-  if f =~ /_numer$/
-    fbase = f[0...-6]
-    puts "computing #{fbase}"
-    tracts.each do |t, hash|
-      if hash[fbase+'_denom'] != 0
-        hash[fbase] = hash[f].to_f / hash[fbase+'_denom']
-      else
-        hash[fbase] = -1
-      end
-    end
-  end
-end
-
 # write the result to a json file
 
 File.open(TRACT_FILE, 'w') do |f|

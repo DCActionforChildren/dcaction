@@ -43,10 +43,7 @@
     "youth_ready_to_work_numer": 361,
     "youth_ready_to_work_numer_margin": 206.85743883167459,
     "youth_ready_to_work_denom": 361,
-    "youth_ready_to_work_denom_margin": 206.85743883167459,
-    "poverty": 0.06337294142172191,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 206.85743883167459
   },
   "11001000201": {
     "population_total": 4216,
@@ -92,10 +89,7 @@
     "youth_ready_to_work_numer": 556,
     "youth_ready_to_work_numer_margin": 237.84028254271814,
     "youth_ready_to_work_denom": 556,
-    "youth_ready_to_work_denom_margin": 237.84028254271814,
-    "poverty": 1.0,
-    "poverty2": -1,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 237.84028254271814
   },
   "11001000202": {
     "population_total": 4819,
@@ -141,10 +135,7 @@
     "youth_ready_to_work_numer": 396,
     "youth_ready_to_work_numer_margin": 163.54510081320075,
     "youth_ready_to_work_denom": 400,
-    "youth_ready_to_work_denom_margin": 164.35023577713542,
-    "poverty": 0.16272189349112426,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.99
+    "youth_ready_to_work_denom_margin": 164.35023577713542
   },
   "11001000300": {
     "population_total": 5386,
@@ -190,10 +181,7 @@
     "youth_ready_to_work_numer": 306,
     "youth_ready_to_work_numer_margin": 192.28624495787523,
     "youth_ready_to_work_denom": 363,
-    "youth_ready_to_work_denom_margin": 197.1319355152787,
-    "poverty": 0.09710360193093205,
-    "poverty2": 0.024327784891165175,
-    "youth_ready_to_work": 0.8429752066115702
+    "youth_ready_to_work_denom_margin": 197.1319355152787
   },
   "11001000400": {
     "population_total": 1433,
@@ -239,10 +227,7 @@
     "youth_ready_to_work_numer": 9,
     "youth_ready_to_work_numer_margin": 190.38382284217323,
     "youth_ready_to_work_denom": 9,
-    "youth_ready_to_work_denom_margin": 190.38382284217323,
-    "poverty": 0.04675505931612003,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 190.38382284217323
   },
   "11001000501": {
     "population_total": 3431,
@@ -288,10 +273,7 @@
     "youth_ready_to_work_numer": 606,
     "youth_ready_to_work_numer_margin": 235.23392612461322,
     "youth_ready_to_work_denom": 606,
-    "youth_ready_to_work_denom_margin": 235.23392612461322,
-    "poverty": 0.1488781079442086,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 235.23392612461322
   },
   "11001000502": {
     "population_total": 3260,
@@ -337,10 +319,7 @@
     "youth_ready_to_work_numer": 179,
     "youth_ready_to_work_numer_margin": 186.81541692269406,
     "youth_ready_to_work_denom": 179,
-    "youth_ready_to_work_denom_margin": 186.81541692269406,
-    "poverty": 0.044171779141104296,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 186.81541692269406
   },
   "11001000600": {
     "population_total": 4580,
@@ -386,10 +365,7 @@
     "youth_ready_to_work_numer": 181,
     "youth_ready_to_work_numer_margin": 169.77632343763366,
     "youth_ready_to_work_denom": 181,
-    "youth_ready_to_work_denom_margin": 169.77632343763366,
-    "poverty": 0.0916275623610768,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 169.77632343763366
   },
   "11001000701": {
     "population_total": 4481,
@@ -435,10 +411,7 @@
     "youth_ready_to_work_numer": 266,
     "youth_ready_to_work_numer_margin": 216.462467878383,
     "youth_ready_to_work_denom": 266,
-    "youth_ready_to_work_denom_margin": 216.462467878383,
-    "poverty": 0.021200624860522203,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 216.462467878383
   },
   "11001000702": {
     "population_total": 3426,
@@ -484,10 +457,7 @@
     "youth_ready_to_work_numer": 451,
     "youth_ready_to_work_numer_margin": 307.28000260348864,
     "youth_ready_to_work_denom": 471,
-    "youth_ready_to_work_denom_margin": 313.4645115479581,
-    "poverty": 0.0796847635726795,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.9575371549893843
+    "youth_ready_to_work_denom_margin": 313.4645115479581
   },
   "11001000801": {
     "population_total": 6763,
@@ -533,10 +503,7 @@
     "youth_ready_to_work_numer": 227,
     "youth_ready_to_work_numer_margin": 124.78781991845197,
     "youth_ready_to_work_denom": 239,
-    "youth_ready_to_work_denom_margin": 126.44366334458996,
-    "poverty": 0.10743405275779376,
-    "poverty2": 0.025136612021857924,
-    "youth_ready_to_work": 0.9497907949790795
+    "youth_ready_to_work_denom_margin": 126.44366334458996
   },
   "11001000802": {
     "population_total": 2575,
@@ -582,10 +549,7 @@
     "youth_ready_to_work_numer": 66,
     "youth_ready_to_work_numer_margin": 204.3355084169171,
     "youth_ready_to_work_denom": 81,
-    "youth_ready_to_work_denom_margin": 154.9709650224841,
-    "poverty": 0.08466019417475729,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.8148148148148148
+    "youth_ready_to_work_denom_margin": 154.9709650224841
   },
   "11001000901": {
     "population_total": 7460,
@@ -631,10 +595,7 @@
     "youth_ready_to_work_numer": 496,
     "youth_ready_to_work_numer_margin": 222.96860765587607,
     "youth_ready_to_work_denom": 624,
-    "youth_ready_to_work_denom_margin": 238.56026492272346,
-    "poverty": 0.06511627906976744,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.7948717948717948
+    "youth_ready_to_work_denom_margin": 238.56026492272346
   },
   "11001000902": {
     "population_total": 2178,
@@ -680,10 +641,7 @@
     "youth_ready_to_work_numer": 39,
     "youth_ready_to_work_numer_margin": 168.52299546352717,
     "youth_ready_to_work_denom": 39,
-    "youth_ready_to_work_denom_margin": 168.52299546352717,
-    "poverty": 0.046372819100091826,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 168.52299546352717
   },
   "11001001001": {
     "population_total": 7712,
@@ -729,10 +687,7 @@
     "youth_ready_to_work_numer": 282,
     "youth_ready_to_work_numer_margin": 117.44786077234443,
     "youth_ready_to_work_denom": 333,
-    "youth_ready_to_work_denom_margin": 128.06248474865697,
-    "poverty": 0.051188299817184646,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.8468468468468469
+    "youth_ready_to_work_denom_margin": 128.06248474865697
   },
   "11001001002": {
     "population_total": 3003,
@@ -778,10 +733,7 @@
     "youth_ready_to_work_numer": 423,
     "youth_ready_to_work_numer_margin": 169.4904127082119,
     "youth_ready_to_work_denom": 453,
-    "youth_ready_to_work_denom_margin": 191.4340617549552,
-    "poverty": 0.1620897521768252,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.9337748344370861
+    "youth_ready_to_work_denom_margin": 191.4340617549552
   },
   "11001001100": {
     "population_total": 4410,
@@ -827,10 +779,7 @@
     "youth_ready_to_work_numer": 283,
     "youth_ready_to_work_numer_margin": 156.4608577248636,
     "youth_ready_to_work_denom": 283,
-    "youth_ready_to_work_denom_margin": 156.4608577248636,
-    "poverty": 0.0693232728130158,
-    "poverty2": 0.06276747503566334,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 156.4608577248636
   },
   "11001001200": {
     "population_total": 5093,
@@ -876,10 +825,7 @@
     "youth_ready_to_work_numer": 434,
     "youth_ready_to_work_numer_margin": 215.82168565739636,
     "youth_ready_to_work_denom": 434,
-    "youth_ready_to_work_denom_margin": 215.82168565739636,
-    "poverty": 0.07480856076968388,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 215.82168565739636
   },
   "11001001301": {
     "population_total": 4220,
@@ -925,10 +871,7 @@
     "youth_ready_to_work_numer": 314,
     "youth_ready_to_work_numer_margin": 216.80175276044235,
     "youth_ready_to_work_denom": 371,
-    "youth_ready_to_work_denom_margin": 233.86320788016224,
-    "poverty": 0.1253616200578592,
-    "poverty2": 0.10366826156299841,
-    "youth_ready_to_work": 0.8463611859838275
+    "youth_ready_to_work_denom_margin": 233.86320788016224
   },
   "11001001302": {
     "population_total": 7080,
@@ -974,10 +917,7 @@
     "youth_ready_to_work_numer": 550,
     "youth_ready_to_work_numer_margin": 198.84918908559823,
     "youth_ready_to_work_denom": 550,
-    "youth_ready_to_work_denom_margin": 198.84918908559823,
-    "poverty": 0.07358757062146892,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 198.84918908559823
   },
   "11001001401": {
     "population_total": 3326,
@@ -1023,10 +963,7 @@
     "youth_ready_to_work_numer": 197,
     "youth_ready_to_work_numer_margin": 135.95955280891445,
     "youth_ready_to_work_denom": 201,
-    "youth_ready_to_work_denom_margin": 136.1396341995967,
-    "poverty": 0.046001202645820805,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.9800995024875622
+    "youth_ready_to_work_denom_margin": 136.1396341995967
   },
   "11001001402": {
     "population_total": 2837,
@@ -1072,10 +1009,7 @@
     "youth_ready_to_work_numer": 9,
     "youth_ready_to_work_numer_margin": 213.1056076221365,
     "youth_ready_to_work_denom": 9,
-    "youth_ready_to_work_denom_margin": 213.1056076221365,
-    "poverty": 0.05968028419182948,
-    "poverty2": 0.06321839080459771,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 213.1056076221365
   },
   "11001001500": {
     "population_total": 5933,
@@ -1121,10 +1055,7 @@
     "youth_ready_to_work_numer": 103,
     "youth_ready_to_work_numer_margin": 112.99115009592565,
     "youth_ready_to_work_denom": 103,
-    "youth_ready_to_work_denom_margin": 112.99115009592565,
-    "poverty": 0.020432692307692308,
-    "poverty2": 0.005148005148005148,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 112.99115009592565
   },
   "11001001600": {
     "population_total": 4432,
@@ -1170,10 +1101,7 @@
     "youth_ready_to_work_numer": 73,
     "youth_ready_to_work_numer_margin": 221.01131192769296,
     "youth_ready_to_work_denom": 99,
-    "youth_ready_to_work_denom_margin": 177.8791724739015,
-    "poverty": 0.03804347826086957,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.7373737373737373
+    "youth_ready_to_work_denom_margin": 177.8791724739015
   },
   "11001001702": {
     "population_total": 2783,
@@ -1219,10 +1147,7 @@
     "youth_ready_to_work_numer": 148,
     "youth_ready_to_work_numer_margin": 129.61095632700193,
     "youth_ready_to_work_denom": 171,
-    "youth_ready_to_work_denom_margin": 132.28378585450298,
-    "poverty": 0.12102601156069365,
-    "poverty2": 0.24932249322493225,
-    "youth_ready_to_work": 0.8654970760233918
+    "youth_ready_to_work_denom_margin": 132.28378585450298
   },
   "11001001803": {
     "population_total": 3106,
@@ -1268,10 +1193,7 @@
     "youth_ready_to_work_numer": 130,
     "youth_ready_to_work_numer_margin": 128.79829191413992,
     "youth_ready_to_work_denom": 193,
-    "youth_ready_to_work_denom_margin": 100.79682534683322,
-    "poverty": 0.12169993560849968,
-    "poverty2": 0.10082644628099173,
-    "youth_ready_to_work": 0.6735751295336787
+    "youth_ready_to_work_denom_margin": 100.79682534683322
   },
   "11001001804": {
     "population_total": 4645,
@@ -1317,10 +1239,7 @@
     "youth_ready_to_work_numer": 84,
     "youth_ready_to_work_numer_margin": 151.56516750229915,
     "youth_ready_to_work_denom": 145,
-    "youth_ready_to_work_denom_margin": 133.80209265927047,
-    "poverty": 0.2652314316469322,
-    "poverty2": 0.40851449275362317,
-    "youth_ready_to_work": 0.5793103448275863
+    "youth_ready_to_work_denom_margin": 133.80209265927047
   },
   "11001001901": {
     "population_total": 4056,
@@ -1366,10 +1285,7 @@
     "youth_ready_to_work_numer": 356,
     "youth_ready_to_work_numer_margin": 170.19400694501553,
     "youth_ready_to_work_denom": 387,
-    "youth_ready_to_work_denom_margin": 172.968205170777,
-    "poverty": 0.023054040654437283,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.9198966408268734
+    "youth_ready_to_work_denom_margin": 172.968205170777
   },
   "11001001902": {
     "population_total": 2122,
@@ -1415,10 +1331,7 @@
     "youth_ready_to_work_numer": 126,
     "youth_ready_to_work_numer_margin": 174.65394355696637,
     "youth_ready_to_work_denom": 126,
-    "youth_ready_to_work_denom_margin": 174.65394355696637,
-    "poverty": 0.08199811498586239,
-    "poverty2": 0.125,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 174.65394355696637
   },
   "11001002001": {
     "population_total": 2507,
@@ -1464,10 +1377,7 @@
     "youth_ready_to_work_numer": 115,
     "youth_ready_to_work_numer_margin": 156.323382767902,
     "youth_ready_to_work_denom": 115,
-    "youth_ready_to_work_denom_margin": 156.323382767902,
-    "poverty": 0.0793777423214998,
-    "poverty2": 0.09255079006772009,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 156.323382767902
   },
   "11001002002": {
     "population_total": 3673,
@@ -1513,10 +1423,7 @@
     "youth_ready_to_work_numer": 243,
     "youth_ready_to_work_numer_margin": 150.1932089010685,
     "youth_ready_to_work_denom": 301,
-    "youth_ready_to_work_denom_margin": 162.03086125797145,
-    "poverty": 0.11811674008810573,
-    "poverty2": 0.060955518945634266,
-    "youth_ready_to_work": 0.8073089700996677
+    "youth_ready_to_work_denom_margin": 162.03086125797145
   },
   "11001002101": {
     "population_total": 5157,
@@ -1562,10 +1469,7 @@
     "youth_ready_to_work_numer": 135,
     "youth_ready_to_work_numer_margin": 131.26309458488322,
     "youth_ready_to_work_denom": 158,
-    "youth_ready_to_work_denom_margin": 93.10209449845907,
-    "poverty": 0.18830660930778256,
-    "poverty2": 0.32385874246339363,
-    "youth_ready_to_work": 0.8544303797468354
+    "youth_ready_to_work_denom_margin": 93.10209449845907
   },
   "11001002102": {
     "population_total": 5064,
@@ -1611,10 +1515,7 @@
     "youth_ready_to_work_numer": 287,
     "youth_ready_to_work_numer_margin": 182.51575274479734,
     "youth_ready_to_work_denom": 337,
-    "youth_ready_to_work_denom_margin": 182.71562604221896,
-    "poverty": 0.15846123181183974,
-    "poverty2": 0.19604147031102734,
-    "youth_ready_to_work": 0.8516320474777448
+    "youth_ready_to_work_denom_margin": 182.71562604221896
   },
   "11001002201": {
     "population_total": 3733,
@@ -1660,10 +1561,7 @@
     "youth_ready_to_work_numer": 199,
     "youth_ready_to_work_numer_margin": 118.42719282327012,
     "youth_ready_to_work_denom": 350,
-    "youth_ready_to_work_denom_margin": 165.79505420850163,
-    "poverty": 0.0334851326011251,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.5685714285714286
+    "youth_ready_to_work_denom_margin": 165.79505420850163
   },
   "11001002202": {
     "population_total": 3101,
@@ -1709,10 +1607,7 @@
     "youth_ready_to_work_numer": 124,
     "youth_ready_to_work_numer_margin": 204.01225453388824,
     "youth_ready_to_work_denom": 150,
-    "youth_ready_to_work_denom_margin": 182.49657531033287,
-    "poverty": 0.13781947589776772,
-    "poverty2": 0.0944527736131934,
-    "youth_ready_to_work": 0.8266666666666667
+    "youth_ready_to_work_denom_margin": 182.49657531033287
   },
   "11001002301": {
     "population_total": 3059,
@@ -1758,10 +1653,7 @@
     "youth_ready_to_work_numer": 155,
     "youth_ready_to_work_numer_margin": 132.29512462672236,
     "youth_ready_to_work_denom": 237,
-    "youth_ready_to_work_denom_margin": 157.68322675541617,
-    "poverty": 0.15364498202026805,
-    "poverty2": 0.28298887122416533,
-    "youth_ready_to_work": 0.6540084388185654
+    "youth_ready_to_work_denom_margin": 157.68322675541617
   },
   "11001002302": {
     "population_total": 1564,
@@ -1807,10 +1699,7 @@
     "youth_ready_to_work_numer": 172,
     "youth_ready_to_work_numer_margin": 225.05777036130078,
     "youth_ready_to_work_denom": 172,
-    "youth_ready_to_work_denom_margin": 225.05777036130078,
-    "poverty": 0.2759415833973866,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 225.05777036130078
   },
   "11001002400": {
     "population_total": 3578,
@@ -1856,10 +1745,7 @@
     "youth_ready_to_work_numer": 112,
     "youth_ready_to_work_numer_margin": 114.19719786404566,
     "youth_ready_to_work_denom": 198,
-    "youth_ready_to_work_denom_margin": 98.91410415102591,
-    "poverty": 0.15030846887268648,
-    "poverty2": 0.3258426966292135,
-    "youth_ready_to_work": 0.5656565656565656
+    "youth_ready_to_work_denom_margin": 98.91410415102591
   },
   "11001002501": {
     "population_total": 2367,
@@ -1905,10 +1791,7 @@
     "youth_ready_to_work_numer": 173,
     "youth_ready_to_work_numer_margin": 156.82793118574256,
     "youth_ready_to_work_denom": 263,
-    "youth_ready_to_work_denom_margin": 184.95945501649814,
-    "poverty": 0.3380161770966369,
-    "poverty2": 0.382830626450116,
-    "youth_ready_to_work": 0.6577946768060836
+    "youth_ready_to_work_denom_margin": 184.95945501649814
   },
   "11001002502": {
     "population_total": 5018,
@@ -1954,10 +1837,7 @@
     "youth_ready_to_work_numer": 465,
     "youth_ready_to_work_numer_margin": 178.36759795433701,
     "youth_ready_to_work_denom": 492,
-    "youth_ready_to_work_denom_margin": 182.89341158171882,
-    "poverty": 0.1349014877362284,
-    "poverty2": 0.1880952380952381,
-    "youth_ready_to_work": 0.9451219512195121
+    "youth_ready_to_work_denom_margin": 182.89341158171882
   },
   "11001002600": {
     "population_total": 2344,
@@ -2003,10 +1883,7 @@
     "youth_ready_to_work_numer": 23,
     "youth_ready_to_work_numer_margin": 192.11975432005946,
     "youth_ready_to_work_denom": 27,
-    "youth_ready_to_work_denom_margin": 192.41101839551703,
-    "poverty": 0.04308873720136519,
-    "poverty2": 0.03153153153153153,
-    "youth_ready_to_work": 0.8518518518518519
+    "youth_ready_to_work_denom_margin": 192.41101839551703
   },
   "11001002701": {
     "population_total": 5070,
@@ -2052,10 +1929,7 @@
     "youth_ready_to_work_numer": 437,
     "youth_ready_to_work_numer_margin": 328.4098049693401,
     "youth_ready_to_work_denom": 482,
-    "youth_ready_to_work_denom_margin": 344.9637662132068,
-    "poverty": 0.1264297385620915,
-    "poverty2": 0.3013182674199623,
-    "youth_ready_to_work": 0.9066390041493776
+    "youth_ready_to_work_denom_margin": 344.9637662132068
   },
   "11001002702": {
     "population_total": 5198,
@@ -2101,10 +1975,7 @@
     "youth_ready_to_work_numer": 352,
     "youth_ready_to_work_numer_margin": 234.3608329051593,
     "youth_ready_to_work_denom": 442,
-    "youth_ready_to_work_denom_margin": 258.3795657554985,
-    "poverty": 0.08464794151596768,
-    "poverty2": 0.023415977961432508,
-    "youth_ready_to_work": 0.7963800904977375
+    "youth_ready_to_work_denom_margin": 258.3795657554985
   },
   "11001002801": {
     "population_total": 3930,
@@ -2150,10 +2021,7 @@
     "youth_ready_to_work_numer": 194,
     "youth_ready_to_work_numer_margin": 243.04937769926505,
     "youth_ready_to_work_denom": 254,
-    "youth_ready_to_work_denom_margin": 257.79061270729,
-    "poverty": 0.2473035439137134,
-    "poverty2": 0.38413878562577447,
-    "youth_ready_to_work": 0.7637795275590551
+    "youth_ready_to_work_denom_margin": 257.79061270729
   },
   "11001002802": {
     "population_total": 4238,
@@ -2199,10 +2067,7 @@
     "youth_ready_to_work_numer": 335,
     "youth_ready_to_work_numer_margin": 129.79214151866054,
     "youth_ready_to_work_denom": 358,
-    "youth_ready_to_work_denom_margin": 132.9135057095403,
-    "poverty": 0.19760479041916168,
-    "poverty2": 0.31393298059964725,
-    "youth_ready_to_work": 0.9357541899441341
+    "youth_ready_to_work_denom_margin": 132.9135057095403
   },
   "11001002900": {
     "population_total": 4408,
@@ -2248,10 +2113,7 @@
     "youth_ready_to_work_numer": 273,
     "youth_ready_to_work_numer_margin": 209.6759404414345,
     "youth_ready_to_work_denom": 325,
-    "youth_ready_to_work_denom_margin": 192.82893973675218,
-    "poverty": 0.14768602540834846,
-    "poverty2": 0.17497456765005087,
-    "youth_ready_to_work": 0.84
+    "youth_ready_to_work_denom_margin": 192.82893973675218
   },
   "11001003000": {
     "population_total": 3346,
@@ -2297,10 +2159,7 @@
     "youth_ready_to_work_numer": 298,
     "youth_ready_to_work_numer_margin": 183.73078130786902,
     "youth_ready_to_work_denom": 392,
-    "youth_ready_to_work_denom_margin": 172.072659071684,
-    "poverty": 0.24246987951807228,
-    "poverty2": 0.4326710816777042,
-    "youth_ready_to_work": 0.7602040816326531
+    "youth_ready_to_work_denom_margin": 172.072659071684
   },
   "11001003100": {
     "population_total": 2758,
@@ -2346,10 +2205,7 @@
     "youth_ready_to_work_numer": 220,
     "youth_ready_to_work_numer_margin": 174.75697410976193,
     "youth_ready_to_work_denom": 257,
-    "youth_ready_to_work_denom_margin": 180.0,
-    "poverty": 0.06345177664974619,
-    "poverty2": 0.011787819253438114,
-    "youth_ready_to_work": 0.8560311284046692
+    "youth_ready_to_work_denom_margin": 180.0
   },
   "11001003200": {
     "population_total": 4550,
@@ -2395,10 +2251,7 @@
     "youth_ready_to_work_numer": 484,
     "youth_ready_to_work_numer_margin": 204.28166829160173,
     "youth_ready_to_work_denom": 500,
-    "youth_ready_to_work_denom_margin": 203.825906106167,
-    "poverty": 0.17183718371837184,
-    "poverty2": 0.21837549933422104,
-    "youth_ready_to_work": 0.968
+    "youth_ready_to_work_denom_margin": 203.825906106167
   },
   "11001003301": {
     "population_total": 2840,
@@ -2444,10 +2297,7 @@
     "youth_ready_to_work_numer": 359,
     "youth_ready_to_work_numer_margin": 214.04905979704745,
     "youth_ready_to_work_denom": 385,
-    "youth_ready_to_work_denom_margin": 195.12816301087855,
-    "poverty": 0.18485915492957747,
-    "poverty2": 0.2757009345794392,
-    "youth_ready_to_work": 0.9324675324675324
+    "youth_ready_to_work_denom_margin": 195.12816301087855
   },
   "11001003302": {
     "population_total": 2352,
@@ -2493,10 +2343,7 @@
     "youth_ready_to_work_numer": 311,
     "youth_ready_to_work_numer_margin": 149.35862880998874,
     "youth_ready_to_work_denom": 314,
-    "youth_ready_to_work_denom_margin": 149.35862880998874,
-    "poverty": 0.16198979591836735,
-    "poverty2": 0.2922636103151863,
-    "youth_ready_to_work": 0.9904458598726115
+    "youth_ready_to_work_denom_margin": 149.35862880998874
   },
   "11001003400": {
     "population_total": 5526,
@@ -2542,10 +2389,7 @@
     "youth_ready_to_work_numer": 743,
     "youth_ready_to_work_numer_margin": 221.905385243351,
     "youth_ready_to_work_denom": 930,
-    "youth_ready_to_work_denom_margin": 256.91632879207975,
-    "poverty": 0.20372152710940006,
-    "poverty2": 0.23655913978494625,
-    "youth_ready_to_work": 0.7989247311827957
+    "youth_ready_to_work_denom_margin": 256.91632879207975
   },
   "11001003500": {
     "population_total": 3441,
@@ -2591,10 +2435,7 @@
     "youth_ready_to_work_numer": 375,
     "youth_ready_to_work_numer_margin": 178.86587153506954,
     "youth_ready_to_work_denom": 551,
-    "youth_ready_to_work_denom_margin": 257.897266367831,
-    "poverty": 0.24271844660194175,
-    "poverty2": 0.2714285714285714,
-    "youth_ready_to_work": 0.6805807622504537
+    "youth_ready_to_work_denom_margin": 257.897266367831
   },
   "11001003600": {
     "population_total": 4204,
@@ -2640,10 +2481,7 @@
     "youth_ready_to_work_numer": 466,
     "youth_ready_to_work_numer_margin": 259.76142900746447,
     "youth_ready_to_work_denom": 466,
-    "youth_ready_to_work_denom_margin": 259.76142900746447,
-    "poverty": 0.18175252768415984,
-    "poverty2": 0.21364985163204747,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 259.76142900746447
   },
   "11001003700": {
     "population_total": 5068,
@@ -2689,10 +2527,7 @@
     "youth_ready_to_work_numer": 700,
     "youth_ready_to_work_numer_margin": 298.9615359874912,
     "youth_ready_to_work_denom": 770,
-    "youth_ready_to_work_denom_margin": 344.54752937729796,
-    "poverty": 0.2023921200750469,
-    "poverty2": 0.31703204047217537,
-    "youth_ready_to_work": 0.9090909090909091
+    "youth_ready_to_work_denom_margin": 344.54752937729796
   },
   "11001003800": {
     "population_total": 4391,
@@ -2738,10 +2573,7 @@
     "youth_ready_to_work_numer": 229,
     "youth_ready_to_work_numer_margin": 218.9703176231884,
     "youth_ready_to_work_denom": 250,
-    "youth_ready_to_work_denom_margin": 220.43593173527768,
-    "poverty": 0.09408787669657234,
-    "poverty2": 0.2845528455284553,
-    "youth_ready_to_work": 0.916
+    "youth_ready_to_work_denom_margin": 220.43593173527768
   },
   "11001003900": {
     "population_total": 4584,
@@ -2787,10 +2619,7 @@
     "youth_ready_to_work_numer": 256,
     "youth_ready_to_work_numer_margin": 227.6510487566442,
     "youth_ready_to_work_denom": 256,
-    "youth_ready_to_work_denom_margin": 227.6510487566442,
-    "poverty": 0.055494865632510375,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 227.6510487566442
   },
   "11001004001": {
     "population_total": 3301,
@@ -2836,10 +2665,7 @@
     "youth_ready_to_work_numer": 237,
     "youth_ready_to_work_numer_margin": 206.0242704149198,
     "youth_ready_to_work_denom": 237,
-    "youth_ready_to_work_denom_margin": 206.0242704149198,
-    "poverty": 0.03241441987276583,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 206.0242704149198
   },
   "11001004002": {
     "population_total": 2338,
@@ -2885,10 +2711,7 @@
     "youth_ready_to_work_numer": 145,
     "youth_ready_to_work_numer_margin": 202.00495043438912,
     "youth_ready_to_work_denom": 145,
-    "youth_ready_to_work_denom_margin": 202.00495043438912,
-    "poverty": 0.048331907613344736,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 202.00495043438912
   },
   "11001004100": {
     "population_total": 2767,
@@ -2934,10 +2757,7 @@
     "youth_ready_to_work_numer": 223,
     "youth_ready_to_work_numer_margin": 175.7811138888362,
     "youth_ready_to_work_denom": 223,
-    "youth_ready_to_work_denom_margin": 175.7811138888362,
-    "poverty": 0.03125,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 175.7811138888362
   },
   "11001004201": {
     "population_total": 3430,
@@ -2983,10 +2803,7 @@
     "youth_ready_to_work_numer": 301,
     "youth_ready_to_work_numer_margin": 206.31771615641736,
     "youth_ready_to_work_denom": 314,
-    "youth_ready_to_work_denom_margin": 208.64323617122125,
-    "poverty": 0.1332747510251904,
-    "poverty2": 0.6227544910179641,
-    "youth_ready_to_work": 0.9585987261146497
+    "youth_ready_to_work_denom_margin": 208.64323617122125
   },
   "11001004202": {
     "population_total": 2451,
@@ -3032,10 +2849,7 @@
     "youth_ready_to_work_numer": 114,
     "youth_ready_to_work_numer_margin": 189.27493230747697,
     "youth_ready_to_work_denom": 122,
-    "youth_ready_to_work_denom_margin": 189.27493230747697,
-    "poverty": 0.061377870563674324,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.9344262295081968
+    "youth_ready_to_work_denom_margin": 189.27493230747697
   },
   "11001004300": {
     "population_total": 2851,
@@ -3081,10 +2895,7 @@
     "youth_ready_to_work_numer": 33,
     "youth_ready_to_work_numer_margin": 215.6246739127969,
     "youth_ready_to_work_denom": 58,
-    "youth_ready_to_work_denom_margin": 171.0087717048456,
-    "poverty": 0.17993686425815503,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.5689655172413793
+    "youth_ready_to_work_denom_margin": 171.0087717048456
   },
   "11001004400": {
     "population_total": 5114,
@@ -3130,10 +2941,7 @@
     "youth_ready_to_work_numer": 393,
     "youth_ready_to_work_numer_margin": 263.20144376503714,
     "youth_ready_to_work_denom": 393,
-    "youth_ready_to_work_denom_margin": 263.20144376503714,
-    "poverty": 0.1449530516431925,
-    "poverty2": 0.11314984709480122,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 263.20144376503714
   },
   "11001004600": {
     "population_total": 2536,
@@ -3179,10 +2987,7 @@
     "youth_ready_to_work_numer": 26,
     "youth_ready_to_work_numer_margin": 192.2836446502926,
     "youth_ready_to_work_denom": 26,
-    "youth_ready_to_work_denom_margin": 192.2836446502926,
-    "poverty": 0.10424098295679746,
-    "poverty2": 0.0639386189258312,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 192.2836446502926
   },
   "11001004701": {
     "population_total": 2959,
@@ -3228,10 +3033,7 @@
     "youth_ready_to_work_numer": 125,
     "youth_ready_to_work_numer_margin": 134.01492454200763,
     "youth_ready_to_work_denom": 279,
-    "youth_ready_to_work_denom_margin": 148.76491521860927,
-    "poverty": 0.3856032443393038,
-    "poverty2": 0.6040172166427547,
-    "youth_ready_to_work": 0.44802867383512546
+    "youth_ready_to_work_denom_margin": 148.76491521860927
   },
   "11001004702": {
     "population_total": 1470,
@@ -3277,10 +3079,7 @@
     "youth_ready_to_work_numer": 47,
     "youth_ready_to_work_numer_margin": 197.31446981911893,
     "youth_ready_to_work_denom": 77,
-    "youth_ready_to_work_denom_margin": 178.69806937961025,
-    "poverty": 0.3064391000775795,
-    "poverty2": 0.4305555555555556,
-    "youth_ready_to_work": 0.6103896103896104
+    "youth_ready_to_work_denom_margin": 178.69806937961025
   },
   "11001004801": {
     "population_total": 1784,
@@ -3326,10 +3125,7 @@
     "youth_ready_to_work_numer": 94,
     "youth_ready_to_work_numer_margin": 150.15658493719147,
     "youth_ready_to_work_denom": 102,
-    "youth_ready_to_work_denom_margin": 117.00854669638453,
-    "poverty": 0.10780460415496912,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.9215686274509803
+    "youth_ready_to_work_denom_margin": 117.00854669638453
   },
   "11001004802": {
     "population_total": 3029,
@@ -3375,10 +3171,7 @@
     "youth_ready_to_work_numer": 203,
     "youth_ready_to_work_numer_margin": 194.411933790084,
     "youth_ready_to_work_denom": 244,
-    "youth_ready_to_work_denom_margin": 200.50935140287098,
-    "poverty": 0.1350280620666887,
-    "poverty2": 0.04,
-    "youth_ready_to_work": 0.8319672131147541
+    "youth_ready_to_work_denom_margin": 200.50935140287098
   },
   "11001004901": {
     "population_total": 2314,
@@ -3424,10 +3217,7 @@
     "youth_ready_to_work_numer": 135,
     "youth_ready_to_work_numer_margin": 182.93168123646598,
     "youth_ready_to_work_denom": 153,
-    "youth_ready_to_work_denom_margin": 184.25254408012933,
-    "poverty": 0.21311475409836064,
-    "poverty2": 0.36926147704590817,
-    "youth_ready_to_work": 0.8823529411764706
+    "youth_ready_to_work_denom_margin": 184.25254408012933
   },
   "11001004902": {
     "population_total": 2849,
@@ -3473,10 +3263,7 @@
     "youth_ready_to_work_numer": 252,
     "youth_ready_to_work_numer_margin": 191.30865113737016,
     "youth_ready_to_work_denom": 278,
-    "youth_ready_to_work_denom_margin": 168.23495475078894,
-    "poverty": 0.1503384396152476,
-    "poverty2": 0.41156462585034015,
-    "youth_ready_to_work": 0.9064748201438849
+    "youth_ready_to_work_denom_margin": 168.23495475078894
   },
   "11001005001": {
     "population_total": 1829,
@@ -3522,10 +3309,7 @@
     "youth_ready_to_work_numer": 66,
     "youth_ready_to_work_numer_margin": 198.69574731231668,
     "youth_ready_to_work_denom": 66,
-    "youth_ready_to_work_denom_margin": 198.69574731231668,
-    "poverty": 0.08911973756150902,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 198.69574731231668
   },
   "11001005002": {
     "population_total": 6054,
@@ -3571,10 +3355,7 @@
     "youth_ready_to_work_numer": 349,
     "youth_ready_to_work_numer_margin": 222.09682573148135,
     "youth_ready_to_work_denom": 434,
-    "youth_ready_to_work_denom_margin": 235.04680384978647,
-    "poverty": 0.09415262636273539,
-    "poverty2": 0.09933774834437085,
-    "youth_ready_to_work": 0.804147465437788
+    "youth_ready_to_work_denom_margin": 235.04680384978647
   },
   "11001005201": {
     "population_total": 5501,
@@ -3620,10 +3401,7 @@
     "youth_ready_to_work_numer": 490,
     "youth_ready_to_work_numer_margin": 243.899569495315,
     "youth_ready_to_work_denom": 507,
-    "youth_ready_to_work_denom_margin": 245.58501582954932,
-    "poverty": 0.10634430103617525,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.9664694280078896
+    "youth_ready_to_work_denom_margin": 245.58501582954932
   },
   "11001005301": {
     "population_total": 5107,
@@ -3669,10 +3447,7 @@
     "youth_ready_to_work_numer": 393,
     "youth_ready_to_work_numer_margin": 218.906372680194,
     "youth_ready_to_work_denom": 393,
-    "youth_ready_to_work_denom_margin": 218.906372680194,
-    "poverty": 0.07902496559858463,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 218.906372680194
   },
   "11001005500": {
     "population_total": 6424,
@@ -3718,10 +3493,7 @@
     "youth_ready_to_work_numer": 332,
     "youth_ready_to_work_numer_margin": 186.62529303392935,
     "youth_ready_to_work_denom": 362,
-    "youth_ready_to_work_denom_margin": 192.36423784061319,
-    "poverty": 0.14838606070338847,
-    "poverty2": 0.06734006734006734,
-    "youth_ready_to_work": 0.9171270718232044
+    "youth_ready_to_work_denom_margin": 192.36423784061319
   },
   "11001005600": {
     "population_total": 5504,
@@ -3767,10 +3539,7 @@
     "youth_ready_to_work_numer": 443,
     "youth_ready_to_work_numer_margin": 200.3272322975586,
     "youth_ready_to_work_denom": 460,
-    "youth_ready_to_work_denom_margin": 200.96268310310745,
-    "poverty": 0.2711395101171459,
-    "poverty2": 0.19736842105263158,
-    "youth_ready_to_work": 0.9630434782608696
+    "youth_ready_to_work_denom_margin": 200.96268310310745
   },
   "11001005800": {
     "population_total": 2784,
@@ -3816,10 +3585,7 @@
     "youth_ready_to_work_numer": 205,
     "youth_ready_to_work_numer_margin": 164.47796204963143,
     "youth_ready_to_work_denom": 205,
-    "youth_ready_to_work_denom_margin": 164.47796204963143,
-    "poverty": 0.06752873563218391,
-    "poverty2": 0.07142857142857142,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 164.47796204963143
   },
   "11001005900": {
     "population_total": 3663,
@@ -3865,10 +3631,7 @@
     "youth_ready_to_work_numer": 659,
     "youth_ready_to_work_numer_margin": 225.91591356077595,
     "youth_ready_to_work_denom": 757,
-    "youth_ready_to_work_denom_margin": 233.96367239381416,
-    "poverty": 0.3659933675007537,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.8705416116248349
+    "youth_ready_to_work_denom_margin": 233.96367239381416
   },
   "11001006202": {
     "population_total": 0,
@@ -3914,10 +3677,7 @@
     "youth_ready_to_work_numer": 0,
     "youth_ready_to_work_numer_margin": 232.70152556440186,
     "youth_ready_to_work_denom": 0,
-    "youth_ready_to_work_denom_margin": 232.70152556440186,
-    "poverty": -1,
-    "poverty2": -1,
-    "youth_ready_to_work": -1
+    "youth_ready_to_work_denom_margin": 232.70152556440186
   },
   "11001006400": {
     "population_total": 1710,
@@ -3963,10 +3723,7 @@
     "youth_ready_to_work_numer": 32,
     "youth_ready_to_work_numer_margin": 193.09065228539677,
     "youth_ready_to_work_denom": 49,
-    "youth_ready_to_work_denom_margin": 170.10291002801804,
-    "poverty": 0.3368421052631579,
-    "poverty2": 0.4906166219839142,
-    "youth_ready_to_work": 0.6530612244897959
+    "youth_ready_to_work_denom_margin": 170.10291002801804
   },
   "11001006500": {
     "population_total": 2508,
@@ -4012,10 +3769,7 @@
     "youth_ready_to_work_numer": 120,
     "youth_ready_to_work_numer_margin": 201.9851479688544,
     "youth_ready_to_work_denom": 120,
-    "youth_ready_to_work_denom_margin": 201.9851479688544,
-    "poverty": 0.027544910179640718,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 201.9851479688544
   },
   "11001006600": {
     "population_total": 1851,
@@ -4061,10 +3815,7 @@
     "youth_ready_to_work_numer": 94,
     "youth_ready_to_work_numer_margin": 202.73628190336328,
     "youth_ready_to_work_denom": 102,
-    "youth_ready_to_work_denom_margin": 203.0295544988463,
-    "poverty": 0.05672609400324149,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.9215686274509803
+    "youth_ready_to_work_denom_margin": 203.0295544988463
   },
   "11001006700": {
     "population_total": 4094,
@@ -4110,10 +3861,7 @@
     "youth_ready_to_work_numer": 185,
     "youth_ready_to_work_numer_margin": 187.47799870918186,
     "youth_ready_to_work_denom": 185,
-    "youth_ready_to_work_denom_margin": 187.47799870918186,
-    "poverty": 0.030288226673180263,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 187.47799870918186
   },
   "11001006801": {
     "population_total": 2035,
@@ -4159,10 +3907,7 @@
     "youth_ready_to_work_numer": 100,
     "youth_ready_to_work_numer_margin": 149.49247472699085,
     "youth_ready_to_work_denom": 116,
-    "youth_ready_to_work_denom_margin": 149.98333240730452,
-    "poverty": 0.1277445109780439,
-    "poverty2": 0.4,
-    "youth_ready_to_work": 0.8620689655172413
+    "youth_ready_to_work_denom_margin": 149.98333240730452
   },
   "11001006802": {
     "population_total": 2332,
@@ -4208,10 +3953,7 @@
     "youth_ready_to_work_numer": 206,
     "youth_ready_to_work_numer_margin": 165.19382555047267,
     "youth_ready_to_work_denom": 211,
-    "youth_ready_to_work_denom_margin": 135.67608484917304,
-    "poverty": 0.05709266578831796,
-    "poverty2": 0.05333333333333334,
-    "youth_ready_to_work": 0.976303317535545
+    "youth_ready_to_work_denom_margin": 135.67608484917304
   },
   "11001006804": {
     "population_total": 2511,
@@ -4257,10 +3999,7 @@
     "youth_ready_to_work_numer": 0,
     "youth_ready_to_work_numer_margin": 232.70152556440186,
     "youth_ready_to_work_denom": 0,
-    "youth_ready_to_work_denom_margin": 232.70152556440186,
-    "poverty": 1.0,
-    "poverty2": -1,
-    "youth_ready_to_work": -1
+    "youth_ready_to_work_denom_margin": 232.70152556440186
   },
   "11001006900": {
     "population_total": 2343,
@@ -4306,10 +4045,7 @@
     "youth_ready_to_work_numer": 96,
     "youth_ready_to_work_numer_margin": 179.46308812677884,
     "youth_ready_to_work_denom": 96,
-    "youth_ready_to_work_denom_margin": 179.46308812677884,
-    "poverty": 0.07127614169867691,
-    "poverty2": 0.0804953560371517,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 179.46308812677884
   },
   "11001007000": {
     "population_total": 2572,
@@ -4355,10 +4091,7 @@
     "youth_ready_to_work_numer": 134,
     "youth_ready_to_work_numer_margin": 157.7022510936353,
     "youth_ready_to_work_denom": 134,
-    "youth_ready_to_work_denom_margin": 157.7022510936353,
-    "poverty": 0.06030855539971949,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 157.7022510936353
   },
   "11001007100": {
     "population_total": 3103,
@@ -4404,10 +4137,7 @@
     "youth_ready_to_work_numer": 197,
     "youth_ready_to_work_numer_margin": 150.8343462212768,
     "youth_ready_to_work_denom": 256,
-    "youth_ready_to_work_denom_margin": 161.09624452481813,
-    "poverty": 0.4743796326135997,
-    "poverty2": 0.7216035634743875,
-    "youth_ready_to_work": 0.76953125
+    "youth_ready_to_work_denom_margin": 161.09624452481813
   },
   "11001007200": {
     "population_total": 1863,
@@ -4453,10 +4183,7 @@
     "youth_ready_to_work_numer": 233,
     "youth_ready_to_work_numer_margin": 224.19188210102524,
     "youth_ready_to_work_denom": 243,
-    "youth_ready_to_work_denom_margin": 226.22334097082023,
-    "poverty": 0.10034013605442177,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.9588477366255144
+    "youth_ready_to_work_denom_margin": 226.22334097082023
   },
   "11001007301": {
     "population_total": 2842,
@@ -4502,10 +4229,7 @@
     "youth_ready_to_work_numer": 199,
     "youth_ready_to_work_numer_margin": 117.71575935277315,
     "youth_ready_to_work_denom": 229,
-    "youth_ready_to_work_denom_margin": 122.2906374175881,
-    "poverty": 0.020417633410672854,
-    "poverty2": 0.023284313725490197,
-    "youth_ready_to_work": 0.868995633187773
+    "youth_ready_to_work_denom_margin": 122.2906374175881
   },
   "11001007304": {
     "population_total": 3528,
@@ -4551,10 +4275,7 @@
     "youth_ready_to_work_numer": 69,
     "youth_ready_to_work_numer_margin": 172.84675293449973,
     "youth_ready_to_work_denom": 263,
-    "youth_ready_to_work_denom_margin": 119.39430472179147,
-    "poverty": 0.3811807012286485,
-    "poverty2": 0.5106815869786369,
-    "youth_ready_to_work": 0.2623574144486692
+    "youth_ready_to_work_denom_margin": 119.39430472179147
   },
   "11001007401": {
     "population_total": 2124,
@@ -4600,10 +4321,7 @@
     "youth_ready_to_work_numer": 38,
     "youth_ready_to_work_numer_margin": 194.88971240165552,
     "youth_ready_to_work_denom": 53,
-    "youth_ready_to_work_denom_margin": 171.583798768998,
-    "poverty": 0.48013245033112584,
-    "poverty2": 0.5926493108728943,
-    "youth_ready_to_work": 0.7169811320754716
+    "youth_ready_to_work_denom_margin": 171.583798768998
   },
   "11001007403": {
     "population_total": 3442,
@@ -4649,10 +4367,7 @@
     "youth_ready_to_work_numer": 238,
     "youth_ready_to_work_numer_margin": 151.69377047196105,
     "youth_ready_to_work_denom": 334,
-    "youth_ready_to_work_denom_margin": 142.27438279606068,
-    "poverty": 0.30318062445287425,
-    "poverty2": 0.3615720524017467,
-    "youth_ready_to_work": 0.7125748502994012
+    "youth_ready_to_work_denom_margin": 142.27438279606068
   },
   "11001007404": {
     "population_total": 3315,
@@ -4698,10 +4413,7 @@
     "youth_ready_to_work_numer": 84,
     "youth_ready_to_work_numer_margin": 117.23480711802276,
     "youth_ready_to_work_denom": 144,
-    "youth_ready_to_work_denom_margin": 127.62444906835054,
-    "poverty": 0.4102874432677761,
-    "poverty2": 0.428169014084507,
-    "youth_ready_to_work": 0.5833333333333334
+    "youth_ready_to_work_denom_margin": 127.62444906835054
   },
   "11001007406": {
     "population_total": 3123,
@@ -4747,10 +4459,7 @@
     "youth_ready_to_work_numer": 140,
     "youth_ready_to_work_numer_margin": 140.12494424619766,
     "youth_ready_to_work_denom": 228,
-    "youth_ready_to_work_denom_margin": 153.98701243936125,
-    "poverty": 0.4519230769230769,
-    "poverty2": 0.5714285714285714,
-    "youth_ready_to_work": 0.6140350877192983
+    "youth_ready_to_work_denom_margin": 153.98701243936125
   },
   "11001007407": {
     "population_total": 2728,
@@ -4796,10 +4505,7 @@
     "youth_ready_to_work_numer": 208,
     "youth_ready_to_work_numer_margin": 98.53425800197614,
     "youth_ready_to_work_denom": 339,
-    "youth_ready_to_work_denom_margin": 131.49144458861193,
-    "poverty": 0.3064516129032258,
-    "poverty2": 0.6055045871559633,
-    "youth_ready_to_work": 0.6135693215339233
+    "youth_ready_to_work_denom_margin": 131.49144458861193
   },
   "11001007408": {
     "population_total": 3012,
@@ -4845,10 +4551,7 @@
     "youth_ready_to_work_numer": 193,
     "youth_ready_to_work_numer_margin": 168.40130640823423,
     "youth_ready_to_work_denom": 215,
-    "youth_ready_to_work_denom_margin": 105.48459603183774,
-    "poverty": 0.5065234075211051,
-    "poverty2": 0.6401345291479821,
-    "youth_ready_to_work": 0.8976744186046511
+    "youth_ready_to_work_denom_margin": 105.48459603183774
   },
   "11001007409": {
     "population_total": 3840,
@@ -4894,10 +4597,7 @@
     "youth_ready_to_work_numer": 222,
     "youth_ready_to_work_numer_margin": 168.09521111560554,
     "youth_ready_to_work_denom": 313,
-    "youth_ready_to_work_denom_margin": 159.63708842245902,
-    "poverty": 0.43046875,
-    "poverty2": 0.49660326086956524,
-    "youth_ready_to_work": 0.7092651757188498
+    "youth_ready_to_work_denom_margin": 159.63708842245902
   },
   "11001007502": {
     "population_total": 4302,
@@ -4943,10 +4643,7 @@
     "youth_ready_to_work_numer": 135,
     "youth_ready_to_work_numer_margin": 157.22277188753543,
     "youth_ready_to_work_denom": 225,
-    "youth_ready_to_work_denom_margin": 139.01079094804115,
-    "poverty": 0.4170099345771747,
-    "poverty2": 0.4518695306284805,
-    "youth_ready_to_work": 0.6
+    "youth_ready_to_work_denom_margin": 139.01079094804115
   },
   "11001007503": {
     "population_total": 2427,
@@ -4992,10 +4689,7 @@
     "youth_ready_to_work_numer": 123,
     "youth_ready_to_work_numer_margin": 114.43775600735974,
     "youth_ready_to_work_denom": 190,
-    "youth_ready_to_work_denom_margin": 129.07362240210043,
-    "poverty": 0.43675319324268647,
-    "poverty2": 0.657258064516129,
-    "youth_ready_to_work": 0.6473684210526316
+    "youth_ready_to_work_denom_margin": 129.07362240210043
   },
   "11001007504": {
     "population_total": 2379,
@@ -5041,10 +4735,7 @@
     "youth_ready_to_work_numer": 9,
     "youth_ready_to_work_numer_margin": 213.36588293351866,
     "youth_ready_to_work_denom": 54,
-    "youth_ready_to_work_denom_margin": 106.17909398747005,
-    "poverty": 0.4496615905245347,
-    "poverty2": 0.5533707865168539,
-    "youth_ready_to_work": 0.16666666666666666
+    "youth_ready_to_work_denom_margin": 106.17909398747005
   },
   "11001007601": {
     "population_total": 3820,
@@ -5090,10 +4781,7 @@
     "youth_ready_to_work_numer": 75,
     "youth_ready_to_work_numer_margin": 148.2902559172382,
     "youth_ready_to_work_denom": 130,
-    "youth_ready_to_work_denom_margin": 124.65953633797936,
-    "poverty": 0.172322375397667,
-    "poverty2": 0.10815307820299501,
-    "youth_ready_to_work": 0.5769230769230769
+    "youth_ready_to_work_denom_margin": 124.65953633797936
   },
   "11001007603": {
     "population_total": 4122,
@@ -5139,10 +4827,7 @@
     "youth_ready_to_work_numer": 59,
     "youth_ready_to_work_numer_margin": 202.42776489404804,
     "youth_ready_to_work_denom": 151,
-    "youth_ready_to_work_denom_margin": 204.72664701987378,
-    "poverty": 0.15817564289180008,
-    "poverty2": 0.2046783625730994,
-    "youth_ready_to_work": 0.39072847682119205
+    "youth_ready_to_work_denom_margin": 204.72664701987378
   },
   "11001007604": {
     "population_total": 3501,
@@ -5188,10 +4873,7 @@
     "youth_ready_to_work_numer": 158,
     "youth_ready_to_work_numer_margin": 141.47084505296488,
     "youth_ready_to_work_denom": 251,
-    "youth_ready_to_work_denom_margin": 122.47040458821061,
-    "poverty": 0.17309340188517566,
-    "poverty2": 0.14058956916099774,
-    "youth_ready_to_work": 0.6294820717131474
+    "youth_ready_to_work_denom_margin": 122.47040458821061
   },
   "11001007605": {
     "population_total": 3640,
@@ -5237,10 +4919,7 @@
     "youth_ready_to_work_numer": 187,
     "youth_ready_to_work_numer_margin": 167.11971756797578,
     "youth_ready_to_work_denom": 306,
-    "youth_ready_to_work_denom_margin": 166.94909403767363,
-    "poverty": 0.29851566794942275,
-    "poverty2": 0.505091649694501,
-    "youth_ready_to_work": 0.6111111111111112
+    "youth_ready_to_work_denom_margin": 166.94909403767363
   },
   "11001007703": {
     "population_total": 5690,
@@ -5286,10 +4965,7 @@
     "youth_ready_to_work_numer": 289,
     "youth_ready_to_work_numer_margin": 167.37383308032352,
     "youth_ready_to_work_denom": 383,
-    "youth_ready_to_work_denom_margin": 190.86644545335884,
-    "poverty": 0.26713656387665197,
-    "poverty2": 0.32946298984034833,
-    "youth_ready_to_work": 0.7545691906005222
+    "youth_ready_to_work_denom_margin": 190.86644545335884
   },
   "11001007707": {
     "population_total": 3829,
@@ -5335,10 +5011,7 @@
     "youth_ready_to_work_numer": 205,
     "youth_ready_to_work_numer_margin": 165.1877719445359,
     "youth_ready_to_work_denom": 281,
-    "youth_ready_to_work_denom_margin": 180.6294549623621,
-    "poverty": 0.10942804909898146,
-    "poverty2": 0.13544668587896252,
-    "youth_ready_to_work": 0.7295373665480427
+    "youth_ready_to_work_denom_margin": 180.6294549623621
   },
   "11001007708": {
     "population_total": 2821,
@@ -5384,10 +5057,7 @@
     "youth_ready_to_work_numer": 24,
     "youth_ready_to_work_numer_margin": 167.2004784682149,
     "youth_ready_to_work_denom": 83,
-    "youth_ready_to_work_denom_margin": 155.77226967595996,
-    "poverty": 0.3553191489361702,
-    "poverty2": 0.5033407572383074,
-    "youth_ready_to_work": 0.2891566265060241
+    "youth_ready_to_work_denom_margin": 155.77226967595996
   },
   "11001007709": {
     "population_total": 1698,
@@ -5433,10 +5103,7 @@
     "youth_ready_to_work_numer": 98,
     "youth_ready_to_work_numer_margin": 155.48311805466213,
     "youth_ready_to_work_denom": 117,
-    "youth_ready_to_work_denom_margin": 126.45552577882864,
-    "poverty": 0.18886915334517465,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.8376068376068376
+    "youth_ready_to_work_denom_margin": 126.45552577882864
   },
   "11001007803": {
     "population_total": 2945,
@@ -5482,10 +5149,7 @@
     "youth_ready_to_work_numer": 137,
     "youth_ready_to_work_numer_margin": 122.56426885516024,
     "youth_ready_to_work_denom": 262,
-    "youth_ready_to_work_denom_margin": 114.32847414358332,
-    "poverty": 0.25908319185059425,
-    "poverty2": 0.499194847020934,
-    "youth_ready_to_work": 0.5229007633587787
+    "youth_ready_to_work_denom_margin": 114.32847414358332
   },
   "11001007804": {
     "population_total": 3020,
@@ -5531,10 +5195,7 @@
     "youth_ready_to_work_numer": 79,
     "youth_ready_to_work_numer_margin": 182.07965289949342,
     "youth_ready_to_work_denom": 126,
-    "youth_ready_to_work_denom_margin": 133.83572019457287,
-    "poverty": 0.28888081395348836,
-    "poverty2": 0.449438202247191,
-    "youth_ready_to_work": 0.626984126984127
+    "youth_ready_to_work_denom_margin": 133.83572019457287
   },
   "11001007806": {
     "population_total": 2341,
@@ -5580,10 +5241,7 @@
     "youth_ready_to_work_numer": 33,
     "youth_ready_to_work_numer_margin": 193.6620768245554,
     "youth_ready_to_work_denom": 91,
-    "youth_ready_to_work_denom_margin": 180.0999722376436,
-    "poverty": 0.20034173430158053,
-    "poverty2": 0.268188302425107,
-    "youth_ready_to_work": 0.3626373626373626
+    "youth_ready_to_work_denom_margin": 180.0999722376436
   },
   "11001007807": {
     "population_total": 2108,
@@ -5629,10 +5287,7 @@
     "youth_ready_to_work_numer": 142,
     "youth_ready_to_work_numer_margin": 134.6699669562594,
     "youth_ready_to_work_denom": 202,
-    "youth_ready_to_work_denom_margin": 146.9455681536534,
-    "poverty": 0.32905982905982906,
-    "poverty2": 0.634862385321101,
-    "youth_ready_to_work": 0.7029702970297029
+    "youth_ready_to_work_denom_margin": 146.9455681536534
   },
   "11001007808": {
     "population_total": 3989,
@@ -5678,10 +5333,7 @@
     "youth_ready_to_work_numer": 159,
     "youth_ready_to_work_numer_margin": 201.52171098916364,
     "youth_ready_to_work_denom": 312,
-    "youth_ready_to_work_denom_margin": 173.21951391226105,
-    "poverty": 0.42613065326633165,
-    "poverty2": 0.5645664379288834,
-    "youth_ready_to_work": 0.5096153846153846
+    "youth_ready_to_work_denom_margin": 173.21951391226105
   },
   "11001007809": {
     "population_total": 2627,
@@ -5727,10 +5379,7 @@
     "youth_ready_to_work_numer": 121,
     "youth_ready_to_work_numer_margin": 158.91821796131492,
     "youth_ready_to_work_denom": 159,
-    "youth_ready_to_work_denom_margin": 130.76314465475355,
-    "poverty": 0.37852246763137853,
-    "poverty2": 0.5512010113780025,
-    "youth_ready_to_work": 0.7610062893081762
+    "youth_ready_to_work_denom_margin": 130.76314465475355
   },
   "11001007901": {
     "population_total": 3953,
@@ -5776,10 +5425,7 @@
     "youth_ready_to_work_numer": 50,
     "youth_ready_to_work_numer_margin": 170.18813119603843,
     "youth_ready_to_work_denom": 147,
-    "youth_ready_to_work_denom_margin": 132.52546925025393,
-    "poverty": 0.3488489754616747,
-    "poverty2": 0.6089238845144357,
-    "youth_ready_to_work": 0.3401360544217687
+    "youth_ready_to_work_denom_margin": 132.52546925025393
   },
   "11001007903": {
     "population_total": 1457,
@@ -5825,10 +5471,7 @@
     "youth_ready_to_work_numer": 36,
     "youth_ready_to_work_numer_margin": 194.76139247807816,
     "youth_ready_to_work_denom": 63,
-    "youth_ready_to_work_denom_margin": 197.44619520264249,
-    "poverty": 0.21070693205216198,
-    "poverty2": 0.5245901639344263,
-    "youth_ready_to_work": 0.5714285714285714
+    "youth_ready_to_work_denom_margin": 197.44619520264249
   },
   "11001008001": {
     "population_total": 2672,
@@ -5874,10 +5517,7 @@
     "youth_ready_to_work_numer": 206,
     "youth_ready_to_work_numer_margin": 180.1804650898648,
     "youth_ready_to_work_denom": 206,
-    "youth_ready_to_work_denom_margin": 180.1804650898648,
-    "poverty": 0.12122370936902485,
-    "poverty2": 0.12063492063492064,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 180.1804650898648
   },
   "11001008002": {
     "population_total": 3601,
@@ -5923,10 +5563,7 @@
     "youth_ready_to_work_numer": 187,
     "youth_ready_to_work_numer_margin": 187.14700104463336,
     "youth_ready_to_work_denom": 214,
-    "youth_ready_to_work_denom_margin": 164.41411131651688,
-    "poverty": 0.08639910813823858,
-    "poverty2": 0.07093425605536333,
-    "youth_ready_to_work": 0.8738317757009346
+    "youth_ready_to_work_denom_margin": 164.41411131651688
   },
   "11001008100": {
     "population_total": 3314,
@@ -5972,10 +5609,7 @@
     "youth_ready_to_work_numer": 186,
     "youth_ready_to_work_numer_margin": 100.61312041677269,
     "youth_ready_to_work_denom": 194,
-    "youth_ready_to_work_denom_margin": 102.28880681677737,
-    "poverty": 0.04962779156327544,
-    "poverty2": 0.012605042016806723,
-    "youth_ready_to_work": 0.9587628865979382
+    "youth_ready_to_work_denom_margin": 102.28880681677737
   },
   "11001008200": {
     "population_total": 2767,
@@ -6021,10 +5655,7 @@
     "youth_ready_to_work_numer": 228,
     "youth_ready_to_work_numer_margin": 210.71070214870434,
     "youth_ready_to_work_denom": 232,
-    "youth_ready_to_work_denom_margin": 212.51823451177077,
-    "poverty": 0.11326378539493294,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.9827586206896551
+    "youth_ready_to_work_denom_margin": 212.51823451177077
   },
   "11001008301": {
     "population_total": 2543,
@@ -6070,10 +5701,7 @@
     "youth_ready_to_work_numer": 440,
     "youth_ready_to_work_numer_margin": 258.79142180528316,
     "youth_ready_to_work_denom": 440,
-    "youth_ready_to_work_denom_margin": 258.79142180528316,
-    "poverty": 0.1036802532647408,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 258.79142180528316
   },
   "11001008302": {
     "population_total": 2233,
@@ -6119,10 +5747,7 @@
     "youth_ready_to_work_numer": 129,
     "youth_ready_to_work_numer_margin": 190.9869105462466,
     "youth_ready_to_work_denom": 129,
-    "youth_ready_to_work_denom_margin": 190.9869105462466,
-    "poverty": 0.04825986078886311,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 190.9869105462466
   },
   "11001008402": {
     "population_total": 2183,
@@ -6168,10 +5793,7 @@
     "youth_ready_to_work_numer": 157,
     "youth_ready_to_work_numer_margin": 199.7498435543818,
     "youth_ready_to_work_denom": 222,
-    "youth_ready_to_work_denom_margin": 204.44070044880985,
-    "poverty": 0.10810810810810811,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.7072072072072072
+    "youth_ready_to_work_denom_margin": 204.44070044880985
   },
   "11001008410": {
     "population_total": 1423,
@@ -6217,10 +5839,7 @@
     "youth_ready_to_work_numer": 47,
     "youth_ready_to_work_numer_margin": 194.84609310940775,
     "youth_ready_to_work_denom": 85,
-    "youth_ready_to_work_denom_margin": 175.9431726438966,
-    "poverty": 0.08181154127100074,
-    "poverty2": 0.11191335740072202,
-    "youth_ready_to_work": 0.5529411764705883
+    "youth_ready_to_work_denom_margin": 175.9431726438966
   },
   "11001008701": {
     "population_total": 2046,
@@ -6266,10 +5885,7 @@
     "youth_ready_to_work_numer": 198,
     "youth_ready_to_work_numer_margin": 146.76171162806736,
     "youth_ready_to_work_denom": 230,
-    "youth_ready_to_work_denom_margin": 137.47363383572866,
-    "poverty": 0.1334987593052109,
-    "poverty2": 0.14012738853503184,
-    "youth_ready_to_work": 0.8608695652173913
+    "youth_ready_to_work_denom_margin": 137.47363383572866
   },
   "11001008702": {
     "population_total": 1611,
@@ -6315,10 +5931,7 @@
     "youth_ready_to_work_numer": 78,
     "youth_ready_to_work_numer_margin": 149.8165544924859,
     "youth_ready_to_work_denom": 113,
-    "youth_ready_to_work_denom_margin": 77.12327793863535,
-    "poverty": 0.17008069522036,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.6902654867256637
+    "youth_ready_to_work_denom_margin": 77.12327793863535
   },
   "11001008802": {
     "population_total": 4388,
@@ -6364,10 +5977,7 @@
     "youth_ready_to_work_numer": 158,
     "youth_ready_to_work_numer_margin": 86.31338250816034,
     "youth_ready_to_work_denom": 346,
-    "youth_ready_to_work_denom_margin": 133.09395177843356,
-    "poverty": 0.3029197080291971,
-    "poverty2": 0.5670665212649946,
-    "youth_ready_to_work": 0.45664739884393063
+    "youth_ready_to_work_denom_margin": 133.09395177843356
   },
   "11001008803": {
     "population_total": 2030,
@@ -6413,10 +6023,7 @@
     "youth_ready_to_work_numer": 190,
     "youth_ready_to_work_numer_margin": 105.65509926170151,
     "youth_ready_to_work_denom": 236,
-    "youth_ready_to_work_denom_margin": 115.39064086831304,
-    "poverty": 0.4922067268252666,
-    "poverty2": 0.66996699669967,
-    "youth_ready_to_work": 0.8050847457627118
+    "youth_ready_to_work_denom_margin": 115.39064086831304
   },
   "11001008804": {
     "population_total": 3056,
@@ -6462,10 +6069,7 @@
     "youth_ready_to_work_numer": 93,
     "youth_ready_to_work_numer_margin": 126.44366334458994,
     "youth_ready_to_work_denom": 93,
-    "youth_ready_to_work_denom_margin": 126.44366334458994,
-    "poverty": 0.39651773981603156,
-    "poverty2": 0.39377289377289376,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 126.44366334458994
   },
   "11001008903": {
     "population_total": 2578,
@@ -6511,10 +6115,7 @@
     "youth_ready_to_work_numer": 165,
     "youth_ready_to_work_numer_margin": 173.8533865071371,
     "youth_ready_to_work_denom": 307,
-    "youth_ready_to_work_denom_margin": 145.7017501610739,
-    "poverty": 0.24631497284716836,
-    "poverty2": 0.29411764705882354,
-    "youth_ready_to_work": 0.5374592833876222
+    "youth_ready_to_work_denom_margin": 145.7017501610739
   },
   "11001008904": {
     "population_total": 3354,
@@ -6560,10 +6161,7 @@
     "youth_ready_to_work_numer": 147,
     "youth_ready_to_work_numer_margin": 130.38404810405297,
     "youth_ready_to_work_denom": 305,
-    "youth_ready_to_work_denom_margin": 146.5980900284857,
-    "poverty": 0.28324388789505067,
-    "poverty2": 0.26677577741407527,
-    "youth_ready_to_work": 0.4819672131147541
+    "youth_ready_to_work_denom_margin": 146.5980900284857
   },
   "11001009000": {
     "population_total": 2793,
@@ -6609,10 +6207,7 @@
     "youth_ready_to_work_numer": 138,
     "youth_ready_to_work_numer_margin": 185.37259775921575,
     "youth_ready_to_work_denom": 149,
-    "youth_ready_to_work_denom_margin": 186.06181768433845,
-    "poverty": 0.1682988755894088,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.9261744966442953
+    "youth_ready_to_work_denom_margin": 186.06181768433845
   },
   "11001009102": {
     "population_total": 4827,
@@ -6658,10 +6253,7 @@
     "youth_ready_to_work_numer": 211,
     "youth_ready_to_work_numer_margin": 112.7874106449829,
     "youth_ready_to_work_denom": 267,
-    "youth_ready_to_work_denom_margin": 127.26350615946427,
-    "poverty": 0.2999564649542882,
-    "poverty2": 0.36617647058823527,
-    "youth_ready_to_work": 0.7902621722846442
+    "youth_ready_to_work_denom_margin": 127.26350615946427
   },
   "11001009201": {
     "population_total": 1560,
@@ -6707,10 +6299,7 @@
     "youth_ready_to_work_numer": 143,
     "youth_ready_to_work_numer_margin": 91.60785992479029,
     "youth_ready_to_work_denom": 202,
-    "youth_ready_to_work_denom_margin": 122.49897958758677,
-    "poverty": 0.20994940978077573,
-    "poverty2": 0.3642611683848797,
-    "youth_ready_to_work": 0.7079207920792079
+    "youth_ready_to_work_denom_margin": 122.49897958758677
   },
   "11001009203": {
     "population_total": 3039,
@@ -6756,10 +6345,7 @@
     "youth_ready_to_work_numer": 394,
     "youth_ready_to_work_numer_margin": 286.6775191744201,
     "youth_ready_to_work_denom": 623,
-    "youth_ready_to_work_denom_margin": 314.57272609048607,
-    "poverty": 0.17867719644619942,
-    "poverty2": 0.10743801652892562,
-    "youth_ready_to_work": 0.6324237560192616
+    "youth_ready_to_work_denom_margin": 314.57272609048607
   },
   "11001009204": {
     "population_total": 2798,
@@ -6805,10 +6391,7 @@
     "youth_ready_to_work_numer": 194,
     "youth_ready_to_work_numer_margin": 116.9829047339824,
     "youth_ready_to_work_denom": 220,
-    "youth_ready_to_work_denom_margin": 120.63167080000177,
-    "poverty": 0.22932466594438425,
-    "poverty2": 0.15501519756838905,
-    "youth_ready_to_work": 0.8818181818181818
+    "youth_ready_to_work_denom_margin": 120.63167080000177
   },
   "11001009301": {
     "population_total": 3009,
@@ -6854,10 +6437,7 @@
     "youth_ready_to_work_numer": 119,
     "youth_ready_to_work_numer_margin": 164.9151296879701,
     "youth_ready_to_work_denom": 194,
-    "youth_ready_to_work_denom_margin": 157.60393396105317,
-    "poverty": 0.18898163606010016,
-    "poverty2": 0.29947460595446584,
-    "youth_ready_to_work": 0.6134020618556701
+    "youth_ready_to_work_denom_margin": 157.60393396105317
   },
   "11001009302": {
     "population_total": 1090,
@@ -6903,10 +6483,7 @@
     "youth_ready_to_work_numer": 70,
     "youth_ready_to_work_numer_margin": 194.56104440509154,
     "youth_ready_to_work_denom": 76,
-    "youth_ready_to_work_denom_margin": 194.38364128701778,
-    "poverty": 0.031192660550458717,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.9210526315789473
+    "youth_ready_to_work_denom_margin": 194.38364128701778
   },
   "11001009400": {
     "population_total": 3991,
@@ -6952,10 +6529,7 @@
     "youth_ready_to_work_numer": 217,
     "youth_ready_to_work_numer_margin": 161.67869371070512,
     "youth_ready_to_work_denom": 248,
-    "youth_ready_to_work_denom_margin": 135.42525613784156,
-    "poverty": 0.09822099724379854,
-    "poverty2": 0.19473684210526315,
-    "youth_ready_to_work": 0.875
+    "youth_ready_to_work_denom_margin": 135.42525613784156
   },
   "11001009501": {
     "population_total": 6243,
@@ -7001,10 +6575,7 @@
     "youth_ready_to_work_numer": 734,
     "youth_ready_to_work_numer_margin": 224.6352599215003,
     "youth_ready_to_work_denom": 846,
-    "youth_ready_to_work_denom_margin": 240.51403285463408,
-    "poverty": 0.2517902517902518,
-    "poverty2": 0.3628173628173628,
-    "youth_ready_to_work": 0.8676122931442081
+    "youth_ready_to_work_denom_margin": 240.51403285463408
   },
   "11001009503": {
     "population_total": 2775,
@@ -7050,10 +6621,7 @@
     "youth_ready_to_work_numer": 139,
     "youth_ready_to_work_numer_margin": 118.9621788637044,
     "youth_ready_to_work_denom": 184,
-    "youth_ready_to_work_denom_margin": 81.90238091777307,
-    "poverty": 0.16132596685082873,
-    "poverty2": 0.2010443864229765,
-    "youth_ready_to_work": 0.7554347826086957
+    "youth_ready_to_work_denom_margin": 81.90238091777307
   },
   "11001009504": {
     "population_total": 2996,
@@ -7099,10 +6667,7 @@
     "youth_ready_to_work_numer": 93,
     "youth_ready_to_work_numer_margin": 148.67750334196495,
     "youth_ready_to_work_denom": 123,
-    "youth_ready_to_work_denom_margin": 151.9934209102486,
-    "poverty": 0.14629629629629629,
-    "poverty2": 0.19438877755511022,
-    "youth_ready_to_work": 0.7560975609756098
+    "youth_ready_to_work_denom_margin": 151.9934209102486
   },
   "11001009505": {
     "population_total": 2533,
@@ -7148,10 +6713,7 @@
     "youth_ready_to_work_numer": 144,
     "youth_ready_to_work_numer_margin": 188.84120313109636,
     "youth_ready_to_work_denom": 177,
-    "youth_ready_to_work_denom_margin": 190.4704701521997,
-    "poverty": 0.08792079207920792,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.8135593220338984
+    "youth_ready_to_work_denom_margin": 190.4704701521997
   },
   "11001009507": {
     "population_total": 1724,
@@ -7197,10 +6759,7 @@
     "youth_ready_to_work_numer": 63,
     "youth_ready_to_work_numer_margin": 200.27481119701497,
     "youth_ready_to_work_denom": 63,
-    "youth_ready_to_work_denom_margin": 200.27481119701497,
-    "poverty": 0.0574245939675174,
-    "poverty2": 0.09974424552429667,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 200.27481119701497
   },
   "11001009508": {
     "population_total": 3258,
@@ -7246,10 +6805,7 @@
     "youth_ready_to_work_numer": 59,
     "youth_ready_to_work_numer_margin": 171.48760888180814,
     "youth_ready_to_work_denom": 111,
-    "youth_ready_to_work_denom_margin": 115.22586515188331,
-    "poverty": 0.09146715776550031,
-    "poverty2": 0.12467191601049869,
-    "youth_ready_to_work": 0.5315315315315315
+    "youth_ready_to_work_denom_margin": 115.22586515188331
   },
   "11001009509": {
     "population_total": 3140,
@@ -7295,10 +6851,7 @@
     "youth_ready_to_work_numer": 139,
     "youth_ready_to_work_numer_margin": 145.04137340772803,
     "youth_ready_to_work_denom": 184,
-    "youth_ready_to_work_denom_margin": 152.3056138164316,
-    "poverty": 0.04745222929936306,
-    "poverty2": 0.0391304347826087,
-    "youth_ready_to_work": 0.7554347826086957
+    "youth_ready_to_work_denom_margin": 152.3056138164316
   },
   "11001009601": {
     "population_total": 2874,
@@ -7344,10 +6897,7 @@
     "youth_ready_to_work_numer": 34,
     "youth_ready_to_work_numer_margin": 196.0943650388761,
     "youth_ready_to_work_denom": 34,
-    "youth_ready_to_work_denom_margin": 196.0943650388761,
-    "poverty": 0.4127094972067039,
-    "poverty2": 0.5198019801980198,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 196.0943650388761
   },
   "11001009602": {
     "population_total": 2792,
@@ -7393,10 +6943,7 @@
     "youth_ready_to_work_numer": 123,
     "youth_ready_to_work_numer_margin": 183.94564414522026,
     "youth_ready_to_work_denom": 189,
-    "youth_ready_to_work_denom_margin": 142.04576727238302,
-    "poverty": 0.39183381088825214,
-    "poverty2": 0.503727369542066,
-    "youth_ready_to_work": 0.6507936507936508
+    "youth_ready_to_work_denom_margin": 142.04576727238302
   },
   "11001009603": {
     "population_total": 3027,
@@ -7442,10 +6989,7 @@
     "youth_ready_to_work_numer": 88,
     "youth_ready_to_work_numer_margin": 154.27572718998928,
     "youth_ready_to_work_denom": 134,
-    "youth_ready_to_work_denom_margin": 129.18978287774925,
-    "poverty": 0.15251989389920426,
-    "poverty2": 0.18950064020486557,
-    "youth_ready_to_work": 0.6567164179104478
+    "youth_ready_to_work_denom_margin": 129.18978287774925
   },
   "11001009604": {
     "population_total": 2050,
@@ -7491,10 +7035,7 @@
     "youth_ready_to_work_numer": 43,
     "youth_ready_to_work_numer_margin": 168.43099477233991,
     "youth_ready_to_work_denom": 112,
-    "youth_ready_to_work_denom_margin": 163.78949905290023,
-    "poverty": 0.15717092337917485,
-    "poverty2": 0.3825301204819277,
-    "youth_ready_to_work": 0.38392857142857145
+    "youth_ready_to_work_denom_margin": 163.78949905290023
   },
   "11001009700": {
     "population_total": 2454,
@@ -7540,10 +7081,7 @@
     "youth_ready_to_work_numer": 160,
     "youth_ready_to_work_numer_margin": 140.32818676231798,
     "youth_ready_to_work_denom": 308,
-    "youth_ready_to_work_denom_margin": 134.56225325105103,
-    "poverty": 0.37449062754686224,
-    "poverty2": 0.5560224089635855,
-    "youth_ready_to_work": 0.5194805194805194
+    "youth_ready_to_work_denom_margin": 134.56225325105103
   },
   "11001009801": {
     "population_total": 1588,
@@ -7589,10 +7127,7 @@
     "youth_ready_to_work_numer": 53,
     "youth_ready_to_work_numer_margin": 219.18257229989797,
     "youth_ready_to_work_denom": 110,
-    "youth_ready_to_work_denom_margin": 156.8661850113019,
-    "poverty": 0.4714828897338403,
-    "poverty2": 0.6733001658374793,
-    "youth_ready_to_work": 0.4818181818181818
+    "youth_ready_to_work_denom_margin": 156.8661850113019
   },
   "11001009802": {
     "population_total": 1288,
@@ -7638,10 +7173,7 @@
     "youth_ready_to_work_numer": 66,
     "youth_ready_to_work_numer_margin": 173.90802166662698,
     "youth_ready_to_work_denom": 92,
-    "youth_ready_to_work_denom_margin": 149.81321704042003,
-    "poverty": 0.5489130434782609,
-    "poverty2": 0.6673469387755102,
-    "youth_ready_to_work": 0.717391304347826
+    "youth_ready_to_work_denom_margin": 149.81321704042003
   },
   "11001009803": {
     "population_total": 2352,
@@ -7687,10 +7219,7 @@
     "youth_ready_to_work_numer": 81,
     "youth_ready_to_work_numer_margin": 175.83799361912656,
     "youth_ready_to_work_denom": 184,
-    "youth_ready_to_work_denom_margin": 107.7311468424986,
-    "poverty": 0.24088541666666666,
-    "poverty2": 0.2791762013729977,
-    "youth_ready_to_work": 0.44021739130434784
+    "youth_ready_to_work_denom_margin": 107.7311468424986
   },
   "11001009804": {
     "population_total": 2879,
@@ -7736,10 +7265,7 @@
     "youth_ready_to_work_numer": 206,
     "youth_ready_to_work_numer_margin": 159.69971822141702,
     "youth_ready_to_work_denom": 298,
-    "youth_ready_to_work_denom_margin": 182.0988742414406,
-    "poverty": 0.23981579879560752,
-    "poverty2": 0.34177215189873417,
-    "youth_ready_to_work": 0.6912751677852349
+    "youth_ready_to_work_denom_margin": 182.0988742414406
   },
   "11001009807": {
     "population_total": 3414,
@@ -7785,10 +7311,7 @@
     "youth_ready_to_work_numer": 62,
     "youth_ready_to_work_numer_margin": 172.91327305906856,
     "youth_ready_to_work_denom": 146,
-    "youth_ready_to_work_denom_margin": 143.3666627915988,
-    "poverty": 0.2779275232105421,
-    "poverty2": 0.43366619115549215,
-    "youth_ready_to_work": 0.4246575342465753
+    "youth_ready_to_work_denom_margin": 143.3666627915988
   },
   "11001009810": {
     "population_total": 2303,
@@ -7834,10 +7357,7 @@
     "youth_ready_to_work_numer": 114,
     "youth_ready_to_work_numer_margin": 191.4366736025258,
     "youth_ready_to_work_denom": 131,
-    "youth_ready_to_work_denom_margin": 194.17517864031953,
-    "poverty": 0.34129089301503096,
-    "poverty2": 0.43329532497149376,
-    "youth_ready_to_work": 0.8702290076335878
+    "youth_ready_to_work_denom_margin": 194.17517864031953
   },
   "11001009811": {
     "population_total": 3859,
@@ -7883,10 +7403,7 @@
     "youth_ready_to_work_numer": 104,
     "youth_ready_to_work_numer_margin": 216.47632665028294,
     "youth_ready_to_work_denom": 280,
-    "youth_ready_to_work_denom_margin": 214.21717951648975,
-    "poverty": 0.4234257579683856,
-    "poverty2": 0.5848246241947029,
-    "youth_ready_to_work": 0.37142857142857144
+    "youth_ready_to_work_denom_margin": 214.21717951648975
   },
   "11001009901": {
     "population_total": 2069,
@@ -7932,10 +7449,7 @@
     "youth_ready_to_work_numer": 63,
     "youth_ready_to_work_numer_margin": 204.16659863944443,
     "youth_ready_to_work_denom": 105,
-    "youth_ready_to_work_denom_margin": 209.81182044870587,
-    "poverty": 0.07974867085548575,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.6
+    "youth_ready_to_work_denom_margin": 209.81182044870587
   },
   "11001009902": {
     "population_total": 2788,
@@ -7981,10 +7495,7 @@
     "youth_ready_to_work_numer": 43,
     "youth_ready_to_work_numer_margin": 223.9776774591611,
     "youth_ready_to_work_denom": 105,
-    "youth_ready_to_work_denom_margin": 128.80993750483694,
-    "poverty": 0.25699928212491024,
-    "poverty2": 0.6312292358803987,
-    "youth_ready_to_work": 0.4095238095238095
+    "youth_ready_to_work_denom_margin": 128.80993750483694
   },
   "11001009903": {
     "population_total": 1373,
@@ -8030,10 +7541,7 @@
     "youth_ready_to_work_numer": 105,
     "youth_ready_to_work_numer_margin": 192.81078807992048,
     "youth_ready_to_work_denom": 142,
-    "youth_ready_to_work_denom_margin": 140.0856880626997,
-    "poverty": 0.22359796067006554,
-    "poverty2": 0.44625407166123776,
-    "youth_ready_to_work": 0.7394366197183099
+    "youth_ready_to_work_denom_margin": 140.0856880626997
   },
   "11001009904": {
     "population_total": 1717,
@@ -8079,10 +7587,7 @@
     "youth_ready_to_work_numer": 22,
     "youth_ready_to_work_numer_margin": 215.45533179756774,
     "youth_ready_to_work_denom": 85,
-    "youth_ready_to_work_denom_margin": 176.05964898295122,
-    "poverty": 0.2782963827304551,
-    "poverty2": 0.42655935613682094,
-    "youth_ready_to_work": 0.25882352941176473
+    "youth_ready_to_work_denom_margin": 176.05964898295122
   },
   "11001009905": {
     "population_total": 2544,
@@ -8128,10 +7633,7 @@
     "youth_ready_to_work_numer": 41,
     "youth_ready_to_work_numer_margin": 219.94090115301427,
     "youth_ready_to_work_denom": 178,
-    "youth_ready_to_work_denom_margin": 144.10065926289167,
-    "poverty": 0.20653029110936272,
-    "poverty2": 0.26986301369863014,
-    "youth_ready_to_work": 0.2303370786516854
+    "youth_ready_to_work_denom_margin": 144.10065926289167
   },
   "11001009906": {
     "population_total": 1516,
@@ -8177,10 +7679,7 @@
     "youth_ready_to_work_numer": 25,
     "youth_ready_to_work_numer_margin": 192.26284092356482,
     "youth_ready_to_work_denom": 113,
-    "youth_ready_to_work_denom_margin": 148.8086019019062,
-    "poverty": 0.14775725593667546,
-    "poverty2": 0.11068702290076336,
-    "youth_ready_to_work": 0.22123893805309736
+    "youth_ready_to_work_denom_margin": 148.8086019019062
   },
   "11001009907": {
     "population_total": 2596,
@@ -8226,10 +7725,7 @@
     "youth_ready_to_work_numer": 131,
     "youth_ready_to_work_numer_margin": 187.52333188166213,
     "youth_ready_to_work_denom": 204,
-    "youth_ready_to_work_denom_margin": 171.80512215879943,
-    "poverty": 0.42295839753466874,
-    "poverty2": 0.6053997923156802,
-    "youth_ready_to_work": 0.6421568627450981
+    "youth_ready_to_work_denom_margin": 171.80512215879943
   },
   "11001010100": {
     "population_total": 2455,
@@ -8275,10 +7771,7 @@
     "youth_ready_to_work_numer": 291,
     "youth_ready_to_work_numer_margin": 259.77875201794313,
     "youth_ready_to_work_denom": 301,
-    "youth_ready_to_work_denom_margin": 260.4112132762335,
-    "poverty": 0.14885654885654886,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.9667774086378738
+    "youth_ready_to_work_denom_margin": 260.4112132762335
   },
   "11001010200": {
     "population_total": 2616,
@@ -8324,10 +7817,7 @@
     "youth_ready_to_work_numer": 199,
     "youth_ready_to_work_numer_margin": 186.68958192679096,
     "youth_ready_to_work_denom": 199,
-    "youth_ready_to_work_denom_margin": 186.68958192679096,
-    "poverty": 0.09403669724770643,
-    "poverty2": 0.11059907834101383,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 186.68958192679096
   },
   "11001010300": {
     "population_total": 3538,
@@ -8373,10 +7863,7 @@
     "youth_ready_to_work_numer": 293,
     "youth_ready_to_work_numer_margin": 194.0025773024678,
     "youth_ready_to_work_denom": 417,
-    "youth_ready_to_work_denom_margin": 219.04565734111233,
-    "poverty": 0.14202810018326206,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.7026378896882494
+    "youth_ready_to_work_denom_margin": 219.04565734111233
   },
   "11001010400": {
     "population_total": 3995,
@@ -8422,10 +7909,7 @@
     "youth_ready_to_work_numer": 316,
     "youth_ready_to_work_numer_margin": 198.9170681465017,
     "youth_ready_to_work_denom": 554,
-    "youth_ready_to_work_denom_margin": 195.34584715319647,
-    "poverty": 0.3062700964630225,
-    "poverty2": 0.4824945295404814,
-    "youth_ready_to_work": 0.5703971119133574
+    "youth_ready_to_work_denom_margin": 195.34584715319647
   },
   "11001010500": {
     "population_total": 4003,
@@ -8471,10 +7955,7 @@
     "youth_ready_to_work_numer": 372,
     "youth_ready_to_work_numer_margin": 173.7411868268431,
     "youth_ready_to_work_denom": 401,
-    "youth_ready_to_work_denom_margin": 148.1013166720674,
-    "poverty": 0.1818636022982763,
-    "poverty2": 0.48846153846153845,
-    "youth_ready_to_work": 0.9276807980049875
+    "youth_ready_to_work_denom_margin": 148.1013166720674
   },
   "11001010600": {
     "population_total": 3901,
@@ -8520,10 +8001,7 @@
     "youth_ready_to_work_numer": 378,
     "youth_ready_to_work_numer_margin": 209.26538175245327,
     "youth_ready_to_work_denom": 511,
-    "youth_ready_to_work_denom_margin": 179.70809664564368,
-    "poverty": 0.15970264034862855,
-    "poverty2": 0.019438444924406047,
-    "youth_ready_to_work": 0.7397260273972602
+    "youth_ready_to_work_denom_margin": 179.70809664564368
   },
   "11001010700": {
     "population_total": 2100,
@@ -8569,10 +8047,7 @@
     "youth_ready_to_work_numer": 294,
     "youth_ready_to_work_numer_margin": 184.34207333107653,
     "youth_ready_to_work_denom": 332,
-    "youth_ready_to_work_denom_margin": 189.309270771402,
-    "poverty": 0.2834113364534581,
-    "poverty2": 0.0,
-    "youth_ready_to_work": 0.8855421686746988
+    "youth_ready_to_work_denom_margin": 189.309270771402
   },
   "11001010800": {
     "population_total": 6431,
@@ -8618,10 +8093,7 @@
     "youth_ready_to_work_numer": 928,
     "youth_ready_to_work_numer_margin": 274.87451682540524,
     "youth_ready_to_work_denom": 988,
-    "youth_ready_to_work_denom_margin": 278.74719729532706,
-    "poverty": 0.5972584856396866,
-    "poverty2": -1,
-    "youth_ready_to_work": 0.9392712550607287
+    "youth_ready_to_work_denom_margin": 278.74719729532706
   },
   "11001010900": {
     "population_total": 3169,
@@ -8667,10 +8139,7 @@
     "youth_ready_to_work_numer": 210,
     "youth_ready_to_work_numer_margin": 179.61347388211163,
     "youth_ready_to_work_denom": 281,
-    "youth_ready_to_work_denom_margin": 181.89282558693733,
-    "poverty": 0.5289440203562341,
-    "poverty2": 0.6884531590413944,
-    "youth_ready_to_work": 0.7473309608540926
+    "youth_ready_to_work_denom_margin": 181.89282558693733
   },
   "11001011000": {
     "population_total": 3793,
@@ -8716,10 +8185,7 @@
     "youth_ready_to_work_numer": 158,
     "youth_ready_to_work_numer_margin": 216.9170348312921,
     "youth_ready_to_work_denom": 158,
-    "youth_ready_to_work_denom_margin": 216.9170348312921,
-    "poverty": 0.18255687973997833,
-    "poverty2": 0.5523560209424084,
-    "youth_ready_to_work": 1.0
+    "youth_ready_to_work_denom_margin": 216.9170348312921
   },
   "11001011100": {
     "population_total": 4655,
@@ -8765,9 +8231,6 @@
     "youth_ready_to_work_numer": 134,
     "youth_ready_to_work_numer_margin": 127.47941010218081,
     "youth_ready_to_work_denom": 251,
-    "youth_ready_to_work_denom_margin": 143.77412840980813,
-    "poverty": 0.1324776529910612,
-    "poverty2": 0.1425287356321839,
-    "youth_ready_to_work": 0.5338645418326693
+    "youth_ready_to_work_denom_margin": 143.77412840980813
   }
 }

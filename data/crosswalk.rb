@@ -54,7 +54,13 @@ sheet.each do |row|
 end
 
 # create a hash that aggregates variables to the neighborhood level using the
-# above portions
+# above portions. By default, all variables are summed. For each field that ends
+# in _numer, it will be divided by the corresponding variable ending in _denom
+# to create a ratio. Field names in the list averaged_fields will be averaged.
+#
+# MARGIN OF ERROR SHOULD BE IGNORED FOR AVERAGED FIELDS
+
+averaged_fields = ['median_family_income']
 
 nbhds = {}
 
@@ -68,6 +74,26 @@ crosswalk.each do |nbhd_id, tracts|
       end
     else
       puts "No tract: '#{tract_id}'"
+    end
+  end
+
+  # compute averages
+
+  tract_total_weight = tracts.values.map{|v| v.to_f}.inject(&:+)
+  averaged_fields.each do |f|
+    nbhds[nbhd_id][f] = nbhds[nbhd_id][f].to_f / tract_total_weight
+  end
+
+  # compute ratios
+  nbhds[nbhd_id].keys.each do |f|
+    if f =~ /_numer$/
+      fbase = f[0...-6]
+
+      if nbhds[nbhd_id][fbase+'_denom'] != 0
+        nbhds[nbhd_id][fbase] = nbhds[nbhd_id][f].to_f / nbhds[nbhd_id][fbase+'_denom']
+      else
+        nbhds[nbhd_id][fbase] = -1
+      end
     end
   end
 end
