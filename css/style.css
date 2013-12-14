@@ -1,0 +1,82 @@
+body, h1, h2, h3, h4, h5 {
+  font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+}
+.posrel { position: relative; }
+.posabs { position: absolute; }
+.posfixed { position: fixed; }
+/* navbar */
+.navbar {
+  margin-bottom: 0px;
+  padding-right: 15px;
+}
+.navbar-brand img {
+  width: 80px;
+}
+#nav-panel {
+  background-color: #f8f8f8;
+  width: 200px;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+#nav-panel h4 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.nav-pills > li > a {
+  border-radius: 0px;
+  color: #444;
+  background-color: #F0F4F8;
+}
+.nav-pills > li > a:hover {
+  background-color: #D8DCE2
+}
+.nav-pills > li.selected > a {
+  background-color: #C6CEDA;
+  color: #000;
+}
+#main-container {
+  top: 0px;
+  left: 0px;
+  background-color: #FFF;
+  width: 100%;
+  -webkit-box-shadow: 0px 0px 15px #CCC;
+  -moz-box-shadow: 0px 0px 15px #CCC;
+  box-shadow: 0px 0px 15px #CCC;
+}
+.menu-toggle {
+  cursor: pointer;
+  left: 0px;
+  top: 25px;
+  padding: 10px 10px 10px 20px;
+  background-color: #ccc;
+  z-index: 5;
+}
+
+svg {
+  fill: #FFF;
+}
+
+path.nbhd {
+  cursor: pointer;
+  fill: #ccc;
+  fill-opacity: .75;
+  stroke: #FFF;
+  stroke-width: 1px;
+}
+path.nbhd:hover,
+path.nbhd.active {
+  stroke: #000;
+}
+circle.school {
+  cursor: pointer;
+  fill-opacity: 0.5;
+  fill: #000099;
+}
+
+circle.school:hover {
+  fill-opacity: 1;
+}
