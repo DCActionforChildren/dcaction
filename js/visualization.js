@@ -85,7 +85,7 @@ function drawChoropleth(){
   g.append("g").attr("id", "schools");
 
   queue()
-    .defer(d3.json, "data/neighborhood_boundaries.json")
+    .defer(d3.json, "data/neighborhoods44.geojson")
     .defer(d3.csv, "data/neighborhoods44.csv")
     .await(setUpChoropleth);
 
