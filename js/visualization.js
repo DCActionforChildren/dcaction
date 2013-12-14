@@ -23,9 +23,13 @@ var identifiers = {
     'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
   },
   'population_under_18' : {
-    'domain' : [2566, 7928, 17362, 28207],
+    'domain' : [287, 1643, 2924, 4727],
     'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  }
+  },
+  'population_under_18' : {
+    'domain' : [287, 1643, 2924, 4727],
+    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+  },
 }
 
 var all_data = {},
