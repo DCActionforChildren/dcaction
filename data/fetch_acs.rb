@@ -19,7 +19,11 @@ fields_rename = {
   'children_in_poverty' => 'B17006_001E',
   'population_white_total' => 'B03002_003E',
   'population_black_total' => 'B03002_004E',
-  'population_hisp_total' => 'B03002_012E'
+  'population_hisp_total' => 'B03002_012E',
+  'poverty_numer' => 'B17001_002E',
+  'poverty_denom' => 'B17001_001E',
+  'poverty2_numer' => 'B17006_002E',
+  'poverty2_denom' => 'B17006_001E'
 }
 
 # the following fields are sums of ACS fields
@@ -51,15 +55,35 @@ fields_sum = {
   ],
   'hispanic_under_18' => [
     'B01001I_003E',
-    'B01001I_004E',
-    'B01001I_005E',
-    'B01001I_006E'
+    'B01001I_004EE',
+    'B01001I_005EE',
+    'B01001I_006EE',
+    'B01001I_018EE',
+    'B01001I_019EE',
+    'B01001I_020EE',
+    'B01001I_021EE'
   ],
   'no_hs_degree_25_plus' => [
     'B15001_004E',
     'B15001_005E',
     'B15001_045E',
     'B15001_046E'
+  ],
+  'youth_ready_to_work_numer'  => [
+    'B23001_007E',
+    'B23001_014E',
+    'B23001_021E',
+    'B23001_093E',
+    'B23001_100E',
+    'B23001_107E'
+  ],
+  'youth_ready_to_work_denom' => [
+    'B23001_006E',
+    'B23001_013E',
+    'B23001_020E',
+    'B23001_092E',
+    'B23001_099E',
+    'B23001_106E'
   ]
 }
 
@@ -150,8 +174,6 @@ data.zip(data_e).each do |row|
     end
     outrow[outname+"_margin"] = Math.sqrt(outrow[outname+"_margin"])*1.645
   end
-
-
 
   fields_sub.each do |outname, acsfields|
     first, *rest = *acsfields
