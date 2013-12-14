@@ -14,11 +14,15 @@ var identifiers = {
     'domain' : [.01, .17, .27, .38],
     'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
   },
-  'diploma' : {
-    'domain' : [.06, .14, .19, .23],
+  'no_hs_degree_25_plus' : {
+    'domain' : [99, 270, 548, 898],
     'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
   },
   'population_total' : {
+    'domain' : [2566, 7928, 17362, 28207],
+    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+  },
+  'population_under_18' : {
     'domain' : [2566, 7928, 17362, 28207],
     'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
   }
@@ -85,7 +89,9 @@ function drawChoropleth(){
   g.append("g").attr("id", "schools");
 
   queue()
-    .defer(d3.json, "data/neighborhoods44.geojson")
+    // .defer(d3.json, "data/neighborhood_boundaries.json")
+    // .defer(d3.csv, "data/neighborhoods.csv")
+    .defer(d3.json, "data/neighborhoods44.json")
     .defer(d3.csv, "data/neighborhoods44.csv")
     .await(setUpChoropleth);
 
