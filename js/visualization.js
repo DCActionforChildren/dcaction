@@ -10,10 +10,10 @@ var identifiers = {
     'domain' : [],
     'range' : []
   },
-  'poverty' : {
-    'domain' : [.01, .17, .27, .38],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
+  // 'poverty' : {
+  //   'domain' : [.01, .17, .27, .38],
+  //   'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+  // },
   'no_hs_degree_25_plus' : {
     'domain' : [99, 270, 548, 898],
     'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
