@@ -1,0 +1,1048 @@
+{
+  "schools": [
+    {
+      "name": "Aiton Elementary School",
+      "lat": 38.895947,
+      "long": -76.934041,
+      "alloc": 2446738.61,
+      "enrollment": 252,
+      "alloc_per_student": 9709,
+      "preschool": true
+    },
+    {
+      "name": "Amidon-Bowen Elementary School",
+      "lat": 38.879278,
+      "long": -77.01769,
+      "alloc": 2449253.13,
+      "enrollment": 293,
+      "alloc_per_student": 8359,
+      "preschool": true
+    },
+    {
+      "name": "Bancroft Elementary School",
+      "lat": 38.934175,
+      "long": -77.040347,
+      "alloc": 5552695.42,
+      "enrollment": 473,
+      "alloc_per_student": 11739,
+      "preschool": true
+    },
+    {
+      "name": "Beers Elementary School",
+      "lat": 38.863662,
+      "long": -76.956003,
+      "alloc": 4414196.51,
+      "enrollment": 384,
+      "alloc_per_student": 11495,
+      "preschool": true
+    },
+    {
+      "name": "Brent Elementary School",
+      "lat": 38.885081,
+      "long": -77.001916,
+      "alloc": 3416556.47,
+      "enrollment": 358,
+      "alloc_per_student": 9543,
+      "preschool": true
+    },
+    {
+      "name": "Burrville Elementary School",
+      "lat": 38.900024,
+      "long": -76.925035,
+      "alloc": 3499485.93,
+      "enrollment": 357,
+      "alloc_per_student": 9802,
+      "preschool": true
+    },
+    {
+      "name": "Cleveland Elementary School",
+      "lat": 38.914531,
+      "long": -77.022921,
+      "alloc": 3386570.38,
+      "enrollment": 297,
+      "alloc_per_student": 11402,
+      "preschool": true
+    },
+    {
+      "name": "H.D. Cooke Elementary School @ K.C. Lewis",
+      "lat": 38.923892,
+      "long": -77.039019,
+      "alloc": 4703671.44,
+      "enrollment": 388,
+      "alloc_per_student": 12122,
+      "preschool": true
+    },
+    {
+      "name": "Davis Elementary School",
+      "lat": 38.878668,
+      "long": -76.937034,
+      "alloc": 2272337.26,
+      "enrollment": 178,
+      "alloc_per_student": 12765,
+      "preschool": true
+    },
+    {
+      "name": "Drew Elementary School",
+      "lat": 38.895809,
+      "long": -76.920362,
+      "alloc": 2049803.8,
+      "enrollment": 164,
+      "alloc_per_student": 12498,
+      "preschool": true
+    },
+    {
+      "name": "Eaton Elementary School",
+      "lat": 38.932539,
+      "long": -77.065353,
+      "alloc": 4091275.3,
+      "enrollment": 459,
+      "alloc_per_student": 8913,
+      "preschool": true
+    },
+    {
+      "name": "Garfield Elementary School",
+      "lat": 38.852283,
+      "long": -76.970402,
+      "alloc": 2325605.21,
+      "enrollment": 245,
+      "alloc_per_student": 9492,
+      "preschool": true
+    },
+    {
+      "name": "Garrison Elementary Scool",
+      "lat": 38.914083,
+      "long": -77.028242,
+      "alloc": 3118767.94,
+      "enrollment": 228,
+      "alloc_per_student": 13678,
+      "preschool": true
+    },
+    {
+      "name": "C.W. Harris Elementary School",
+      "lat": 38.884584,
+      "long": -76.926164,
+      "alloc": 2340379.42,
+      "enrollment": 265,
+      "alloc_per_student": 8831,
+      "preschool": true
+    },
+    {
+      "name": "Hendley Elementary School",
+      "lat": 38.829184,
+      "long": -77.000145,
+      "alloc": 3248675.7,
+      "enrollment": 339,
+      "alloc_per_student": 9583,
+      "preschool": true
+    },
+    {
+      "name": "Houston Elementary School",
+      "lat": 38.904811,
+      "long": -76.929627,
+      "alloc": 2294943.19,
+      "enrollment": 238,
+      "alloc_per_student": 9642,
+      "preschool": true
+    },
+    {
+      "name": "Hyde-Addison Elementary School",
+      "lat": 38.907842,
+      "long": -77.064344,
+      "alloc": 2915467.12,
+      "enrollment": 332,
+      "alloc_per_student": 8781,
+      "preschool": true
+    },
+    {
+      "name": "Janney Elementary School",
+      "lat": 38.947902,
+      "long": -77.080493,
+      "alloc": 4860553.96,
+      "enrollment": 599,
+      "alloc_per_student": 8114,
+      "preschool": true
+    },
+    {
+      "name": "Kenilworth Elementary School",
+      "lat": 38.907354,
+      "long": -76.940268,
+      "alloc": 1714769.39,
+      "enrollment": 147,
+      "alloc_per_student": 11665,
+      "preschool": true
+    },
+    {
+      "name": "Ketcham Elementary School",
+      "lat": 38.866216,
+      "long": -76.98326,
+      "alloc": 2346550.2,
+      "enrollment": 260,
+      "alloc_per_student": 9025,
+      "preschool": true
+    },
+    {
+      "name": "Hearst Elementary School",
+      "lat": 38.940767,
+      "long": -77.072427,
+      "alloc": 3116265.26,
+      "enrollment": 273,
+      "alloc_per_student": 11414,
+      "preschool": true
+    },
+    {
+      "name": "Kimball Elementary School",
+      "lat": 38.883168,
+      "long": -76.957808,
+      "alloc": 2966637.94,
+      "enrollment": 289,
+      "alloc_per_student": 10265,
+      "preschool": true
+    },
+    {
+      "name": "Lafayette Elementary School",
+      "lat": 38.965914,
+      "long": -77.068433,
+      "alloc": 5880574.44,
+      "enrollment": 689,
+      "alloc_per_student": 8534,
+      "preschool": true
+    },
+    {
+      "name": "Leckie Elementary School",
+      "lat": 38.828556,
+      "long": -77.012587,
+      "alloc": 3768039.82,
+      "enrollment": 344,
+      "alloc_per_student": 10953,
+      "preschool": true
+    },
+    {
+      "name": "Ludlow-Taylor Elementary School",
+      "lat": 38.898898,
+      "long": -76.997113,
+      "alloc": 3152417.78,
+      "enrollment": 263,
+      "alloc_per_student": 11986,
+      "preschool": true
+    },
+    {
+      "name": "Key Elementary School",
+      "lat": 38.926285,
+      "long": -77.099933,
+      "alloc": 3210324.83,
+      "enrollment": 375,
+      "alloc_per_student": 8560,
+      "preschool": true
+    },
+    {
+      "name": "Mann Elementary School",
+      "lat": 38.934549,
+      "long": -77.087197,
+      "alloc": 2545535.85,
+      "enrollment": 286,
+      "alloc_per_student": 8900,
+      "preschool": true
+    },
+    {
+      "name": "Maury Elementary School",
+      "lat": 38.89201,
+      "long": -76.988943,
+      "alloc": 2993744.77,
+      "enrollment": 317,
+      "alloc_per_student": 9443,
+      "preschool": true
+    },
+    {
+      "name": "Miner Elementary School",
+      "lat": 38.897805,
+      "long": -76.983622,
+      "alloc": 4695844.17,
+      "enrollment": 475,
+      "alloc_per_student": 9885,
+      "preschool": true
+    },
+    {
+      "name": "Marie Reed Elementary School",
+      "lat": 38.919902,
+      "long": -77.040757,
+      "alloc": 4233211.43,
+      "enrollment": 362,
+      "alloc_per_student": 11693,
+      "preschool": true
+    },
+    {
+      "name": "Moten Elementary School @ Wilkinson",
+      "lat": 38.857049,
+      "long": -76.985528,
+      "alloc": 2772567.02,
+      "enrollment": 335,
+      "alloc_per_student": 8276,
+      "preschool": true
+    },
+    {
+      "name": "Murch Elementary School",
+      "lat": 38.952307,
+      "long": -77.069829,
+      "alloc": 4782135.31,
+      "enrollment": 572,
+      "alloc_per_student": 8360,
+      "preschool": true
+    },
+    {
+      "name": "Nalle Elementary School",
+      "lat": 38.886397,
+      "long": -76.93041,
+      "alloc": 3067163.02,
+      "enrollment": 335,
+      "alloc_per_student": 9155,
+      "preschool": true
+    },
+    {
+      "name": "Orr Elementary School",
+      "lat": 38.871451,
+      "long": -76.974755,
+      "alloc": 3332666.97,
+      "enrollment": 346,
+      "alloc_per_student": 9631,
+      "preschool": true
+    },
+    {
+      "name": "Patterson Elementary School",
+      "lat": 38.826143,
+      "long": -77.008707,
+      "alloc": 3780424.51,
+      "enrollment": 330,
+      "alloc_per_student": 11455,
+      "preschool": true
+    },
+    {
+      "name": "Payne Elementary School",
+      "lat": 38.885175,
+      "long": -76.983647,
+      "alloc": 2439451.77,
+      "enrollment": 245,
+      "alloc_per_student": 9956,
+      "preschool": true
+    },
+    {
+      "name": "Bruce-Monroe Elementary School @ Park View",
+      "lat": 38.934085,
+      "long": -77.020839,
+      "alloc": 5644978.06,
+      "enrollment": 442,
+      "alloc_per_student": 12771,
+      "preschool": true
+    },
+    {
+      "name": "Plummer Elementary School",
+      "lat": 38.886638,
+      "long": -76.940542,
+      "alloc": 2410795.3,
+      "enrollment": 263,
+      "alloc_per_student": 9166,
+      "preschool": true
+    },
+    {
+      "name": "Ross Elementary School",
+      "lat": 38.912625,
+      "long": -77.03985,
+      "alloc": 1564508.37,
+      "enrollment": 154,
+      "alloc_per_student": 10159,
+      "preschool": true
+    },
+    {
+      "name": "Savoy Elementary School",
+      "lat": 38.863411,
+      "long": -76.993108,
+      "alloc": 3424092.32,
+      "enrollment": 387,
+      "alloc_per_student": 8847,
+      "preschool": true
+    },
+    {
+      "name": "Malcolm X Elementary School",
+      "lat": 38.845205,
+      "long": -76.98627,
+      "alloc": 2601157.37,
+      "enrollment": 220,
+      "alloc_per_student": 11823,
+      "preschool": true
+    },
+    {
+      "name": "Seaton Elementary School",
+      "lat": 38.909791,
+      "long": -77.025979,
+      "alloc": 3181019.7,
+      "enrollment": 256,
+      "alloc_per_student": 12425,
+      "preschool": true
+    },
+    {
+      "name": "Shepherd Elementary School",
+      "lat": 38.984311,
+      "long": -77.033399,
+      "alloc": 2923091.14,
+      "enrollment": 314,
+      "alloc_per_student": 9309,
+      "preschool": true
+    },
+    {
+      "name": "Simon Elementary School",
+      "lat": 38.836317,
+      "long": -77.000624,
+      "alloc": 2287515.18,
+      "enrollment": 270,
+      "alloc_per_student": 8472,
+      "preschool": true
+    },
+    {
+      "name": "Randle Highlands Elementary School",
+      "lat": 38.870105,
+      "long": -76.964761,
+      "alloc": 3805215.11,
+      "enrollment": 358,
+      "alloc_per_student": 10629,
+      "preschool": true
+    },
+    {
+      "name": "Stanton Elementary School",
+      "lat": 38.860095,
+      "long": -76.968145,
+      "alloc": 3522024.11,
+      "enrollment": 391,
+      "alloc_per_student": 9007,
+      "preschool": true
+    },
+    {
+      "name": "Stoddert Elementary School",
+      "lat": 38.922557,
+      "long": -77.07888,
+      "alloc": 3147357.48,
+      "enrollment": 368,
+      "alloc_per_student": 8552,
+      "preschool": true
+    },
+    {
+      "name": "Smothers Elementary School",
+      "lat": 38.893418,
+      "long": -76.939005,
+      "alloc": 2664924.18,
+      "enrollment": 282,
+      "alloc_per_student": 9450,
+      "preschool": true
+    },
+    {
+      "name": "Thomas Elementary School",
+      "lat": 38.901175,
+      "long": -76.951653,
+      "alloc": 3258152.44,
+      "enrollment": 312,
+      "alloc_per_student": 10442,
+      "preschool": true
+    },
+    {
+      "name": "Thomson Elementary School",
+      "lat": 38.903743,
+      "long": -77.028235,
+      "alloc": 3773631.45,
+      "enrollment": 300,
+      "alloc_per_student": 12578,
+      "preschool": true
+    },
+    {
+      "name": "Tubman Elementary School",
+      "lat": 38.928721,
+      "long": -77.0297,
+      "alloc": 5600688.83,
+      "enrollment": 506,
+      "alloc_per_student": 11068,
+      "preschool": true
+    },
+    {
+      "name": "Turner Elementary School @ Green",
+      "lat": 38.841792,
+      "long": -76.982189,
+      "alloc": 3257760.39,
+      "enrollment": 339,
+      "alloc_per_student": 9609,
+      "preschool": true
+    },
+    {
+      "name": "Tyler Elementary School",
+      "lat": 38.881243,
+      "long": -76.992511,
+      "alloc": 5332941.07,
+      "enrollment": 470,
+      "alloc_per_student": 11346,
+      "preschool": true
+    },
+    {
+      "name": "J.O. Wilson Elementary School",
+      "lat": 38.902518,
+      "long": -76.997084,
+      "alloc": 2357234.81,
+      "enrollment": 408,
+      "alloc_per_student": 5777,
+      "preschool": true
+    },
+    {
+      "name": "Ferebee Hope Elementary School",
+      "lat": 38.832099,
+      "long": -76.994627,
+      "alloc": 3243759.13,
+      "enrollment": 215,
+      "alloc_per_student": 15087,
+      "preschool": true
+    },
+    {
+      "name": "Martin Luther King Elementary School",
+      "lat": 38.842968,
+      "long": -76.998449,
+      "alloc": 2846836.56,
+      "enrollment": 311,
+      "alloc_per_student": 9153,
+      "preschool": true
+    },
+    {
+      "name": "Marshall Elementary School",
+      "lat": 38.928465,
+      "long": -76.957015,
+      "alloc": 2156072.65,
+      "enrollment": 158,
+      "alloc_per_student": 13646,
+      "preschool": true
+    },
+    {
+      "name": "M.C. Terrell/McGogney Elementary School",
+      "lat": 38.842149,
+      "long": -76.993944,
+      "alloc": 2752817.0,
+      "enrollment": 205,
+      "alloc_per_student": 13428,
+      "preschool": true
+    },
+    {
+      "name": "Capitol Hill Montessori @ Logan",
+      "lat": 38.898894,
+      "long": -77.003163,
+      "alloc": 2059348.88,
+      "enrollment": 224,
+      "alloc_per_student": 9193,
+      "preschool": true
+    },
+    {
+      "name": "Barnard Elementary School",
+      "lat": 38.948498,
+      "long": -77.018143,
+      "alloc": 6277147.41,
+      "enrollment": 569,
+      "alloc_per_student": 11031,
+      "preschool": true
+    },
+    {
+      "name": "Powell Elementary School",
+      "lat": 38.941862,
+      "long": -77.031228,
+      "alloc": 4750415.73,
+      "enrollment": 391,
+      "alloc_per_student": 12149,
+      "preschool": true
+    },
+    {
+      "name": "Brightwood Education Campus",
+      "lat": 38.960176,
+      "long": -77.029798,
+      "alloc": 6026441.03,
+      "enrollment": 573,
+      "alloc_per_student": 10517,
+      "preschool": true
+    },
+    {
+      "name": "Burroughs Elementary School",
+      "lat": 38.933123,
+      "long": -76.978985,
+      "alloc": 3400130.62,
+      "enrollment": 283,
+      "alloc_per_student": 12014,
+      "preschool": true
+    },
+    {
+      "name": "Langdon Education Campus",
+      "lat": 38.924508,
+      "long": -76.977558,
+      "alloc": 3841844.4,
+      "enrollment": 350,
+      "alloc_per_student": 10976,
+      "preschool": true
+    },
+    {
+      "name": "LaSalle-Backus Education Campus",
+      "lat": 38.96109,
+      "long": -76.998706,
+      "alloc": 3117293.75,
+      "enrollment": 288,
+      "alloc_per_student": 10823,
+      "preschool": true
+    },
+    {
+      "name": "Noyes Education Campus",
+      "lat": 38.924395,
+      "long": -76.992416,
+      "alloc": 3377988.43,
+      "enrollment": 282,
+      "alloc_per_student": 11978,
+      "preschool": true
+    },
+    {
+      "name": "Raymond Education Campus",
+      "lat": 38.935347,
+      "long": -77.026143,
+      "alloc": 4776735.04,
+      "enrollment": 451,
+      "alloc_per_student": 10591,
+      "preschool": true
+    },
+    {
+      "name": "Takoma Education Campus",
+      "lat": 38.974978,
+      "long": -77.021676,
+      "alloc": 3887064.83,
+      "enrollment": 366,
+      "alloc_per_student": 10620,
+      "preschool": true
+    },
+    {
+      "name": "Truesdell Education Campus",
+      "lat": 38.954158,
+      "long": -77.024106,
+      "alloc": 4692439.56,
+      "enrollment": 468,
+      "alloc_per_student": 10026,
+      "preschool": true
+    },
+    {
+      "name": "Walker-Jones Education Campus",
+      "lat": 38.904395,
+      "long": -77.014355,
+      "alloc": 5014427.07,
+      "enrollment": 426,
+      "alloc_per_student": 11770,
+      "preschool": true
+    },
+    {
+      "name": "Wheatley Education Campus",
+      "lat": 38.903499,
+      "long": -76.986449,
+      "alloc": 2552947.88,
+      "enrollment": 465,
+      "alloc_per_student": 5490,
+      "preschool": true
+    },
+    {
+      "name": "West Education Campus",
+      "lat": 38.950782,
+      "long": -77.031228,
+      "alloc": 3238620.24,
+      "enrollment": 243,
+      "alloc_per_student": 13327,
+      "preschool": true
+    },
+    {
+      "name": "Whittier Education Campus",
+      "lat": 38.965008,
+      "long": -77.019853,
+      "alloc": 4329512.37,
+      "enrollment": 339,
+      "alloc_per_student": 12771,
+      "preschool": true
+    },
+    {
+      "name": "Brookland Education Campus at Bunker Hill ES",
+      "lat": 38.942536,
+      "long": -76.985428,
+      "alloc": 1966384.42,
+      "enrollment": 274,
+      "alloc_per_student": 7176,
+      "preschool": true
+    },
+    {
+      "name": "Winston Education Campus",
+      "lat": 38.857287,
+      "long": -76.962428,
+      "alloc": 3792031.37,
+      "enrollment": 308,
+      "alloc_per_student": 12311,
+      "preschool": true
+    },
+    {
+      "name": "Langley Education Campus",
+      "lat": 38.915542,
+      "long": -77.005705,
+      "alloc": 3732344.31,
+      "enrollment": 417,
+      "alloc_per_student": 8950,
+      "preschool": true
+    },
+    {
+      "name": "Browne Education Campus",
+      "lat": 38.902013,
+      "long": -76.970236,
+      "alloc": 9153248.06,
+      "enrollment": 364,
+      "alloc_per_student": 25146,
+      "preschool": true
+    },
+    {
+      "name": "Francis-Stevens Education Campus",
+      "lat": 38.907248,
+      "long": -77.051922,
+      "alloc": 5168463.01,
+      "enrollment": 224,
+      "alloc_per_student": 23073,
+      "preschool": true
+    },
+    {
+      "name": "Hardy Middle School",
+      "lat": 38.914792,
+      "long": -77.069334,
+      "alloc": 4078183.61,
+      "enrollment": 404,
+      "alloc_per_student": 10094,
+      "preschool": false
+    },
+    {
+      "name": "Deal Middle School",
+      "lat": 38.952338,
+      "long": -77.073742,
+      "alloc": 4042183.3,
+      "enrollment": 1165,
+      "alloc_per_student": 3469,
+      "preschool": false
+    },
+    {
+      "name": "Eliot-Hine Middle School",
+      "lat": 38.892002,
+      "long": -76.97829,
+      "alloc": 2457976.8,
+      "enrollment": 281,
+      "alloc_per_student": 8747,
+      "preschool": false
+    },
+    {
+      "name": "Hart Middle School",
+      "lat": 38.837608,
+      "long": -76.998293,
+      "alloc": 1600588.56,
+      "enrollment": 517,
+      "alloc_per_student": 3095,
+      "preschool": false
+    },
+    {
+      "name": "Johnson Middle School",
+      "lat": 38.849328,
+      "long": -76.985174,
+      "alloc": 3023001.0,
+      "enrollment": 244,
+      "alloc_per_student": 12389,
+      "preschool": false
+    },
+    {
+      "name": "Kramer Middle School",
+      "lat": 38.870739,
+      "long": -76.980659,
+      "alloc": 2603062.31,
+      "enrollment": 277,
+      "alloc_per_student": 9397,
+      "preschool": false
+    },
+    {
+      "name": "Kelly Miller Middle School",
+      "lat": 38.893596,
+      "long": -76.932885,
+      "alloc": 2809509.47,
+      "enrollment": 353,
+      "alloc_per_student": 7958,
+      "preschool": false
+    },
+    {
+      "name": "Ron Brown Middle School",
+      "lat": 38.906068,
+      "long": -76.933628,
+      "alloc": 3514019.3,
+      "enrollment": 204,
+      "alloc_per_student": 17225,
+      "preschool": false
+    },
+    {
+      "name": "Sousa Middle School",
+      "lat": 38.883496,
+      "long": -76.952277,
+      "alloc": 3720318.81,
+      "enrollment": 304,
+      "alloc_per_student": 12237,
+      "preschool": false
+    },
+    {
+      "name": "Stuart-Hobson Middle School",
+      "lat": 38.896123,
+      "long": -77.000193,
+      "alloc": 2119468.39,
+      "enrollment": 371,
+      "alloc_per_student": 5712,
+      "preschool": false
+    },
+    {
+      "name": "Shaw Middle School @ Garnet-Patterson",
+      "lat": 38.917129,
+      "long": -77.025953,
+      "alloc": 1687459.79,
+      "enrollment": 130,
+      "alloc_per_student": 12980,
+      "preschool": false
+    },
+    {
+      "name": "Mamie D. Lee Elementary School",
+      "lat": 38.952391,
+      "long": -77.00813,
+      "alloc": 2537424.92,
+      "enrollment": 96,
+      "alloc_per_student": 26431,
+      "preschool": false
+    },
+    {
+      "name": "Sharpe Health School",
+      "lat": 38.943044,
+      "long": -77.029707,
+      "alloc": 2844829.65,
+      "enrollment": 85,
+      "alloc_per_student": 33468,
+      "preschool": false
+    },
+    {
+      "name": "Prospect Learning Center",
+      "lat": 38.897335,
+      "long": -76.993449,
+      "alloc": 2146755.52,
+      "enrollment": 83,
+      "alloc_per_student": 25864,
+      "preschool": false
+    },
+    {
+      "name": "Oyster-Adams Bilingual School - Oyster Campus",
+      "lat": 38.923244,
+      "long": -77.057001,
+      "alloc": 7460203.85,
+      "enrollment": 668,
+      "alloc_per_student": 11167,
+      "preschool": true
+    },
+    {
+      "name": "Capital Hill Cluster Peabody",
+      "lat": 38.893102,
+      "long": -77.000019,
+      "alloc": 2368713.84,
+      "enrollment": 230,
+      "alloc_per_student": 10298,
+      "preschool": true
+    },
+    {
+      "name": "School-Within-A-School at Logan Annex",
+      "lat": 38.898894,
+      "long": -77.003163,
+      "alloc": 0.0,
+      "enrollment": 126,
+      "alloc_per_student": 0,
+      "preschool": true
+    },
+    {
+      "name": "Watkins Elementary School",
+      "lat": 38.883666,
+      "long": -76.990231,
+      "alloc": 4406580.46,
+      "enrollment": 527,
+      "alloc_per_student": 8361,
+      "preschool": false
+    },
+    {
+      "name": "Benjamin Banneker High School",
+      "lat": 38.924076,
+      "long": -77.023499,
+      "alloc": 3678654.32,
+      "enrollment": 394,
+      "alloc_per_student": 9336,
+      "preschool": false
+    },
+    {
+      "name": "Anacostia High School",
+      "lat": 38.870602,
+      "long": -76.982226,
+      "alloc": 10887975.53,
+      "enrollment": 697,
+      "alloc_per_student": 15621,
+      "preschool": false
+    },
+    {
+      "name": "Ballou High School",
+      "lat": 38.840155,
+      "long": -77.000567,
+      "alloc": 5130214.38,
+      "enrollment": 791,
+      "alloc_per_student": 6485,
+      "preschool": false
+    },
+    {
+      "name": "Cardozo High School @ Meyer",
+      "lat": 38.922403,
+      "long": -77.028217,
+      "alloc": 5476051.42,
+      "enrollment": 537,
+      "alloc_per_student": 10197,
+      "preschool": false
+    },
+    {
+      "name": "Coolidge High School",
+      "lat": 38.966275,
+      "long": -77.019868,
+      "alloc": 2104991.7,
+      "enrollment": 490,
+      "alloc_per_student": 4295,
+      "preschool": false
+    },
+    {
+      "name": "Eastern High School",
+      "lat": 38.88981,
+      "long": -76.980584,
+      "alloc": 6617435.16,
+      "enrollment": 504,
+      "alloc_per_student": 13129,
+      "preschool": false
+    },
+    {
+      "name": "McKinley Technology High School",
+      "lat": 38.915546,
+      "long": -77.004389,
+      "alloc": 5849429.54,
+      "enrollment": 697,
+      "alloc_per_student": 8392,
+      "preschool": false
+    },
+    {
+      "name": "Roosevelt High School",
+      "lat": 38.943044,
+      "long": -77.029691,
+      "alloc": 4596460.22,
+      "enrollment": 473,
+      "alloc_per_student": 9717,
+      "preschool": false
+    },
+    {
+      "name": "Spingarn High School",
+      "lat": 38.898041,
+      "long": -76.971114,
+      "alloc": 909033.57,
+      "enrollment": 374,
+      "alloc_per_student": 2430,
+      "preschool": false
+    },
+    {
+      "name": "Wilson High School",
+      "lat": 38.945996,
+      "long": -77.064578,
+      "alloc": 8463650.29,
+      "enrollment": 1713,
+      "alloc_per_student": 4940,
+      "preschool": false
+    },
+    {
+      "name": "H. D. Woodson High School",
+      "lat": 38.886295,
+      "long": -76.936044,
+      "alloc": 4547641.0,
+      "enrollment": 710,
+      "alloc_per_student": 6405,
+      "preschool": false
+    },
+    {
+      "name": "School Without Walls High School",
+      "lat": 38.898315,
+      "long": -77.047439,
+      "alloc": 4755434.85,
+      "enrollment": 548,
+      "alloc_per_student": 8677,
+      "preschool": false
+    },
+    {
+      "name": "Dunbar High School",
+      "lat": 38.90755,
+      "long": -77.015513,
+      "alloc": 5971125.99,
+      "enrollment": 504,
+      "alloc_per_student": 11847,
+      "preschool": false
+    },
+    {
+      "name": "Ellington School of The Arts",
+      "lat": 38.913638,
+      "long": -77.069487,
+      "alloc": 2200147.74,
+      "enrollment": 531,
+      "alloc_per_student": 4143,
+      "preschool": false
+    },
+    {
+      "name": "Washington Metropolitan High School",
+      "lat": 38.920449,
+      "long": -77.016971,
+      "alloc": 4385209.14,
+      "enrollment": 282,
+      "alloc_per_student": 15550,
+      "preschool": false
+    },
+    {
+      "name": "Phelps Architecture, Construction, and Engineering High School",
+      "lat": 38.898835,
+      "long": -76.970219,
+      "alloc": 969580.13,
+      "enrollment": 340,
+      "alloc_per_student": 2851,
+      "preschool": false
+    },
+    {
+      "name": "Luke C. Moore High School",
+      "lat": 38.93249,
+      "long": -76.992448,
+      "alloc": 1066002.57,
+      "enrollment": 366,
+      "alloc_per_student": 2912,
+      "preschool": false
+    },
+    {
+      "name": "Jefferson Middle School",
+      "lat": 38.899922,
+      "long": -77.021899,
+      "alloc": 2576523.45,
+      "enrollment": 279,
+      "alloc_per_student": 9234,
+      "preschool": false
+    },
+    {
+      "name": "MacFarland Middle School",
+      "lat": 38.94408,
+      "long": -77.027467,
+      "alloc": 4036913.28,
+      "enrollment": 149,
+      "alloc_per_student": 27093,
+      "preschool": false
+    },
+    {
+      "name": "Columbia Heights Education Campus",
+      "lat": 38.928756,
+      "long": -77.036432,
+      "alloc": 7998413.68,
+      "enrollment": 1262,
+      "alloc_per_student": 6337,
+      "preschool": false
+    }
+  ]
+}
