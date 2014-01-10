@@ -179,7 +179,6 @@ function drawChoropleth(){
     choropleth_data.forEach(function(d) {
       all_data[d.gis_id] = d;
       choropleth_data[d.gis_id] = +d.population_total;
-console.log(d);
     });
 
     g.select("#neighborhoods")
@@ -279,4 +278,14 @@ function clicked(d) {
       .duration(750)
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
       .style("stroke-width", 1.5 / k + "px");
+
+  var $popbox = $('#pop-info'),
+      highlighted = all_data[d.properties.gis_id];
+
+  $popbox.siblings('.panel-heading').find('.panel-title').html(highlighted.NBH_NAMES);
+
+  $.each($popbox.find('tr'), function(k, row){
+    $(row).find('.count').html(highlighted[$(row).attr('data-type')]);
+  });
+
 }  
