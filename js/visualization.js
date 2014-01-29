@@ -188,6 +188,7 @@ function drawChoropleth(){
         .attr("d", path)
         .attr('class', 'nbhd')
         .on("click", clicked)
+        .on("mouseover", hoverNeighborhood)
         .style("fill", "#AAA");
 
   } // setUpChoropleth function
@@ -255,6 +256,17 @@ function matchScaleToData(scale, fieldFunction) {
   scale.domain([minimum, maximum]);
 }
 
+function displayPopBox(d) {
+  var $popbox = $('#pop-info'),
+      highlighted = all_data[d.properties.gis_id];
+
+  $popbox.siblings('.panel-heading').find('.panel-title').html(highlighted.NBH_NAMES);
+
+  $.each($popbox.find('tr'), function(k, row){
+    $(row).find('.count').html(highlighted[$(row).attr('data-type')]);
+  });
+}
+
 function clicked(d) {
   var x, y, k;
 
@@ -281,13 +293,14 @@ function clicked(d) {
 
   // if d is a neighborhood boundary and clicked
   if (d && all_data[d.properties.gis_id]){
-    var $popbox = $('#pop-info'),
-        highlighted = all_data[d.properties.gis_id];
-
-    $popbox.siblings('.panel-heading').find('.panel-title').html(highlighted.NBH_NAMES);
-
-    $.each($popbox.find('tr'), function(k, row){
-      $(row).find('.count').html(highlighted[$(row).attr('data-type')]);
-    });
+    displayPopBox(d);
   }
-}  
+}
+
+function hoverNeighborhood(d) {
+ if (centered) { return; }
+
+  if (d && all_data[d.properties.gis_id]){
+    displayPopBox(d);
+  }
+}
