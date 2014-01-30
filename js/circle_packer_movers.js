@@ -15,11 +15,11 @@ sm.packer = function() {
 
        return packer;
    };
-   
+
    packer.animating = false;
-   
+
    packer.start = function() {
-   		
+
        nodes = [];
 
        for (var i = 0; i < elements.length; i++) {
@@ -33,11 +33,11 @@ sm.packer = function() {
                id: i,
                //sel: elements[i].getAttribute('class').search('sel_primary') !== -1 ? true : false
            };
-           
+
            //console.log(elements[i].getAttribute('class').search('sel_primary'), n.sel);
 
            nodes[i] = n;
-           
+
            if (!startPos[i]) {
              startPos[i] = { x: ax, y: ay };
            } 
@@ -100,12 +100,12 @@ sm.packer = function() {
 			   a.x += v.x;
 	           a.y += v.y;
 		   }
-           
+
 		   if (!b.sel) {
 			   b.x -= v.x;
 	           b.x -= v.y;
 		   }
-           
+
        }
    };
 
