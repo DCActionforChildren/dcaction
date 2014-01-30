@@ -169,7 +169,8 @@ function drawChoropleth(){
     .await(setUpChoropleth);
 
   function setUpChoropleth(error, dc, choropleth) {
-    choropleth_data = choropleth;
+    //clean choropleth data for display.
+    choropleth_data = cleanData(choropleth);
     choropleth_data.forEach(function(d) {
       all_data[d.gis_id] = d;
       choropleth_data[d.gis_id] = +d.population_total;
@@ -221,6 +222,10 @@ function drawSchools(){
         .on("click", displaySchoolData)
         .append("title").text(function(d){return d.name;});
     packMetros();
+
+    //clean school data for display.
+    school_data = cleanData(school_data);
+
     function displaySchoolData(school) {
       $("#details").prepend("<div class='well well-sm'><h3>"+school.name+"</h3><h4>enrollment: " +
                                 school.enrollment + "</h4><h4>allocation: " +
@@ -312,3 +317,50 @@ function hoverNeighborhood(d) {
     displayPopBox(d);
   }
 }
+
+function cleanData(rawData) {
+  var d, cleanedData = [];
+
+  for (var i = 0, len = rawData.length; i < len; i++) {
+    d = rawData[i];
+
+    for(var key in d){
+      if(d.hasOwnProperty(key) && !isNaN(parseInt(d[key], 10))) {
+        d[key] = cleanNumber(d[key], key);
+      }
+    }
+
+    cleanedData.push(d);
+  }
+
+  return cleanedData;
+
+  function cleanNumber(strNum, name) {
+    var num = parseFloat(strNum);
+
+    if (name.indexOf('_perc') !== -1) { //percentage
+      num = num * 100;
+      num = Math.round(num);
+      return num + '%';
+    } else if (name.indexOf('alloc') !== -1) {  //some kind of allocation amount
+      return '$' + num.addCommas();
+    }
+
+    num = Math.round(num)
+    return num.addCommas(0);
+  }
+}
+
+Number.prototype.addCommas = function(decimalPlaces) {
+  var n = this,
+      c = isNaN(decimalPlaces) ? 2 : Math.abs(decimalPlaces),
+      d = '.',
+      t = ',',
+      sign = (n < 0) ? '-' : '',
+      i = parseInt(n = Math.abs(n).toFixed(c), 10) + '',
+      initialDigits = ((initialDigits = i.length) > 3) ? initialDigits % 3 : 0;
+
+  return sign + (initialDigits? i.substr(0, initialDigits) + t : '')
+      + i.substr(initialDigits).replace(/(\d{3})(?=\d)/g, '$1' + t)
+      + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : '');
+};
