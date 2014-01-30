@@ -195,6 +195,7 @@ function drawChoropleth(){
 }
 
 function changeNeighborhoodData(new_data_column) {
+  console.log("neighborhood getting called");
   var choro_color = d3.scale.threshold()
     .domain(identifiers[new_data_column]['domain'])
     .range(identifiers[new_data_column]['range']);
@@ -207,7 +208,7 @@ function changeNeighborhoodData(new_data_column) {
     .style("fill", function(d) {
       return choro_color(all_data[d.properties.gis_id][new_data_column]);
     });
-}  
+}
 
 function drawSchools(){
   var packer = sm.packer();
@@ -290,4 +291,4 @@ function clicked(d) {
       $(row).find('.count').html(highlighted[$(row).attr('data-type')]);
     });
   }
-}  
+}
