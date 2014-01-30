@@ -120,13 +120,7 @@ function init(){
   drawSchools();
 
   // slide out menu
-  $('.menu-toggle').on('click', function(){
-    if ($(this).parent().hasClass('toggled')){
-      $(this).parent().animate({ 'left' : 0 }, 350, function(){ $('#main-container').removeClass('toggled') });
-    } else {
-      $(this).parent().animate({ 'left' : $('#nav-panel').width() }, 350, function(){ $('#main-container').addClass('toggled') });
-    }
-  });
+  $('.menu-toggle').on('click', toggleMenu);
 
   // event listeners for changing d3
   // choropleth color change
@@ -208,7 +202,7 @@ function changeNeighborhoodData(new_data_column) {
     .style("fill", function(d) {
       return choro_color(all_data[d.properties.gis_id][new_data_column]);
     });
-}  
+}
 
 function drawSchools(){
   var packer = sm.packer();
@@ -221,7 +215,7 @@ function drawSchools(){
         .attr('class', 'school')
         .attr("r", 4)
         .attr("transform", function(d) {
-          return "translate(" + 
+          return "translate(" +
             projection([d.long, d.lat]) +
             ")";})
         .on("click", displaySchoolData)
@@ -256,7 +250,21 @@ function matchScaleToData(scale, fieldFunction) {
   scale.domain([minimum, maximum]);
 }
 
+function toggleMenu() {
+  var $this = $('.menu-toggle');
+  if ($this.parent().hasClass('toggled')){
+    $this.parent().animate({ 'left' : 0 }, 350, function(){ $('#main-container').removeClass('toggled') });
+  } else {
+    $this.parent().animate({ 'left' : $('#nav-panel').width() }, 350, function(){ $('#main-container').addClass('toggled') });
+  }
+}
+
 function displayPopBox(d) {
+  //clear the menu if it's exposed.
+  if($('#main-container')[0].classList.contains('toggled')) {
+    toggleMenu();
+  }
+
   var $popbox = $('#pop-info'),
       highlighted = all_data[d.properties.gis_id];
 
