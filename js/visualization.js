@@ -311,7 +311,13 @@ function clicked(d) {
 }
 
 function hoverNeighborhood(d) {
- if (centered) { return; }
+  if (centered) { return; }
+
+  //to bring hovered neighborhood path to front.
+  var neighborhood = d3.select(d3.event.target);
+  neighborhood.each(function () {
+    this.parentNode.appendChild(this);
+  });
 
   if (d && all_data[d.properties.gis_id]){
     displayPopBox(d);
