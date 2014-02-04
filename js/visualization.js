@@ -3,8 +3,8 @@ var width = $('#content').parent().width(),
     centered;
 
 var svg, projection, path, g;
-var school_scale, school_data;
-
+var school_scale, school_data, activeId, choropleth_data;
+var all_data = {}, activeData = 'population_total';
 var identifiers = {
   'no_neighborhood_data' : {
     'domain' : [],
@@ -108,8 +108,6 @@ var identifiers = {
   },
 }
 
-var all_data = {},
-    choropleth_data;
 
 $(document).ready(function() {
   init();
@@ -170,7 +168,7 @@ function drawChoropleth(){
 
   function setUpChoropleth(error, dc, choropleth) {
     //clean choropleth data for display.
-    choropleth_data = cleanData(choropleth);
+    choropleth_data = choropleth;
     choropleth_data.forEach(function(d) {
       all_data[d.gis_id] = d;
       choropleth_data[d.gis_id] = +d.population_total;
@@ -191,6 +189,8 @@ function drawChoropleth(){
 }
 
 function changeNeighborhoodData(new_data_column) {
+  activeData = new_data_column;
+
   var choro_color = d3.scale.threshold()
     .domain(identifiers[new_data_column]['domain'])
     .range(identifiers[new_data_column]['range']);
@@ -203,6 +203,12 @@ function changeNeighborhoodData(new_data_column) {
     .style("fill", function(d) {
       return choro_color(all_data[d.properties.gis_id][new_data_column]);
     });
+
+  if(activeId && new_data_column !== 'no_neighborhood_data') {
+    setVisMetric(new_data_column, all_data[activeId][new_data_column]);
+  } else {
+    setVisMetric(null, null, true);
+  }
 }
 
 function drawSchools(){
@@ -223,13 +229,10 @@ function drawSchools(){
         .append("title").text(function(d){return d.name;});
     packMetros();
 
-    //clean school data for display.
-    school_data = cleanData(school_data);
-
     function displaySchoolData(school) {
       $("#details").prepend("<div class='well well-sm'><h3>"+school.name+"</h3><h4>enrollment: " +
-                                school.enrollment + "</h4><h4>allocation: " +
-                                school.alloc + "</h4></div>");
+          getDisplayValue(school.enrollment, 'enrollment') + "</h4><h4>allocation: " +
+          getDisplayValue(school.alloc, 'alloc') + "</h4></div>");
     }
   });
   function packMetros() {
@@ -275,8 +278,11 @@ function displayPopBox(d) {
 
   $popbox.siblings('.panel-heading').find('.panel-title').html(highlighted.NBH_NAMES);
 
+  var val, key;
   $.each($popbox.find('tr'), function(k, row){
-    $(row).find('.count').html(highlighted[$(row).attr('data-type')]);
+    key = $(row).attr('data-type');
+    val = highlighted[key];
+    $(row).find('.count').html(getDisplayValue(val, key));
   });
 }
 
@@ -307,6 +313,9 @@ function clicked(d) {
   // if d is a neighborhood boundary and clicked
   if (d && all_data[d.properties.gis_id]){
     displayPopBox(d);
+    //last neighborhood to display in popBox.
+    activeId = d.properties.gis_id;
+    setVisMetric(activeData, all_data[activeId][activeData]);
   }
 }
 
@@ -321,6 +330,9 @@ function hoverNeighborhood(d) {
 
   if (d && all_data[d.properties.gis_id]){
     displayPopBox(d);
+    //last neighborhood to display in popBox.
+    activeId = d.properties.gis_id;
+    setVisMetric(activeData, all_data[activeId][activeData]);
   }
 }
 
@@ -356,6 +368,42 @@ function cleanData(rawData) {
     return num.addCommas(0);
   }
 }
+
+function getDisplayValue(strNum, name) {
+  var num = parseFloat(strNum);
+
+  if (isNaN(num)) { return strNum; }
+
+  name = name.toLowerCase();
+
+  if (name.indexOf('perc') !== -1) { //percentage
+    num = num * 100;
+    num = Math.round(num);
+    return num + '%';
+  } else if ((name.indexOf('alloc') !== -1) || (name.indexOf('amount') !== -1)) {  //some kind of allocation or amount
+    return '$' + num.addCommas();
+  } else if (name.indexOf('ratio') !== -1) { //a ratio
+    return num.toPrecision(2);
+  }
+
+  num = Math.round(num);
+  return num.addCommas(0);
+}
+
+function setVisMetric(metric, val, clear) {
+  var $metric = $('#visualized-metric');
+  var $metricDesc = $('#visualized-description');
+
+  if (clear) {
+    $metric.text('');
+    $metricDesc.text('');
+    return;
+  }
+
+  var metricText = $('a#' + metric).text();
+  $metric.text(metricText);
+  $metricDesc.text(getDisplayValue(val, metricText));
+};
 
 Number.prototype.addCommas = function(decimalPlaces) {
   var n = this,
