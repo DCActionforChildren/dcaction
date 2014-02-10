@@ -5,109 +5,6 @@ var width = $('#content').parent().width(),
 var svg, projection, path, g;
 var school_scale, school_data;
 
-var identifiers = {
-  'no_neighborhood_data' : {
-    'domain' : [],
-    'range' : []
-  },
-  // 'poverty' : {
-  //   'domain' : [.01, .17, .27, .38],
-  //   'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  // },
-  'population_total' : {
-    'domain' : [2566, 7928, 17362, 28207],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
-  'population_under_18' : {
-    'domain' : [287, 1643, 2924, 4727],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
-  'population_under_5' : {
-    'domain' : [205, 559, 1156, 1892],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
-  'children_poverty' : {
-    'domain' : [0.367, 0.1332, 0.2236, 0.3662],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
-  'vacants' : {
-    'domain' : [6, 21, 31, 46],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
-  'math' : {
-    'domain' : [0.14, 0.355, 0.54, 0.75],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
-  'reading' : {
-    'domain' : [0.22, 0.438, 0.6025, 0.7350],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
-  'grad' : {
-    'domain' : [0.32, 0.40, 0.57, 0.80],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
-  'libraries' : {
-    'domain' : [0, 1],
-    'range' : ["#e5ffc7", "#bbef8e", "#6eb43f"]
-  },
-  'medicaid_enroll' : {
-    'domain' : [872, 2392, 3468, 5725],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
-  'grocery' : {
-    'domain' : [0, 1, 2],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#6eb43f"]
-  },
-  'rec' : {
-    'domain' : [0, 1, 2, 3],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
-  'metro' : {
-    'domain' : [0, 1, 2, 3],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
-  'bus_stops' : {
-    'domain' : [7, 58, 101, 138],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
-  'er_ast_10' : {
-    'domain' : [44, 112, 181, 303],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
-  'prev_med_visit' : {
-    'domain' : [307, 1132, 1774, 3766],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
-  'fs_client_2012' : {
-    'domain' : [826, 2962, 6010, 9923],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
-  'dental_visit' : {
-    'domain' : [460, 1257, 1981, 3109],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
-  'violent_crimes' : {
-    'domain' : [0, 1, 3, 6],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
-  'cc_cap' : {
-    'domain' : [56, 143, 251, 385],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
-  'cc_ratio' : {
-    'domain' : [0.1467, 0.3546, 0.628, 1.4531],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
-  'cc_ratio_demand' : {
-    'domain' : [0.0345, 0.0962, 0.2035, 0.4742],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
-  'cc_sub_13' : {
-    'domain' : [33725, 420333, 818781, 2480378],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
-  },
-}
-
 var all_data = {},
     choropleth_data;
 
@@ -166,6 +63,7 @@ function drawChoropleth(){
   g = svg.append("g");
   g.append("g").attr("id", "neighborhoods");
   g.append("g").attr("id", "schools");
+  g.append("g").attr("id", "legend");
 
   queue()
     // .defer(d3.json, "data/neighborhood_boundaries.json")
@@ -195,19 +93,55 @@ function drawChoropleth(){
 }
 
 function changeNeighborhoodData(new_data_column) {
+  var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[new_data_column]); }));
+  var jenks = _.unique(ss.jenks(data_values, 3));
+  var color_palette = ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"];
   var choro_color = d3.scale.threshold()
-    .domain(identifiers[new_data_column]['domain'])
-    .range(identifiers[new_data_column]['range']);
+    .domain(jenks)
+    .range(color_palette);
 
   choropleth_data.forEach(function(d) {
     choropleth_data[d.gis_id] = +d[new_data_column];
   });
+
   g.select("#neighborhoods").selectAll("path")
     .transition().duration(600)
     .style("fill", function(d) {
       return choro_color(all_data[d.properties.gis_id][new_data_column]);
     });
-}  
+
+  var legendText = function(d, jenks){
+    if(_.max(jenks) < 1){
+      return parseInt(d * 100, 10) + "%";
+    } else {
+      return parseInt(d, 10);
+    }
+  };
+
+  var updatedLegend = g.select("#legend").selectAll(".legend")
+      .data(jenks);
+
+  updatedLegend.select("text")
+    .text(function(d){ return legendText(d, jenks);});
+
+  enterLegend = updatedLegend.enter().append("g")
+    .attr("transform", function(d, i){ return "translate(0," + (350 + i * 35) + ")"; })
+    .attr("class", "legend");
+
+  enterLegend.append("rect")
+    .attr("width", 100)
+    .attr("height", 30)
+    .style("fill", function(d){ return choro_color(d);});
+
+  enterLegend.append("text")
+    .style("fill", "black")
+    .attr("dy",20)
+    .attr("dx", 5)
+    .text(function(d){ return legendText(d, jenks); });
+
+  updatedLegend.exit().remove();
+
+}
 
 function drawSchools(){
   var packer = sm.packer();
@@ -290,4 +224,4 @@ function clicked(d) {
       $(row).find('.count').html(highlighted[$(row).attr('data-type')]);
     });
   }
-}  
+}
