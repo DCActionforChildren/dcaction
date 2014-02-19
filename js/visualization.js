@@ -5,6 +5,11 @@ var width = $('#content').parent().width(),
 var svg, projection, path, g;
 var school_scale, school_data, activeId, choropleth_data;
 var all_data = {}, activeData = 'population_total';
+var min_population = 100;
+var defaultColor = "#aaa",
+    fiveColors = ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"],
+    fourColors = ["#e5ffc7", "#d9fcb9", "#bbef8e", "#6eb43f"],
+    threeColors = ["#e5ffc7", "#bbef8e", "#6eb43f"];
 var identifiers = {
   'no_neighborhood_data' : {
     'domain' : [],
@@ -12,99 +17,99 @@ var identifiers = {
   },
   // 'poverty' : {
   //   'domain' : [.01, .17, .27, .38],
-  //   'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+  //   'range' : fiveColors
   // },
   'population_total' : {
     'domain' : [2566, 7928, 17362, 28207],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+    'range' : fiveColors
   },
   'population_under_18' : {
     'domain' : [287, 1643, 2924, 4727],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+    'range' : fiveColors
   },
   'population_under_5' : {
     'domain' : [205, 559, 1156, 1892],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+    'range' : fiveColors
   },
   'children_poverty' : {
     'domain' : [0.367, 0.1332, 0.2236, 0.3662],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+    'range' : fiveColors
   },
   'vacants' : {
     'domain' : [6, 21, 31, 46],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+    'range' : fiveColors
   },
   'math' : {
     'domain' : [0.14, 0.355, 0.54, 0.75],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+    'range' : fiveColors
   },
   'reading' : {
     'domain' : [0.22, 0.438, 0.6025, 0.7350],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+    'range' : fiveColors
   },
   'grad' : {
     'domain' : [0.32, 0.40, 0.57, 0.80],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+    'range' : fiveColors
   },
   'libraries' : {
     'domain' : [0, 1],
-    'range' : ["#e5ffc7", "#bbef8e", "#6eb43f"]
+    'range' : threeColors
   },
   'medicaid_enroll' : {
     'domain' : [872, 2392, 3468, 5725],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+    'range' : fiveColors
   },
   'grocery' : {
     'domain' : [0, 1, 2],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#6eb43f"]
+    'range' : fourColors
   },
   'rec' : {
     'domain' : [0, 1, 2, 3],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+    'range' : fiveColors
   },
   'metro' : {
     'domain' : [0, 1, 2, 3],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+    'range' : fiveColors
   },
   'bus_stops' : {
     'domain' : [7, 58, 101, 138],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+    'range' : fiveColors
   },
   'er_ast_10' : {
     'domain' : [44, 112, 181, 303],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+    'range' : fiveColors
   },
   'prev_med_visit' : {
     'domain' : [307, 1132, 1774, 3766],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+    'range' : fiveColors
   },
   'fs_client_2012' : {
     'domain' : [826, 2962, 6010, 9923],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+    'range' : fiveColors
   },
   'dental_visit' : {
     'domain' : [460, 1257, 1981, 3109],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+    'range' : fiveColors
   },
   'violent_crimes' : {
     'domain' : [0, 1, 3, 6],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+    'range' : fiveColors
   },
   'cc_cap' : {
     'domain' : [56, 143, 251, 385],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+    'range' : fiveColors
   },
   'cc_ratio' : {
     'domain' : [0.1467, 0.3546, 0.628, 1.4531],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+    'range' : fiveColors
   },
   'cc_ratio_demand' : {
     'domain' : [0.0345, 0.0962, 0.2035, 0.4742],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+    'range' : fiveColors
   },
   'cc_sub_13' : {
     'domain' : [33725, 420333, 818781, 2480378],
-    'range' : ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"]
+    'range' : fiveColors
   },
 }
 
@@ -182,7 +187,7 @@ function drawChoropleth(){
         .attr('class', 'nbhd')
         .on("click", clicked)
         .on("mouseover", hoverNeighborhood)
-        .style("fill", "#AAA");
+        .style("fill", defaultColor);
 
   } // setUpChoropleth function
 
@@ -201,7 +206,8 @@ function changeNeighborhoodData(new_data_column) {
   g.select("#neighborhoods").selectAll("path")
     .transition().duration(600)
     .style("fill", function(d) {
-      return choro_color(all_data[d.properties.gis_id][new_data_column]);
+      var totalPop = all_data[d.properties.gis_id].population_total;
+      return totalPop > min_population ? choro_color(all_data[d.properties.gis_id][new_data_column]) : defaultColor;
     });
 
   if(activeId && new_data_column !== 'no_neighborhood_data') {
@@ -320,13 +326,22 @@ function clicked(d) {
 }
 
 function hoverNeighborhood(d) {
-  if (centered) { return; }
 
-  //to bring hovered neighborhood path to front.
+  //bring hovered neighborhood path to front.
   var neighborhood = d3.select(d3.event.target);
   neighborhood.each(function () {
     this.parentNode.appendChild(this);
   });
+
+  //but also keep centered neighborhood path up front
+  if (centered) { 
+    var activeNeighborhood = d3.select(".active");
+    activeNeighborhood.each(function () {
+      this.parentNode.appendChild(this);
+    });  
+    return; 
+  }
+
 
   if (d && all_data[d.properties.gis_id]){
     displayPopBox(d);
