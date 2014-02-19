@@ -122,7 +122,8 @@ function changeNeighborhoodData(new_data_column) {
     if(_.max(jenks) < 1){
       return parseInt(d * 100, 10) + "%";
     } else {
-      return parseInt(d, 10);
+      var number_formatter = d3.format(",");
+      return number_formatter(parseInt(d, 10));
     }
   };
 
@@ -137,7 +138,7 @@ function changeNeighborhoodData(new_data_column) {
     .attr("class", "legend");
 
   enterLegend.append("rect")
-    .attr("width", 100)
+    .attr("width", 70)
     .attr("height", 30)
     .style("fill", function(d){ return choro_color(d);});
 
@@ -313,7 +314,7 @@ function cleanData(rawData) {
       return '$' + num.addCommas();
     }
 
-    num = Math.round(num)
+    num = Math.round(num);
     return num.addCommas(0);
   }
 }
