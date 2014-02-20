@@ -93,7 +93,7 @@ function drawChoropleth(){
 
 function changeNeighborhoodData(new_data_column) {
   var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[new_data_column]); }));
-  var jenks = _.unique(ss.jenks(data_values, 3));
+  var jenks = _.unique(ss.jenks(data_values, 4));
   var color_palette = ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"];
   activeData = new_data_column;
 
