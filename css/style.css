@@ -1,5 +1,6 @@
 body, h1, h2, h3, h4, h5 {
   font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
 }
 h1, h2, h3, h4, h5 {
   font-weight: bold;
@@ -83,4 +84,26 @@ circle.school {
 
 circle.school:hover {
   fill-opacity: 1;
+}
+
+/* UI */
+
+#details {
+  position:absolute;
+  width:400px;
+  top:20px;
+  right:20px;
+}
+
+p.lead {
+  text-align: center;
+}
+
+/*span#visualized-metric,
+span#visualized-measure {
+  display:none;
+}*/
+
+span#visualized-metric {
+  font-weight:bold;
 }

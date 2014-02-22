@@ -10,7 +10,7 @@
 
 <body>
 <div class="navbar navbar-default">
-    <a class="navbar-brand" href="#"><img src="assets/kidscount.png" alt="DC Action for Children Kids Count initiative"></a>
+    <a class="navbar-brand" href="#"><img src="assets/kidscount.jpg" alt="DC Action for Children Kids Count initiative"></a>
     <h1>Where resources and well-being vary in D.C.</h1>
     <p class="intro">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 </div>
@@ -55,57 +55,48 @@
       <li><a href="#">Nothing yet</a></li>
     </ul> -->
   </div><!--/#nav-panel -->
-  <div id="main-container" class="posabs">
+  <div id="main-container" class="posabs" style="position:relative;">
     <div class="menu-toggle posabs">
       See Menu
     </div>
-      <div class="col-lg-8">
+      <div class="col-lg-12">
         <div id="content"></div> <!-- d3 viz written in here -->
-      </div>
-      <div class="col-lg-4" id="details">
-        <h3 id="sidebar-header">#sidebar-header</h3>
-        <h2 id="selection-title">#selection-title</h2>
-        <p class="lead" style="text-align:center;">
-          <span id="visualized-metric" style="font-weight:bold;">#visualized-metric</span><br />
-          <span id="visualized-description">#visualized-description</span>
-        </p>
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">#attributes</h3>
+        <div class="panel panel-default" id="details">
+          <div class="panel-body">
+            <p class="lead">
+              <span id="visualized-metric">Total population</span><br />
+              <span id="visualized-measure">632,323</span>
+            </p>
+            <h4 class="neighborhood">Washington D.C.</h4>
+            <table id="pop-info" class="table table-hover">
+              <tr data-type="population_total">
+                <td>Population (total)</td>
+                <td class="count align-right">632,323</td>
+              </tr>
+              <tr data-type="population_under_18">
+                <td>Population (under 18)</td>
+                <td class="count align-right">103,023</td>
+              </tr>
+              <tr data-type="single_mother_families">
+                <td>Single mother familes</td>
+                <td class="count align-right">0</td>
+              </tr>
+              <tr data-type="children_in_poverty">
+                <td>Children in poverty</td>
+                <td class="count align-right">0</td>
+              </tr>
+            </table>
+            <img src="http://placehold.it/368x200">
           </div>
-          <table id="pop-info" class="table table-hover">
-            <tr data-type="population_total">
-              <td>Population (total)</td>
-              <td class="count align-right">0</td>
-            </tr>
-            <tr data-type="population_under_18">
-              <td>Population (under 18)</td>
-              <td class="count align-right">0</td>
-            </tr>
-            <tr data-type="single_mother_families">
-              <td>Single mother familes</td>
-              <td class="count align-right">0</td>
-            </tr>
-            <tr data-type="children_in_poverty">
-              <td>Children in poverty</td>
-              <td class="count align-right">0</td>
-            </tr>
-          </table>
-        </div>
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 id="chart-header" class="panel-title">#chart-header</h3>
-          </div>
-          <img src="http://placehold.it/360x200">
-        </div>
-        <div class="well well-sm">
-          <h3 id="sources" class="panel-title">#sources</h3>
+        </div> <!-- selected detail cards here -->
+        <div class="well well-sm"  style="position:absolute;width:100px;bottom:20px;left:0;">
+          <h3 id="sources" class="panel-title">Sources</h3>
           <dl>
             <dt id="source-title">#source-title</dt>
             <dd id="source-link">#source-link</dd>
           </dl>
         </div>
-      </div> <!-- selected detail cards here -->
+      </div>
   </div><!-- /#main-container -->
 </div>
   <!-- Libraries needed -->

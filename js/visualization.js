@@ -217,7 +217,7 @@ function displayPopBox(d) {
   var $popbox = $('#pop-info'),
       highlighted = all_data[d.properties.gis_id];
 
-  $popbox.siblings('.panel-heading').find('.panel-title').html(highlighted.NBH_NAMES);
+  d3.select('.neighborhood').html(highlighted.NBH_NAMES);
 
   var val, key;
   $.each($popbox.find('tr'), function(k, row){
@@ -342,7 +342,7 @@ function getDisplayValue(strNum, name) {
 
 function setVisMetric(metric, val, clear) {
   var $metric = $('#visualized-metric');
-  var $metricDesc = $('#visualized-description');
+  var $metricDesc = $('#visualized-measure');
 
   if (clear) {
     $metric.text('');
