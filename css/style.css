@@ -10,7 +10,7 @@ h1, h2, h3, h4, h5 {
     font-size: 12px;
     font-weight: bold;
     text-transform: uppercase;
-    padding: 8px 12px !important;
+    padding: 5px 10px !important;
     color: #000;
 }
 
@@ -112,6 +112,20 @@ circle.school:hover {
   width:300px;
   top:20px;
   right:20px;
+}
+
+#details {
+  position:absolute;
+  width:300px;
+  top:20px;
+  right:20px;
+}
+
+#schools {
+  position:absolute;
+  width:300px;
+  top:20px;
+  right:330px;
 }
 
 p.lead {

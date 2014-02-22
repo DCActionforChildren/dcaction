@@ -40,8 +40,8 @@ function init(){
 
 function drawChoropleth(){
   projection = d3.geo.mercator()
-    .center([-77.01551, 38.90755]) // Dunbar High School
-    .scale(150000)
+    .center([-77.01551, 38.89555]) // Dunbar High School
+    .scale(160000)
     .translate([width/2, height/2]);
 
   path = d3.geo.path().projection(projection);
@@ -171,9 +171,9 @@ function drawSchools(){
     packMetros();
 
     function displaySchoolData(school) {
-      $("#details").prepend("<div class='well well-sm'><h3>"+school.name+"</h3><h4>enrollment: " +
-          getDisplayValue(school.enrollment, 'enrollment') + "</h4><h4>allocation: " +
-          getDisplayValue(school.alloc, 'alloc') + "</h4></div>");
+      $("#schools .panel-body").prepend("<h4>"+school.name+"</h4><table class='table table-hover'><tbody><tr><td>Enrollment</td><td>" +
+          getDisplayValue(school.enrollment, 'enrollment') + "</td></tr><tr><td>Allocation</td><td>" +
+          getDisplayValue(school.alloc, 'alloc') + "</td></tr></tbody></table>");
     }
   });
   function packMetros() {
