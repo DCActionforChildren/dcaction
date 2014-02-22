@@ -16,29 +16,42 @@
 </div>
 <div class="posrel">
   <div id="nav-panel" class="posabs">
-    <h4>Basic neighborhood resources</h4>
     <ul class="nav nav-pills nav-stacked neighborhood-menu">
       <li class="selected"><a id="no_neighborhood_data" href="#">Clear selection</a></li>
-      <!-- <li><a id="poverty" href="#">High poverty</a></li> -->
+    </ul>
+    <h4>School data layers</h4>
+    <ul class="nav nav-pills nav-stacked neighborhood-menu">
+      <li><a id="public" href="#">D.C. Public Schools</a></li>
+      <li><a id="charter" href="#">Public Charter Schools</a></li>
+    </ul>
+    <h4>Neighborhood data</h4>
+    <ul class="nav nav-pills nav-stacked neighborhood-menu">
+      <li class="nav-header disabled"><a>Demographics</a></li>
       <li><a id="population_total" href="#">Total population</a></li>
       <li><a id="population_under_18" href="#">Children under 18</a></li>
       <li><a id="population_under_5" href="#">Children under 5</a></li>
+      <li class="nav-header disabled"><a>Child health and wellbeing</a></li>
       <li><a id="children_poverty" href="#">Percent of children in poverty</a></li>
-      <li><a id="vacants" href="#">Number of properties vacant or blighted</a></li>
-      <li><a id="math" href="#">Percent of students proficient at math</a></li>
-      <li><a id="reading" href="#">Percent of students proficient at reading</a></li>
-      <li><a id="grad" href="#">Average graduation rate</a></li>
-      <li><a id="libraries" href="#">Number of public libraries</a></li>
       <li><a id="medicaid_enroll" href="#">Number of Medicaid recipients</a></li>
-      <li><a id="grocery" href="#">Number of grocery stores</a></li>
-      <li><a id="rec" href="#">Number of parks/recreation centers</a></li>
-      <li><a id="metro" href="#">Number of WMATA stations</a></li>
-      <li><a id="bus_stops" href="#">Number of WMATA bus stops</a></li>
       <li><a id="er_ast_10" href="#">Number of ER asthma visits</a></li>
       <li><a id="pre_med_visit" href="#">Number of preventative medical visits</a></li>
       <li><a id="fs_client_2012" href="#">Number of food stamp clients</a></li>
       <li><a id="dental_visit" href="#">Number of dental visits</a></li>
+      <li class="nav-header disabled"><a>Distressed neighborhoods</a></li>
+      <li><a id="poverty" href="#">High poverty</a></li>
+      <li><a id="vacants" href="#">Number of properties vacant or blighted</a></li>
       <li><a id="violent_crimes" href="#">Number of violent crimes per capita</a></li>
+      <li class="nav-header disabled"><a>Neighborhood assets</a></li>
+      <li><a id="libraries" href="#">Number of public libraries</a></li>
+      <li><a id="grocery" href="#">Number of grocery stores</a></li>
+      <li><a id="rec" href="#">Number of parks/recreation centers</a></li>
+      <li><a id="metro" href="#">Number of WMATA stations</a></li>
+      <li><a id="bus_stops" href="#">Number of WMATA bus stops</a></li>
+      <li class="nav-header disabled"><a>Child success</a></li>
+      <li><a id="math" href="#">Percent of students proficient at math</a></li>
+      <li><a id="reading" href="#">Percent of students proficient at reading</a></li>
+      <li><a id="grad" href="#">Average graduation rate</a></li>
+      <li class="nav-header disabled"><a>Child care centers</a></li>
       <li><a id="cc_tod_cap" href="#">Infant/toddler capacity in child care centers</a></li>
       <li><a id="cc_ratio" href="#">Ratio of child care capacity to child population</a></li>
       <li><a id="cc_ratio_demand" href="#">Ratio of child care capacity to child in poverty</a></li>
@@ -79,17 +92,26 @@
               </tr>
               <tr data-type="single_mother_families">
                 <td>Single mother familes</td>
-                <td class="count align-right">0</td>
+                <td class="count align-right">41,107</td>
               </tr>
               <tr data-type="children_in_poverty">
                 <td>Children in poverty</td>
-                <td class="count align-right">0</td>
+                <td class="count align-right">101,491</td>
               </tr>
             </table>
-            <img src="http://placehold.it/368x200">
+            <img src="http://placehold.it/268x150">
           </div>
         </div> <!-- selected detail cards here -->
-        <div class="well well-sm"  style="position:absolute;width:100px;bottom:20px;left:0;">
+        <div class="panel panel-default" id="legend">
+          <div class="panel-body">
+            <div class="legendStep stepOne"><span id="#quin1">#quin1</span> and lower</div>
+            <div class="legendStep stepTwo"><span id="#quin1">#quin1</span> - <span id="#quin2">#quin2</span></div>
+            <div class="legendStep stepThree"><span id="#quin2">#quin2</span> - <span id="#quin3">#quin3</span></div>
+            <div class="legendStep stepFour"><span id="#quin3">#quin3</span> - <span id="#quin4">#quin4</span></div>
+            <div class="legendStep stepFive"><span id="#quin4">#quin4</span> and higher</div>
+          </div>
+        </div>
+        <div id="source">
           <h3 id="sources" class="panel-title">Sources</h3>
           <dl>
             <dt id="source-title">#source-title</dt>
