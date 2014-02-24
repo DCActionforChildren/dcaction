@@ -89,7 +89,15 @@ path.nbhd.active {
 circle.school {
   cursor: pointer;
   fill-opacity: 0.5;
-  fill: #000099;
+  /*fill: #000099;*/
+}
+
+circle.charter {
+  fill: #900;
+}
+
+circle.public {
+  fill: #009;
 }
 
 circle.school:hover {

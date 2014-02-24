@@ -165,7 +165,8 @@ function changeNeighborhoodData(new_data_column) {
 
 function drawSchools(type){
   var packer = sm.packer(),
-      file = '', prop;
+      file = '',
+      prop, color;
 
   //this could be cleaned up if we use a consistent naming convention.
   switch(type) {
@@ -193,7 +194,7 @@ function drawSchools(type){
       return d.name;
     });
     var circleEnter = circle.enter().append("circle")
-    .attr('class', 'school')
+    .attr('class', 'school ' + type)
     .attr("r", 4)
     .attr("transform", function(d) {
       return "translate(" + projection([d.long, d.lat]) + ")";})
