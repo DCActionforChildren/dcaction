@@ -19,7 +19,6 @@ $(document).ready(function() {
 
 function init(){
   drawChoropleth();
-  drawSchools();
 
   // slide out menu
   $('.menu-toggle').on('click', toggleMenu);
@@ -31,6 +30,14 @@ function init(){
     changeNeighborhoodData($(this).attr('id'));
     $(this).parent().addClass('selected').siblings().removeClass('selected');
   });
+
+  // school type changes
+  $('.school-type-menu > li').on('click', 'a', function(e){
+    e.preventDefault();
+    drawSchools($(this).attr('id'));
+    $(this).parent().addClass('selected').siblings().removeClass('selected');
+  });
+
   // circle changes
   $('.school-menu > li').on('click', 'a', function(e){
     e.preventDefault();
@@ -118,6 +125,8 @@ function changeNeighborhoodData(new_data_column) {
     setVisMetric(new_data_column, all_data[activeId][new_data_column]);
   } else {
     setVisMetric(null, null, true);
+    drawSchools('clear');
+    $('.selected').removeClass('selected');
   }
 
   var legendText = function(d, jenks){
@@ -154,22 +163,46 @@ function changeNeighborhoodData(new_data_column) {
 
 }
 
-function drawSchools(){
-  var packer = sm.packer();
+function drawSchools(type){
+  var packer = sm.packer(),
+      file = '', prop;
 
-  d3.csv('data/schools.csv', function(data){
-    school_data = data;
+  //this could be cleaned up if we use a consistent naming convention.
+  switch(type) {
+    case 'public':
+      file = 'data/schools.json';
+      prop = 'schools';
+      break;
+    case 'charter':
+      file = 'data/charters.json';
+      prop = 'charters';
+      break;
+  }
+
+    //switched this to read json.
+    d3.json(file, function(data){
+    if(type === 'clear') {
+      prop = 'clear';
+      data = {
+        'clear': []
+      };
+    }
+    school_data = data[prop];
     school_scale = d3.scale.sqrt().range([1,10]);
-    g.select("#schools").selectAll("circle")
-      .data(data).enter().append("circle")
-        .attr('class', 'school')
-        .attr("r", 4)
-        .attr("transform", function(d) {
-          return "translate(" +
-            projection([d.long, d.lat]) +
-            ")";})
-        .on("click", displaySchoolData)
-        .append("title").text(function(d){return d.name;});
+    var circle = g.select("#schools").selectAll("circle").data(data[prop], function(d) {
+      return d.name;
+    });
+    var circleEnter = circle.enter().append("circle")
+    .attr('class', 'school')
+    .attr("r", 4)
+    .attr("transform", function(d) {
+      return "translate(" + projection([d.long, d.lat]) + ")";})
+    .append("title").text(function(d){return d.name;});
+
+
+    circle.on("click", displaySchoolData);
+    circle.exit().remove();
+
     packMetros();
 
     function displaySchoolData(school) {
@@ -220,7 +253,6 @@ function drawSchools(){
       }
     }
   });
-
 
   function packMetros() {
     var elements = d3.selectAll('#content circle')[0];
@@ -328,7 +360,13 @@ function hoverNeighborhood(d) {
     displayPopBox(d);
     //last neighborhood to display in popBox.
     activeId = d.properties.gis_id;
-    setVisMetric(activeData, all_data[activeId][activeData]);
+
+    if (activeData !== 'no_neighborhood_data') {
+      setVisMetric(activeData, all_data[activeId][activeData]);
+    } else {
+      setVisMetric(null, null, true);
+    }
+
   }
 }
 
