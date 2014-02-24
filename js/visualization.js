@@ -340,16 +340,15 @@ function getDisplayValue(strNum, name) {
 
   name = name.toLowerCase();
 
-  if (name.indexOf('perc') !== -1) { //percentage
-    return parseInt(num * 100, 10) + "%";
-  } else if ((name.indexOf('alloc') !== -1) || (name.indexOf('amount') !== -1)) {  //some kind of allocation or amount
-
+  if ((name.indexOf('alloc') !== -1) || (name.indexOf('amount') !== -1)) {  //some kind of allocation or amount
     return '$' + number_formatter(parseInt(num, 10));
   } else if (name.indexOf('ratio') !== -1) { //a ratio
     return num.toPrecision(2);
+  } else if (num < 1) { //percentage
+    return parseInt(num * 100, 10) + "%";
   }
 
-  num = Math.round(num);
+    num = Math.round(num);
   return number_formatter(parseInt(num, 10));
 }
 
