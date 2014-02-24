@@ -102,8 +102,23 @@
             <img src="http://placekitten.com/g/268/150">
           </div>
         </div> <!-- selected detail cards here -->
-        <div id="schools" class="panel panel-default">
+        <div id="schools_panel" class="panel panel-default hide">
           <div class="panel-body">
+              <div class="hide" id="school_data">
+                  <h4 class="school-name"></h4>
+                  <table class="table table-hover">
+                      <tbody>
+                      <tr>
+                          <td>Enrollment</td>
+                          <td class="school-enrollment">getDisplayValue(school.enrollment, 'enrollment')</td>
+                      </tr>
+                      <tr>
+                          <td>Allocation</td>
+                          <td class="school-allocation">getDisplayValue(school.alloc, 'alloc')</td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
           </div>
         </div>
         <div class="panel panel-default" id="legend">

@@ -1,3 +1,5 @@
+var COUNT_SCHOOL_DISPLAY = 3;
+
 var width = $('#content').parent().width(),
     height = 800,
     centered;
@@ -171,11 +173,55 @@ function drawSchools(){
     packMetros();
 
     function displaySchoolData(school) {
-      $("#schools .panel-body").prepend("<h4>"+school.name+"</h4><table class='table table-hover'><tbody><tr><td>Enrollment</td><td>" +
-          getDisplayValue(school.enrollment, 'enrollment') + "</td></tr><tr><td>Allocation</td><td>" +
-          getDisplayValue(school.alloc, 'alloc') + "</td></tr></tbody></table>");
+      var $schools = $('#schools_panel');
+      var $panelBody = $schools.find('.panel-body');
+      var $schoolData = $panelBody.children('.school-data');
+
+      //Don't add the school twice.
+      for (var i = 0, len = $schoolData.length; i < len; i++) {
+          if(school.name === $($schoolData[i]).find('.school-name').text()) { return; }
+      }
+
+      //Show panel on first school click.
+      if ($schools.hasClass('hide')) {
+        $schools.toggleClass('hide');
+      }
+
+      //Limit number of displayed schools.
+      if ($schoolData.length === COUNT_SCHOOL_DISPLAY) {
+        $panelBody.children(':nth-child(' + COUNT_SCHOOL_DISPLAY + ')').remove();
+      }
+
+      //Add a new school to the display.
+      var $schoolDisplay = $panelBody.find('#school_data').clone();
+      $panelBody.prepend(buildNewSchool($schoolDisplay, school));
+    }
+
+    function buildNewSchool($schoolDisplay, school) {
+      $schoolDisplay.removeAttr('id').removeAttr('class').addClass('school-data');
+
+      var $schoolName = $schoolDisplay.find('.school-name');
+      $schoolName.html(school.name);
+      $schoolName.on('click', function() {
+        $schoolDisplay.remove();
+        setPanel();
+      });
+      $schoolDisplay.find('.school-enrollment').html(getDisplayValue(school.enrollment, 'enrollment'));
+      $schoolDisplay.find('.school-allocation').html(getDisplayValue(school.alloc, 'alloc'));
+      return $schoolDisplay;
+    }
+
+    function setPanel() {
+      var $schools = $('#schools_panel');
+      var $panelBody = $schools.find('.panel-body');
+
+      if ($panelBody.children().length === 1) {
+        $schools.toggleClass('hide');
+      }
     }
   });
+
+
   function packMetros() {
     var elements = d3.selectAll('#content circle')[0];
     packer.elements(elements).start();
@@ -286,58 +332,25 @@ function hoverNeighborhood(d) {
   }
 }
 
-function cleanData(rawData) {
-  var d, cleanedData = [];
-
-  for (var i = 0, len = rawData.length; i < len; i++) {
-    d = rawData[i];
-
-    for(var key in d){
-      if(d.hasOwnProperty(key) && !isNaN(parseInt(d[key], 10))) {
-        d[key] = cleanNumber(d[key], key);
-      }
-    }
-
-    cleanedData.push(d);
-  }
-
-  return cleanedData;
-
-  function cleanNumber(strNum, name) {
-    var num = parseFloat(strNum);
-
-    if (name.indexOf('_perc') !== -1) { //percentage
-      num = num * 100;
-      num = Math.round(num);
-      return num + '%';
-    } else if (name.indexOf('alloc') !== -1) {  //some kind of allocation amount
-      return '$' + num.addCommas();
-    }
-
-    num = Math.round(num);
-    return num.addCommas(0);
-  }
-}
-
 function getDisplayValue(strNum, name) {
   var num = parseFloat(strNum);
+  var number_formatter = d3.format(",");
 
   if (isNaN(num)) { return strNum; }
 
   name = name.toLowerCase();
 
   if (name.indexOf('perc') !== -1) { //percentage
-    num = num * 100;
-    num = Math.round(num);
-    return num + '%';
+    return parseInt(num * 100, 10) + "%";
   } else if ((name.indexOf('alloc') !== -1) || (name.indexOf('amount') !== -1)) {  //some kind of allocation or amount
-    return '$' + num.addCommas();
+
+    return '$' + number_formatter(parseInt(num, 10));
   } else if (name.indexOf('ratio') !== -1) { //a ratio
     return num.toPrecision(2);
   }
 
   num = Math.round(num);
-  return num.addCommas(0);
+  return number_formatter(parseInt(num, 10));
 }
 
 function setVisMetric(metric, val, clear) {
@@ -355,17 +368,4 @@ function setVisMetric(metric, val, clear) {
   $metricDesc.text(getDisplayValue(val, metricText));
 };
 
-Number.prototype.addCommas = function(decimalPlaces) {
-  var n = this,
-      c = isNaN(decimalPlaces) ? 2 : Math.abs(decimalPlaces),
-      d = '.',
-      t = ',',
-      sign = (n < 0) ? '-' : '',
-      i = parseInt(n = Math.abs(n).toFixed(c), 10) + '',
-      initialDigits = ((initialDigits = i.length) > 3) ? initialDigits % 3 : 0;
-
-  return sign + (initialDigits? i.substr(0, initialDigits) + t : '')
-      + i.substr(initialDigits).replace(/(\d{3})(?=\d)/g, '$1' + t)
-      + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : '');
-};
 

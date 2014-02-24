@@ -121,7 +121,7 @@ circle.school:hover {
   right:20px;
 }
 
-#schools {
+#schools_panel {
   position:absolute;
   width:300px;
   top:20px;
@@ -172,3 +172,8 @@ div#legend {
 .stepThree { background: #bbef8e;}
 .stepFour { background: #9ad363;}
 .stepFive { background: #6eb43f;}
+
+
+h4.school-name {
+  cursor: pointer;
+}
