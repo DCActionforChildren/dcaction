@@ -185,3 +185,15 @@ div#legend {
 h4.school-name {
   cursor: pointer;
 }
+
+/* Chart */
+.label {
+  font: 11px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
