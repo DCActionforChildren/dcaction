@@ -14,13 +14,14 @@ var defaultColor = "#aaa",
     threeColors = ["#e5ffc7", "#bbef8e", "#6eb43f"];
 
 var chartSvg, labels, anchors, links, label_array = [], anchor_array = [];
-var chartMargin = {top: 40, right: 80, bottom: 10, left: 80};
+var chartMargin = {top: 30, right: 80, bottom: 10, left: 80};
 var chartWidth = 268, chartHeight = 150;
 var w = chartWidth - chartMargin.left - chartMargin.right;
 var h = chartHeight - chartMargin.top - chartMargin.bottom;
 var scale = d3.scale.linear().domain([0, 1]).range([h, 0]);
 var ord_scale = d3.scale.ordinal().domain(["Under 18", "Over 18"]).range([0, w]);
 var color = d3.scale.category20();
+var dotRadius = 4;
 
 $(document).ready(function() {
   init();
@@ -314,19 +315,20 @@ function drawChart(){
     .enter().append("g")
       .attr("class","ethnicity");
 
-  ethnicity.append("line").attr("x1",0).attr("x2",w)
-      .attr("y1",function(d){ return scale(d.under18); })
-      .attr("y2",function(d){ return scale(d.over18); })
-      .style("stroke",function(d){ return color(d.name); })
-      .style("stroke-width",2); 
+  ethnicity.append("line")
+		.attr("x1", function(d) { return ord_scale('under18'); })
+		.attr("x2", function(d) { return ord_scale('over18'); })
+    .attr("y1", function(d) { return scale(d.under18); })
+    .attr("y2", function(d) { return scale(d.over18); })
+    .style("stroke",function(d){ return color(d.name); })
+    .style("stroke-width",2); 
 
-  // Draw labels
   drawLabels(ethdata);
 
   var sim_ann = d3.labeler()
     .label(label_array)
     .anchor(anchor_array)
-    .width(10)
+    .width(w)
     .height(h)
     sim_ann.start(1000);
 
@@ -344,9 +346,9 @@ function updateChart(data){
   chartSvg.selectAll(".ethnicity line")
     .data(ethdata)
     .transition()
-    .duration(1000)
-    .attr("y1",function(d){ return scale(d.under18); })
-    .attr("y2",function(d){ return scale(d.over18); });
+    .duration(500)
+    .attr("y1", function(d) { return scale(d.under18); })
+    .attr("y2", function(d) { return scale(d.over18); });
 
   drawLabels(ethdata);
 
@@ -438,15 +440,13 @@ function drawLabels(data){
 function redrawLabels() {
   labels
   .transition()
-  .delay(1000)
-  .duration(800)
+  .duration(500)
   //.attr("x", function(d) { return (d.x); })
   .attr("y", function(d) { return (d.y); });
 
   links
   .transition()
-  .delay(1000)
-  .duration(800)
+  .duration(500)
   //.attr("x2",function(d) { return (d.x); })
   .attr("y2",function(d) { return (d.y); });
 }
@@ -538,6 +538,7 @@ function hoverNeighborhood(d) {
 
     if (activeData !== 'no_neighborhood_data') {
       setVisMetric(activeData, all_data[activeId][activeData]);
+      updateChart(all_data[activeId]);
     } else {
       setVisMetric(null, null, true);
     }
