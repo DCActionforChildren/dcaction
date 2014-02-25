@@ -197,3 +197,13 @@ h4.school-name {
   stroke: black;
   shape-rendering: crispEdges;
 }
+.axis text {
+  font-family: font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;;
+  font-size: 14px;
+  font-weight: normal;
+  fill: black;
+}
+.link { 
+    stroke:gray;
+    stroke-width:0.5
+}
