@@ -4,6 +4,19 @@ body, h1, h2, h3, h4, h5 {
 h1, h2, h3, h4, h5 {
   font-weight: bold;
 }
+
+.nav > li.disabled.nav-header > a {
+    cursor: default;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 5px 10px !important;
+    color: #000;
+}
+
+.align-right { text-align: right; }
+.align-left { text-align: left; }
+
 .posrel { position: relative; }
 .posabs { position: absolute; }
 .posfixed { position: fixed; }
@@ -17,13 +30,13 @@ h1, h2, h3, h4, h5 {
 }
 #nav-panel {
   background-color: #f8f8f8;
-  width: 200px;
+  width: 300px;
   top: 0px;
   bottom: 0px;
   left: 0px;
 }
 #nav-panel h4 {
-  padding-left: 15px;
+  padding-left: 10px;
   padding-right: 15px;
 }
 .nav-pills > li > a {
@@ -46,6 +59,7 @@ h1, h2, h3, h4, h5 {
   -webkit-box-shadow: 0px 0px 15px #CCC;
   -moz-box-shadow: 0px 0px 15px #CCC;
   box-shadow: 0px 0px 15px #CCC;
+  overflow-x:hidden;
 }
 .menu-toggle {
   cursor: pointer;
@@ -56,6 +70,7 @@ h1, h2, h3, h4, h5 {
   z-index: 5;
 }
 
+/* map */
 svg {
   fill: #FFF;
 }
@@ -74,9 +89,121 @@ path.nbhd.active {
 circle.school {
   cursor: pointer;
   fill-opacity: 0.5;
-  fill: #000099;
+  /*fill: #000099;*/
+}
+
+circle.charter {
+  fill: #900;
+}
+
+circle.public {
+  fill: #009;
 }
 
 circle.school:hover {
   fill-opacity: 1;
+}
+
+/* UI */
+
+#nav-panel {
+  height: 800px;
+  overflow: scroll;
+}
+
+#nav-panel .nav > li > a {
+  padding: 5px 10px;
+}
+
+#details {
+  position:absolute;
+  width:300px;
+  top:20px;
+  right:20px;
+}
+
+#details {
+  position:absolute;
+  width:300px;
+  top:20px;
+  right:20px;
+}
+
+#schools_panel {
+  position:absolute;
+  width:300px;
+  top:20px;
+  right:330px;
+}
+
+p.lead {
+  text-align: center;
+}
+
+/*span#visualized-metric,
+span#visualized-measure {
+  display:none;
+}*/
+
+span#visualized-metric {
+  font-weight:bold;
+}
+
+#source {
+  position:absolute;
+  width:120px;
+  bottom:20px;
+  left:0;
+  padding: 10px 10px 10px 20px;
+  background-color: #ccc;
+  z-index: 5;
+}
+
+div#legend {
+  position:absolute;
+  bottom:10px;
+  right:20px;
+  width: 200px;
+}
+
+.legendStep {
+  width:100%;
+  height: 25px;
+  margin-bottom: 5px;
+  padding: 3px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.stepOne { background: #e5ffc7;}
+.stepTwo { background: #d9fcb9;}
+.stepThree { background: #bbef8e;}
+.stepFour { background: #9ad363;}
+.stepFive { background: #6eb43f;}
+
+
+h4.school-name {
+  cursor: pointer;
+}
+
+/* Chart */
+.label {
+  font: 11px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+.axis text {
+  font-family: font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;;
+  font-size: 14px;
+  font-weight: normal;
+  fill: black;
+}
+.link { 
+    stroke:gray;
+    stroke-width:0.5
 }

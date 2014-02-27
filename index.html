@@ -10,20 +10,54 @@
 
 <body>
 <div class="navbar navbar-default">
-    <a class="navbar-brand" href="#"><img src="assets/kidscount.png" alt="DC Action for Children Kids Count initiative"></a>
+    <a class="navbar-brand" href="#"><img src="assets/kidscount.jpg" alt="DC Action for Children Kids Count initiative"></a>
     <h1>Where resources and well-being vary in D.C.</h1>
     <p class="intro">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 </div>
 <div class="posrel">
   <div id="nav-panel" class="posabs">
-    <h4>Basic neighborhood resources</h4>
     <ul class="nav nav-pills nav-stacked neighborhood-menu">
-      <li class="selected"><a id="no_neighborhood_data" href="#">Clear selection</a></li>
-      <li><a id="poverty" href="#">High poverty</a></li>
-      <li><a id="diploma" href="#">No HS degree (25+)</a></li>
-      <li><a id="population_total" href="#">Population total</a></li>
+      <li><a id="no_neighborhood_data" href="#"><button type="button" class="btn btn-danger btn-sm" style="width:100%"><span class="glyphicon glyphicon-trash"></span> Clear selection</button></a></li>
     </ul>
-    <h4>School resources</h4>
+    <h4>School data layers</h4>
+    <ul class="nav nav-pills nav-stacked school-type-menu">
+      <li><a id="public" href="#">D.C. Public Schools</a></li>
+      <li><a id="charter" href="#">Public Charter Schools</a></li>
+    </ul>
+    <h4>Neighborhood data</h4>
+    <ul class="nav nav-pills nav-stacked neighborhood-menu">
+      <li class="nav-header disabled"><a>Demographics</a></li>
+      <li><a id="population_total" href="#">Total population</a></li>
+      <li><a id="population_under_18" href="#">Children under 18</a></li>
+      <li><a id="population_under_5" href="#">Children under 5</a></li>
+      <li class="nav-header disabled"><a>Child health and wellbeing</a></li>
+      <li><a id="children_poverty" href="#">Percent of children in poverty</a></li>
+      <li><a id="medicaid_enroll" href="#">Number of Medicaid recipients</a></li>
+      <li><a id="er_ast_10" href="#">Number of ER asthma visits</a></li>
+      <li><a id="pre_med_visit" href="#">Number of preventative medical visits</a></li>
+      <li><a id="fs_client_2012" href="#">Number of food stamp clients</a></li>
+      <li><a id="dental_visit" href="#">Number of dental visits</a></li>
+      <li class="nav-header disabled"><a>Distressed neighborhoods</a></li>
+      <li><a id="poverty" href="#">High poverty</a></li>
+      <li><a id="vacants" href="#">Number of properties vacant or blighted</a></li>
+      <li><a id="violent_crimes" href="#">Number of violent crimes per capita</a></li>
+      <li class="nav-header disabled"><a>Neighborhood assets</a></li>
+      <li><a id="libraries" href="#">Number of public libraries</a></li>
+      <li><a id="grocery" href="#">Number of grocery stores</a></li>
+      <li><a id="rec" href="#">Number of parks/recreation centers</a></li>
+      <li><a id="metro" href="#">Number of WMATA stations</a></li>
+      <li><a id="bus_stops" href="#">Number of WMATA bus stops</a></li>
+      <li class="nav-header disabled"><a>Child success</a></li>
+      <li><a id="math" href="#">Percent of students proficient at math</a></li>
+      <li><a id="reading" href="#">Percent of students proficient at reading</a></li>
+      <li><a id="grad" href="#">Average graduation rate</a></li>
+      <li class="nav-header disabled"><a>Child care centers</a></li>
+      <li><a id="cc_tod_cap" href="#">Infant/toddler capacity in child care centers</a></li>
+      <li><a id="cc_ratio" href="#">Ratio of child care capacity to child population</a></li>
+      <li><a id="cc_ratio_demand" href="#">Ratio of child care capacity to child in poverty</a></li>
+      <li><a id="cc_sub_13" href="#">Amount of child care center subsidies</a></li>
+    </ul>
+    <!-- <h4>School resources</h4>
     <ul class="nav nav-pills nav-stacked school-menu">
       <li class="selected"><a id="no_school_data" href="#">Clear selection</a></li>
       <li><a id="alloc" href="#">Budget allocation</a></li>
@@ -32,69 +66,91 @@
     <h4>Childcare availability</h4>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#">Nothing yet</a></li>
-    </ul>
+    </ul> -->
   </div><!--/#nav-panel -->
-  <div id="main-container" class="posabs">
+  <div id="main-container" class="posabs" style="position:relative;">
     <div class="menu-toggle posabs">
       See Menu
     </div>
-      <div class="col-lg-8">
+      <div class="col-lg-12">
         <div id="content"></div> <!-- d3 viz written in here -->
-      </div>
-      <div class="col-lg-4" id="details">
-        <h3 id="#sidebar-header">#sidebar-header</h3>
-        <h2 id="#selection-title">#selection-title</h2>
-        <p class="lead" style="text-align:center;">
-          <span id="#visualized-metric" style="font-weight:bold;">#viz-metric</span><br />
-          <span id="#visualized-metric">#viz-desc</span>
-        </p>
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">#attributes</h3>
+        <div id="details" class="panel panel-default">
+          <div class="panel-body">
+            <p class="lead">
+              <span id="visualized-metric">Total population</span><br />
+              <span id="visualized-measure">632,323</span>
+            </p>
+            <h4 class="neighborhood">Washington D.C.</h4>
+            <table id="pop-info" class="table table-hover">
+              <tr data-type="population_total">
+                <td>Population (total)</td>
+                <td class="count align-right">632,323</td>
+              </tr>
+              <tr data-type="population_under_18">
+                <td>Population (under 18)</td>
+                <td class="count align-right">103,023</td>
+              </tr>
+              <tr data-type="single_mother_families">
+                <td>Single mother familes</td>
+                <td class="count align-right">41,107</td>
+              </tr>
+              <tr data-type="children_in_poverty">
+                <td>Children in poverty</td>
+                <td class="count align-right">101,491</td>
+              </tr>
+            </table>
+            <h4>Demographic Breakdown</h4>
+            <div class="chart"></div>
           </div>
-          <table class="table table-hover">
-            <tr>
-            <td>#desc</td>
-            <td>#metric</td>
-            </tr>
-            <tr>
-            <td>#desc</td>
-            <td>#metric</td>
-            </tr>
-            <tr>
-            <td>#desc</td>
-            <td>#metric</td>
-            </tr>
-            <tr>
-            <td>#desc</td>
-            <td>#metric</td>
-            </tr>
-          </table>
-        </div>
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 id="chart-header" class="panel-title">#chart-header</h3>
+        </div> <!-- selected detail cards here -->
+        <div id="schools_panel" class="panel panel-default hide">
+          <div class="panel-body">
+              <div class="hide" id="school_data">
+                  <h4 class="school-name"></h4>
+                  <table class="table table-hover">
+                      <tbody>
+                      <tr>
+                          <td>Enrollment</td>
+                          <td class="school-enrollment">getDisplayValue(school.enrollment, 'enrollment')</td>
+                      </tr>
+                      <tr>
+                          <td>Allocation</td>
+                          <td class="school-allocation">getDisplayValue(school.alloc, 'alloc')</td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
           </div>
-          <img src="http://placehold.it/360x200">
         </div>
-        <div class="well well-sm">
-          <h3 id="#sources" class="panel-title">#sources</h3>
+        <div class="panel panel-default" id="legend">
+          <div class="panel-body">
+            <div class="legendStep stepOne"><span id="#quin1">#quin1</span> and lower</div>
+            <div class="legendStep stepTwo"><span id="#quin1">#quin1</span> - <span id="#quin2">#quin2</span></div>
+            <div class="legendStep stepThree"><span id="#quin2">#quin2</span> - <span id="#quin3">#quin3</span></div>
+            <div class="legendStep stepFour"><span id="#quin3">#quin3</span> - <span id="#quin4">#quin4</span></div>
+            <div class="legendStep stepFive"><span id="#quin4">#quin4</span> and higher</div>
+          </div>
+        </div>
+        <div id="source">
+          <h3 id="sources" class="panel-title">Sources</h3>
           <dl>
             <dt id="source-title">#source-title</dt>
             <dd id="source-link">#source-link</dd>
           </dl>
         </div>
-      </div> <!-- selected detail cards here -->
+      </div>
   </div><!-- /#main-container -->
 </div>
   <!-- Libraries needed -->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8" type="text/javascript"></script>
-  <script src="http://d3js.org/d3.geo.projection.v0.min.js" type="text/javascript"></script>
-  <script src="http://d3js.org/topojson.v1.min.js" type="text/javascript"></script>
-  <script src="http://d3js.org/queue.v1.min.js"></script>
+  <script src="js/jquery.min.js" type="text/javascript"></script>
+  <script src="js/d3.v3.min.js" charset="utf-8" type="text/javascript"></script>
+  <script src="js/d3.geo.projection.v0.min.js" type="text/javascript"></script>
+  <script src="js/topojson.v1.min.js" type="text/javascript"></script>
+  <script src="js/queue.v1.min.js"></script>
   <script src="js/bootstrap.min.js" type="text/javascript"></script>
   <script src="js/underscore-min.js" type="text/javascript"></script>
+  <script src="js/simple_statistics.js" type="text/javascript"></script>
+  <script src="js/labeler.js" type="text/javascript"></script>
   <!-- Project scripts -->
   <script src="js/circle_packer_movers.js" type="text/javascript"></script>
   <script src="js/visualization.js" type="text/javascript"></script>
