@@ -26,6 +26,9 @@ https://www.mapbox.com/tilemill/docs/manual/carto/
 Useful links for tapping into your data community
 
 http://meetup.com
+
 http://opendataday.org/
+
 http://hackforchange.org/
+
 http://datakind.org
