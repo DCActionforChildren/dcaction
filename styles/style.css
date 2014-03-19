@@ -14,3 +14,36 @@ path {
   stroke-width: 1.5px;
 }
 
+.stations, .stations svg.marker {
+  position: absolute;
+}
+
+.stations svg.marker {
+  width: 60px;
+  height: 20px;
+  padding-right: 100px;
+  font: 10px sans-serif;
+}
+
+.stations circle {
+  fill: brown;
+  stroke: black;
+  stroke-width: 1.5px;
+}
+
+
+#theSVGLayer
+{
+position: absolute;
+top: -4000px;
+left: -4000px;
+width: 8000px;
+height: 8000px;
+}
+
+
+#theDiv
+{
+top: 0px;
+left: 0px;
+}
