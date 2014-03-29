@@ -203,7 +203,7 @@ path = d3.geo.path().projection(gmapProjection);
 neighborhoods.selectAll("path")
 .data(dc.features)
 .attr("d", path) // update existing paths
-.style('fill',function(d) { 
+.style('fill',function(d) {
 if(currentMetric==null){return "#aaaaaa";}
 var totalPop = all_data[d.properties.gis_id].population_total;
 return totalPop > min_population ? choro_color(all_data[d.properties.gis_id][currentMetric]) : defaultColor;
