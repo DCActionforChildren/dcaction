@@ -64,7 +64,7 @@ fields_sum = {
      "B17001_005E",
      "B17001_006E",
      "B17001_007E",
-     "B17001_008E",  # TODO: double-check the spreadsheet value
+     "B17001_008E",
      "B17001_009E",
      "B17001_018E",
      "B17001_019E",
@@ -110,11 +110,33 @@ fields_sum = {
     'B01001I_020E',
     'B01001I_021E'
   ],
-  'no_hs_degree_25_plus' => [ # TODO double check the spreadsheet formula
+  'no_hs_degree_25_plus_numer' => [
+    'B15001_012E',
+    'B15001_013E',
+    'B15001_020E',
+    'B15001_021E',
+    'B15001_028E',
+    'B15001_029E',
+    'B15001_036E',
+    'B15001_037E',
+    'B15001_053E',
+    'B15001_054E',
+    'B15001_061E',
+    'B15001_062E',
+    'B15001_069E',
+    'B15001_070E',
+    'B15001_077E',
+    'B15001_078E'
+  ],
+  'no_hs_degree_18_24_numer' => [
     'B15001_004E',
     'B15001_005E',
     'B15001_045E',
     'B15001_046E'
+  ],
+  'no_hs_degree_18_24_denom' => [
+    'B15001_003E',
+    'B15001_044E'
   ],
   'youth_ready_to_work_numer'  => [
     'B23001_007E',
@@ -234,12 +256,10 @@ fields_sub = {
     'B01001H_020E',
     'B01001H_021E'
   ],
-  'no_hs_degree_18_24' => [ # TODO: check spreadsheet formula
+  'no_hs_degree_25_plus_denom' => [
     'B15001_001E',
-    'B15001_004E',
-    'B15001_005E',
-    'B15001_045E',
-    'B15001_046E'
+    'B15001_003E',
+    'B15001_044E'
   ]
 }
 
