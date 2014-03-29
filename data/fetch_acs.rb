@@ -5,7 +5,7 @@ require 'json'
 require 'open-uri'
 
 API_KEY = '4578df5c991e1f7d74624f849bb5a1167d652b23'
-BASE_URL = "http://api.census.gov/data/2011/acs5?key=#{API_KEY}"
+BASE_URL = "http://api.census.gov/data/2012/acs5?key=#{API_KEY}"
 GEO = 'for=tract:*&in=state:11'
 TRACT_FILE = 'acs_tract_data.json'
 
@@ -14,25 +14,64 @@ TRACT_FILE = 'acs_tract_data.json'
 fields_rename = {
   'population_total' => 'B01003_001E',
   'population_under_18' => 'B09001_001E',
-  'median_family_income' => 'B19013_001E',
+  'median_family_income_numer' => 'B09002_015E',
+  'median_family_income_denom' => 'B09002_001E',
   'single_mother_families' => 'B09002_015E',
-  'children_in_poverty' => 'B17006_001E',
   'population_white_total' => 'B03002_003E',
   'population_black_total' => 'B03002_004E',
   'population_hisp_total' => 'B03002_012E',
-  'poverty_numer' => 'B17001_002E',
-  'poverty_denom' => 'B17001_001E',
-  'poverty2_numer' => 'B17006_002E',
-  'poverty2_denom' => 'B17006_001E'
+  'total_neighborhood_poverty_numer' => 'B17001_002E',
+  'total_neighborhood_poverty_denom' => 'B17001_001E',
+  'homeownership_denom' => 'B11012_001E',
+  'work_denom' => 'B08303_001E'
 }
 
 # the following fields are sums of ACS fields
 
 fields_sum = {
   'population_under_5' => [
-    "B09001_005E",
     "B09001_004E",
     "B09001_003E"
+  ],
+  'children_in_poverty_numer' => [
+    "B17001_004E",
+    "B17001_005E",
+    "B17001_006E",
+    "B17001_007E",
+    "B17001_008E",
+    "B17001_009E",
+    "B17001_018E",
+    "B17001_019E",
+    "B17001_020E",
+    "B17001_021E",
+    "B17001_022E",
+    "B17001_023E"
+  ],
+  'children_in_poverty_denom' => [
+     "B17001_033E",
+     "B17001_034E",
+     "B17001_035E",
+     "B17001_036E",
+     "B17001_037E",
+     "B17001_038E",
+     "B17001_047E",
+     "B17001_048E",
+     "B17001_049E",
+     "B17001_050E",
+     "B17001_051E",
+     "B17001_052E", 
+     "B17001_004E",
+     "B17001_005E",
+     "B17001_006E",
+     "B17001_007E",
+     "B17001_008E",  # TODO: double-check the spreadsheet value
+     "B17001_009E",
+     "B17001_018E",
+     "B17001_019E",
+     "B17001_020E",
+     "B17001_021E",
+     "B17001_022E",
+     "B17001_023E"
   ],
   'population_other_total' => [
     'B03002_005E',
@@ -40,8 +79,6 @@ fields_sum = {
     'B03002_007E',
     'B03002_008E',
     'B03002_009E',
-    'B03002_010E',
-    'B03002_011E'
   ],
   'white_under_18' => [
     'B01001H_003E',
@@ -53,6 +90,16 @@ fields_sum = {
     'B01001H_020E',
     'B01001H_021E'
   ],
+  'black_under_18' => [
+    'B01001B_003E',
+    'B01001B_004E',
+    'B01001B_005E',
+    'B01001B_006E',
+    'B01001B_018E',
+    'B01001B_019E',
+    'B01001B_020E',
+    'B01001B_021E'
+  ],
   'hispanic_under_18' => [
     'B01001I_003E',
     'B01001I_004E',
@@ -63,7 +110,7 @@ fields_sum = {
     'B01001I_020E',
     'B01001I_021E'
   ],
-  'no_hs_degree_25_plus' => [
+  'no_hs_degree_25_plus' => [ # TODO double check the spreadsheet formula
     'B15001_004E',
     'B15001_005E',
     'B15001_045E',
@@ -84,6 +131,16 @@ fields_sum = {
     'B23001_092E',
     'B23001_099E',
     'B23001_106E'
+  ],
+  'homeownership_numer' => [
+    'B11012_004E',
+    'B11012_008E',
+    'B11012_011E',
+    'B11012_014E'
+  ],
+  'work_numer' => [
+    'B08303_012E', 
+    'B08303_013E'
   ]
 }
 
@@ -101,6 +158,17 @@ fields_sub = {
     'B01001H_020E',
     'B01001H_021E'
   ],
+  'black_18' => [
+    'B01001B_001E',
+    'B01001B_003E',
+    'B01001B_004E',
+    'B01001B_005E',
+    'B01001B_006E',
+    'B01001B_018E',
+    'B01001B_019E',
+    'B01001B_020E',
+    'B01001B_021E'
+  ],
   'hispanic_18' => [
     'B01001I_001E',
     'B01001I_003E',
@@ -112,7 +180,61 @@ fields_sub = {
     'B01001I_020E',
     'B01001I_021E'
   ],
-  'no_hs_degree_18_24' => [
+  'other_18' => [
+    'B09001_001E',
+    'B01001B_003E',
+    'B01001B_004E',
+    'B01001B_005E',
+    'B01001B_006E',
+    'B01001B_018E',
+    'B01001B_019E',
+    'B01001B_020E',
+    'B01001B_021E',
+    'B01001H_003E',
+    'B01001H_004E',
+    'B01001H_005E',
+    'B01001H_006E',
+    'B01001H_018E',
+    'B01001H_019E',
+    'B01001H_020E',
+    'B01001H_021E',
+    'B01001I_003E',
+    'B01001I_004E',
+    'B01001I_005E',
+    'B01001I_006E',
+    'B01001I_018E',
+    'B01001I_019E',
+    'B01001I_020E',
+    'B01001I_021E'
+  ],
+  'other_under_18' => [
+    'B09001_001E',
+    'B01001I_003E',
+    'B01001I_004E',
+    'B01001I_005E',
+    'B01001I_006E',
+    'B01001I_018E',
+    'B01001I_019E',
+    'B01001I_020E',
+    'B01001I_021E',
+    'B01001B_003E',
+    'B01001B_004E',
+    'B01001B_005E',
+    'B01001B_006E',
+    'B01001B_018E',
+    'B01001B_019E',
+    'B01001B_020E',
+    'B01001B_021E',
+    'B01001H_003E',
+    'B01001H_004E',
+    'B01001H_005E',
+    'B01001H_006E',
+    'B01001H_018E',
+    'B01001H_019E',
+    'B01001H_020E',
+    'B01001H_021E'
+  ],
+  'no_hs_degree_18_24' => [ # TODO: check spreadsheet formula
     'B15001_001E',
     'B15001_004E',
     'B15001_005E',
