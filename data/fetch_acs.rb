@@ -267,8 +267,6 @@ fields_sub = {
 #     { tract1 => {var1 => val11, var2 => val12, ... },
 #       tract2 => {var1 => val12, var2 => val22, ... }, ... }
 #
-# TODO: should all variables be cast to ints?
-#
 def census_query(vars)
   tracts = {}
   vars.each_slice(50) do |v|
@@ -301,22 +299,10 @@ def census_query(vars)
   tracts
 end
 
-# We can only pull 50 fields at a time from the Census API so I'm going to get
-# the fields in fields_rename and fields_sum first.
-# TODO it would make more sense to download the fields in increments of 50,
-# accumulate them into a single array of arrays, and then create our variables
-# in a single loop
-
-# build the get-string for renamed and subtracted fields
-
+# download all ACS variables and all corresponding margin-of-error variables.
+# margin-of-error variables are obtained by replace E by M in the ACS variable name 
 all_acs_fields = (fields_rename.values + fields_sum.values + fields_sub.values).flatten.uniq
-
-#Change all the Es to Ms to get the margins of error.
-
 all_acs_fields += all_acs_fields.map {|name| name.sub('E', 'M')}
-
-# get the response, the first element in the response is the column names
-
 tracts = census_query all_acs_fields
 
 # compute dcaction variables from census variables
