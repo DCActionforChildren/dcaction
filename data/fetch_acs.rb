@@ -1,6 +1,7 @@
 # encoding: UTF-8
 # TODO: remove assumption that all ACS data is integral?
 
+require 'rubygems'
 require 'json'
 require 'open-uri'
 

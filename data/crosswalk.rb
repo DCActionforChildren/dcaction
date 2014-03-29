@@ -5,6 +5,7 @@
 # TODO: currently this script performs weighted sums of tract-level variables.
 # It doesn't do any other kind of aggregateion (e.g., weighted average)
 
+require 'rubygems'
 require 'csv'
 require 'json'
 require 'rubyXL'
