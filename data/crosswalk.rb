@@ -2,9 +2,6 @@
 #   rubyXL, nokogiri
 #
 
-# TODO: currently this script performs weighted sums of tract-level variables.
-# It doesn't do any other kind of aggregateion (e.g., weighted average)
-
 require 'csv'
 require 'json'
 require 'rubyXL'
@@ -58,7 +55,7 @@ end
 # in _numer, it will be divided by the corresponding variable ending in _denom
 # to create a ratio. Field names in the list averaged_fields will be averaged.
 #
-# MARGIN OF ERROR SHOULD BE IGNORED FOR AVERAGED FIELDS
+# MARGIN OF ERROR SHOULD BE IGNORED FOR AVERAGES AND RATIOS
 
 averaged_fields = ['median_family_income']
 
