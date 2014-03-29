@@ -243,6 +243,44 @@ fields_sub = {
   ]
 }
 
+# This function performs the Census API query. It returns a hash of hashes of the form
+#     { tract1 => {var1 => val11, var2 => val12, ... },
+#       tract2 => {var1 => val12, var2 => val22, ... }, ... }
+#
+# TODO: should all variables be cast to ints?
+#
+def census_query(vars)
+  tracts = {}
+  vars.each_slice(50) do |v|
+    url = [BASE_URL, 'get=' + v.join(','), GEO].join('&')
+    puts "Fetching #{v.length} fields from ACS..."
+    puts "URL: #{url}"
+    resp = JSON.parse open(url).read
+    colnames, *data = *resp
+
+    data.each do |row|
+      r = Hash[colnames.zip row]
+
+      # convert all values to ints except the geo identifiers
+      r.keys.each do |k|
+        unless ['state', 'county', 'tract'].include? k
+          r[k] = r[k].to_i
+        end
+      end
+
+      # tract ids in the neighborhood file include the state and county number
+      tract_id = '11001' + r['tract']
+      if tracts.has_key? tract_id
+        tracts[tract_id].merge! r
+      else
+        tracts[tract_id] = r
+      end
+    end
+  end
+
+  tracts
+end
+
 # We can only pull 50 fields at a time from the Census API so I'm going to get
 # the fields in fields_rename and fields_sum first.
 # TODO it would make more sense to download the fields in increments of 50,
@@ -251,105 +289,59 @@ fields_sub = {
 
 # build the get-string for renamed and subtracted fields
 
-all_acs_fields = (fields_rename.values + fields_sub.values).flatten.uniq
+all_acs_fields = (fields_rename.values + fields_sum.values + fields_sub.values).flatten.uniq
 
 #Change all the Es to Ms to get the margins of error.
 
-all_acs_errors = all_acs_fields.map do |ff|
-  ff.sub("E", "M")
-end
-
-url = [BASE_URL, "get=" + all_acs_fields.join(','), GEO].join('&')
-url_e = [BASE_URL, "get=" + all_acs_errors.join(','), GEO].join('&')
+all_acs_fields += all_acs_fields.map {|name| name.sub('E', 'M')}
 
 # get the response, the first element in the response is the column names
 
-puts "Fetching #{all_acs_fields.length} fields from ACS..."
-puts "URL: #{url}"
-resp = JSON.parse open(url).read
-colnames, *data = *resp
+tracts = census_query all_acs_fields
 
-puts "Fetching #{all_acs_errors.length} margins of error from ACS..."
-puts "URL: #{url_e}"
-resp_e = JSON.parse open(url_e).read
-colnames_e, *data_e = *resp_e
+# compute dcaction variables from census variables
 
-# build a hash of values keyed by tract name
-
-tracts = {}
-
-data.zip(data_e).each do |row|
-  acsrow = Hash[colnames.zip row[0]]
-  acsrow_e = Hash[colnames.zip row[1]]
-  outrow = {}
+tracts.each do |tract_id, tract|
 
   fields_rename.each do |outname, acsname|
-    outrow[outname] = acsrow[acsname].to_i
-    outrow[outname+"_margin"] = acsrow_e[acsname].to_i
+    errname = acsname.sub('E', 'M')
+    tract[outname] = tract[acsname]
+    tract[outname + "_margin"] = tract[errname]
   end
 
   fields_sub.each do |outname, acsfields|
     first, *rest = *acsfields
-    outrow[outname] = acsrow[first].to_i
-    outrow[outname+"_margin"] = (acsrow_e[first].to_i/1.645)**2
+    errname = first.sub('E', 'M')
+    tract[outname] = tract[first]
+    tract[outname + "_margin"] = (tract[errname] / 1.645) ** 2
 
     rest.each do |acsname|
-      outrow[outname] -= acsrow[acsname].to_i
-      outrow[outname+"_margin"] += (acsrow_e[acsname].to_i/1.645)**2 #Yes, +=. Using other data elmts may give us a smaller MoE by the sum-of-squares methods.
+      errname = first.sub('E', 'M')
+      tract[outname] -= tract[acsname]
+
+      #Yes, +=. Using other data elmts may give us a smaller MoE by the sum-of-squares methods.
+      tract[outname + "_margin"] += (tract[errname] / 1.645) ** 2 
     end
-    outrow[outname+"_margin"] = Math.sqrt(outrow[outname+"_margin"])*1.645
+
+    tract[outname + "_margin"] = Math.sqrt(tract[outname + "_margin"]) * 1.645
   end
-
-  # tract ids in the neighborhood file include the state and county number
-  tracts['11001' + acsrow['tract']] = outrow
-end
-
-# build the get-string for summed fields
-
-all_acs_fields = fields_sum.values.flatten.uniq
-
-#Change all the Es to Ms to get the margins of error.
-
-all_acs_errors = all_acs_fields.map do |ff|
-  ff.sub("E", "M")
-end
-
-url = [BASE_URL, "get=" + all_acs_fields.join(','), GEO].join('&')
-url_e = [BASE_URL, "get=" + all_acs_errors.join(','), GEO].join('&')
-
-# get the response, the first element in the response is the column names
-
-puts "Fetching #{all_acs_fields.length} fields from ACS..."
-puts "URL: #{url}"
-resp = JSON.parse open(url).read
-colnames, *data = *resp
-
-puts "Fetching #{all_acs_errors.length} margins of error from ACS..."
-puts "URL: #{url_e}"
-resp_e = JSON.parse open(url_e).read
-colnames_e, *data_e = *resp_e
-
-data.zip(data_e).each do |row|
-  acsrow = Hash[colnames.zip row[0]]
-  acsrow_e = Hash[colnames.zip row[1]]
-  outrow = {}
-
+  
   # We found some Census documentation suggesting that we use the sqrt(sum of squares) for
   # the margin of error for aggregate estimates.
   # https://www.census.gov/acs/www/Downloads/data_documentation/Statistical_Testing/ACS_2008_Statistical_Testing.pdf
   # So that's what I'm doing here.
   fields_sum.each do |outname, acsfields|
-    outrow[outname] = 0
-    outrow[outname+"_margin"] = 0
+    tract[outname] = 0
+    tract[outname + "_margin"] = 0
 
     acsfields.each do |acsname|
-      outrow[outname] += acsrow[acsname].to_i
-      outrow[outname+"_margin"] += (acsrow_e[acsname].to_i/1.645)**2
+      errname = acsname.sub('E', 'M')
+      tract[outname] += tract[acsname]
+      tract[outname + "_margin"] += (tract[errname] / 1.645) ** 2
     end
-    outrow[outname+"_margin"] = Math.sqrt(outrow[outname+"_margin"])*1.645
+    tract[outname+"_margin"] = Math.sqrt(tract[outname + "_margin"]) * 1.645
   end
 
-  tracts['11001' + acsrow['tract']].merge! outrow
 end
 
 # write the result to a json file

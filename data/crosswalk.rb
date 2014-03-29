@@ -70,7 +70,7 @@ crosswalk.each do |nbhd_id, tracts|
   tracts.each do |tract_id, portion|
     if tract_data.include? tract_id
       tract_data[tract_id].each do |var, val|
-        nbhds[nbhd_id][var] += val * portion.to_f
+        nbhds[nbhd_id][var] += val * portion.to_f if val.is_a? Numeric
       end
     else
       puts "No tract: '#{tract_id}'"
