@@ -275,7 +275,6 @@ function changeNeighborhoodData(new_data_column) {
 
   var legendNumber = function(d, jenks){
     var top = _.max(jenks);
-    console.log(jenks);
     if(top < 2){
       return parseInt(d * 100, 10) + "%";
     } else {
