@@ -98,9 +98,9 @@ function init(){
   // choropleth color change
   $('.neighborhood-menu > li').on('click', 'a', function(e){
     e.preventDefault();
-    currentMetric=($(this).attr('id')==undefined)?null:$(this).attr('id');
+    currentMetric=(typeof $(this).attr('id')==="undefined")?null:$(this).attr('id');
 
-    changeNeighborhoodData($(this).attr('id'));
+    changeNeighborhoodData(currentMetric);
     $(this).parent().addClass('selected').siblings().removeClass('selected');
   });
 
@@ -157,12 +157,12 @@ panControl: false
 gmap.setOptions({styles: gmap_style});
 google.maps.event.addListenerOnce(gmap, 'idle', function(){
 // adjust the zoom bar
-$("div[title='Zoom in']").parent().css({'margin-top':'60px'})
+$("div[title='Zoom in']").parent().css({'margin-top':'60px'});
 });
 
 var overlay = new google.maps.OverlayView();
 svg = d3.select("#content")
-.append("svg:svg")
+.append("svg:svg");
 
 // Add the container when the overlay is added to the map.
 overlay.onAdd = function() {
@@ -170,24 +170,19 @@ overlay.onAdd = function() {
 var layer = d3.select(this.getPanes().overlayLayer)
 .attr('id','overlay')
 .append('div')
-.attr('id','theDiv')
+.attr('id','theDiv');
 
 var svg = layer.append("svg")
-.attr('id','theSVGLayer')
+.attr('id','theSVGLayer');
 
 g = svg.append("g");
 var neighborhoods = g.append("g").attr("id", "neighborhoods");
 g.append("g").attr("id", "schools");
-g.append("g").attr("id", "legend");
+d3.select("#legend-container").append("svg").append("g").attr("id", "legend");
 
 overlay.draw = function() {
 
 var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[currentMetric]); }));
-var jenks = _.unique(_.compact(ss.jenks(data_values, 4)));
-var color_palette = [ "#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f", "#6eb43f"];
-var choro_color = d3.scale.threshold()
-.domain(jenks)
-.range(color_palette);
 
 var projection = this.getProjection(),
 padding = 10;
@@ -196,7 +191,7 @@ gmapProjection = function (coordinates) {
 var googleCoordinates = new google.maps.LatLng(coordinates[1], coordinates[0]);
 var pixelCoordinates = projection.fromLatLngToDivPixel(googleCoordinates);
 return [pixelCoordinates.x+4000, pixelCoordinates.y+4000];
-}
+};
 
 path = d3.geo.path().projection(gmapProjection);
 
@@ -231,11 +226,12 @@ overlay.setMap(gmap);
 
 function changeNeighborhoodData(new_data_column) {
   var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[new_data_column]); }));
-  var jenks = _.unique(_.compact(ss.jenks(data_values, 4)));
+  var jenks = _.unique(_.compact(ss.jenks(data_values, 3)));
+  jenks.push(_.max(jenks) + 0.01);
   var color_palette = [ "#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f", "#6eb43f"];
   activeData = new_data_column;
 
-  var choro_color = d3.scale.threshold()
+  choro_color = d3.scale.threshold()
     .domain(jenks)
     .range(color_palette);
 
@@ -246,8 +242,11 @@ function changeNeighborhoodData(new_data_column) {
   g.select("#neighborhoods").selectAll("path")
     .transition().duration(600)
     .style("fill", function(d) {
-      var totalPop = all_data[d.properties.gis_id].population_total;
-      return totalPop > min_population ? choro_color(all_data[d.properties.gis_id][new_data_column]) : defaultColor;
+      if(typeof all_data[d.properties.gis_id] ==="undefined" || all_data[d.properties.gis_id].population_total < min_population){
+        return defaultColor;
+      } else {
+        return choro_color(all_data[d.properties.gis_id][new_data_column]);
+      }
     })
     .style('fill-opacity',0.5);
 
@@ -259,8 +258,25 @@ function changeNeighborhoodData(new_data_column) {
     $('.selected').removeClass('selected');
   }
 
+  var previousElement = function(n, a){
+    return _.max(_.filter(a, function(d){ return d < n; } ));
+  };
+
   var legendText = function(d, jenks){
-    if(_.max(jenks) < 1){
+    if(d == _.min(jenks)) {
+      return legendNumber(d, jenks) + " and below";
+    } else if(d == _.max(jenks)){
+      var top = d - 0.01;
+      return "Above " + legendNumber(top, jenks);
+    } else {
+      return legendNumber(previousElement(d, jenks), jenks) + "  -  " + legendNumber(d, jenks);
+    }
+  };
+
+  var legendNumber = function(d, jenks){
+    var top = _.max(jenks);
+    console.log(jenks);
+    if(top < 2){
       return parseInt(d * 100, 10) + "%";
     } else {
       var number_formatter = d3.format(",");
@@ -268,25 +284,27 @@ function changeNeighborhoodData(new_data_column) {
     }
   };
 
-  var updatedLegend = g.select("#legend").selectAll(".legend")
+  var updatedLegend = d3.select("#legend").selectAll(".legend")
       .data(jenks);
 
   updatedLegend.select("text")
     .text(function(d){ return legendText(d, jenks);});
 
   enterLegend = updatedLegend.enter().append("g")
-    .attr("transform", function(d, i){ return "translate(0," + (350 + i * 35) + ")"; })
+    .attr("transform", function(d, i){ return "translate(0," + (i * 35) + ")"; })
     .attr("class", "legend");
 
   enterLegend.append("rect")
-    .attr("width", 70)
+    .attr("width", 170)
     .attr("height", 30)
     .style("fill", function(d){ return choro_color(d);});
 
   enterLegend.append("text")
     .style("fill", "black")
     .attr("dy",20)
-    .attr("dx", 5)
+    .attr("dx", 85)
+    .attr("font-size", "12px")
+    .attr("text-anchor", "middle")
     .text(function(d){ return legendText(d, jenks); });
 
   updatedLegend.exit().remove();
@@ -418,7 +436,7 @@ function drawChart(){
 
   chartSvg.append("g").attr("class","axis").call(left_axis)
     .append("text").text("Under 18").attr("text-anchor","middle").attr("x",0).attr("y",-10);
-  
+
   chartSvg.append("g").attr("class","axis").attr("transform","translate(" + w + ",0)").call(right_axis)
     .append("text").text("Over 18").attr("class","axisTitle").attr("text-anchor","middle").attr("x",0).attr("y",-10);
 
