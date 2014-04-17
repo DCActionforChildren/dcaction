@@ -475,7 +475,7 @@ function updateChart(data){
   var ethdata = [
     {name: "white", under18: data.pop_nothisp_white_under18, over18: data.pop_nothisp_white},
     {name: "black", under18: data.pop_nothisp_black_under18, over18: data.pop_nothisp_black},
-    {name: "hispanic", under18: data.pop_hisp_under18, over18: data.pop_hisp_under18},
+    {name: "hispanic", under18: data.pop_hisp_under18, over18: data.pop_hisp},
     {name: "other", under18: data.pop_nothisp_other_under18, over18: data.pop_nothisp_other}
   ];
 
