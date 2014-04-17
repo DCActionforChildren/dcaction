@@ -80,6 +80,12 @@ var gmap_style=[
       { "visibility": "on" },
       { "color": "#cfddff" }
     ]
+  },{
+     "featureType": "administrative.neighborhood",
+     "elementType": "labels.text",
+     "stylers": [ 
+      { "visibility": "off" }
+    ]
   }
 ];
 
