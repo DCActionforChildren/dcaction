@@ -61,11 +61,15 @@ h1, h2, h3, h4, h5 {
   box-shadow: 0px 0px 15px #CCC;
   overflow-x:hidden;
 }
+#content-wrapper {
+  padding-left: 0px;
+  padding-right: 0px;
+}
 .menu-toggle {
   cursor: pointer;
   left: 0px;
   top: 25px;
-  padding: 10px 10px 10px 20px;
+  padding: 10px;
   background-color: #ccc;
   z-index: 5;
 }
@@ -82,9 +86,12 @@ path.nbhd {
   stroke: #FFF;
   stroke-width: 1px;
 }
-path.nbhd:hover,
+path.nbhd:hover {
+  stroke: #444;
+}
 path.nbhd.active {
-  stroke: #000;
+  stroke: #077CA8;
+  stroke-width: 2px;
 }
 circle.school {
   cursor: pointer;

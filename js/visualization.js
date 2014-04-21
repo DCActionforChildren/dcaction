@@ -160,7 +160,10 @@ streetViewControl: false,
 panControl: false
 });
 
-gmap.setOptions({styles: gmap_style});
+gmap.setOptions({
+  mapTypeControl: false,
+  styles: gmap_style
+});
 google.maps.event.addListenerOnce(gmap, 'idle', function(){
 // adjust the zoom bar
 $("div[title='Zoom in']").parent().css({'margin-top':'60px'});
@@ -213,6 +216,7 @@ return totalPop > min_population ? choro_color(all_data[d.properties.gis_id][cur
 .attr("d", path)
 .attr('class', 'nbhd')
 .on("mouseover", hoverNeighborhood)
+.on('click', clicked)
 .style('fill', defaultColor)
 .style('fill-opacity',0.5);
 
@@ -622,6 +626,12 @@ function displayPopBox(d) {
 }
 
 function clicked(d) {
+  // click and zoom map to nbhd bounds
+  // var polyBounds = new google.maps.Polygon({
+  //   paths: formatLatLng(d.geometry.coordinates[0])
+  // }).getBounds();
+  // gmap.fitBounds(polyBounds);
+
   var x, y, k;
 
   if (d && centered !== d) {
@@ -640,11 +650,6 @@ function clicked(d) {
   g.selectAll("path")
       .classed("active", centered && function(d) { return d === centered; });
 
-  g.transition()
-      .duration(750)
-      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-      .style("stroke-width", 1.5 / k + "px");
-
   // if d is a neighborhood boundary and clicked
   if (d && all_data[d.properties.gis_id]){
     displayPopBox(d);
@@ -656,7 +661,6 @@ function clicked(d) {
 }
 
 function hoverNeighborhood(d) {
-
   //bring hovered neighborhood path to front.
   var neighborhood = d3.select(d3.event.target);
   neighborhood.each(function () {
@@ -722,3 +726,28 @@ function setVisMetric(metric, val, clear) {
   $metric.text(metricText);
   $metricDesc.text(getDisplayValue(val, metricText));
 };
+
+function formatLatLng(coords){
+  var gcoords = [];
+  $.each(coords, function(i, ll){
+    gcoords.push(new google.maps.LatLng(ll[1], ll[0]));
+  });
+  return gcoords;
+}
+// getBounds for polyline and polygon doesn't exist in v3
+// this adds method.
+if (!google.maps.Polyline.prototype.getBounds){
+  google.maps.Polyline.prototype.getBounds = function() {
+    var bounds = new google.maps.LatLngBounds();
+    this.getPath().forEach( function(latlng) { bounds.extend(latlng); } ); 
+    return bounds; 
+  }
+}
+
+if (!google.maps.Polygon.prototype.getBounds) {
+  google.maps.Polygon.prototype.getBounds=function(){
+      var bounds = new google.maps.LatLngBounds()
+      this.getPath().forEach(function(element,index){bounds.extend(element)})
+      return bounds
+  }
+}
