@@ -252,7 +252,7 @@ function changeNeighborhoodData(new_data_column) {
   g.select("#neighborhoods").selectAll("path")
     .transition().duration(600)
     .style("fill", function(d) {
-      if(typeof all_data[d.properties.gis_id] ==="undefined" || all_data[d.properties.gis_id].population_total < min_population){
+      if(typeof all_data[d.properties.gis_id] ==="undefined" || all_data[d.properties.gis_id].population_total < min_population || !all_data[d.properties.gis_id][new_data_column]){
         return defaultColor;
       } else {
         return choro_color(all_data[d.properties.gis_id][new_data_column]);
@@ -724,7 +724,8 @@ function setVisMetric(metric, val, clear) {
 
   var metricText = $('a#' + metric).text();
   $metric.text(metricText);
-  $metricDesc.text(getDisplayValue(val, metricText));
+  var newDesc = val === '' ? 'N/A' : getDisplayValue(val, metricText);
+  $metricDesc.text(newDesc);
 };
 
 function formatLatLng(coords){
