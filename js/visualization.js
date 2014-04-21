@@ -238,7 +238,7 @@ function changeNeighborhoodData(new_data_column) {
   var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[new_data_column]); }));
   var jenks = _.unique(_.compact(ss.jenks(data_values, 3)));
   jenks.push(_.max(jenks) + 0.01);
-  var color_palette = [ "#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f", "#6eb43f"];
+  var color_palette = [ "#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"];
   activeData = new_data_column;
 
   choro_color = d3.scale.threshold()
