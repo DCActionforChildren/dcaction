@@ -113,8 +113,17 @@ function init(){
   // school type changes
   $('.school-type-menu > li').on('click', 'a', function(e){
     e.preventDefault();
-    drawSchools($(this).attr('id'));
-    $(this).parent().addClass('selected').siblings().removeClass('selected');
+    
+    //$(this).parent().addClass('selected').siblings().removeClass('selected');
+    
+    var $$parent = $(this).parent();
+    if ($$parent.hasClass('selected')) {
+      removeSchools($(this).attr('id'));
+    } else {
+      drawSchools($(this).attr('id'));  
+    }
+    $$parent.toggleClass('selected');
+
   });
 
   // circle changes
@@ -143,30 +152,30 @@ function drawChoropleth(){
     .await(setUpChoropleth);
 
   function setUpChoropleth(error, dc, choropleth) {
-//clean choropleth data for display.
-choropleth_data = choropleth;
-choropleth_data.forEach(function(d) {
-all_data[d.gis_id] = d;
-choropleth_data[d.gis_id] = +d.population_total;
-});
+    //clean choropleth data for display.
+    choropleth_data = choropleth;
+    choropleth_data.forEach(function(d) {
+    all_data[d.gis_id] = d;
+    choropleth_data[d.gis_id] = +d.population_total;
+  });
 
-gmap = new google.maps.Map(d3.select("#content").node(), {
-zoom: 12,
-minZoom: 11,
-maxZoom: 14,
-center: new google.maps.LatLng(38.89555, -77.01551),
-mapTypeId: google.maps.MapTypeId.ROADMAP,
-streetViewControl: false,
-panControl: false
-});
+  gmap = new google.maps.Map(d3.select("#content").node(), {
+    zoom: 12,
+    minZoom: 11,
+    maxZoom: 14,
+    center: new google.maps.LatLng(38.89555, -77.01551),
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    streetViewControl: false,
+    panControl: false
+  });
 
-gmap.setOptions({
-  mapTypeControl: false,
-  styles: gmap_style
-});
-google.maps.event.addListenerOnce(gmap, 'idle', function(){
-// adjust the zoom bar
-$("div[title='Zoom in']").parent().css({'margin-top':'60px'});
+  gmap.setOptions({
+    mapTypeControl: false,
+    styles: gmap_style
+  });
+  google.maps.event.addListenerOnce(gmap, 'idle', function(){
+  // adjust the zoom bar
+  $("div[title='Zoom in']").parent().css({'margin-top':'60px'});
 });
 
 var overlay = new google.maps.OverlayView();
@@ -176,54 +185,53 @@ svg = d3.select("#content")
 // Add the container when the overlay is added to the map.
 overlay.onAdd = function() {
 
-var layer = d3.select(this.getPanes().overlayLayer)
-.attr('id','overlay')
-.append('div')
-.attr('id','theDiv');
+  var layer = d3.select(this.getPanes().overlayLayer)
+  .attr('id','overlay')
+  .append('div')
+  .attr('id','theDiv');
 
-var svg = layer.append("svg")
-.attr('id','theSVGLayer');
+  var svg = layer.append("svg")
+  .attr('id','theSVGLayer');
 
-g = svg.append("g");
-var neighborhoods = g.append("g").attr("id", "neighborhoods");
-g.append("g").attr("id", "schools");
-d3.select("#legend-container").append("svg").append("g").attr("id", "legend");
+  g = svg.append("g");
+  var neighborhoods = g.append("g").attr("id", "neighborhoods");
+  g.append("g").attr("id", "schools");
+  d3.select("#legend-container").append("svg").append("g").attr("id", "legend");
 
-overlay.draw = function() {
+  overlay.draw = function() {
 
-var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[currentMetric]); }));
+    var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[currentMetric]); }));
 
-var projection = this.getProjection(),
-padding = 10;
+    var projection = this.getProjection(),
+    padding = 10;
 
-gmapProjection = function (coordinates) {
-var googleCoordinates = new google.maps.LatLng(coordinates[1], coordinates[0]);
-var pixelCoordinates = projection.fromLatLngToDivPixel(googleCoordinates);
-return [pixelCoordinates.x+4000, pixelCoordinates.y+4000];
-};
+    gmapProjection = function (coordinates) {
+      var googleCoordinates = new google.maps.LatLng(coordinates[1], coordinates[0]);
+      var pixelCoordinates = projection.fromLatLngToDivPixel(googleCoordinates);
+      return [pixelCoordinates.x+4000, pixelCoordinates.y+4000];
+    };
 
-path = d3.geo.path().projection(gmapProjection);
+    path = d3.geo.path().projection(gmapProjection);
 
-neighborhoods.selectAll("path")
-.data(dc.features)
-.attr("d", path) // update existing paths
-.style('fill',function(d) {
-if(currentMetric==null){return "#aaaaaa";}
-var totalPop = all_data[d.properties.gis_id].population_total;
-return totalPop > min_population ? choro_color(all_data[d.properties.gis_id][currentMetric]) : defaultColor;
-})
-.enter().append("path")
-.attr("d", path)
-.attr('class', 'nbhd')
-.on("mouseover", hoverNeighborhood)
-.on('click', clicked)
-.style('fill', defaultColor)
-.style('fill-opacity',0.5);
+    neighborhoods.selectAll("path")
+      .data(dc.features)
+      .attr("d", path) // update existing paths
+      .style('fill',function(d) {
+        if (currentMetric === null) { return "#aaaaaa"; }
+        var totalPop = all_data[d.properties.gis_id].population_total;
+        return totalPop > min_population ? choro_color(all_data[d.properties.gis_id][currentMetric]) : defaultColor;
+      })
+      .enter().append("path")
+      .attr("d", path)
+      .attr('class', 'nbhd')
+      .on("mouseover", hoverNeighborhood)
+      .on('click', clicked)
+      .style('fill', defaultColor)
+      .style('fill-opacity',0.5);
 
-g.select("#schools").selectAll("circle").remove();
-drawSchools(schoolType);
-
-};
+    g.select("#schools").selectAll("circle").remove();
+    drawSchools(schoolType);
+  };
 };
 
 // Bind our overlay to the map…
@@ -359,7 +367,7 @@ function drawSchools(type){
     .append("title").text(function(d){return d.name;});
 
     circle.on("click", displaySchoolData);
-    circle.exit().remove();
+    //circle.exit().remove();
 
     packMetros();
 
@@ -414,13 +422,19 @@ function drawSchools(type){
 
   function packMetros() {
     var elements = d3.selectAll('#schools circle')[0];
+    console.log(elements);
     packer.elements(elements).start();
   }
 }
 
+function removeSchools(type) {
+  g.select("#schools").selectAll("circle." + type).remove();
+}
+
+
 function changeSchoolData(new_data_column) {
   if (typeof new_data_column === 'string'){
-    matchScaleToData(school_scale, function(d){return +d[new_data_column];})
+    matchScaleToData(school_scale, function(d){return +d[new_data_column];});
   }
   g.select("#schools").selectAll("circle")
     .transition().duration(600)
@@ -462,8 +476,8 @@ function drawChart(){
       .attr("class","ethnicity");
 
   ethnicity.append("line")
-.attr("x1", function(d) { return ord_scale('under18'); })
-.attr("x2", function(d) { return ord_scale('over18'); })
+    .attr("x1", function(d) { return ord_scale('under18'); })
+    .attr("x2", function(d) { return ord_scale('over18'); })
     .attr("y1", function(d) { return scale(d.under18); })
     .attr("y2", function(d) { return scale(d.over18); })
     .style("stroke",function(d){ return color(d.name); })
@@ -475,7 +489,7 @@ function drawChart(){
     .label(label_array)
     .anchor(anchor_array)
     .width(w)
-    .height(h)
+    .height(h);
     sim_ann.start(1000);
 
   redrawLabels();
@@ -502,7 +516,7 @@ function updateChart(data){
     .label(label_array)
     .anchor(anchor_array)
     .width(w)
-    .height(h)
+    .height(h);
     sim_ann.start(1000);
 
   redrawLabels();
@@ -511,9 +525,9 @@ function updateChart(data){
 function drawLabels(data){
   label_array = [];
   anchor_array = [];
-
+  var label, anchor;
   for(i=0; i<4; i++){
-    var label = {
+    label = {
      x: ord_scale('under18'),
      y: scale(data[i].under18),
      width: 0.0,
@@ -521,7 +535,8 @@ function drawLabels(data){
       name: Math.round(data[i].under18*100) + "% " + data[i].name,
       ethnicity: data[i].name, agegroup: "under18"};
     label_array.push(label);
-    var label = {
+
+    label = {
      x: ord_scale('over18'),
      y: scale(data[i].over18),
      width: 0.0,
@@ -530,15 +545,16 @@ function drawLabels(data){
       ethnicity: data[i].name, agegroup: "over18"};
     label_array.push(label);
     
-    var anchor = {x: ord_scale('under18'), y: scale(data[i].under18), r: 4, ethnicity: data[i].name};
+    anchor = {x: ord_scale('under18'), y: scale(data[i].under18), r: 4, ethnicity: data[i].name};
     anchor_array.push(anchor);
-    var anchor = {x: ord_scale('over18'), y: scale(data[i].over18), r: 4, ethnicity: data[i].name};
+    
+    anchor = {x: ord_scale('over18'), y: scale(data[i].over18), r: 4, ethnicity: data[i].name};
     anchor_array.push(anchor);
   }
   
-chartSvg.selectAll(".dot").data([]).exit().remove();
-chartSvg.selectAll(".label").data([]).exit().remove();
-chartSvg.selectAll(".link").data([]).exit().remove();
+  chartSvg.selectAll(".dot").data([]).exit().remove();
+  chartSvg.selectAll(".label").data([]).exit().remove();
+  chartSvg.selectAll(".link").data([]).exit().remove();
 
   labels = chartSvg.selectAll(".label")
     .data(label_array).enter()
@@ -600,9 +616,9 @@ function redrawLabels() {
 function toggleMenu() {
   var $this = $('.menu-toggle');
   if ($this.parent().hasClass('toggled')){
-    $this.parent().animate({ 'left' : 0 }, 350, function(){ $('#main-container').removeClass('toggled') });
+    $this.parent().animate({ 'left' : 0 }, 350, function(){ $('#main-container').removeClass('toggled'); });
   } else {
-    $this.parent().animate({ 'left' : $('#nav-panel').width() }, 350, function(){ $('#main-container').addClass('toggled') });
+    $this.parent().animate({ 'left' : $('#nav-panel').width() }, 350, function(){ $('#main-container').addClass('toggled'); });
   }
 }
 
@@ -726,7 +742,7 @@ function setVisMetric(metric, val, clear) {
   $metric.text(metricText);
   var newDesc = val === '' ? 'N/A' : getDisplayValue(val, metricText);
   $metricDesc.text(newDesc);
-};
+}
 
 function formatLatLng(coords){
   var gcoords = [];
@@ -742,13 +758,13 @@ if (!google.maps.Polyline.prototype.getBounds){
     var bounds = new google.maps.LatLngBounds();
     this.getPath().forEach( function(latlng) { bounds.extend(latlng); } ); 
     return bounds; 
-  }
+  };
 }
 
 if (!google.maps.Polygon.prototype.getBounds) {
   google.maps.Polygon.prototype.getBounds=function(){
-      var bounds = new google.maps.LatLngBounds()
-      this.getPath().forEach(function(element,index){bounds.extend(element)})
-      return bounds
-  }
+      var bounds = new google.maps.LatLngBounds();
+      this.getPath().forEach(function(element,index){bounds.extend(element); });
+      return bounds;
+  };
 }
