@@ -25,8 +25,9 @@ var ord_scale = d3.scale.ordinal().domain(["Under 18", "Over 18"]).range([0, w])
 var color = d3.scale.category20();
 var dotRadius = 4;
 
-var currentMetric=null;
-var schoolType="clear";
+var currentMetric = null;
+var schoolType = "clear";
+var highlightedNeighborhood = null;
 
 var gmap_style=[
   {
@@ -145,7 +146,6 @@ function transform(d) {
 
 function drawChoropleth(){
 
-
   queue()
     .defer(d3.json, "data/neighborhoods44.json")
     .defer(d3.csv, "data/neighborhoods2.csv")
@@ -155,88 +155,94 @@ function drawChoropleth(){
     //clean choropleth data for display.
     choropleth_data = choropleth;
     choropleth_data.forEach(function(d) {
-    all_data[d.gis_id] = d;
-    choropleth_data[d.gis_id] = +d.population_total;
-  });
+      all_data[d.gis_id] = d;
+      choropleth_data[d.gis_id] = +d.population_total;
+    });
 
-  gmap = new google.maps.Map(d3.select("#content").node(), {
-    zoom: 12,
-    minZoom: 11,
-    maxZoom: 14,
-    center: new google.maps.LatLng(38.89555, -77.01551),
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    streetViewControl: false,
-    panControl: false
-  });
+    gmap = new google.maps.Map(d3.select("#content").node(), {
+      zoom: 12,
+      minZoom: 11,
+      maxZoom: 14,
+      center: new google.maps.LatLng(38.89555, -77.01551),
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      streetViewControl: false,
+      panControl: false
+    });
 
-  gmap.setOptions({
-    mapTypeControl: false,
-    styles: gmap_style
-  });
-  google.maps.event.addListenerOnce(gmap, "idle", function(){
-  // adjust the zoom bar
-  $("div[title='Zoom in']").parent().css({"margin-top":"60px"});
-});
+    gmap.setOptions({
+      mapTypeControl: false,
+      styles: gmap_style
+    });
+    
+    google.maps.event.addListenerOnce(gmap, "idle", function(){
+      // adjust the zoom bar
+      $("div[title='Zoom in']").parent().css({"margin-top":"60px"});
+    });
 
-var overlay = new google.maps.OverlayView();
-svg = d3.select("#content")
-.append("svg:svg");
+    var overlay = new google.maps.OverlayView();
+    svg = d3.select("#content").append("svg:svg");
 
-// Add the container when the overlay is added to the map.
-overlay.onAdd = function() {
+    // Add the container when the overlay is added to the map.
+    overlay.onAdd = function() {
 
-  var layer = d3.select(this.getPanes().overlayLayer)
-  .attr("id","overlay")
-  .append("div")
-  .attr("id","theDiv");
+      var layer = d3.select(this.getPanes().overlayLayer)
+      .attr("id","overlay")
+      .append("div")
+      .attr("id","theDiv");
 
-  var svg = layer.append("svg")
-  .attr("id","theSVGLayer");
+      var svg = layer.append("svg")
+      .attr("id","theSVGLayer");
 
-  g = svg.append("g");
-  var neighborhoods = g.append("g").attr("id", "neighborhoods");
-  g.append("g").attr("id", "schools");
-  d3.select("#legend-container").append("svg").append("g").attr("id", "legend");
+      g = svg.append("g");
+      var neighborhoods = g.append("g").attr("id", "neighborhoods");
+      g.append("g").attr("id", "schools");
+      d3.select("#legend-container").append("svg").append("g").attr("id", "legend");
 
-  overlay.draw = function() {
+      overlay.draw = function() {
+        var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[currentMetric]); }));
 
-    var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[currentMetric]); }));
+        var projection = this.getProjection(),
+        padding = 10;
 
-    var projection = this.getProjection(),
-    padding = 10;
+        gmapProjection = function (coordinates) {
+          var googleCoordinates = new google.maps.LatLng(coordinates[1], coordinates[0]);
+          var pixelCoordinates = projection.fromLatLngToDivPixel(googleCoordinates);
+          return [pixelCoordinates.x+4000, pixelCoordinates.y+4000];
+        };
 
-    gmapProjection = function (coordinates) {
-      var googleCoordinates = new google.maps.LatLng(coordinates[1], coordinates[0]);
-      var pixelCoordinates = projection.fromLatLngToDivPixel(googleCoordinates);
-      return [pixelCoordinates.x+4000, pixelCoordinates.y+4000];
+        path = d3.geo.path().projection(gmapProjection);
+
+        // Have to remove all the paths and readd them otherwise the visualization was highlighting the old path
+        // and the new path when zooming.
+        neighborhoods.selectAll("path").remove();
+        neighborhoods.selectAll("path")
+          .data(dc.features)
+          .enter().append("path")
+          .attr("d", path)
+          .attr("id", function (d) { return "path" + d.properties.NCID; })
+          .attr("class", "nbhd")
+          .on("mouseover", hoverNeighborhood)
+          .on("click", function(d) { highlightNeigborhood(d, false); })
+          .style("fill",function(d) {
+            if (currentMetric === null) { return "#aaaaaa"; }
+            var totalPop = all_data[d.properties.gis_id].population_total;
+            return totalPop > min_population ? choro_color(all_data[d.properties.gis_id][currentMetric]) : defaultColor;
+          })
+          .style("fill-opacity",0.5);
+
+        g.select("#schools").selectAll("circle").remove();
+        
+        //if there is a highlighted neighborhood then rehighlightit.
+        if(highlightedNeighborhood) {
+          highlightNeigborhood(highlightedNeighborhood, true);
+        }
+
+        redrawSchools();
+      };
     };
 
-    path = d3.geo.path().projection(gmapProjection);
-
-    neighborhoods.selectAll("path")
-      .data(dc.features)
-      .attr("d", path) // update existing paths
-      .style("fill",function(d) {
-        if (currentMetric === null) { return "#aaaaaa"; }
-        var totalPop = all_data[d.properties.gis_id].population_total;
-        return totalPop > min_population ? choro_color(all_data[d.properties.gis_id][currentMetric]) : defaultColor;
-      })
-      .enter().append("path")
-      .attr("d", path)
-      .attr("class", "nbhd")
-      .on("mouseover", hoverNeighborhood)
-      .on("click", clicked)
-      .style("fill", defaultColor)
-      .style("fill-opacity",0.5);
-
-    g.select("#schools").selectAll("circle").remove();
-    redrawSchools();
-  };
-};
-
-// Bind our overlay to the map…
-overlay.setMap(gmap);
-
+    // Bind our overlay to the map…
+    overlay.setMap(gmap);
 
   } // setUpChoropleth function
 
@@ -663,13 +669,15 @@ function displayPopBox(d) {
   });
 }
 
-function clicked(d) {
+
+function highlightNeigborhood(d, isOverlayDraw) {
   // click and zoom map to nbhd bounds
   // var polyBounds = new google.maps.Polygon({
   //   paths: formatLatLng(d.geometry.coordinates[0])
   // }).getBounds();
   // gmap.fitBounds(polyBounds);
-
+  
+  highlightedNeighborhood = d;
   var x, y, k;
 
   if (d && centered !== d) {
@@ -685,17 +693,34 @@ function clicked(d) {
     centered = null;
   }
 
-  g.selectAll("path")
+  // if this is being called from the overlay.draw handler then 
+  // select the centered neighborhood and bring it to the front.
+  if(!isOverlayDraw) {
+    g.selectAll("path")
       .classed("active", centered && function(d) { return d === centered; });
 
-  // if d is a neighborhood boundary and clicked
-  if (d && all_data[d.properties.gis_id]){
-    displayPopBox(d);
-    //last neighborhood to display in popBox.
-    activeId = d.properties.gis_id;
-    setVisMetric(activeData, all_data[activeId][activeData]);
-    updateChart(all_data[activeId]);
-  }
+    // if d is a neighborhood boundary and clicked
+    if (d && all_data[d.properties.gis_id]){
+      displayPopBox(d);
+      //last neighborhood to display in popBox.
+      activeId = d.properties.gis_id;
+      setVisMetric(activeData, all_data[activeId][activeData]);
+      updateChart(all_data[activeId]);
+    }
+  } else {
+    g.selectAll("#path" + highlightedNeighborhood.properties.NCID).classed("active", true);
+    bringNeighborhoodToFront();
+  }  
+}
+
+function bringNeighborhoodToFront() {
+  if (centered) {
+      var activeNeighborhood = d3.select(".active");
+      activeNeighborhood.each(function () {
+        this.parentNode.appendChild(this);
+      });
+      return;
+    }
 }
 
 function hoverNeighborhood(d) {
@@ -706,14 +731,7 @@ function hoverNeighborhood(d) {
   });
 
   //but also keep centered neighborhood path up front
-  if (centered) {
-    var activeNeighborhood = d3.select(".active");
-    activeNeighborhood.each(function () {
-      this.parentNode.appendChild(this);
-    });
-    return;
-  }
-
+  bringNeighborhoodToFront();
 
   if (d && all_data[d.properties.gis_id]){
     displayPopBox(d);
