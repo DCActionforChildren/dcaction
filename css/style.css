@@ -6,12 +6,12 @@ h1, h2, h3, h4, h5 {
 }
 
 .nav > li.disabled.nav-header > a {
-    cursor: default;
-    font-size: 12px;
-    font-weight: bold;
-    text-transform: uppercase;
-    padding: 5px 10px !important;
-    color: #000;
+  cursor: default;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 5px 10px !important;
+  color: #000;
 }
 
 .align-right { text-align: right; }
@@ -212,8 +212,8 @@ h4.school-name {
   fill: black;
 }
 .link { 
-    stroke:gray;
-    stroke-width:0.5
+  stroke:gray;
+  stroke-width:0.5
 }
 
 /* Google Maps */
@@ -235,19 +235,22 @@ h4.school-name {
   stroke-width: 1.5px;
 }
 
-
-#theSVGLayer
-{
-position: absolute;
-top: -4000px;
-left: -4000px;
-width: 8000px;
-height: 8000px;
+#theSVGLayer {
+  position: absolute;
+  top: -4000px;
+  left: -4000px;
+  width: 8000px;
+  height: 8000px;
 }
 
+#theDiv {
+  top: 0;
+  left: 0;
+}
 
-#theDiv
-{
-top: 0px;
-left: 0px;
+ .btn-panel-close {
+  float: right;
+  margin: 5px;
+  border: none;
+  color: #fff;
 }

@@ -1,14 +1,14 @@
 var COUNT_SCHOOL_DISPLAY = 3;
 
-var width = $('#content').parent().width(),
+var width = $("#content").parent().width(),
     height = 800,
     centered;
 
-$('#content').css({'width':width,'height':height});
+$("#content").css({"width":width,"height":height});
 
 var svg, projection, gmapProjection, path, g, gmap;
 var school_scale, school_data, activeId, choropleth_data;
-var all_data = {}, activeData = 'population_total';
+var all_data = {}, activeData = "population_total";
 var min_population = 100;
 var defaultColor = "#aaa",
     fiveColors = ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"],
@@ -26,7 +26,7 @@ var color = d3.scale.category20();
 var dotRadius = 4;
 
 var currentMetric=null;
-var schoolType='clear';
+var schoolType="clear";
 
 var gmap_style=[
   {
@@ -98,40 +98,40 @@ function init(){
   drawChart();
 
   // slide out menu
-  $('.menu-toggle').on('click', toggleMenu);
+  $(".menu-toggle").on("click", toggleMenu);
 
   // event listeners for changing d3
   // choropleth color change
-  $('.neighborhood-menu > li').on('click', 'a', function(e){
+  $(".neighborhood-menu > li").on("click", "a", function(e){
     e.preventDefault();
-    currentMetric=(typeof $(this).attr('id')==="undefined")?null:$(this).attr('id');
+    currentMetric=(typeof $(this).attr("id")==="undefined")?null:$(this).attr("id");
 
     changeNeighborhoodData(currentMetric);
-    $(this).parent().addClass('selected').siblings().removeClass('selected');
+    $(this).parent().addClass("selected").siblings().removeClass("selected");
   });
 
   // school type changes
-  $('.school-type-menu > li').on('click', 'a', function(e){
+  $(".school-type-menu > li").on("click", "a", function(e){
     e.preventDefault();
     
-    //$(this).parent().addClass('selected').siblings().removeClass('selected');
+    //$(this).parent().addClass("selected").siblings().removeClass("selected");
     
     var $$parent = $(this).parent();
-    if ($$parent.hasClass('selected')) {
-      removeSchools($(this).attr('id'));
+    if ($$parent.hasClass("selected")) {
+      removeSchools($(this).attr("id"));
     } else {
-      drawSchools($(this).attr('id'));  
+      drawSchools($(this).attr("id"));  
     }
-    $$parent.toggleClass('selected');
+    $$parent.toggleClass("selected");
 
   });
 
   // circle changes
-  $('.school-menu > li').on('click', 'a', function(e){
+  $(".school-menu > li").on("click", "a", function(e){
     e.preventDefault();
-    var value = $(this).attr('id') === 'no_school_data' ? 4 : $(this).attr('id');
+    var value = $(this).attr("id") === "no_school_data" ? 4 : $(this).attr("id");
     changeSchoolData(value);
-    $(this).parent().addClass('selected').siblings().removeClass('selected');
+    $(this).parent().addClass("selected").siblings().removeClass("selected");
   });
 }
 
@@ -173,9 +173,9 @@ function drawChoropleth(){
     mapTypeControl: false,
     styles: gmap_style
   });
-  google.maps.event.addListenerOnce(gmap, 'idle', function(){
+  google.maps.event.addListenerOnce(gmap, "idle", function(){
   // adjust the zoom bar
-  $("div[title='Zoom in']").parent().css({'margin-top':'60px'});
+  $("div[title='Zoom in']").parent().css({"margin-top":"60px"});
 });
 
 var overlay = new google.maps.OverlayView();
@@ -186,12 +186,12 @@ svg = d3.select("#content")
 overlay.onAdd = function() {
 
   var layer = d3.select(this.getPanes().overlayLayer)
-  .attr('id','overlay')
-  .append('div')
-  .attr('id','theDiv');
+  .attr("id","overlay")
+  .append("div")
+  .attr("id","theDiv");
 
   var svg = layer.append("svg")
-  .attr('id','theSVGLayer');
+  .attr("id","theSVGLayer");
 
   g = svg.append("g");
   var neighborhoods = g.append("g").attr("id", "neighborhoods");
@@ -216,18 +216,18 @@ overlay.onAdd = function() {
     neighborhoods.selectAll("path")
       .data(dc.features)
       .attr("d", path) // update existing paths
-      .style('fill',function(d) {
+      .style("fill",function(d) {
         if (currentMetric === null) { return "#aaaaaa"; }
         var totalPop = all_data[d.properties.gis_id].population_total;
         return totalPop > min_population ? choro_color(all_data[d.properties.gis_id][currentMetric]) : defaultColor;
       })
       .enter().append("path")
       .attr("d", path)
-      .attr('class', 'nbhd')
+      .attr("class", "nbhd")
       .on("mouseover", hoverNeighborhood)
-      .on('click', clicked)
-      .style('fill', defaultColor)
-      .style('fill-opacity',0.5);
+      .on("click", clicked)
+      .style("fill", defaultColor)
+      .style("fill-opacity",0.5);
 
     g.select("#schools").selectAll("circle").remove();
     drawSchools(schoolType);
@@ -266,14 +266,14 @@ function changeNeighborhoodData(new_data_column) {
         return choro_color(all_data[d.properties.gis_id][new_data_column]);
       }
     })
-    .style('fill-opacity',0.5);
+    .style("fill-opacity",0.5);
 
-  if(activeId && new_data_column !== 'no_neighborhood_data') {
+  if(activeId && new_data_column !== "no_neighborhood_data") {
     setVisMetric(new_data_column, all_data[activeId][new_data_column]);
   } else {
     setVisMetric(null, null, true);
-    drawSchools('clear');
-    $('.selected').removeClass('selected');
+    removeSchools("clear");
+    $(".selected").removeClass("selected");
   }
 
   var previousElement = function(n, a){
@@ -331,27 +331,27 @@ function changeNeighborhoodData(new_data_column) {
 function drawSchools(type){
   schoolType=type;
   var packer = sm.packer(),
-      file = '',
+      file = "",
       prop, color;
 
   //this could be cleaned up if we use a consistent naming convention.
   switch(type) {
-    case 'public':
-      file = 'data/schools.json';
-      prop = 'schools';
+    case "public":
+      file = "data/schools.json";
+      prop = "schools";
       break;
-    case 'charter':
-      file = 'data/charters.json';
-      prop = 'charters';
+    case "charter":
+      file = "data/charters.json";
+      prop = "charters";
       break;
   }
 
     //switched this to read json.
     d3.json(file, function(data){
-    if(type === 'clear') {
-      prop = 'clear';
+    if(type === "clear") {
+      prop = "clear";
       data = {
-        'clear': []
+        "clear": []
       };
     }
     school_data = data[prop];
@@ -360,7 +360,7 @@ function drawSchools(type){
       return d.name;
     });
     var circleEnter = circle.enter().append("circle")
-    .attr('class', 'school ' + type)
+    .attr("class", "school " + type)
     .attr("r", 4)
     .attr("transform", function(d) {
       return "translate(" + gmapProjection([d.long, d.lat]) + ")";})
@@ -372,74 +372,88 @@ function drawSchools(type){
     packMetros();
 
     function displaySchoolData(school) {
-      var $schools = $('#schools_panel');
-      var $panelBody = $schools.find('.panel-body');
-      var $schoolData = $panelBody.children('.school-data');
+      var $schools = $("#schools_panel");
+      var $panelBody = $schools.find(".panel-body");
+      var $schoolData = $panelBody.children(".school-data");
 
-      //Don't add the school twice.
+      //Don"t add the school twice.
       for (var i = 0, len = $schoolData.length; i < len; i++) {
-          if(school.name === $($schoolData[i]).find('.school-name').text()) { return; }
+          if(school.name === $($schoolData[i]).find(".school-name").text()) { return; }
       }
 
       //Show panel on first school click.
-      if ($schools.hasClass('hide')) {
-        $schools.toggleClass('hide');
+      if ($schools.hasClass("hide")) {
+        $("#btnPanelClose").on("click", closePanel);
+        $schools.toggleClass("hide");
       }
 
       //Limit number of displayed schools.
       if ($schoolData.length === COUNT_SCHOOL_DISPLAY) {
-        $panelBody.children(':nth-child(' + COUNT_SCHOOL_DISPLAY + ')').remove();
+        $panelBody.children(":nth-child(" + COUNT_SCHOOL_DISPLAY + ")").remove();
       }
 
       //Add a new school to the display.
-      var $schoolDisplay = $panelBody.find('#school_data').clone();
+      var $schoolDisplay = $panelBody.find("#school_data").clone();
       $panelBody.prepend(buildNewSchool($schoolDisplay, school));
     }
 
     function buildNewSchool($schoolDisplay, school) {
-      $schoolDisplay.removeAttr('id').removeAttr('class').addClass('school-data');
+      $schoolDisplay.removeAttr("id").removeAttr("class").addClass("school-data");
 
-      var $schoolName = $schoolDisplay.find('.school-name');
+      var $schoolName = $schoolDisplay.find(".school-name");
       $schoolName.html(school.name);
-      $schoolName.on('click', function() {
+      $schoolName.on("click", function() {
         $schoolDisplay.remove();
         setPanel();
       });
-      $schoolDisplay.find('.school-enrollment').html(getDisplayValue(school.enrollment, 'enrollment'));
-      $schoolDisplay.find('.school-allocation').html(getDisplayValue(school.alloc, 'alloc'));
+      $schoolDisplay.find(".school-enrollment").html(getDisplayValue(school.enrollment, "enrollment"));
+      $schoolDisplay.find(".school-allocation").html(getDisplayValue(school.alloc, "alloc"));
       return $schoolDisplay;
     }
 
+    // Close button click handler. 
+    function closePanel(event) {
+      event.preventDefault();
+      $("#btnPanelClose").off("click", closePanel);
+      $(".school-data").remove();
+      $("#schools_panel").toggleClass("hide");
+    }
+
     function setPanel() {
-      var $schools = $('#schools_panel');
-      var $panelBody = $schools.find('.panel-body');
+      var $schools = $("#schools_panel");
+      var $panelBody = $schools.find(".panel-body");
 
       if ($panelBody.children().length === 1) {
-        $schools.toggleClass('hide');
+        $schools.toggleClass("hide");
       }
     }
   });
 
   function packMetros() {
-    var elements = d3.selectAll('#schools circle')[0];
-    console.log(elements);
+    var elements = d3.selectAll("#schools circle")[0];
     packer.elements(elements).start();
   }
 }
 
 function removeSchools(type) {
-  g.select("#schools").selectAll("circle." + type).remove();
+
+  if (type == "clear") {
+    g.select("#schools").selectAll("circle").remove();
+  } else {
+    g.select("#schools").selectAll("circle." + type).remove();
+  }
+  
 }
 
 
 function changeSchoolData(new_data_column) {
-  if (typeof new_data_column === 'string'){
+  if (typeof new_data_column === "string"){
     matchScaleToData(school_scale, function(d){return +d[new_data_column];});
   }
   g.select("#schools").selectAll("circle")
     .transition().duration(600)
     .attr("r", function(d) {
-      return typeof new_data_column !== 'string' ? 4 : school_scale(d[new_data_column]);
+      return typeof new_data_column !== "string" ? 4 : school_scale(d[new_data_column]);
     });
 }
 
@@ -476,8 +490,8 @@ function drawChart(){
       .attr("class","ethnicity");
 
   ethnicity.append("line")
-    .attr("x1", function(d) { return ord_scale('under18'); })
-    .attr("x2", function(d) { return ord_scale('over18'); })
+    .attr("x1", function(d) { return ord_scale("under18"); })
+    .attr("x2", function(d) { return ord_scale("over18"); })
     .attr("y1", function(d) { return scale(d.under18); })
     .attr("y2", function(d) { return scale(d.over18); })
     .style("stroke",function(d){ return color(d.name); })
@@ -528,7 +542,7 @@ function drawLabels(data){
   var label, anchor;
   for(i=0; i<4; i++){
     label = {
-     x: ord_scale('under18'),
+     x: ord_scale("under18"),
      y: scale(data[i].under18),
      width: 0.0,
      height: 0.0,
@@ -537,7 +551,7 @@ function drawLabels(data){
     label_array.push(label);
 
     label = {
-     x: ord_scale('over18'),
+     x: ord_scale("over18"),
      y: scale(data[i].over18),
      width: 0.0,
      height: 0.0,
@@ -545,10 +559,10 @@ function drawLabels(data){
       ethnicity: data[i].name, agegroup: "over18"};
     label_array.push(label);
     
-    anchor = {x: ord_scale('under18'), y: scale(data[i].under18), r: 4, ethnicity: data[i].name};
+    anchor = {x: ord_scale("under18"), y: scale(data[i].under18), r: 4, ethnicity: data[i].name};
     anchor_array.push(anchor);
     
-    anchor = {x: ord_scale('over18'), y: scale(data[i].over18), r: 4, ethnicity: data[i].name};
+    anchor = {x: ord_scale("over18"), y: scale(data[i].over18), r: 4, ethnicity: data[i].name};
     anchor_array.push(anchor);
   }
   
@@ -585,7 +599,7 @@ function drawLabels(data){
     .attr("x1", function(d) { return (d.x); })
     .attr("y1", function(d) { return (d.y); })
     .attr("x2", function(d) {
-     if(d.agegroup =='under18') return d.x - 10;
+     if(d.agegroup =="under18") return d.x - 10;
      else return d.x + 10; })
     .attr("y2", function(d) { return (d.y); });
 
@@ -614,30 +628,30 @@ function redrawLabels() {
 }
 
 function toggleMenu() {
-  var $this = $('.menu-toggle');
-  if ($this.parent().hasClass('toggled')){
-    $this.parent().animate({ 'left' : 0 }, 350, function(){ $('#main-container').removeClass('toggled'); });
+  var $this = $(".menu-toggle");
+  if ($this.parent().hasClass("toggled")){
+    $this.parent().animate({ "left" : 0 }, 350, function(){ $("#main-container").removeClass("toggled"); });
   } else {
-    $this.parent().animate({ 'left' : $('#nav-panel').width() }, 350, function(){ $('#main-container').addClass('toggled'); });
+    $this.parent().animate({ "left" : $("#nav-panel").width() }, 350, function(){ $("#main-container").addClass("toggled"); });
   }
 }
 
 function displayPopBox(d) {
-  //clear the menu if it's exposed.
-  if($('#main-container')[0].classList.contains('toggled')) {
+  //clear the menu if it"s exposed.
+  if($("#main-container")[0].classList.contains("toggled")) {
     toggleMenu();
   }
 
-  var $popbox = $('#pop-info'),
+  var $popbox = $("#pop-info"),
       highlighted = all_data[d.properties.gis_id];
 
-  d3.select('.neighborhood').html(highlighted.NBH_NAMES);
+  d3.select(".neighborhood").html(highlighted.NBH_NAMES);
 
   var val, key;
-  $.each($popbox.find('tr'), function(k, row){
-    key = $(row).attr('data-type');
+  $.each($popbox.find("tr"), function(k, row){
+    key = $(row).attr("data-type");
     val = highlighted[key];
-    $(row).find('.count').html(getDisplayValue(val, key));
+    $(row).find(".count").html(getDisplayValue(val, key));
   });
 }
 
@@ -698,7 +712,7 @@ function hoverNeighborhood(d) {
     //last neighborhood to display in popBox.
     activeId = d.properties.gis_id;
 
-    if (activeData !== 'no_neighborhood_data') {
+    if (activeData !== "no_neighborhood_data") {
       setVisMetric(activeData, all_data[activeId][activeData]);
       updateChart(all_data[activeId]);
     } else {
@@ -716,9 +730,9 @@ function getDisplayValue(strNum, name) {
 
   name = name.toLowerCase();
 
-  if ((name.indexOf('alloc') !== -1) || (name.indexOf('amount') !== -1)) { //some kind of allocation or amount
-    return '$' + number_formatter(parseInt(num, 10));
-  } else if (name.indexOf('ratio') !== -1) { //a ratio
+  if ((name.indexOf("alloc") !== -1) || (name.indexOf("amount") !== -1)) { //some kind of allocation or amount
+    return "$" + number_formatter(parseInt(num, 10));
+  } else if (name.indexOf("ratio") !== -1) { //a ratio
     return num.toPrecision(2);
   } else if (num < 1) { //percentage
     return parseInt(num * 100, 10) + "%";
@@ -729,18 +743,18 @@ function getDisplayValue(strNum, name) {
 }
 
 function setVisMetric(metric, val, clear) {
-  var $metric = $('#visualized-metric');
-  var $metricDesc = $('#visualized-measure');
+  var $metric = $("#visualized-metric");
+  var $metricDesc = $("#visualized-measure");
 
   if (clear) {
-    $metric.text('');
-    $metricDesc.text('');
+    $metric.text("");
+    $metricDesc.text("");
     return;
   }
 
-  var metricText = $('a#' + metric).text();
+  var metricText = $("a#" + metric).text();
   $metric.text(metricText);
-  var newDesc = val === '' ? 'N/A' : getDisplayValue(val, metricText);
+  var newDesc = val === "" ? "N/A" : getDisplayValue(val, metricText);
   $metricDesc.text(newDesc);
 }
 
@@ -751,7 +765,7 @@ function formatLatLng(coords){
   });
   return gcoords;
 }
-// getBounds for polyline and polygon doesn't exist in v3
+// getBounds for polyline and polygon doesn"t exist in v3
 // this adds method.
 if (!google.maps.Polyline.prototype.getBounds){
   google.maps.Polyline.prototype.getBounds = function() {
