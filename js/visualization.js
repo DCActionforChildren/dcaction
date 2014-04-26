@@ -230,7 +230,7 @@ overlay.onAdd = function() {
       .style("fill-opacity",0.5);
 
     g.select("#schools").selectAll("circle").remove();
-    drawSchools(schoolType);
+    redrawSchools();
   };
 };
 
@@ -328,8 +328,19 @@ function changeNeighborhoodData(new_data_column) {
 
 }
 
+function redrawSchools() {
+  if($("#public").parent().hasClass("selected")) {
+    drawSchools("public");
+  }
+
+  if($("#charter").parent().hasClass("selected")) {
+    drawSchools("charter");
+  }
+}
+
 function drawSchools(type){
   schoolType=type;
+
   var packer = sm.packer(),
       file = "",
       prop, color;
@@ -367,9 +378,8 @@ function drawSchools(type){
     .append("title").text(function(d){return d.name;});
 
     circle.on("click", displaySchoolData);
-    //circle.exit().remove();
-
     packMetros();
+
 
     function displaySchoolData(school) {
       var $schools = $("#schools_panel");
@@ -436,13 +446,11 @@ function drawSchools(type){
 }
 
 function removeSchools(type) {
-
   if (type == "clear") {
     g.select("#schools").selectAll("circle").remove();
   } else {
     g.select("#schools").selectAll("circle." + type).remove();
   }
-  
 }
 
 
