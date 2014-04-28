@@ -196,7 +196,10 @@ function drawChoropleth(){
       g = svg.append("g");
       var neighborhoods = g.append("g").attr("id", "neighborhoods");
       g.append("g").attr("id", "schools");
-      d3.select("#legend-container").append("svg").append("g").attr("id", "legend");
+      d3.select("#legend-container").append("svg")
+          .attr("height", 200)
+        .append("g")
+          .attr("id", "legend");
 
       overlay.draw = function() {
         var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[currentMetric]); }));
@@ -303,7 +306,7 @@ function changeNeighborhoodData(new_data_column) {
       return parseInt(d * 100, 10) + "%";
     } else {
       var number_formatter = d3.format(",");
-      return number_formatter(parseInt(d, 10));
+      return number_formatter(Math.round(parseFloat(d)));
     }
   };
 
