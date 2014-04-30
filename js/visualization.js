@@ -820,7 +820,9 @@ if (!google.maps.Polygon.prototype.getBounds) {
 function getSource(data, layerID){
   data.forEach(function(d){
     if(d.layer == layerID){
-      console.log(d.source, d.url)
+      d3.select("#source-title")
+        .text(d.source)
+        .attr('href',d.url);
     }
   })
 };
