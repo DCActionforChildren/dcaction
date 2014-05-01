@@ -227,7 +227,7 @@ overlay.onAdd = function() {
       .on("mouseover", hoverNeighborhood)
       .on('click', clicked)
       .style('fill', defaultColor)
-      .style('fill-opacity',0.5);
+      .style('fill-opacity',0.75);
 
     g.select("#schools").selectAll("circle").remove();
     drawSchools(schoolType);
