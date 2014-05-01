@@ -1,7 +1,7 @@
 var COUNT_SCHOOL_DISPLAY = 3;
 
 var width = $("#content").parent().width(),
-    height = 800,
+    height = 600,
     centered;
 
 $("#content").css({"width":width,"height":height});
@@ -255,9 +255,9 @@ function changeNeighborhoodData(new_data_column) {
   var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[new_data_column]); }));
   var jenks = _.unique(_.compact(ss.jenks(data_values, 3)));
   jenks.push(_.max(jenks) + 0.01);
-  var color_palette = [ "#aaaaaa", "#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"];
+  var color_palette = [ "#aaaaaa", "#dad6c8", "#bcb7a6", "#9e9885", "#807963", "#625a42"];
   activeData = new_data_column;
-
+  console.log(jenks);
   choro_color = d3.scale.threshold()
     .domain(jenks)
     .range(color_palette);
@@ -275,7 +275,7 @@ function changeNeighborhoodData(new_data_column) {
         return choro_color(all_data[d.properties.gis_id][new_data_column]);
       }
     })
-    .style("fill-opacity",0.5);
+    .style("fill-opacity",0.75);
 
   if(activeId && new_data_column !== "no_neighborhood_data") {
     setVisMetric(new_data_column, all_data[activeId][new_data_column]);
@@ -323,7 +323,8 @@ function changeNeighborhoodData(new_data_column) {
   enterLegend.append("rect")
     .attr("width", 170)
     .attr("height", 30)
-    .style("fill", function(d){ return choro_color(d);});
+    .style("fill", function(d){ return choro_color(d);})
+    .style("opacity", "0.75");
 
   enterLegend.append("text")
     .style("fill", "black")
@@ -427,6 +428,8 @@ function drawSchools(type){
       });
       $schoolDisplay.find(".school-enrollment").html(getDisplayValue(school.enrollment, "enrollment"));
       $schoolDisplay.find(".school-allocation").html(getDisplayValue(school.alloc, "alloc"));
+      $schoolDisplay.find(".school-math").html(getDisplayValue(school.math, "math"));
+      $schoolDisplay.find(".school-reading").html(getDisplayValue(school.reading, "reading"));
       return $schoolDisplay;
     }
 
