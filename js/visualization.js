@@ -1,14 +1,14 @@
 var COUNT_SCHOOL_DISPLAY = 3;
 
-var width = $('#content').parent().width(),
+var width = $("#content").parent().width(),
     height = 800,
     centered;
 
-$('#content').css({'width':width,'height':height});
+$("#content").css({"width":width,"height":height});
 
 var svg, projection, gmapProjection, path, g, gmap;
 var school_scale, school_data, activeId, choropleth_data;
-var all_data = {}, activeData = 'population_total';
+var all_data = {}, activeData = "population_total";
 var min_population = 100;
 var defaultColor = "#aaa",
     fiveColors = ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"],
@@ -25,8 +25,9 @@ var ord_scale = d3.scale.ordinal().domain(["Under 18", "Over 18"]).range([0, w])
 var color = d3.scale.category20();
 var dotRadius = 4;
 
-var currentMetric=null;
-var schoolType='clear';
+var currentMetric = null;
+var schoolType = "clear";
+var highlightedNeighborhood = null;
 
 var gmap_style=[
   {
@@ -83,7 +84,7 @@ var gmap_style=[
   },{
      "featureType": "administrative.neighborhood",
      "elementType": "labels.text",
-     "stylers": [ 
+     "stylers": [
       { "visibility": "off" }
     ]
   }
@@ -98,40 +99,40 @@ function init(){
   drawChart();
 
   // slide out menu
-  $('.menu-toggle').on('click', toggleMenu);
+  $(".menu-toggle").on("click", toggleMenu);
 
   // event listeners for changing d3
   // choropleth color change
-  $('.neighborhood-menu > li').on('click', 'a', function(e){
+  $(".neighborhood-menu > li").on("click", "a", function(e){
     e.preventDefault();
-    currentMetric=(typeof $(this).attr('id')==="undefined")?null:$(this).attr('id');
+    currentMetric=(typeof $(this).attr("id")==="undefined")?null:$(this).attr("id");
 
     changeNeighborhoodData(currentMetric);
-    $(this).parent().addClass('selected').siblings().removeClass('selected');
+    $(this).parent().addClass("selected").siblings().removeClass("selected");
   });
 
   // school type changes
-  $('.school-type-menu > li').on('click', 'a', function(e){
+  $(".school-type-menu > li").on("click", "a", function(e){
     e.preventDefault();
     
-    //$(this).parent().addClass('selected').siblings().removeClass('selected');
+    //$(this).parent().addClass("selected").siblings().removeClass("selected");
     
     var $$parent = $(this).parent();
-    if ($$parent.hasClass('selected')) {
-      removeSchools($(this).attr('id'));
+    if ($$parent.hasClass("selected")) {
+      removeSchools($(this).attr("id"));
     } else {
-      drawSchools($(this).attr('id'));  
+      drawSchools($(this).attr("id"));
     }
-    $$parent.toggleClass('selected');
+    $$parent.toggleClass("selected");
 
   });
 
   // circle changes
-  $('.school-menu > li').on('click', 'a', function(e){
+  $(".school-menu > li").on("click", "a", function(e){
     e.preventDefault();
-    var value = $(this).attr('id') === 'no_school_data' ? 4 : $(this).attr('id');
+    var value = $(this).attr("id") === "no_school_data" ? 4 : $(this).attr("id");
     changeSchoolData(value);
-    $(this).parent().addClass('selected').siblings().removeClass('selected');
+    $(this).parent().addClass("selected").siblings().removeClass("selected");
   });
 }
 
@@ -145,7 +146,6 @@ function transform(d) {
 
 function drawChoropleth(){
 
-
   queue()
     .defer(d3.json, "data/neighborhoods44.json")
     .defer(d3.csv, "data/neighborhoods2.csv")
@@ -155,88 +155,97 @@ function drawChoropleth(){
     //clean choropleth data for display.
     choropleth_data = choropleth;
     choropleth_data.forEach(function(d) {
-    all_data[d.gis_id] = d;
-    choropleth_data[d.gis_id] = +d.population_total;
-  });
+      all_data[d.gis_id] = d;
+      choropleth_data[d.gis_id] = +d.population_total;
+    });
 
-  gmap = new google.maps.Map(d3.select("#content").node(), {
-    zoom: 12,
-    minZoom: 11,
-    maxZoom: 14,
-    center: new google.maps.LatLng(38.89555, -77.01551),
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    streetViewControl: false,
-    panControl: false
-  });
+    gmap = new google.maps.Map(d3.select("#content").node(), {
+      zoom: 12,
+      minZoom: 11,
+      maxZoom: 14,
+      center: new google.maps.LatLng(38.89555, -77.01551),
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      streetViewControl: false,
+      panControl: false
+    });
 
-  gmap.setOptions({
-    mapTypeControl: false,
-    styles: gmap_style
-  });
-  google.maps.event.addListenerOnce(gmap, 'idle', function(){
-  // adjust the zoom bar
-  $("div[title='Zoom in']").parent().css({'margin-top':'60px'});
-});
+    gmap.setOptions({
+      mapTypeControl: false,
+      styles: gmap_style
+    });
+    
+    google.maps.event.addListenerOnce(gmap, "idle", function(){
+      // adjust the zoom bar
+      $("div[title='Zoom in']").parent().css({"margin-top":"60px"});
+    });
 
-var overlay = new google.maps.OverlayView();
-svg = d3.select("#content")
-.append("svg:svg");
+    var overlay = new google.maps.OverlayView();
+    svg = d3.select("#content").append("svg:svg");
 
-// Add the container when the overlay is added to the map.
-overlay.onAdd = function() {
+    // Add the container when the overlay is added to the map.
+    overlay.onAdd = function() {
 
-  var layer = d3.select(this.getPanes().overlayLayer)
-  .attr('id','overlay')
-  .append('div')
-  .attr('id','theDiv');
+      var layer = d3.select(this.getPanes().overlayLayer)
+      .attr("id","overlay")
+      .append("div")
+      .attr("id","theDiv");
 
-  var svg = layer.append("svg")
-  .attr('id','theSVGLayer');
+      var svg = layer.append("svg")
+      .attr("id","theSVGLayer");
 
-  g = svg.append("g");
-  var neighborhoods = g.append("g").attr("id", "neighborhoods");
-  g.append("g").attr("id", "schools");
-  d3.select("#legend-container").append("svg").append("g").attr("id", "legend");
+      g = svg.append("g");
+      var neighborhoods = g.append("g").attr("id", "neighborhoods");
+      g.append("g").attr("id", "schools");
+      d3.select("#legend-container").append("svg")
+          .attr("height", 200)
+        .append("g")
+          .attr("id", "legend");
 
-  overlay.draw = function() {
+      overlay.draw = function() {
+        var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[currentMetric]); }));
 
-    var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[currentMetric]); }));
+        var projection = this.getProjection(),
+        padding = 10;
 
-    var projection = this.getProjection(),
-    padding = 10;
+        gmapProjection = function (coordinates) {
+          var googleCoordinates = new google.maps.LatLng(coordinates[1], coordinates[0]);
+          var pixelCoordinates = projection.fromLatLngToDivPixel(googleCoordinates);
+          return [pixelCoordinates.x+4000, pixelCoordinates.y+4000];
+        };
 
-    gmapProjection = function (coordinates) {
-      var googleCoordinates = new google.maps.LatLng(coordinates[1], coordinates[0]);
-      var pixelCoordinates = projection.fromLatLngToDivPixel(googleCoordinates);
-      return [pixelCoordinates.x+4000, pixelCoordinates.y+4000];
+        path = d3.geo.path().projection(gmapProjection);
+
+        // Have to remove all the paths and readd them otherwise the visualization was highlighting the old path
+        // and the new path when zooming.
+        neighborhoods.selectAll("path").remove();
+        neighborhoods.selectAll("path")
+          .data(dc.features)
+          .enter().append("path")
+          .attr("d", path)
+          .attr("id", function (d) { return "path" + d.properties.NCID; })
+          .attr("class", "nbhd")
+          .on("mouseover", hoverNeighborhood)
+          .on("click", function(d) { highlightNeigborhood(d, false); })
+          .style("fill",function(d) {
+            if (currentMetric === null) { return "#aaaaaa"; }
+            var totalPop = all_data[d.properties.gis_id].population_total;
+            return totalPop > min_population ? choro_color(all_data[d.properties.gis_id][currentMetric]) : defaultColor;
+          })
+          .style("fill-opacity",0.5);
+
+        g.select("#schools").selectAll("circle").remove();
+        
+        //if there is a highlighted neighborhood then rehighlightit.
+        if(highlightedNeighborhood) {
+          highlightNeigborhood(highlightedNeighborhood, true);
+        }
+
+        redrawSchools();
+      };
     };
 
-    path = d3.geo.path().projection(gmapProjection);
-
-    neighborhoods.selectAll("path")
-      .data(dc.features)
-      .attr("d", path) // update existing paths
-      .style('fill',function(d) {
-        if (currentMetric === null) { return "#aaaaaa"; }
-        var totalPop = all_data[d.properties.gis_id].population_total;
-        return totalPop > min_population ? choro_color(all_data[d.properties.gis_id][currentMetric]) : defaultColor;
-      })
-      .enter().append("path")
-      .attr("d", path)
-      .attr('class', 'nbhd')
-      .on("mouseover", hoverNeighborhood)
-      .on('click', clicked)
-      .style('fill', defaultColor)
-      .style('fill-opacity',0.5);
-
-    g.select("#schools").selectAll("circle").remove();
-    drawSchools(schoolType);
-  };
-};
-
-// Bind our overlay to the map…
-overlay.setMap(gmap);
-
+    // Bind our overlay to the map…
+    overlay.setMap(gmap);
 
   } // setUpChoropleth function
 
@@ -266,14 +275,14 @@ function changeNeighborhoodData(new_data_column) {
         return choro_color(all_data[d.properties.gis_id][new_data_column]);
       }
     })
-    .style('fill-opacity',0.5);
+    .style("fill-opacity",0.5);
 
-  if(activeId && new_data_column !== 'no_neighborhood_data') {
+  if(activeId && new_data_column !== "no_neighborhood_data") {
     setVisMetric(new_data_column, all_data[activeId][new_data_column]);
   } else {
     setVisMetric(null, null, true);
-    drawSchools('clear');
-    $('.selected').removeClass('selected');
+    removeSchools("clear");
+    $(".selected").removeClass("selected");
   }
 
   var previousElement = function(n, a){
@@ -287,7 +296,7 @@ function changeNeighborhoodData(new_data_column) {
       var top = d - 0.01;
       return "Above " + legendNumber(top, jenks);
     } else {
-      return legendNumber(previousElement(d, jenks), jenks) + "  -  " + legendNumber(d, jenks);
+      return legendNumber(previousElement(d, jenks), jenks) + " - " + legendNumber(d, jenks);
     }
   };
 
@@ -297,7 +306,7 @@ function changeNeighborhoodData(new_data_column) {
       return parseInt(d * 100, 10) + "%";
     } else {
       var number_formatter = d3.format(",");
-      return number_formatter(parseInt(d, 10));
+      return number_formatter(Math.round(parseFloat(d)));
     }
   };
 
@@ -328,30 +337,41 @@ function changeNeighborhoodData(new_data_column) {
 
 }
 
+function redrawSchools() {
+  if($("#public").parent().hasClass("selected")) {
+    drawSchools("public");
+  }
+
+  if($("#charter").parent().hasClass("selected")) {
+    drawSchools("charter");
+  }
+}
+
 function drawSchools(type){
   schoolType=type;
+
   var packer = sm.packer(),
-      file = '',
+      file = "",
       prop, color;
 
   //this could be cleaned up if we use a consistent naming convention.
   switch(type) {
-    case 'public':
-      file = 'data/schools.json';
-      prop = 'schools';
+    case "public":
+      file = "data/schools.json";
+      prop = "schools";
       break;
-    case 'charter':
-      file = 'data/charters.json';
-      prop = 'charters';
+    case "charter":
+      file = "data/charters.json";
+      prop = "charters";
       break;
   }
 
     //switched this to read json.
     d3.json(file, function(data){
-    if(type === 'clear') {
-      prop = 'clear';
+    if(type === "clear") {
+      prop = "clear";
       data = {
-        'clear': []
+        "clear": []
       };
     }
     school_data = data[prop];
@@ -360,86 +380,97 @@ function drawSchools(type){
       return d.name;
     });
     var circleEnter = circle.enter().append("circle")
-    .attr('class', 'school ' + type)
+    .attr("class", "school " + type)
     .attr("r", 4)
     .attr("transform", function(d) {
       return "translate(" + gmapProjection([d.long, d.lat]) + ")";})
     .append("title").text(function(d){return d.name;});
 
     circle.on("click", displaySchoolData);
-    //circle.exit().remove();
-
     packMetros();
 
-    function displaySchoolData(school) {
-      var $schools = $('#schools_panel');
-      var $panelBody = $schools.find('.panel-body');
-      var $schoolData = $panelBody.children('.school-data');
 
-      //Don't add the school twice.
+    function displaySchoolData(school) {
+      var $schools = $("#schools_panel");
+      var $panelBody = $schools.find(".panel-body");
+      var $schoolData = $panelBody.children(".school-data");
+
+      //Don"t add the school twice.
       for (var i = 0, len = $schoolData.length; i < len; i++) {
-          if(school.name === $($schoolData[i]).find('.school-name').text()) { return; }
+          if(school.name === $($schoolData[i]).find(".school-name").text()) { return; }
       }
 
       //Show panel on first school click.
-      if ($schools.hasClass('hide')) {
-        $schools.toggleClass('hide');
+      if ($schools.hasClass("hide")) {
+        $("#btnPanelClose").on("click", closePanel);
+        $schools.toggleClass("hide");
       }
 
       //Limit number of displayed schools.
       if ($schoolData.length === COUNT_SCHOOL_DISPLAY) {
-        $panelBody.children(':nth-child(' + COUNT_SCHOOL_DISPLAY + ')').remove();
+        $panelBody.children(":nth-child(" + COUNT_SCHOOL_DISPLAY + ")").remove();
       }
 
       //Add a new school to the display.
-      var $schoolDisplay = $panelBody.find('#school_data').clone();
+      var $schoolDisplay = $panelBody.find("#school_data").clone();
       $panelBody.prepend(buildNewSchool($schoolDisplay, school));
     }
 
     function buildNewSchool($schoolDisplay, school) {
-      $schoolDisplay.removeAttr('id').removeAttr('class').addClass('school-data');
+      $schoolDisplay.removeAttr("id").removeAttr("class").addClass("school-data");
 
-      var $schoolName = $schoolDisplay.find('.school-name');
+      var $schoolName = $schoolDisplay.find(".school-name");
       $schoolName.html(school.name);
-      $schoolName.on('click', function() {
+      $schoolName.on("click", function() {
         $schoolDisplay.remove();
         setPanel();
       });
-      $schoolDisplay.find('.school-enrollment').html(getDisplayValue(school.enrollment, 'enrollment'));
-      $schoolDisplay.find('.school-allocation').html(getDisplayValue(school.alloc, 'alloc'));
+      $schoolDisplay.find(".school-enrollment").html(getDisplayValue(school.enrollment, "enrollment"));
+      $schoolDisplay.find(".school-allocation").html(getDisplayValue(school.alloc, "alloc"));
       return $schoolDisplay;
     }
 
+    // Close button click handler.
+    function closePanel(event) {
+      event.preventDefault();
+      $("#btnPanelClose").off("click", closePanel);
+      $(".school-data").remove();
+      $("#schools_panel").toggleClass("hide");
+    }
+
     function setPanel() {
-      var $schools = $('#schools_panel');
-      var $panelBody = $schools.find('.panel-body');
+      var $schools = $("#schools_panel");
+      var $panelBody = $schools.find(".panel-body");
 
       if ($panelBody.children().length === 1) {
-        $schools.toggleClass('hide');
+        $schools.toggleClass("hide");
       }
     }
   });
 
   function packMetros() {
-    var elements = d3.selectAll('#schools circle')[0];
-    console.log(elements);
+    var elements = d3.selectAll("#schools circle")[0];
     packer.elements(elements).start();
   }
 }
 
 function removeSchools(type) {
-  g.select("#schools").selectAll("circle." + type).remove();
+  if (type == "clear") {
+    g.select("#schools").selectAll("circle").remove();
+  } else {
+    g.select("#schools").selectAll("circle." + type).remove();
+  }
 }
 
 
 function changeSchoolData(new_data_column) {
-  if (typeof new_data_column === 'string'){
+  if (typeof new_data_column === "string"){
     matchScaleToData(school_scale, function(d){return +d[new_data_column];});
   }
   g.select("#schools").selectAll("circle")
     .transition().duration(600)
     .attr("r", function(d) {
-      return typeof new_data_column !== 'string' ? 4 : school_scale(d[new_data_column]);
+      return typeof new_data_column !== "string" ? 4 : school_scale(d[new_data_column]);
     });
 }
 
@@ -476,8 +507,8 @@ function drawChart(){
       .attr("class","ethnicity");
 
   ethnicity.append("line")
-    .attr("x1", function(d) { return ord_scale('under18'); })
-    .attr("x2", function(d) { return ord_scale('over18'); })
+    .attr("x1", function(d) { return ord_scale("under18"); })
+    .attr("x2", function(d) { return ord_scale("over18"); })
     .attr("y1", function(d) { return scale(d.under18); })
     .attr("y2", function(d) { return scale(d.over18); })
     .style("stroke",function(d){ return color(d.name); })
@@ -528,7 +559,7 @@ function drawLabels(data){
   var label, anchor;
   for(i=0; i<4; i++){
     label = {
-     x: ord_scale('under18'),
+     x: ord_scale("under18"),
      y: scale(data[i].under18),
      width: 0.0,
      height: 0.0,
@@ -537,7 +568,7 @@ function drawLabels(data){
     label_array.push(label);
 
     label = {
-     x: ord_scale('over18'),
+     x: ord_scale("over18"),
      y: scale(data[i].over18),
      width: 0.0,
      height: 0.0,
@@ -545,10 +576,10 @@ function drawLabels(data){
       ethnicity: data[i].name, agegroup: "over18"};
     label_array.push(label);
     
-    anchor = {x: ord_scale('under18'), y: scale(data[i].under18), r: 4, ethnicity: data[i].name};
+    anchor = {x: ord_scale("under18"), y: scale(data[i].under18), r: 4, ethnicity: data[i].name};
     anchor_array.push(anchor);
     
-    anchor = {x: ord_scale('over18'), y: scale(data[i].over18), r: 4, ethnicity: data[i].name};
+    anchor = {x: ord_scale("over18"), y: scale(data[i].over18), r: 4, ethnicity: data[i].name};
     anchor_array.push(anchor);
   }
   
@@ -585,7 +616,7 @@ function drawLabels(data){
     .attr("x1", function(d) { return (d.x); })
     .attr("y1", function(d) { return (d.y); })
     .attr("x2", function(d) {
-     if(d.agegroup =='under18') return d.x - 10;
+     if(d.agegroup =="under18") return d.x - 10;
      else return d.x + 10; })
     .attr("y2", function(d) { return (d.y); });
 
@@ -614,40 +645,42 @@ function redrawLabels() {
 }
 
 function toggleMenu() {
-  var $this = $('.menu-toggle');
-  if ($this.parent().hasClass('toggled')){
-    $this.parent().animate({ 'left' : 0 }, 350, function(){ $('#main-container').removeClass('toggled'); });
+  var $this = $(".menu-toggle");
+  if ($this.parent().hasClass("toggled")){
+    $this.parent().animate({ "left" : 0 }, 350, function(){ $("#main-container").removeClass("toggled"); });
   } else {
-    $this.parent().animate({ 'left' : $('#nav-panel').width() }, 350, function(){ $('#main-container').addClass('toggled'); });
+    $this.parent().animate({ "left" : $("#nav-panel").width() }, 350, function(){ $("#main-container").addClass("toggled"); });
   }
 }
 
 function displayPopBox(d) {
-  //clear the menu if it's exposed.
-  if($('#main-container')[0].classList.contains('toggled')) {
+  //clear the menu if it"s exposed.
+  if($("#main-container")[0].classList.contains("toggled")) {
     toggleMenu();
   }
 
-  var $popbox = $('#pop-info'),
+  var $popbox = $("#pop-info"),
       highlighted = all_data[d.properties.gis_id];
 
-  d3.select('.neighborhood').html(highlighted.NBH_NAMES);
+  d3.select(".neighborhood").html(highlighted.NBH_NAMES);
 
   var val, key;
-  $.each($popbox.find('tr'), function(k, row){
-    key = $(row).attr('data-type');
+  $.each($popbox.find("tr"), function(k, row){
+    key = $(row).attr("data-type");
     val = highlighted[key];
-    $(row).find('.count').html(getDisplayValue(val, key));
+    $(row).find(".count").html(getDisplayValue(val, key));
   });
 }
 
-function clicked(d) {
+
+function highlightNeigborhood(d, isOverlayDraw) {
   // click and zoom map to nbhd bounds
   // var polyBounds = new google.maps.Polygon({
-  //   paths: formatLatLng(d.geometry.coordinates[0])
+  // paths: formatLatLng(d.geometry.coordinates[0])
   // }).getBounds();
   // gmap.fitBounds(polyBounds);
-
+  
+  highlightedNeighborhood = d;
   var x, y, k;
 
   if (d && centered !== d) {
@@ -663,17 +696,34 @@ function clicked(d) {
     centered = null;
   }
 
-  g.selectAll("path")
+  // if this is being called from the overlay.draw handler then
+  // select the centered neighborhood and bring it to the front.
+  if(!isOverlayDraw) {
+    g.selectAll("path")
       .classed("active", centered && function(d) { return d === centered; });
 
-  // if d is a neighborhood boundary and clicked
-  if (d && all_data[d.properties.gis_id]){
-    displayPopBox(d);
-    //last neighborhood to display in popBox.
-    activeId = d.properties.gis_id;
-    setVisMetric(activeData, all_data[activeId][activeData]);
-    updateChart(all_data[activeId]);
+    // if d is a neighborhood boundary and clicked
+    if (d && all_data[d.properties.gis_id]){
+      displayPopBox(d);
+      //last neighborhood to display in popBox.
+      activeId = d.properties.gis_id;
+      setVisMetric(activeData, all_data[activeId][activeData]);
+      updateChart(all_data[activeId]);
+    }
+  } else {
+    g.selectAll("#path" + highlightedNeighborhood.properties.NCID).classed("active", true);
+    bringNeighborhoodToFront();
   }
+}
+
+function bringNeighborhoodToFront() {
+  if (centered) {
+      var activeNeighborhood = d3.select(".active");
+      activeNeighborhood.each(function () {
+        this.parentNode.appendChild(this);
+      });
+      return;
+    }
 }
 
 function hoverNeighborhood(d) {
@@ -684,21 +734,14 @@ function hoverNeighborhood(d) {
   });
 
   //but also keep centered neighborhood path up front
-  if (centered) {
-    var activeNeighborhood = d3.select(".active");
-    activeNeighborhood.each(function () {
-      this.parentNode.appendChild(this);
-    });
-    return;
-  }
-
+  bringNeighborhoodToFront();
 
   if (d && all_data[d.properties.gis_id]){
     displayPopBox(d);
     //last neighborhood to display in popBox.
     activeId = d.properties.gis_id;
 
-    if (activeData !== 'no_neighborhood_data') {
+    if (activeData !== "no_neighborhood_data") {
       setVisMetric(activeData, all_data[activeId][activeData]);
       updateChart(all_data[activeId]);
     } else {
@@ -716,9 +759,9 @@ function getDisplayValue(strNum, name) {
 
   name = name.toLowerCase();
 
-  if ((name.indexOf('alloc') !== -1) || (name.indexOf('amount') !== -1)) { //some kind of allocation or amount
-    return '$' + number_formatter(parseInt(num, 10));
-  } else if (name.indexOf('ratio') !== -1) { //a ratio
+  if ((name.indexOf("alloc") !== -1) || (name.indexOf("amount") !== -1)) { //some kind of allocation or amount
+    return "$" + number_formatter(parseInt(num, 10));
+  } else if (name.indexOf("ratio") !== -1) { //a ratio
     return num.toPrecision(2);
   } else if (num < 1) { //percentage
     return parseInt(num * 100, 10) + "%";
@@ -729,18 +772,18 @@ function getDisplayValue(strNum, name) {
 }
 
 function setVisMetric(metric, val, clear) {
-  var $metric = $('#visualized-metric');
-  var $metricDesc = $('#visualized-measure');
+  var $metric = $("#visualized-metric");
+  var $metricDesc = $("#visualized-measure");
 
   if (clear) {
-    $metric.text('');
-    $metricDesc.text('');
+    $metric.text("");
+    $metricDesc.text("");
     return;
   }
 
-  var metricText = $('a#' + metric).text();
+  var metricText = $("a#" + metric).text();
   $metric.text(metricText);
-  var newDesc = val === '' ? 'N/A' : getDisplayValue(val, metricText);
+  var newDesc = val === "" ? "N/A" : getDisplayValue(val, metricText);
   $metricDesc.text(newDesc);
 }
 
@@ -751,13 +794,13 @@ function formatLatLng(coords){
   });
   return gcoords;
 }
-// getBounds for polyline and polygon doesn't exist in v3
+// getBounds for polyline and polygon doesn"t exist in v3
 // this adds method.
 if (!google.maps.Polyline.prototype.getBounds){
   google.maps.Polyline.prototype.getBounds = function() {
     var bounds = new google.maps.LatLngBounds();
-    this.getPath().forEach( function(latlng) { bounds.extend(latlng); } ); 
-    return bounds; 
+    this.getPath().forEach( function(latlng) { bounds.extend(latlng); } );
+    return bounds;
   };
 }
 
