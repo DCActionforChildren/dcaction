@@ -114,7 +114,7 @@ circle.school:hover {
 /* UI */
 
 #nav-panel {
-  height: 600px;
+  height: 800px;
   overflow: scroll;
 }
 
@@ -149,7 +149,7 @@ p.lead {
 
 /*span#visualized-metric,
 span#visualized-measure {
-  display:none;
+display:none;
 }*/
 
 span#visualized-metric {
@@ -168,8 +168,8 @@ span#visualized-metric {
 
 div#legend-panel {
   position:absolute;
-  bottom:200px;
-  left:20px;
+  bottom:10px;
+  right:20px;
   width: 200px;
   height: 200px;
 }
@@ -211,7 +211,7 @@ h4.school-name {
   font-weight: normal;
   fill: black;
 }
-.link { 
+.link {
   stroke:gray;
   stroke-width:0.5
 }
