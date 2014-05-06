@@ -7,7 +7,7 @@ var width = $("#content").parent().width(),
 $("#content").css({"width":width,"height":height});
 
 var svg, projection, gmapProjection, path, g, gmap;
-var school_scale, school_data, activeId, choropleth_data;
+var school_scale, school_data, activeId, choropleth_data, source_data;
 var all_data = {}, activeData = "population_total";
 var min_population = 100;
 var defaultColor = "#aaa",
@@ -98,6 +98,7 @@ function init(){
   drawChoropleth();
   drawChart();
 
+
   // slide out menu
   $(".menu-toggle").on("click", toggleMenu);
 
@@ -107,6 +108,7 @@ function init(){
     e.preventDefault();
     currentMetric=(typeof $(this).attr("id")==="undefined")?null:$(this).attr("id");
 
+    getSource(source_data,currentMetric)
     changeNeighborhoodData(currentMetric);
     $(this).parent().addClass("selected").siblings().removeClass("selected");
   });
@@ -149,11 +151,13 @@ function drawChoropleth(){
   queue()
     .defer(d3.json, "data/neighborhoods44.json")
     .defer(d3.csv, "data/neighborhoods2.csv")
+    .defer(d3.csv, "data/source_dummy.csv")
     .await(setUpChoropleth);
 
-  function setUpChoropleth(error, dc, choropleth) {
+  function setUpChoropleth(error, dc, choropleth,source) {
     //clean choropleth data for display.
     choropleth_data = choropleth;
+    source_data = source;
     choropleth_data.forEach(function(d) {
       all_data[d.gis_id] = d;
       choropleth_data[d.gis_id] = +d.population_total;
@@ -249,7 +253,7 @@ function drawChoropleth(){
 
   } // setUpChoropleth function
 
-}
+} // drawChoropleth function
 
 function changeNeighborhoodData(new_data_column) {
   var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[new_data_column]); }));
@@ -814,3 +818,14 @@ if (!google.maps.Polygon.prototype.getBounds) {
       return bounds;
   };
 }
+
+
+function getSource(data, layerID){
+  data.forEach(function(d){
+    if(d.layer == layerID){
+      d3.select("#source-title")
+        .text(d.source)
+        .attr('href',d.url);
+    }
+  })
+};
