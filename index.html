@@ -41,14 +41,15 @@
       <li><a id="vacants" href="#">Number of properties vacant or blighted</a></li>
       <li><a id="violent_crimes" href="#">Violent crime rate</a></li>
       <li class="nav-header disabled"><a>Neighborhood assets</a></li>
-      <li><a id="work" href="#">Percent 18-24 without a high school degree</a></li>
+      <!-- <li><a id="no_dip_18" href="#">Percent 18-24 without a high school degree</a></li>
+      <li><a id="no_dip_25" href="#">Percent 25 and older without a high school degree</a></li> -->
       <li><a id="youth_ready_to_work" href="#">Employment rate, 16-24</a><li>
       <li><a id="single_mother_families" href="#">Percentage of children in single mother families</a></li>
       <li><a id="homeownership" href="#">Percent of housing units owner occupied</a></li>
       <li><a id="libraries" href="#">Number of public libraries</a></li>
       <li><a id="grocery" href="#">Number of grocery stores</a></li>
       <li><a id="rec" href="#">Number of parks/recreation centers</a></li>
-      <li><a id="metro" href="#">Number of WMATA stations</a></li>
+      <!-- <li><a id="metro" href="#">Number of WMATA stations</a></li> -->
       <li><a id="bus_stops" href="#">Number of WMATA bus stops</a></li>
       <li class="nav-header disabled"><a>Child success</a></li>
       <li><a id="math" href="#">Percent of students proficient at math</a></li>
@@ -74,7 +75,7 @@
     <div class="menu-toggle posabs">
       See Menu
     </div>
-      <div id="content-wrapper" class="col-lg-12">
+      <div id="content-wrapper" class="col-lg-12 col-md-12 col-sm-12">
         <div id="content"></div> <!-- d3 viz written in here -->
         <div id="details" class="panel panel-default">
           <div class="panel-body">
@@ -101,7 +102,7 @@
                 <td class="count align-right">101,491</td>
               </tr>
             </table>
-            <h4>Demographic Breakdown</h4>
+            <h4 class="chart">Demographic Breakdown</h4>
             <div class="chart"></div>
           </div>
         </div> <!-- selected detail cards here -->
@@ -119,6 +120,14 @@
                       <tr>
                           <td>Allocation</td>
                           <td class="school-allocation">getDisplayValue(school.alloc, 'alloc')</td>
+                      </tr>
+                      <tr>
+                          <td>Percent proficient at math</td>
+                          <td class="school-math">getDisplayValue(school.math, 'math')</td>
+                      </tr>
+                      <tr>
+                          <td>Percent proficient at reading</td>
+                          <td class="school-reading">getDisplayValue(school.reading, 'reading')</td>
                       </tr>
                       </tbody>
                   </table>

@@ -5,6 +5,10 @@ h1, h2, h3, h4, h5 {
   font-weight: bold;
 }
 
+.table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
+  padding: 2px;
+}
+
 .nav > li.disabled.nav-header > a {
   cursor: default;
   font-size: 12px;
@@ -114,19 +118,12 @@ circle.school:hover {
 /* UI */
 
 #nav-panel {
-  height: 800px;
+  height: 600px;
   overflow: scroll;
 }
 
 #nav-panel .nav > li > a {
   padding: 5px 10px;
-}
-
-#details {
-  position:absolute;
-  width:300px;
-  top:20px;
-  right:20px;
 }
 
 #details {
@@ -149,7 +146,7 @@ p.lead {
 
 /*span#visualized-metric,
 span#visualized-measure {
-  display:none;
+display:none;
 }*/
 
 span#visualized-metric {
@@ -168,8 +165,8 @@ span#visualized-metric {
 
 div#legend-panel {
   position:absolute;
-  bottom:10px;
-  right:20px;
+  bottom:200px;
+  left:20px;
   width: 200px;
   height: 200px;
 }
@@ -211,7 +208,7 @@ h4.school-name {
   font-weight: normal;
   fill: black;
 }
-.link { 
+.link {
   stroke:gray;
   stroke-width:0.5
 }
@@ -253,4 +250,34 @@ h4.school-name {
   margin: 5px;
   border: none;
   color: #fff;
+}
+
+@media (max-width: 767px) {
+
+  #main-container,
+  #nav-panel,
+  li.nav-header a,
+  h4 {
+    font-size: 0.95rem !important;
+  }
+
+}
+
+@media (max-width: 767px) {
+
+  #details {
+    position:absolute;
+    width:150px;
+    top:20px;
+    right:20px;
+  }
+
+  #details .chart {
+    display:none;
+  }
+
+  div#legend-panel {
+    display: none;
+  }
+
 }

@@ -1,13 +1,13 @@
 var COUNT_SCHOOL_DISPLAY = 3;
 
 var width = $("#content").parent().width(),
-    height = 800,
+    height = 600,
     centered;
 
 $("#content").css({"width":width,"height":height});
 
 var svg, projection, gmapProjection, path, g, gmap;
-var school_scale, school_data, activeId, choropleth_data, source_data;
+var school_scale, school_data, activeId, choropleth_data;
 var all_data = {}, activeData = "population_total";
 var min_population = 100;
 var defaultColor = "#aaa",
@@ -84,7 +84,7 @@ var gmap_style=[
   },{
      "featureType": "administrative.neighborhood",
      "elementType": "labels.text",
-     "stylers": [ 
+     "stylers": [
       { "visibility": "off" }
     ]
   }
@@ -98,7 +98,6 @@ function init(){
   drawChoropleth();
   drawChart();
 
-
   // slide out menu
   $(".menu-toggle").on("click", toggleMenu);
 
@@ -108,7 +107,6 @@ function init(){
     e.preventDefault();
     currentMetric=(typeof $(this).attr("id")==="undefined")?null:$(this).attr("id");
 
-    getSource(source_data,currentMetric)
     changeNeighborhoodData(currentMetric);
     $(this).parent().addClass("selected").siblings().removeClass("selected");
   });
@@ -123,7 +121,7 @@ function init(){
     if ($$parent.hasClass("selected")) {
       removeSchools($(this).attr("id"));
     } else {
-      drawSchools($(this).attr("id"));  
+      drawSchools($(this).attr("id"));
     }
     $$parent.toggleClass("selected");
 
@@ -151,13 +149,11 @@ function drawChoropleth(){
   queue()
     .defer(d3.json, "data/neighborhoods44.json")
     .defer(d3.csv, "data/neighborhoods2.csv")
-    .defer(d3.csv, "data/source_dummy.csv")
     .await(setUpChoropleth);
 
-  function setUpChoropleth(error, dc, choropleth,source) {
+  function setUpChoropleth(error, dc, choropleth) {
     //clean choropleth data for display.
     choropleth_data = choropleth;
-    source_data = source;
     choropleth_data.forEach(function(d) {
       all_data[d.gis_id] = d;
       choropleth_data[d.gis_id] = +d.population_total;
@@ -165,7 +161,7 @@ function drawChoropleth(){
 
     gmap = new google.maps.Map(d3.select("#content").node(), {
       zoom: 12,
-      minZoom: 11,
+      minZoom: 12,
       maxZoom: 14,
       center: new google.maps.LatLng(38.89555, -77.01551),
       mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -253,15 +249,15 @@ function drawChoropleth(){
 
   } // setUpChoropleth function
 
-} // drawChoropleth function
+}
 
 function changeNeighborhoodData(new_data_column) {
   var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[new_data_column]); }));
   var jenks = _.unique(_.compact(ss.jenks(data_values, 3)));
   jenks.push(_.max(jenks) + 0.01);
-  var color_palette = [ "#aaaaaa", "#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"];
+  var color_palette = [ "#aaaaaa", "#dad6c8", "#bcb7a6", "#9e9885", "#807963", "#625a42"];
   activeData = new_data_column;
-
+  console.log(jenks);
   choro_color = d3.scale.threshold()
     .domain(jenks)
     .range(color_palette);
@@ -279,7 +275,7 @@ function changeNeighborhoodData(new_data_column) {
         return choro_color(all_data[d.properties.gis_id][new_data_column]);
       }
     })
-    .style("fill-opacity",0.5);
+    .style("fill-opacity",0.75);
 
   if(activeId && new_data_column !== "no_neighborhood_data") {
     setVisMetric(new_data_column, all_data[activeId][new_data_column]);
@@ -300,7 +296,7 @@ function changeNeighborhoodData(new_data_column) {
       var top = d - 0.01;
       return "Above " + legendNumber(top, jenks);
     } else {
-      return legendNumber(previousElement(d, jenks), jenks) + "  -  " + legendNumber(d, jenks);
+      return legendNumber(previousElement(d, jenks), jenks) + " - " + legendNumber(d, jenks);
     }
   };
 
@@ -327,7 +323,8 @@ function changeNeighborhoodData(new_data_column) {
   enterLegend.append("rect")
     .attr("width", 170)
     .attr("height", 30)
-    .style("fill", function(d){ return choro_color(d);});
+    .style("fill", function(d){ return choro_color(d);})
+    .style("opacity", "0.75");
 
   enterLegend.append("text")
     .style("fill", "black")
@@ -431,10 +428,12 @@ function drawSchools(type){
       });
       $schoolDisplay.find(".school-enrollment").html(getDisplayValue(school.enrollment, "enrollment"));
       $schoolDisplay.find(".school-allocation").html(getDisplayValue(school.alloc, "alloc"));
+      $schoolDisplay.find(".school-math").html(getDisplayValue(school.math, "math"));
+      $schoolDisplay.find(".school-reading").html(getDisplayValue(school.reading, "reading"));
       return $schoolDisplay;
     }
 
-    // Close button click handler. 
+    // Close button click handler.
     function closePanel(event) {
       event.preventDefault();
       $("#btnPanelClose").off("click", closePanel);
@@ -680,7 +679,7 @@ function displayPopBox(d) {
 function highlightNeigborhood(d, isOverlayDraw) {
   // click and zoom map to nbhd bounds
   // var polyBounds = new google.maps.Polygon({
-  //   paths: formatLatLng(d.geometry.coordinates[0])
+  // paths: formatLatLng(d.geometry.coordinates[0])
   // }).getBounds();
   // gmap.fitBounds(polyBounds);
   
@@ -700,7 +699,7 @@ function highlightNeigborhood(d, isOverlayDraw) {
     centered = null;
   }
 
-  // if this is being called from the overlay.draw handler then 
+  // if this is being called from the overlay.draw handler then
   // select the centered neighborhood and bring it to the front.
   if(!isOverlayDraw) {
     g.selectAll("path")
@@ -717,7 +716,7 @@ function highlightNeigborhood(d, isOverlayDraw) {
   } else {
     g.selectAll("#path" + highlightedNeighborhood.properties.NCID).classed("active", true);
     bringNeighborhoodToFront();
-  }  
+  }
 }
 
 function bringNeighborhoodToFront() {
@@ -803,8 +802,8 @@ function formatLatLng(coords){
 if (!google.maps.Polyline.prototype.getBounds){
   google.maps.Polyline.prototype.getBounds = function() {
     var bounds = new google.maps.LatLngBounds();
-    this.getPath().forEach( function(latlng) { bounds.extend(latlng); } ); 
-    return bounds; 
+    this.getPath().forEach( function(latlng) { bounds.extend(latlng); } );
+    return bounds;
   };
 }
 
@@ -815,14 +814,3 @@ if (!google.maps.Polygon.prototype.getBounds) {
       return bounds;
   };
 }
-
-
-function getSource(data, layerID){
-  data.forEach(function(d){
-    if(d.layer == layerID){
-      d3.select("#source-title")
-        .text(d.source)
-        .attr('href',d.url);
-    }
-  })
-};
