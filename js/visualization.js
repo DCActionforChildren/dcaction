@@ -261,7 +261,6 @@ function changeNeighborhoodData(new_data_column) {
   jenks.push(_.max(jenks) + 0.01);
   var color_palette = [ "#aaaaaa", "#dad6c8", "#bcb7a6", "#9e9885", "#807963", "#625a42"];
   activeData = new_data_column;
-  console.log(jenks);
   choro_color = d3.scale.threshold()
     .domain(jenks)
     .range(color_palette);
@@ -819,13 +818,15 @@ if (!google.maps.Polygon.prototype.getBounds) {
   };
 }
 
-
 function getSource(data, layerID){
+  if(layerID == 'no_neighborhood_data'){
+    d3.select("#source-title").text("").attr("href",null)
+  }
   data.forEach(function(d){
     if(d.layer == layerID){
       d3.select("#source-title")
         .text(d.source)
-        .attr('href',d.url);
+        .attr("href",d.url);
     }
   })
 };
