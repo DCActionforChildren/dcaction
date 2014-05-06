@@ -133,13 +133,6 @@ circle.school:hover {
   right:20px;
 }
 
-#details {
-  position:absolute;
-  width:300px;
-  top:20px;
-  right:20px;
-}
-
 #schools_panel {
   position:absolute;
   width:300px;
@@ -257,4 +250,34 @@ h4.school-name {
   margin: 5px;
   border: none;
   color: #fff;
+}
+
+@media (max-width: 767px) {
+
+  #main-container,
+  #nav-panel,
+  li.nav-header a,
+  h4 {
+    font-size: 0.95rem !important;
+  }
+
+}
+
+@media (max-width: 767px) {
+
+  #details {
+    position:absolute;
+    width:150px;
+    top:20px;
+    right:20px;
+  }
+
+  #details .chart {
+    display:none;
+  }
+
+  div#legend-panel {
+    display: none;
+  }
+
 }
