@@ -7,7 +7,8 @@
       "enrollment" : 252,
       "alloc" : 1928519.66,
       "math" : 0.130434783,
-      "reading" : 0.188405797
+      "reading" : 0.188405797,
+      "grad" : null
     },
     {
       "name" : "Amidon-Bowen Elementary School",
@@ -16,907 +17,8 @@
       "enrollment" : 293,
       "alloc" : 2027255.96,
       "math" : 0.206185567,
-      "reading" : 0.309278351
-    },
-    {
-      "name" : "Bancroft Elementary School",
-      "lat" : 38.934175,
-      "long" : -77.040347,
-      "enrollment" : 473,
-      "alloc" : 5023370.03,
-      "math" : 0.517045455,
-      "reading" : 0.428571429
-    },
-    {
-      "name" : "Barnard Elementary School",
-      "lat" : 38.948498,
-      "long" : -77.018143,
-      "enrollment" : 569,
-      "alloc" : 5443288.51,
-      "math" : 0.482352941,
-      "reading" : 0.532544379
-    },
-    {
-      "name" : "Beers Elementary School",
-      "lat" : 38.863662,
-      "long" : -76.956003,
-      "enrollment" : 384,
-      "alloc" : 3615135.14,
-      "math" : 0.471830986,
-      "reading" : 0.408450704
-    },
-    {
-      "name" : "Brent Elementary School",
-      "lat" : 38.885081,
-      "long" : -77.001916,
-      "enrollment" : 358,
-      "alloc" : 2799908.6,
-      "math" : 0.80733945,
-      "reading" : 0.76146789
-    },
-    {
-      "name" : "Brightwood Education Campus",
-      "lat" : 38.960176,
-      "long" : -77.029798,
-      "enrollment" : 573,
-      "alloc" : 5384060.64,
-      "math" : 0.462093863,
-      "reading" : 0.418867925
-    },
-    {
-      "name" : "Burroughs Education Campus",
-      "lat" : 38.933123,
-      "long" : -76.978985,
-      "enrollment" : 283,
-      "alloc" : 3037733.11,
-      "math" : 0.567375887,
-      "reading" : 0.468085106
-    },
-    {
-      "name" : "Burrville Elementary School",
-      "lat" : 38.900024,
-      "long" : -76.925035,
-      "enrollment" : 357,
-      "alloc" : 3045385.45,
-      "math" : 0.302752294,
-      "reading" : 0.385321101
-    },
-    {
-      "name" : "Cleveland Elementary School",
-      "lat" : 38.914531,
-      "long" : -77.022921,
-      "enrollment" : 297,
-      "alloc" : 2931246.55,
-      "math" : 0.680851064,
-      "reading" : 0.712765957
-    },
-    {
-      "name" : "H.D. Cooke Elementary School",
-      "lat" : 38.923892,
-      "long" : -77.039019,
-      "enrollment" : 388,
-      "alloc" : 3838820.35,
-      "math" : 0.327868852,
-      "reading" : 0.408333333
-    },
-    {
-      "name" : "Davis Elementary School",
-      "lat" : 38.878668,
-      "long" : -76.937034,
-      "enrollment" : 178,
-      "alloc" : 1799852.15,
-      "math" : 0.25,
-      "reading" : 0.3
-    },
-    {
-      "name" : "Drew Elementary School",
-      "lat" : 38.895809,
-      "long" : -76.920362,
-      "enrollment" : 164,
-      "alloc" : 1641035.44,
-      "math" : 0.12,
-      "reading" : 0.16
-    },
-    {
-      "name" : "Eaton Elementary School",
-      "lat" : 38.932539,
-      "long" : -77.065353,
-      "enrollment" : 459,
-      "alloc" : 3648060.49,
-      "math" : 0.843243243,
-      "reading" : 0.842391304
-    },
-    {
-      "name" : "Garfield Elementary School",
-      "lat" : 38.852283,
-      "long" : -76.970402,
-      "enrollment" : 245,
-      "alloc" : 1930193.57,
-      "math" : 0.25,
-      "reading" : 0.15625
-    },
-    {
-      "name" : "Garrison Elementary School",
-      "lat" : 38.914083,
-      "long" : -77.028242,
-      "enrollment" : 228,
-      "alloc" : 2809530.23,
-      "math" : 0.327586207,
-      "reading" : 0.310344828
-    },
-    {
-      "name" : "Hardy Middle School",
-      "lat" : 38.914792,
-      "long" : -77.069334,
-      "enrollment" : 404,
-      "alloc" : 3712323.96,
-      "math" : 0.670076726,
-      "reading" : 0.624678663
-    },
-    {
-      "name" : "C.W. Harris Elementary School",
-      "lat" : 38.884584,
-      "long" : -76.926164,
-      "enrollment" : 265,
-      "alloc" : 1884996.28,
-      "math" : 0.313432836,
-      "reading" : 0.28358209
-    },
-    {
-      "name" : "Hendley Elementary School",
-      "lat" : 38.829184,
-      "long" : -77.000145,
-      "enrollment" : 339,
-      "alloc" : 2725986.25,
-      "math" : 0.251798561,
-      "reading" : 0.171428571
-    },
-    {
-      "name" : "Houston Elementary School",
-      "lat" : 38.904811,
-      "long" : -76.929627,
-      "enrollment" : 238,
-      "alloc" : 1862536.31,
-      "math" : 0.192771084,
-      "reading" : 0.228915663
-    },
-    {
-      "name" : "Hyde-Addison Elementary School",
-      "lat" : 38.907842,
-      "long" : -77.064344,
-      "enrollment" : 332,
-      "alloc" : 2431367.42,
-      "math" : 0.801724138,
-      "reading" : 0.775862069
-    },
-    {
-      "name" : "Janney Elementary School",
-      "lat" : 38.947902,
-      "long" : -77.080493,
-      "enrollment" : 599,
-      "alloc" : 4471340.77,
-      "math" : 0.925619835,
-      "reading" : 0.941908714
-    },
-    {
-      "name" : "Kenilworth Elementary School",
-      "lat" : 38.907354,
-      "long" : -76.940268,
-      "enrollment" : 147,
-      "alloc" : 1291803.55,
-      "math" : 0.275862069,
-      "reading" : 0.293103448
-    },
-    {
-      "name" : "Ketcham Elementary School",
-      "lat" : 38.866216,
-      "long" : -76.98326,
-      "enrollment" : 260,
-      "alloc" : 1913780.05,
-      "math" : 0.375,
-      "reading" : 0.3
-    },
-    {
-      "name" : "Hearst Elementary School",
-      "lat" : 38.940767,
-      "long" : -77.072427,
-      "enrollment" : 273,
-      "alloc" : 2745861.67,
-      "math" : 0.669902913,
-      "reading" : 0.708737864
-    },
-    {
-      "name" : "Kimball Elementary School",
-      "lat" : 38.883168,
-      "long" : -76.957808,
-      "enrollment" : 289,
-      "alloc" : 2424885.41,
-      "math" : 0.290598291,
-      "reading" : 0.341880342
-    },
-    {
-      "name" : "Lafayette Elementary School",
-      "lat" : 38.965914,
-      "long" : -77.068433,
-      "enrollment" : 689,
-      "alloc" : 5485752.29,
-      "math" : 0.921768707,
-      "reading" : 0.901360544
-    },
-    {
-      "name" : "Langdon Education Campus",
-      "lat" : 38.924508,
-      "long" : -76.977558,
-      "enrollment" : 350,
-      "alloc" : 3243405.25,
-      "math" : 0.429447853,
-      "reading" : 0.533742331
-    },
-    {
-      "name" : "LaSalle-Backus Education Campus",
-      "lat" : 38.96109,
-      "long" : -76.998706,
-      "enrollment" : 288,
-      "alloc" : 2682561.14,
-      "math" : 0.308823529,
-      "reading" : 0.345588235
-    },
-    {
-      "name" : "Mamie D. Lee School",
-      "lat" : 38.952391,
-      "long" : -77.00813,
-      "enrollment" : 96,
-      "alloc" : 2343090.37,
-      "math" : " - ",
-      "reading" : " - "
-    },
-    {
-      "name" : "Leckie Elementary School",
-      "lat" : 38.828556,
-      "long" : -77.012587,
-      "enrollment" : 344,
-      "alloc" : 3411894.06,
-      "math" : 0.595238095,
-      "reading" : 0.464285714
-    },
-    {
-      "name" : "Ludlow-Taylor Elementary School",
-      "lat" : 38.898898,
-      "long" : -76.997113,
-      "enrollment" : 263,
-      "alloc" : 3051775.03,
-      "math" : 0.644067797,
-      "reading" : 0.694915254
-    },
-    {
-      "name" : "Key Elementary School",
-      "lat" : 38.926285,
-      "long" : -77.099933,
-      "enrollment" : 375,
-      "alloc" : 2918291.12,
-      "math" : 0.893617021,
-      "reading" : 0.914893617
-    },
-    {
-      "name" : "Mann Elementary School",
-      "lat" : 38.934549,
-      "long" : -77.087197,
-      "enrollment" : 286,
-      "alloc" : 2183996.17,
-      "math" : 0.895833333,
-      "reading" : 0.915789474
-    },
-    {
-      "name" : "Maury Elementary School",
-      "lat" : 38.89201,
-      "long" : -76.988943,
-      "enrollment" : 317,
-      "alloc" : 2681932.52,
-      "math" : 0.638554217,
-      "reading" : 0.662650602
-    },
-    {
-      "name" : "Miner Elementary School",
-      "lat" : 38.897805,
-      "long" : -76.983622,
-      "enrollment" : 475,
-      "alloc" : 4161733.9,
-      "math" : 0.232704403,
-      "reading" : 0.257861635
-    },
-    {
-      "name" : "Marie Reed Elementary School",
-      "lat" : 38.919902,
-      "long" : -77.040757,
-      "enrollment" : 362,
-      "alloc" : 3439317.95,
-      "math" : 0.62962963,
-      "reading" : 0.53271028
-    },
-    {
-      "name" : "Moten Elementary School",
-      "lat" : 38.857049,
-      "long" : -76.985528,
-      "enrollment" : 335,
-      "alloc" : 2373486.5,
-      "math" : 0.128,
-      "reading" : 0.14516129
-    },
-    {
-      "name" : "Murch Elementary School",
-      "lat" : 38.952307,
-      "long" : -77.069829,
-      "enrollment" : 572,
-      "alloc" : 4605261.96,
-      "math" : 0.795744681,
-      "reading" : 0.818584071
-    },
-    {
-      "name" : "Nalle Elementary School",
-      "lat" : 38.886397,
-      "long" : -76.93041,
-      "enrollment" : 335,
-      "alloc" : 2482705.85,
-      "math" : 0.563636364,
-      "reading" : 0.390909091
-    },
-    {
-      "name" : "Noyes Education Campus",
-      "lat" : 38.924395,
-      "long" : -76.992416,
-      "enrollment" : 282,
-      "alloc" : 3161915.16,
-      "math" : 0.298013245,
-      "reading" : 0.298013245
-    },
-    {
-      "name" : "Orr Elementary School",
-      "lat" : 38.871451,
-      "long" : -76.974755,
-      "enrollment" : 346,
-      "alloc" : 3182710.77,
-      "math" : 0.291666667,
-      "reading" : 0.322916667
-    },
-    {
-      "name" : "Oyster-Adams Bilingual School (Oyster) (Lower)",
-      "lat" : 38.923244,
-      "long" : -77.057001,
-      "enrollment" : 668,
-      "alloc" : 6735964.49,
-      "math" : 0.840399002,
-      "reading" : 0.8175
-    },
-    {
-      "name" : "Oyster-Adams Bilingual School (Adams) (Upper)",
-      "lat" : 38.917219,
-      "long" : -77.044013,
-      "enrollment" : null,
-      "alloc" : null,
-      "math" : null,
-      "reading" : null
-    },
-    {
-      "name" : "Patterson Elementary School",
-      "lat" : 38.826143,
-      "long" : -77.008707,
-      "enrollment" : 330,
-      "alloc" : 3115021.95,
-      "math" : 0.24,
-      "reading" : 0.15
-    },
-    {
-      "name" : "Payne Elementary School",
-      "lat" : 38.885175,
-      "long" : -76.983647,
-      "enrollment" : 245,
-      "alloc" : 2045600.79,
-      "math" : 0.307692308,
-      "reading" : 0.338461538
-    },
-    {
-      "name" : "Bruce-Monroe Elementary School at Park View",
-      "lat" : 38.934085,
-      "long" : -77.020839,
-      "enrollment" : 442,
-      "alloc" : 4464938.78,
-      "math" : 0.556390977,
-      "reading" : 0.404580153
-    },
-    {
-      "name" : "Plummer Elementary School",
-      "lat" : 38.886638,
-      "long" : -76.940542,
-      "enrollment" : 263,
-      "alloc" : 2126168.09,
-      "math" : 0.405063291,
-      "reading" : 0.320512821
-    },
-    {
-      "name" : "Powell Elementary School",
-      "lat" : 38.941862,
-      "long" : -77.031228,
-      "enrollment" : 391,
-      "alloc" : 4483803.36,
-      "math" : 0.621359223,
-      "reading" : 0.450980392
-    },
-    {
-      "name" : "Peabody Elementary School (Capitol Hill Cluster)",
-      "lat" : 38.893102,
-      "long" : -77.000019,
-      "enrollment" : 230,
-      "alloc" : 2364713.84,
-      "math" : null,
-      "reading" : null
-    },
-    {
-      "name" : "Raymond Education Campus",
-      "lat" : 38.935347,
-      "long" : -77.026143,
-      "enrollment" : 451,
-      "alloc" : 4262620.08,
-      "math" : 0.419889503,
-      "reading" : 0.462857143
-    },
-    {
-      "name" : "River Terrace Elementary School",
-      "lat" : 38.894995,
-      "long" : -76.957504,
-      "enrollment" : null,
-      "alloc" : null,
-      "math" : null,
-      "reading" : null
-    },
-    {
-      "name" : "Ross Elementary School",
-      "lat" : 38.912625,
-      "long" : -77.03985,
-      "enrollment" : 154,
-      "alloc" : 1509663.77,
-      "math" : 0.787234043,
-      "reading" : 0.829787234
-    },
-    {
-      "name" : "Savoy Elementary School",
-      "lat" : 38.863411,
-      "long" : -76.993108,
-      "enrollment" : 387,
-      "alloc" : 3228392.17,
-      "math" : 0.215189873,
-      "reading" : 0.265822785
-    },
-    {
-      "name" : "Malcolm X Elementary School",
-      "lat" : 38.845205,
-      "long" : -76.98627,
-      "enrollment" : 220,
-      "alloc" : 2214008.22,
-      "math" : 0.316666667,
-      "reading" : 0.35
-    },
-    {
-      "name" : "Seaton Elementary School",
-      "lat" : 38.909791,
-      "long" : -77.025979,
-      "enrollment" : 256,
-      "alloc" : 3044626.3,
-      "math" : 0.663043478,
-      "reading" : 0.340659341
-    },
-    {
-      "name" : "Sharpe Health School",
-      "lat" : 38.943044,
-      "long" : -77.029707,
-      "enrollment" : 85,
-      "alloc" : 2679453.77,
-      "math" : " - ",
-      "reading" : " - "
-    },
-    {
-      "name" : "Shepherd Elementary School",
-      "lat" : 38.984311,
-      "long" : -77.033399,
-      "enrollment" : 314,
-      "alloc" : 2914191.14,
-      "math" : 0.710144928,
-      "reading" : 0.760869565
-    },
-    {
-      "name" : "Simon Elementary School",
-      "lat" : 38.836317,
-      "long" : -77.000624,
-      "enrollment" : 270,
-      "alloc" : 2136133.42,
-      "math" : 0.362637363,
-      "reading" : 0.395604396
-    },
-    {
-      "name" : "Randle Highlands Elementary School",
-      "lat" : 38.870105,
-      "long" : -76.964761,
-      "enrollment" : 358,
-      "alloc" : 3428260.73,
-      "math" : 0.282258065,
-      "reading" : 0.419354839
-    },
-    {
-      "name" : "Stanton Elementary School",
-      "lat" : 38.860095,
-      "long" : -76.968145,
-      "enrollment" : 391,
-      "alloc" : 3324093.54,
-      "math" : 0.42384106,
-      "reading" : 0.198675497
-    },
-    {
-      "name" : "Stoddert Elementary School",
-      "lat" : 38.922557,
-      "long" : -77.07888,
-      "enrollment" : 368,
-      "alloc" : 3136807.48,
-      "math" : 0.895652174,
-      "reading" : 0.85046729
-    },
-    {
-      "name" : "Smothers Elementary School",
-      "lat" : 38.893418,
-      "long" : -76.939005,
-      "enrollment" : 282,
-      "alloc" : 2286614.95,
-      "math" : 0.287671233,
-      "reading" : 0.243243243
-    },
-    {
-      "name" : "Takoma Education Campus",
-      "lat" : 38.974978,
-      "long" : -77.021676,
-      "enrollment" : 366,
-      "alloc" : 3472208.22,
-      "math" : 0.403409091,
-      "reading" : 0.465116279
-    },
-    {
-      "name" : "Thomas Elementary School",
-      "lat" : 38.901175,
-      "long" : -76.951653,
-      "enrollment" : 312,
-      "alloc" : 3114742.75,
-      "math" : 0.347826087,
-      "reading" : 0.402173913
-    },
-    {
-      "name" : "Thomson Elementary School",
-      "lat" : 38.903743,
-      "long" : -77.028235,
-      "enrollment" : 300,
-      "alloc" : 3046367.56,
-      "math" : 0.683333333,
-      "reading" : 0.558333333
-    },
-    {
-      "name" : "Truesdell Education Campus",
-      "lat" : 38.954158,
-      "long" : -77.024106,
-      "enrollment" : 468,
-      "alloc" : 4338443.79,
-      "math" : 0.527522936,
-      "reading" : 0.472222222
-    },
-    {
-      "name" : "Tubman Elementary School",
-      "lat" : 38.928721,
-      "long" : -77.0297,
-      "enrollment" : 506,
-      "alloc" : 5067342.8,
-      "math" : 0.78807947,
-      "reading" : 0.626666667
-    },
-    {
-      "name" : "Turner Elementary School",
-      "lat" : 38.841792,
-      "long" : -76.982189,
-      "enrollment" : 339,
-      "alloc" : 2960893.19,
-      "math" : 0.224806202,
-      "reading" : 0.240310078
-    },
-    {
-      "name" : "Tyler Elementary School",
-      "lat" : 38.881243,
-      "long" : -76.992511,
-      "enrollment" : 470,
-      "alloc" : 4961515.81,
-      "math" : 0.313131313,
-      "reading" : 0.464646465
-    },
-    {
-      "name" : "Walker Jones Education Campus",
-      "lat" : 38.904395,
-      "long" : -77.014355,
-      "enrollment" : 426,
-      "alloc" : 4624270.64,
-      "math" : 0.274611399,
-      "reading" : 0.259067358
-    },
-    {
-      "name" : "Watkins Elementary School (Capitol Hill Cluster)",
-      "lat" : 38.883666,
-      "long" : -76.990231,
-      "enrollment" : 527,
-      "alloc" : 4312088.26,
-      "math" : 0.603773585,
-      "reading" : 0.592356688
-    },
-    {
-      "name" : "Wheatley Education Campus",
-      "lat" : 38.903499,
-      "long" : -76.986449,
-      "enrollment" : 465,
-      "alloc" : null,
-      "math" : 0.373443983,
-      "reading" : 0.3125
-    },
-    {
-      "name" : "West Education Campus",
-      "lat" : 38.950782,
-      "long" : -77.031228,
-      "enrollment" : 243,
-      "alloc" : 2356849.49,
-      "math" : 0.596491228,
-      "reading" : 0.548672566
-    },
-    {
-      "name" : "Whittier Education Campus",
-      "lat" : 38.965008,
-      "long" : -77.019853,
-      "enrollment" : 339,
-      "alloc" : 2827959.32,
-      "math" : 0.409090909,
-      "reading" : 0.348571429
-    },
-    {
-      "name" : "J.O. Wilson Elementary School",
-      "lat" : 38.902518,
-      "long" : -76.997084,
-      "enrollment" : 408,
-      "alloc" : 4164014.3,
-      "math" : 0.640776699,
-      "reading" : 0.533980583
-    },
-    {
-      "name" : "Ferebee-Hope Elementary School",
-      "lat" : 38.832099,
-      "long" : -76.994627,
-      "enrollment" : 215,
-      "alloc" : 1897947.86,
-      "math" : 0.171052632,
-      "reading" : 0.276315789
-    },
-    {
-      "name" : "King Elementary School",
-      "lat" : 38.842968,
-      "long" : -76.998449,
-      "enrollment" : 311,
-      "alloc" : 2687496.69,
-      "math" : 0.279279279,
-      "reading" : 0.405405405
-    },
-    {
-      "name" : "Brookland Education Campus at Bunker Hill",
-      "lat" : 38.942536,
-      "long" : -76.985428,
-      "enrollment" : 274,
-      "alloc" : 2584065.32,
-      "math" : 0.363057325,
-      "reading" : 0.382165605
-    },
-    {
-      "name" : "Marshall Elementary School",
-      "lat" : 38.928465,
-      "long" : -76.957015,
-      "enrollment" : 158,
-      "alloc" : 1925977.95,
-      "math" : 0.363636364,
-      "reading" : 0.333333333
-    },
-    {
-      "name" : "M.C. Terrell/McGogney Elementary School",
-      "lat" : 38.842149,
-      "long" : -76.993944,
-      "enrollment" : 205,
-      "alloc" : 2000077,
-      "math" : 0.181818182,
-      "reading" : 0.287878788
-    },
-    {
-      "name" : "Winston Education Campus",
-      "lat" : 38.857287,
-      "long" : -76.962428,
-      "enrollment" : 308,
-      "alloc" : 2484758.33,
-      "math" : 0.22826087,
-      "reading" : 0.217391304
-    },
-    {
-      "name" : "Capitol Hill Montessori at Logan",
-      "lat" : 38.898894,
-      "long" : -77.003163,
-      "enrollment" : 224,
-      "alloc" : 1961809.92,
-      "math" : 0.380952381,
-      "reading" : 0.642857143
-    },
-    {
-      "name" : "Langley Educational Campus",
-      "lat" : 38.915542,
-      "long" : -77.005705,
-      "enrollment" : 417,
-      "alloc" : 3535423.17,
-      "math" : 0.444933921,
-      "reading" : 0.462555066
-    },
-    {
-      "name" : "Benjamin Banneker Senior High School",
-      "lat" : 38.924076,
-      "long" : -77.023499,
-      "enrollment" : 394,
-      "alloc" : 3606043.02,
-      "math" : 1,
-      "reading" : 0.961165049
-    },
-    {
-      "name" : "Browne Education Campus",
-      "lat" : 38.902013,
-      "long" : -76.970236,
-      "enrollment" : 364,
-      "alloc" : 3187626.23,
-      "math" : 0.375634518,
-      "reading" : 0.263959391
-    },
-    {
-      "name" : "Deal Middle School",
-      "lat" : 38.952338,
-      "long" : -77.073742,
-      "enrollment" : 1165,
-      "alloc" : 8796133.7,
-      "math" : 0.882716049,
-      "reading" : 0.8255093
-    },
-    {
-      "name" : "Eliot-Hine Middle School",
-      "lat" : 38.892002,
-      "long" : -76.97829,
-      "enrollment" : 281,
-      "alloc" : 3781152.23,
-      "math" : 0.429118774,
-      "reading" : 0.36259542
-    },
-    {
-      "name" : "Francis-Stevens Education Campus",
-      "lat" : 38.907248,
-      "long" : -77.051922,
-      "enrollment" : 224,
-      "alloc" : 2085665.71,
-      "math" : 0.469026549,
-      "reading" : 0.566037736
-    },
-    {
-      "name" : "Hart Middle School",
-      "lat" : 38.837608,
-      "long" : -76.998293,
-      "enrollment" : 517,
-      "alloc" : 4737023.11,
-      "math" : 0.265957447,
-      "reading" : 0.295744681
-    },
-    {
-      "name" : "Jefferson Middle School",
-      "lat" : 38.899922,
-      "long" : -77.021899,
-      "enrollment" : 279,
-      "alloc" : 1452652.2,
-      "math" : 0.633962264,
-      "reading" : 0.452830189
-    },
-    {
-      "name" : "Jefferson Middle School Academy",
-      "lat" : null,
-      "long" : null,
-      "enrollment" : null,
-      "alloc" : null,
-      "math" : null,
-      "reading" : null
-    },
-    {
-      "name" : "John Hayden Johnson Middle School",
-      "lat" : 38.849328,
-      "long" : -76.985174,
-      "enrollment" : 244,
-      "alloc" : 2341684,
-      "math" : 0.291666667,
-      "reading" : 0.300925926
-    },
-    {
-      "name" : "Kramer Middle School",
-      "lat" : 38.870739,
-      "long" : -76.980659,
-      "enrollment" : 277,
-      "alloc" : 2797272.48,
-      "math" : 0.315352697,
-      "reading" : 0.231404959
-    },
-    {
-      "name" : "MacFarland Middle School",
-      "lat" : 38.94408,
-      "long" : -77.027467,
-      "enrollment" : 149,
-      "alloc" : 2414265.33,
-      "math" : 0.514492754,
-      "reading" : 0.469230769
-    },
-    {
-      "name" : "Kelly Miller Middle School",
-      "lat" : 38.893596,
-      "long" : -76.932885,
-      "enrollment" : 353,
-      "alloc" : 3754031.41,
-      "math" : 0.528700906,
-      "reading" : 0.374622356
-    },
-    {
-      "name" : "Ronald H. Brown Middle School",
-      "lat" : 38.906068,
-      "long" : -76.933628,
-      "enrollment" : 204,
-      "alloc" : 2447228.73,
-      "math" : 0.3,
-      "reading" : 0.193717277
-    },
-    {
-      "name" : "Sousa Middle School",
-      "lat" : 38.883496,
-      "long" : -76.952277,
-      "enrollment" : 304,
-      "alloc" : 3383496.85,
-      "math" : 0.452631579,
-      "reading" : 0.357894737
-    },
-    {
-      "name" : "Stuart-Hobson Middle School (Capitol Hill Cluster)",
-      "lat" : 38.896123,
-      "long" : -77.000193,
-      "enrollment" : 371,
-      "alloc" : 3613188.31,
-      "math" : 0.64010989,
-      "reading" : 0.641873278
-    },
-    {
-      "name" : "Shaw Middle School at Garnet-Patterson",
-      "lat" : 38.917129,
-      "long" : -77.025953,
-      "enrollment" : 130,
-      "alloc" : 1964590.99,
-      "math" : 0.254716981,
-      "reading" : 0.306930693
-    },
-    {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : null,
-      "alloc" : 1687459.79,
-      "math" : null,
-      "reading" : null
-    },
-    {
-      "name" : "Columbia Heights Education Campus",
-      "lat" : 38.928756,
-      "long" : -77.036432,
-      "enrollment" : 1262,
-      "alloc" : 1.05382119E7,
-      "math" : 0.511029412,
-      "reading" : 0.468164794
+      "reading" : 0.309278351,
+      "grad" : null
     },
     {
       "name" : "Anacostia Senior High School",
@@ -925,7 +27,8 @@
       "enrollment" : 697,
       "alloc" : 7515492.38,
       "math" : 0.185185185,
-      "reading" : 0.196319018
+      "reading" : 0.196319018,
+      "grad" : 0.43
     },
     {
       "name" : "Ballou Senior High School",
@@ -934,7 +37,138 @@
       "enrollment" : 791,
       "alloc" : 1.035001548E7,
       "math" : 0.187165775,
-      "reading" : 0.134408602
+      "reading" : 0.134408602,
+      "grad" : 0.4456
+    },
+    {
+      "name" : "Bancroft Elementary School",
+      "lat" : 38.934175,
+      "long" : -77.040347,
+      "enrollment" : 473,
+      "alloc" : 5023370.03,
+      "math" : 0.517045455,
+      "reading" : 0.428571429,
+      "grad" : null
+    },
+    {
+      "name" : "Barnard Elementary School",
+      "lat" : 38.948498,
+      "long" : -77.018143,
+      "enrollment" : 569,
+      "alloc" : 5443288.51,
+      "math" : 0.482352941,
+      "reading" : 0.532544379,
+      "grad" : null
+    },
+    {
+      "name" : "Beers Elementary School",
+      "lat" : 38.863662,
+      "long" : -76.956003,
+      "enrollment" : 384,
+      "alloc" : 3615135.14,
+      "math" : 0.471830986,
+      "reading" : 0.408450704,
+      "grad" : null
+    },
+    {
+      "name" : "Benjamin Banneker Senior High School",
+      "lat" : 38.924076,
+      "long" : -77.023499,
+      "enrollment" : 394,
+      "alloc" : 3606043.02,
+      "math" : 1,
+      "reading" : 0.961165049,
+      "grad" : 1
+    },
+    {
+      "name" : "Brent Elementary School",
+      "lat" : 38.885081,
+      "long" : -77.001916,
+      "enrollment" : 358,
+      "alloc" : 2799908.6,
+      "math" : 0.80733945,
+      "reading" : 0.76146789,
+      "grad" : null
+    },
+    {
+      "name" : "Brightwood Education Campus",
+      "lat" : 38.960176,
+      "long" : -77.029798,
+      "enrollment" : 573,
+      "alloc" : 5384060.64,
+      "math" : 0.462093863,
+      "reading" : 0.418867925,
+      "grad" : null
+    },
+    {
+      "name" : "Brookland Education Campus at Bunker Hill",
+      "lat" : 38.942536,
+      "long" : -76.985428,
+      "enrollment" : 274,
+      "alloc" : 2584065.32,
+      "math" : 0.363057325,
+      "reading" : 0.382165605,
+      "grad" : null
+    },
+    {
+      "name" : "Browne Education Campus",
+      "lat" : 38.902013,
+      "long" : -76.970236,
+      "enrollment" : 364,
+      "alloc" : 3187626.23,
+      "math" : 0.375634518,
+      "reading" : 0.263959391,
+      "grad" : null
+    },
+    {
+      "name" : "Bruce-Monroe Elementary School at Park View",
+      "lat" : 38.934085,
+      "long" : -77.020839,
+      "enrollment" : 442,
+      "alloc" : 4464938.78,
+      "math" : 0.556390977,
+      "reading" : 0.404580153,
+      "grad" : null
+    },
+    {
+      "name" : "Burroughs Education Campus",
+      "lat" : 38.933123,
+      "long" : -76.978985,
+      "enrollment" : 283,
+      "alloc" : 3037733.11,
+      "math" : 0.567375887,
+      "reading" : 0.468085106,
+      "grad" : null
+    },
+    {
+      "name" : "Burrville Elementary School",
+      "lat" : 38.900024,
+      "long" : -76.925035,
+      "enrollment" : 357,
+      "alloc" : 3045385.45,
+      "math" : 0.302752294,
+      "reading" : 0.385321101,
+      "grad" : null
+    },
+    {
+      "name" : "C.W. Harris Elementary School",
+      "lat" : 38.884584,
+      "long" : -76.926164,
+      "enrollment" : 265,
+      "alloc" : 1884996.28,
+      "math" : 0.313432836,
+      "reading" : 0.28358209,
+      "grad" : null
+    },
+    {
+      "name" : "Capitol Hill Montessori at Logan",
+      "lat" : 38.898894,
+      "long" : -77.003163,
+      "enrollment" : 224,
+      "alloc" : 1961809.92,
+      "math" : 0.380952381,
+      "reading" : 0.642857143,
+      "grad" : null
     },
     {
       "name" : "Cardozo Senior High School",
@@ -943,7 +177,28 @@
       "enrollment" : 537,
       "alloc" : 4794199.25,
       "math" : 0.326241135,
-      "reading" : 0.197183099
+      "reading" : 0.197183099,
+      "grad" : 0.38
+    },
+    {
+      "name" : "Cleveland Elementary School",
+      "lat" : 38.914531,
+      "long" : -77.022921,
+      "enrollment" : 297,
+      "alloc" : 2931246.55,
+      "math" : 0.680851064,
+      "reading" : 0.712765957,
+      "grad" : null
+    },
+    {
+      "name" : "Columbia Heights Education Campus",
+      "lat" : 38.928756,
+      "long" : -77.036432,
+      "enrollment" : 1262,
+      "alloc" : 1.05382119E7,
+      "math" : 0.511029412,
+      "reading" : 0.468164794,
+      "grad" : 0.7308
     },
     {
       "name" : "Coolidge Senior High School",
@@ -952,106 +207,38 @@
       "enrollment" : 490,
       "alloc" : 4979681.08,
       "math" : 0.272727273,
-      "reading" : 0.352459016
+      "reading" : 0.352459016,
+      "grad" : 0.5333
     },
     {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : 652,
-      "alloc" : 2104991.7,
-      "math" : null,
-      "reading" : null
+      "name" : "Davis Elementary School",
+      "lat" : 38.878668,
+      "long" : -76.937034,
+      "enrollment" : 178,
+      "alloc" : 1799852.15,
+      "math" : 0.25,
+      "reading" : 0.3,
+      "grad" : null
     },
     {
-      "name" : "Eastern Senior High School",
-      "lat" : 38.88981,
-      "long" : -76.980584,
-      "enrollment" : 504,
-      "alloc" : 4797948.53,
-      "math" : 0.393063584,
-      "reading" : 0.450867052
+      "name" : "Deal Middle School",
+      "lat" : 38.952338,
+      "long" : -77.073742,
+      "enrollment" : 1165,
+      "alloc" : 8796133.7,
+      "math" : 0.882716049,
+      "reading" : 0.8255093,
+      "grad" : null
     },
     {
-      "name" : "McKinley Technology Senior High School",
-      "lat" : 38.915546,
-      "long" : -77.004389,
-      "enrollment" : 697,
-      "alloc" : 6328650.7,
-      "math" : 0.910614525,
-      "reading" : 0.815642458
-    },
-    {
-      "name" : "Roosevelt Senior High School",
-      "lat" : 38.943044,
-      "long" : -77.029691,
-      "enrollment" : 473,
-      "alloc" : 5479421.85,
-      "math" : 0.195488722,
-      "reading" : 0.21641791
-    },
-    {
-      "name" : "Spingarn Senior High School",
-      "lat" : 38.898041,
-      "long" : -76.971114,
-      "enrollment" : 374,
-      "alloc" : 4277719.86,
-      "math" : 0.172413793,
-      "reading" : 0.227272727
-    },
-    {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : 124,
-      "alloc" : 909033.57,
-      "math" : null,
-      "reading" : null
-    },
-    {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : 601,
-      "alloc" : 2643965.15,
-      "math" : null,
-      "reading" : null
-    },
-    {
-      "name" : "Woodrow Wilson Senior High School",
-      "lat" : 38.945996,
-      "long" : -77.064578,
-      "enrollment" : 1713,
-      "alloc" : 1.280172756E7,
-      "math" : 0.600401606,
-      "reading" : 0.614
-    },
-    {
-      "name" : "H.D. Woodson Senior High School",
-      "lat" : 38.886295,
-      "long" : -76.936044,
-      "enrollment" : 710,
-      "alloc" : 8034332.73,
-      "math" : 0.179775281,
-      "reading" : 0.214285714
-    },
-    {
-      "name" : "School Without Walls Senior High School",
-      "lat" : 38.898315,
-      "long" : -77.047439,
-      "enrollment" : 548,
-      "alloc" : 4535741,
-      "math" : 0.973154362,
-      "reading" : 0.993288591
-    },
-    {
-      "name" : "Dunbar Senior High School",
-      "lat" : 38.90755,
-      "long" : -77.015513,
-      "enrollment" : 504,
-      "alloc" : 4399071.39,
-      "math" : 0.168141593,
-      "reading" : 0.178571429
+      "name" : "Drew Elementary School",
+      "lat" : 38.895809,
+      "long" : -76.920362,
+      "enrollment" : 164,
+      "alloc" : 1641035.44,
+      "math" : 0.12,
+      "reading" : 0.16,
+      "grad" : null
     },
     {
       "name" : "Duke Ellington School of the Arts",
@@ -1060,61 +247,338 @@
       "enrollment" : 531,
       "alloc" : 5958800.99,
       "math" : 0.753521127,
-      "reading" : 0.802816901
+      "reading" : 0.802816901,
+      "grad" : 0.95
     },
     {
-      "name" : "Washington Metropolitan High School",
-      "lat" : 38.920449,
-      "long" : -77.016971,
-      "enrollment" : 282,
-      "alloc" : 2022006.72,
-      "math" : 0.051724138,
-      "reading" : 0.2
+      "name" : "Dunbar Senior High School",
+      "lat" : 38.90755,
+      "long" : -77.015513,
+      "enrollment" : 504,
+      "alloc" : 4399071.39,
+      "math" : 0.168141593,
+      "reading" : 0.178571429,
+      "grad" : 0.6
     },
     {
-      "name" : "Phelps Architecture, Construction, and Engineering Senior High School",
-      "lat" : 38.898835,
-      "long" : -76.970219,
-      "enrollment" : 340,
-      "alloc" : 3996447.23,
-      "math" : 0.472727273,
-      "reading" : 0.436363636
+      "name" : "Eastern Senior High School",
+      "lat" : 38.88981,
+      "long" : -76.980584,
+      "enrollment" : 504,
+      "alloc" : 4797948.53,
+      "math" : 0.393063584,
+      "reading" : 0.450867052,
+      "grad" : null
     },
     {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : 49,
-      "alloc" : 969580.13,
-      "math" : null,
-      "reading" : null
+      "name" : "Eaton Elementary School",
+      "lat" : 38.932539,
+      "long" : -77.065353,
+      "enrollment" : 459,
+      "alloc" : 3648060.49,
+      "math" : 0.843243243,
+      "reading" : 0.842391304,
+      "grad" : null
     },
     {
-      "name" : "Prospect Learning Center",
-      "lat" : 38.897335,
-      "long" : -76.993449,
-      "enrollment" : 83,
-      "alloc" : 2386508.71,
-      "math" : 0.162162162,
-      "reading" : 0.108108108
+      "name" : "Eliot-Hine Middle School",
+      "lat" : 38.892002,
+      "long" : -76.97829,
+      "enrollment" : 281,
+      "alloc" : 3781152.23,
+      "math" : 0.429118774,
+      "reading" : 0.36259542,
+      "grad" : null
     },
     {
-      "name" : "Hamilton (Youth Services Center) ",
-      "lat" : 38.909659,
-      "long" : -76.995753,
-      "enrollment" : null,
-      "alloc" : null,
-      "math" : null,
-      "reading" : null
+      "name" : "Ferebee-Hope Elementary School",
+      "lat" : 38.832099,
+      "long" : -76.994627,
+      "enrollment" : 215,
+      "alloc" : 1897947.86,
+      "math" : 0.171052632,
+      "reading" : 0.276315789,
+      "grad" : null
     },
     {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : 89,
-      "alloc" : 185430.52,
-      "math" : null,
-      "reading" : null
+      "name" : "Francis-Stevens Education Campus",
+      "lat" : 38.907248,
+      "long" : -77.051922,
+      "enrollment" : 224,
+      "alloc" : 2085665.71,
+      "math" : 0.469026549,
+      "reading" : 0.566037736,
+      "grad" : null
+    },
+    {
+      "name" : "Garfield Elementary School",
+      "lat" : 38.852283,
+      "long" : -76.970402,
+      "enrollment" : 245,
+      "alloc" : 1930193.57,
+      "math" : 0.25,
+      "reading" : 0.15625,
+      "grad" : null
+    },
+    {
+      "name" : "Garrison Elementary School",
+      "lat" : 38.914083,
+      "long" : -77.028242,
+      "enrollment" : 228,
+      "alloc" : 2809530.23,
+      "math" : 0.327586207,
+      "reading" : 0.310344828,
+      "grad" : null
+    },
+    {
+      "name" : "H.D. Cooke Elementary School",
+      "lat" : 38.923892,
+      "long" : -77.039019,
+      "enrollment" : 388,
+      "alloc" : 3838820.35,
+      "math" : 0.327868852,
+      "reading" : 0.408333333,
+      "grad" : null
+    },
+    {
+      "name" : "H.D. Woodson Senior High School",
+      "lat" : 38.886295,
+      "long" : -76.936044,
+      "enrollment" : 710,
+      "alloc" : 8034332.73,
+      "math" : 0.179775281,
+      "reading" : 0.214285714,
+      "grad" : 0.4421
+    },
+    {
+      "name" : "Hardy Middle School",
+      "lat" : 38.914792,
+      "long" : -77.069334,
+      "enrollment" : 404,
+      "alloc" : 3712323.96,
+      "math" : 0.670076726,
+      "reading" : 0.624678663,
+      "grad" : null
+    },
+    {
+      "name" : "Hart Middle School",
+      "lat" : 38.837608,
+      "long" : -76.998293,
+      "enrollment" : 517,
+      "alloc" : 4737023.11,
+      "math" : 0.265957447,
+      "reading" : 0.295744681,
+      "grad" : null
+    },
+    {
+      "name" : "Hearst Elementary School",
+      "lat" : 38.940767,
+      "long" : -77.072427,
+      "enrollment" : 273,
+      "alloc" : 2745861.67,
+      "math" : 0.669902913,
+      "reading" : 0.708737864,
+      "grad" : null
+    },
+    {
+      "name" : "Hendley Elementary School",
+      "lat" : 38.829184,
+      "long" : -77.000145,
+      "enrollment" : 339,
+      "alloc" : 2725986.25,
+      "math" : 0.251798561,
+      "reading" : 0.171428571,
+      "grad" : null
+    },
+    {
+      "name" : "Houston Elementary School",
+      "lat" : 38.904811,
+      "long" : -76.929627,
+      "enrollment" : 238,
+      "alloc" : 1862536.31,
+      "math" : 0.192771084,
+      "reading" : 0.228915663,
+      "grad" : null
+    },
+    {
+      "name" : "Hyde-Addison Elementary School",
+      "lat" : 38.907842,
+      "long" : -77.064344,
+      "enrollment" : 332,
+      "alloc" : 2431367.42,
+      "math" : 0.801724138,
+      "reading" : 0.775862069,
+      "grad" : null
+    },
+    {
+      "name" : "J.O. Wilson Elementary School",
+      "lat" : 38.902518,
+      "long" : -76.997084,
+      "enrollment" : 408,
+      "alloc" : 4164014.3,
+      "math" : 0.640776699,
+      "reading" : 0.533980583,
+      "grad" : null
+    },
+    {
+      "name" : "Janney Elementary School",
+      "lat" : 38.947902,
+      "long" : -77.080493,
+      "enrollment" : 599,
+      "alloc" : 4471340.77,
+      "math" : 0.925619835,
+      "reading" : 0.941908714,
+      "grad" : null
+    },
+    {
+      "name" : "Jefferson Middle School",
+      "lat" : 38.899922,
+      "long" : -77.021899,
+      "enrollment" : 279,
+      "alloc" : 1452652.2,
+      "math" : 0.633962264,
+      "reading" : 0.452830189,
+      "grad" : null
+    },
+    {
+      "name" : "John Hayden Johnson Middle School",
+      "lat" : 38.849328,
+      "long" : -76.985174,
+      "enrollment" : 244,
+      "alloc" : 2341684,
+      "math" : 0.291666667,
+      "reading" : 0.300925926,
+      "grad" : null
+    },
+    {
+      "name" : "Kelly Miller Middle School",
+      "lat" : 38.893596,
+      "long" : -76.932885,
+      "enrollment" : 353,
+      "alloc" : 3754031.41,
+      "math" : 0.528700906,
+      "reading" : 0.374622356,
+      "grad" : null
+    },
+    {
+      "name" : "Kenilworth Elementary School",
+      "lat" : 38.907354,
+      "long" : -76.940268,
+      "enrollment" : 147,
+      "alloc" : 1291803.55,
+      "math" : 0.275862069,
+      "reading" : 0.293103448,
+      "grad" : null
+    },
+    {
+      "name" : "Ketcham Elementary School",
+      "lat" : 38.866216,
+      "long" : -76.98326,
+      "enrollment" : 260,
+      "alloc" : 1913780.05,
+      "math" : 0.375,
+      "reading" : 0.3,
+      "grad" : null
+    },
+    {
+      "name" : "Key Elementary School",
+      "lat" : 38.926285,
+      "long" : -77.099933,
+      "enrollment" : 375,
+      "alloc" : 2918291.12,
+      "math" : 0.893617021,
+      "reading" : 0.914893617,
+      "grad" : null
+    },
+    {
+      "name" : "Kimball Elementary School",
+      "lat" : 38.883168,
+      "long" : -76.957808,
+      "enrollment" : 289,
+      "alloc" : 2424885.41,
+      "math" : 0.290598291,
+      "reading" : 0.341880342,
+      "grad" : null
+    },
+    {
+      "name" : "King Elementary School",
+      "lat" : 38.842968,
+      "long" : -76.998449,
+      "enrollment" : 311,
+      "alloc" : 2687496.69,
+      "math" : 0.279279279,
+      "reading" : 0.405405405,
+      "grad" : null
+    },
+    {
+      "name" : "Kramer Middle School",
+      "lat" : 38.870739,
+      "long" : -76.980659,
+      "enrollment" : 277,
+      "alloc" : 2797272.48,
+      "math" : 0.315352697,
+      "reading" : 0.231404959,
+      "grad" : null
+    },
+    {
+      "name" : "Lafayette Elementary School",
+      "lat" : 38.965914,
+      "long" : -77.068433,
+      "enrollment" : 689,
+      "alloc" : 5485752.29,
+      "math" : 0.921768707,
+      "reading" : 0.901360544,
+      "grad" : null
+    },
+    {
+      "name" : "Langdon Education Campus",
+      "lat" : 38.924508,
+      "long" : -76.977558,
+      "enrollment" : 350,
+      "alloc" : 3243405.25,
+      "math" : 0.429447853,
+      "reading" : 0.533742331,
+      "grad" : null
+    },
+    {
+      "name" : "Langley Educational Campus",
+      "lat" : 38.915542,
+      "long" : -77.005705,
+      "enrollment" : 417,
+      "alloc" : 3535423.17,
+      "math" : 0.444933921,
+      "reading" : 0.462555066,
+      "grad" : null
+    },
+    {
+      "name" : "LaSalle-Backus Education Campus",
+      "lat" : 38.96109,
+      "long" : -76.998706,
+      "enrollment" : 288,
+      "alloc" : 2682561.14,
+      "math" : 0.308823529,
+      "reading" : 0.345588235,
+      "grad" : null
+    },
+    {
+      "name" : "Leckie Elementary School",
+      "lat" : 38.828556,
+      "long" : -77.012587,
+      "enrollment" : 344,
+      "alloc" : 3411894.06,
+      "math" : 0.595238095,
+      "reading" : 0.464285714,
+      "grad" : null
+    },
+    {
+      "name" : "Ludlow-Taylor Elementary School",
+      "lat" : 38.898898,
+      "long" : -76.997113,
+      "enrollment" : 263,
+      "alloc" : 3051775.03,
+      "math" : 0.644067797,
+      "reading" : 0.694915254,
+      "grad" : null
     },
     {
       "name" : "Luke C. Moore Academy Senior High School",
@@ -1123,16 +587,328 @@
       "enrollment" : 366,
       "alloc" : 2613544.3,
       "math" : 0.075,
-      "reading" : 0.1125
+      "reading" : 0.1125,
+      "grad" : 0.4129
     },
     {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : 10,
-      "alloc" : 1065702.57,
+      "name" : "M.C. Terrell/McGogney Elementary School",
+      "lat" : 38.842149,
+      "long" : -76.993944,
+      "enrollment" : 205,
+      "alloc" : 2000077,
+      "math" : 0.181818182,
+      "reading" : 0.287878788,
+      "grad" : null
+    },
+    {
+      "name" : "MacFarland Middle School",
+      "lat" : 38.94408,
+      "long" : -77.027467,
+      "enrollment" : 149,
+      "alloc" : 2414265.33,
+      "math" : 0.514492754,
+      "reading" : 0.469230769,
+      "grad" : null
+    },
+    {
+      "name" : "Malcolm X Elementary School",
+      "lat" : 38.845205,
+      "long" : -76.98627,
+      "enrollment" : 220,
+      "alloc" : 2214008.22,
+      "math" : 0.316666667,
+      "reading" : 0.35,
+      "grad" : null
+    },
+    {
+      "name" : "Mamie D. Lee School",
+      "lat" : 38.952391,
+      "long" : -77.00813,
+      "enrollment" : 96,
+      "alloc" : 2343090.37,
+      "math" : " - ",
+      "reading" : " - ",
+      "grad" : null
+    },
+    {
+      "name" : "Mann Elementary School",
+      "lat" : 38.934549,
+      "long" : -77.087197,
+      "enrollment" : 286,
+      "alloc" : 2183996.17,
+      "math" : 0.895833333,
+      "reading" : 0.915789474,
+      "grad" : null
+    },
+    {
+      "name" : "Marie Reed Elementary School",
+      "lat" : 38.919902,
+      "long" : -77.040757,
+      "enrollment" : 362,
+      "alloc" : 3439317.95,
+      "math" : 0.62962963,
+      "reading" : 0.53271028,
+      "grad" : null
+    },
+    {
+      "name" : "Marshall Elementary School",
+      "lat" : 38.928465,
+      "long" : -76.957015,
+      "enrollment" : 158,
+      "alloc" : 1925977.95,
+      "math" : 0.363636364,
+      "reading" : 0.333333333,
+      "grad" : null
+    },
+    {
+      "name" : "Maury Elementary School",
+      "lat" : 38.89201,
+      "long" : -76.988943,
+      "enrollment" : 317,
+      "alloc" : 2681932.52,
+      "math" : 0.638554217,
+      "reading" : 0.662650602,
+      "grad" : null
+    },
+    {
+      "name" : "McKinley Technology Senior High School",
+      "lat" : 38.915546,
+      "long" : -77.004389,
+      "enrollment" : 697,
+      "alloc" : 6328650.7,
+      "math" : 0.910614525,
+      "reading" : 0.815642458,
+      "grad" : 0.94
+    },
+    {
+      "name" : "Miner Elementary School",
+      "lat" : 38.897805,
+      "long" : -76.983622,
+      "enrollment" : 475,
+      "alloc" : 4161733.9,
+      "math" : 0.232704403,
+      "reading" : 0.257861635,
+      "grad" : null
+    },
+    {
+      "name" : "Moten Elementary School",
+      "lat" : 38.857049,
+      "long" : -76.985528,
+      "enrollment" : 335,
+      "alloc" : 2373486.5,
+      "math" : 0.128,
+      "reading" : 0.14516129,
+      "grad" : null
+    },
+    {
+      "name" : "Murch Elementary School",
+      "lat" : 38.952307,
+      "long" : -77.069829,
+      "enrollment" : 572,
+      "alloc" : 4605261.96,
+      "math" : 0.795744681,
+      "reading" : 0.818584071,
+      "grad" : null
+    },
+    {
+      "name" : "Nalle Elementary School",
+      "lat" : 38.886397,
+      "long" : -76.93041,
+      "enrollment" : 335,
+      "alloc" : 2482705.85,
+      "math" : 0.563636364,
+      "reading" : 0.390909091,
+      "grad" : null
+    },
+    {
+      "name" : "Noyes Education Campus",
+      "lat" : 38.924395,
+      "long" : -76.992416,
+      "enrollment" : 282,
+      "alloc" : 3161915.16,
+      "math" : 0.298013245,
+      "reading" : 0.298013245,
+      "grad" : null
+    },
+    {
+      "name" : "Orr Elementary School",
+      "lat" : 38.871451,
+      "long" : -76.974755,
+      "enrollment" : 346,
+      "alloc" : 3182710.77,
+      "math" : 0.291666667,
+      "reading" : 0.322916667,
+      "grad" : null
+    },
+    {
+      "name" : "Oyster-Adams Bilingual School (Adams) (Upper)",
+      "lat" : 38.917219,
+      "long" : -77.044013,
+      "enrollment" : null,
+      "alloc" : null,
       "math" : null,
-      "reading" : null
+      "reading" : null,
+      "grad" : null
+    },
+    {
+      "name" : "Oyster-Adams Bilingual School (Oyster) (Lower)",
+      "lat" : 38.923244,
+      "long" : -77.057001,
+      "enrollment" : 668,
+      "alloc" : 6735964.49,
+      "math" : 0.840399002,
+      "reading" : 0.8175,
+      "grad" : null
+    },
+    {
+      "name" : "Patterson Elementary School",
+      "lat" : 38.826143,
+      "long" : -77.008707,
+      "enrollment" : 330,
+      "alloc" : 3115021.95,
+      "math" : 0.24,
+      "reading" : 0.15,
+      "grad" : null
+    },
+    {
+      "name" : "Payne Elementary School",
+      "lat" : 38.885175,
+      "long" : -76.983647,
+      "enrollment" : 245,
+      "alloc" : 2045600.79,
+      "math" : 0.307692308,
+      "reading" : 0.338461538,
+      "grad" : null
+    },
+    {
+      "name" : "Peabody Elementary School (Capitol Hill Cluster)",
+      "lat" : 38.893102,
+      "long" : -77.000019,
+      "enrollment" : 230,
+      "alloc" : 2364713.84,
+      "math" : null,
+      "reading" : null,
+      "grad" : null
+    },
+    {
+      "name" : "Phelps Architecture, Construction, and Engineering Senior High School",
+      "lat" : 38.898835,
+      "long" : -76.970219,
+      "enrollment" : 340,
+      "alloc" : 3996447.23,
+      "math" : 0.472727273,
+      "reading" : 0.436363636,
+      "grad" : 0.9326
+    },
+    {
+      "name" : "Plummer Elementary School",
+      "lat" : 38.886638,
+      "long" : -76.940542,
+      "enrollment" : 263,
+      "alloc" : 2126168.09,
+      "math" : 0.405063291,
+      "reading" : 0.320512821,
+      "grad" : null
+    },
+    {
+      "name" : "Powell Elementary School",
+      "lat" : 38.941862,
+      "long" : -77.031228,
+      "enrollment" : 391,
+      "alloc" : 4483803.36,
+      "math" : 0.621359223,
+      "reading" : 0.450980392,
+      "grad" : null
+    },
+    {
+      "name" : "Prospect Learning Center",
+      "lat" : 38.897335,
+      "long" : -76.993449,
+      "enrollment" : 83,
+      "alloc" : 2386508.71,
+      "math" : 0.162162162,
+      "reading" : 0.108108108,
+      "grad" : null
+    },
+    {
+      "name" : "Randle Highlands Elementary School",
+      "lat" : 38.870105,
+      "long" : -76.964761,
+      "enrollment" : 358,
+      "alloc" : 3428260.73,
+      "math" : 0.282258065,
+      "reading" : 0.419354839,
+      "grad" : null
+    },
+    {
+      "name" : "Raymond Education Campus",
+      "lat" : 38.935347,
+      "long" : -77.026143,
+      "enrollment" : 451,
+      "alloc" : 4262620.08,
+      "math" : 0.419889503,
+      "reading" : 0.462857143,
+      "grad" : null
+    },
+    {
+      "name" : "River Terrace Elementary School",
+      "lat" : 38.894995,
+      "long" : -76.957504,
+      "enrollment" : null,
+      "alloc" : null,
+      "math" : null,
+      "reading" : null,
+      "grad" : null
+    },
+    {
+      "name" : "Ronald H. Brown Middle School",
+      "lat" : 38.906068,
+      "long" : -76.933628,
+      "enrollment" : 204,
+      "alloc" : 2447228.73,
+      "math" : 0.3,
+      "reading" : 0.193717277,
+      "grad" : null
+    },
+    {
+      "name" : "Roosevelt Senior High School",
+      "lat" : 38.943044,
+      "long" : -77.029691,
+      "enrollment" : 473,
+      "alloc" : 5479421.85,
+      "math" : 0.195488722,
+      "reading" : 0.21641791,
+      "grad" : 0.4809
+    },
+    {
+      "name" : "Ross Elementary School",
+      "lat" : 38.912625,
+      "long" : -77.03985,
+      "enrollment" : 154,
+      "alloc" : 1509663.77,
+      "math" : 0.787234043,
+      "reading" : 0.829787234,
+      "grad" : null
+    },
+    {
+      "name" : "Savoy Elementary School",
+      "lat" : 38.863411,
+      "long" : -76.993108,
+      "enrollment" : 387,
+      "alloc" : 3228392.17,
+      "math" : 0.215189873,
+      "reading" : 0.265822785,
+      "grad" : null
+    },
+    {
+      "name" : "School Without Walls Senior High School",
+      "lat" : 38.898315,
+      "long" : -77.047439,
+      "enrollment" : 548,
+      "alloc" : 4535741,
+      "math" : 0.973154362,
+      "reading" : 0.993288591,
+      "grad" : 0.9214
     },
     {
       "name" : "School-Within-A-School at Logan Annex",
@@ -1141,160 +917,268 @@
       "enrollment" : 126,
       "alloc" : null,
       "math" : null,
-      "reading" : null
+      "reading" : null,
+      "grad" : null
     },
     {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : null,
-      "alloc" : 3604858.39,
-      "math" : null,
-      "reading" : null
+      "name" : "Seaton Elementary School",
+      "lat" : 38.909791,
+      "long" : -77.025979,
+      "enrollment" : 256,
+      "alloc" : 3044626.3,
+      "math" : 0.663043478,
+      "reading" : 0.340659341,
+      "grad" : null
     },
     {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : null,
-      "alloc" : 370350,
-      "math" : null,
-      "reading" : null
+      "name" : "Sharpe Health School",
+      "lat" : 38.943044,
+      "long" : -77.029707,
+      "enrollment" : 85,
+      "alloc" : 2679453.77,
+      "math" : " - ",
+      "reading" : " - ",
+      "grad" : null
     },
     {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : null,
-      "alloc" : 842998.76,
-      "math" : null,
-      "reading" : null
+      "name" : "Shaw Middle School at Garnet-Patterson",
+      "lat" : 38.917129,
+      "long" : -77.025953,
+      "enrollment" : 130,
+      "alloc" : 1964590.99,
+      "math" : 0.254716981,
+      "reading" : 0.306930693,
+      "grad" : null
     },
     {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : null,
-      "alloc" : 200000,
-      "math" : null,
-      "reading" : null
+      "name" : "Shepherd Elementary School",
+      "lat" : 38.984311,
+      "long" : -77.033399,
+      "enrollment" : 314,
+      "alloc" : 2914191.14,
+      "math" : 0.710144928,
+      "reading" : 0.760869565,
+      "grad" : null
     },
     {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : null,
-      "alloc" : 1480869.96,
-      "math" : null,
-      "reading" : null
+      "name" : "Simon Elementary School",
+      "lat" : 38.836317,
+      "long" : -77.000624,
+      "enrollment" : 270,
+      "alloc" : 2136133.42,
+      "math" : 0.362637363,
+      "reading" : 0.395604396,
+      "grad" : null
     },
     {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : null,
-      "alloc" : 3806455.77,
-      "math" : null,
-      "reading" : null
+      "name" : "Smothers Elementary School",
+      "lat" : 38.893418,
+      "long" : -76.939005,
+      "enrollment" : 282,
+      "alloc" : 2286614.95,
+      "math" : 0.287671233,
+      "reading" : 0.243243243,
+      "grad" : null
     },
     {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : null,
-      "alloc" : 904628.18,
-      "math" : null,
-      "reading" : null
+      "name" : "Sousa Middle School",
+      "lat" : 38.883496,
+      "long" : -76.952277,
+      "enrollment" : 304,
+      "alloc" : 3383496.85,
+      "math" : 0.452631579,
+      "reading" : 0.357894737,
+      "grad" : null
     },
     {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : null,
-      "alloc" : 1371693.31,
-      "math" : null,
-      "reading" : null
+      "name" : "Spingarn Senior High School",
+      "lat" : 38.898041,
+      "long" : -76.971114,
+      "enrollment" : 374,
+      "alloc" : 4277719.86,
+      "math" : 0.172413793,
+      "reading" : 0.227272727,
+      "grad" : 0.506
     },
     {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : null,
-      "alloc" : 3314632.5,
-      "math" : null,
-      "reading" : null
+      "name" : "Stanton Elementary School",
+      "lat" : 38.860095,
+      "long" : -76.968145,
+      "enrollment" : 391,
+      "alloc" : 3324093.54,
+      "math" : 0.42384106,
+      "reading" : 0.198675497,
+      "grad" : null
     },
     {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : null,
+      "name" : "Stoddert Elementary School",
+      "lat" : 38.922557,
+      "long" : -77.07888,
+      "enrollment" : 368,
+      "alloc" : 3136807.48,
+      "math" : 0.895652174,
+      "reading" : 0.85046729,
+      "grad" : null
+    },
+    {
+      "name" : "Stuart-Hobson Middle School (Capitol Hill Cluster)",
+      "lat" : 38.896123,
+      "long" : -77.000193,
+      "enrollment" : 371,
+      "alloc" : 3613188.31,
+      "math" : 0.64010989,
+      "reading" : 0.641873278,
+      "grad" : null
+    },
+    {
+      "name" : "Takoma Education Campus",
+      "lat" : 38.974978,
+      "long" : -77.021676,
+      "enrollment" : 366,
+      "alloc" : 3472208.22,
+      "math" : 0.403409091,
+      "reading" : 0.465116279,
+      "grad" : null
+    },
+    {
+      "name" : "Thomas Elementary School",
+      "lat" : 38.901175,
+      "long" : -76.951653,
+      "enrollment" : 312,
+      "alloc" : 3114742.75,
+      "math" : 0.347826087,
+      "reading" : 0.402173913,
+      "grad" : null
+    },
+    {
+      "name" : "Thomson Elementary School",
+      "lat" : 38.903743,
+      "long" : -77.028235,
+      "enrollment" : 300,
+      "alloc" : 3046367.56,
+      "math" : 0.683333333,
+      "reading" : 0.558333333,
+      "grad" : null
+    },
+    {
+      "name" : "Truesdell Education Campus",
+      "lat" : 38.954158,
+      "long" : -77.024106,
+      "enrollment" : 468,
+      "alloc" : 4338443.79,
+      "math" : 0.527522936,
+      "reading" : 0.472222222,
+      "grad" : null
+    },
+    {
+      "name" : "Tubman Elementary School",
+      "lat" : 38.928721,
+      "long" : -77.0297,
+      "enrollment" : 506,
+      "alloc" : 5067342.8,
+      "math" : 0.78807947,
+      "reading" : 0.626666667,
+      "grad" : null
+    },
+    {
+      "name" : "Turner Elementary School",
+      "lat" : 38.841792,
+      "long" : -76.982189,
+      "enrollment" : 339,
+      "alloc" : 2960893.19,
+      "math" : 0.224806202,
+      "reading" : 0.240310078,
+      "grad" : null
+    },
+    {
+      "name" : "Tyler Elementary School",
+      "lat" : 38.881243,
+      "long" : -76.992511,
+      "enrollment" : 470,
+      "alloc" : 4961515.81,
+      "math" : 0.313131313,
+      "reading" : 0.464646465,
+      "grad" : null
+    },
+    {
+      "name" : "Walker Jones Education Campus",
+      "lat" : 38.904395,
+      "long" : -77.014355,
+      "enrollment" : 426,
+      "alloc" : 4624270.64,
+      "math" : 0.274611399,
+      "reading" : 0.259067358,
+      "grad" : null
+    },
+    {
+      "name" : "Washington Metropolitan High School",
+      "lat" : 38.920449,
+      "long" : -77.016971,
+      "enrollment" : 282,
+      "alloc" : 2022006.72,
+      "math" : 0.051724138,
+      "reading" : 0.2,
+      "grad" : 0.4841
+    },
+    {
+      "name" : "Watkins Elementary School (Capitol Hill Cluster)",
+      "lat" : 38.883666,
+      "long" : -76.990231,
+      "enrollment" : 527,
+      "alloc" : 4312088.26,
+      "math" : 0.603773585,
+      "reading" : 0.592356688,
+      "grad" : null
+    },
+    {
+      "name" : "West Education Campus",
+      "lat" : 38.950782,
+      "long" : -77.031228,
+      "enrollment" : 243,
+      "alloc" : 2356849.49,
+      "math" : 0.596491228,
+      "reading" : 0.548672566,
+      "grad" : null
+    },
+    {
+      "name" : "Wheatley Education Campus",
+      "lat" : 38.903499,
+      "long" : -76.986449,
+      "enrollment" : 465,
       "alloc" : null,
-      "math" : null,
-      "reading" : null
+      "math" : 0.373443983,
+      "reading" : 0.3125,
+      "grad" : null
     },
     {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : null,
-      "alloc" : 1.242024195E7,
-      "math" : null,
-      "reading" : null
+      "name" : "Whittier Education Campus",
+      "lat" : 38.965008,
+      "long" : -77.019853,
+      "enrollment" : 339,
+      "alloc" : 2827959.32,
+      "math" : 0.409090909,
+      "reading" : 0.348571429,
+      "grad" : null
     },
     {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : null,
-      "alloc" : 1.592523157E7,
-      "math" : null,
-      "reading" : null
+      "name" : "Winston Education Campus",
+      "lat" : 38.857287,
+      "long" : -76.962428,
+      "enrollment" : 308,
+      "alloc" : 2484758.33,
+      "math" : 0.22826087,
+      "reading" : 0.217391304,
+      "grad" : null
     },
     {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : null,
-      "alloc" : 613818.18,
-      "math" : null,
-      "reading" : null
-    },
-    {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : null,
-      "alloc" : 2351278.27,
-      "math" : null,
-      "reading" : null
-    },
-    {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : null,
-      "alloc" : 2172175,
-      "math" : null,
-      "reading" : null
-    },
-    {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : null,
-      "alloc" : 4230822.86,
-      "math" : null,
-      "reading" : null
-    },
-    {
-      "name" : null,
-      "lat" : null,
-      "long" : null,
-      "enrollment" : null,
-      "alloc" : 6158920.5,
-      "math" : null,
-      "reading" : null
+      "name" : "Woodrow Wilson Senior High School",
+      "lat" : 38.945996,
+      "long" : -77.064578,
+      "enrollment" : 1713,
+      "alloc" : 1.280172756E7,
+      "math" : 0.600401606,
+      "reading" : 0.614,
+      "grad" : 0.75
     }
   ]
 }
