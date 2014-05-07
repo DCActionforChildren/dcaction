@@ -192,6 +192,15 @@ h4.school-name {
   cursor: pointer;
 }
 
+h4.school-name:after {
+  content: "Click name to remove";
+  font-size: 10px;
+  color: #999;
+  font-style: italic;
+  display: block;
+  margin-top: 3px;
+}
+
 /* Chart */
 .label {
   font: 11px sans-serif;
