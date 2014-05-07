@@ -111,7 +111,13 @@ function init(){
     getSource(source_data,currentMetric)
     changeNeighborhoodData(currentMetric);
     $(this).parent().addClass("selected").siblings().removeClass("selected");
+    $('#legend-panel').show();
   });
+
+  // $(".neighborhood-menu #no_neighborhood_data button").on("click", function(e){
+  //   $('#legend-panel').css("display","none");
+  //   console.log("hello world");
+  // });
 
   // school type changes
   $(".school-type-menu > li").on("click", "a", function(e){
@@ -235,7 +241,7 @@ function drawChoropleth(){
             var totalPop = all_data[d.properties.gis_id].population_total;
             return totalPop > min_population ? choro_color(all_data[d.properties.gis_id][currentMetric]) : defaultColor;
           })
-          .style("fill-opacity",0.5);
+          .style("fill-opacity",0.75);
 
         g.select("#schools").selectAll("circle").remove();
         
@@ -264,8 +270,6 @@ function changeNeighborhoodData(new_data_column) {
   choro_color = d3.scale.threshold()
     .domain(jenks)
     .range(color_palette);
-
-  $('#legend-panel').show();
 
   choropleth_data.forEach(function(d) {
     choropleth_data[d.gis_id] = +d[new_data_column];
