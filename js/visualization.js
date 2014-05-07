@@ -265,6 +265,8 @@ function changeNeighborhoodData(new_data_column) {
     .domain(jenks)
     .range(color_palette);
 
+  $('#legend-panel').show();
+
   choropleth_data.forEach(function(d) {
     choropleth_data[d.gis_id] = +d[new_data_column];
   });
@@ -433,6 +435,7 @@ function drawSchools(type){
       $schoolDisplay.find(".school-allocation").html(getDisplayValue(school.alloc, "alloc"));
       $schoolDisplay.find(".school-math").html(getDisplayValue(school.math, "math"));
       $schoolDisplay.find(".school-reading").html(getDisplayValue(school.reading, "reading"));
+      $schoolDisplay.find(".school-grad").html(getDisplayValue(school.grad, "grad"));
       return $schoolDisplay;
     }
 
@@ -769,7 +772,7 @@ function getDisplayValue(strNum, name) {
     return "$" + number_formatter(parseInt(num, 10));
   } else if (name.indexOf("ratio") !== -1) { //a ratio
     return num.toPrecision(2);
-  } else if (num < 1) { //percentage
+  } else if (num <= 1) { //percentage
     return parseInt(num * 100, 10) + "%";
   }
 
