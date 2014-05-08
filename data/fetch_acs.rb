@@ -23,7 +23,8 @@ fields_rename = {
   'total_neighborhood_poverty_numer' => 'B17001_002E',
   'total_neighborhood_poverty_denom' => 'B17001_001E',
   'homeownership_denom' => 'B11012_001E',
-  'work_denom' => 'B08303_001E'
+  'work_denom' => 'B08303_001E',
+  'population_under_3' => 'B09001_003E'
 }
 
 # the following fields are sums of ACS fields
