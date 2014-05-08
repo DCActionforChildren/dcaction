@@ -268,13 +268,12 @@ function changeNeighborhoodData(new_data_column) {
     jenks.shift();
     jenks.pop();
   }
-  jenks.push(_.max(jenks) + 0.01);
-  var color_palette = [ "#aaaaaa", "#dad6c8", "#bcb7a6", "#9e9885", "#807963", "#625a42"];
+  // jenks.push(_.max(jenks) + 0.01);
+  var color_palette = [ "#dad6c8", "#bcb7a6", "#9e9885", "#807963", "#625a42"];
   activeData = new_data_column;
   choro_color = d3.scale.threshold()
     .domain(jenks)
     .range(color_palette);
-
   choropleth_data.forEach(function(d) {
     choropleth_data[d.gis_id] = +d[new_data_column];
   });
