@@ -272,7 +272,6 @@ function changeNeighborhoodData(new_data_column) {
   if(legend_jenks.length > 4){
     legend_jenks.shift();
   }
-  console.log(legend_jenks);
   // jenks.push(_.max(jenks) + 0.01);
   var color_palette = [ "#dad6c8", "#bcb7a6", "#9e9885", "#807963", "#625a42"];
   activeData = new_data_column;
@@ -306,18 +305,24 @@ function changeNeighborhoodData(new_data_column) {
     return _.max(_.filter(a, function(d){ return d < n; } ));
   };
 
-  var legendText = function(d, legend_jenks){
-    if(d == _.min(legend_jenks)) {
-      return legendNumber(d, legend_jenks) + " and below";
-    } else if(d == _.max(legend_jenks)){
+  var legendText = function(d, jenks){
+    if(d == _.min(jenks)) {
+      return legendNumber(d, jenks) + " and below";
+    } else if(d == _.max(jenks)){
       var top = d - 0.01;
-      return "Above " + legendNumber(top, legend_jenks);
+      if(jenks.length > 3) {
+        return "Above " + legendNumber(jenks[3], jenks);
+      } else if(jenks.length < 3 && jenks.length > 2) {
+        return "Above " + legendNumber(jenks[2], jenks);
+      } else {
+        return "Above " + legendNumber(jenks[1], jenks);
+      };      
     } else {
       return legendNumber(previousElement(d, legend_jenks), legend_jenks) + " - " + legendNumber(d, legend_jenks);
     }
   };
 
-  var legendNumber = function(d, legend_jenks){
+  var legendNumber = function(d, jenks){
     var top = _.max(legend_jenks);
     if(top < 2){
       return parseInt(d * 100, 10) + "%";
@@ -340,7 +345,7 @@ function changeNeighborhoodData(new_data_column) {
   enterLegend.append("rect")
     .attr("width", 170)
     .attr("height", 30)
-    .style("fill", function(d){ return choro_color(d); console.log(choro_color(d));})
+    .style("fill", function(d, i){ return color_palette[i]; })
     .style("opacity", "0.75");
 
   enterLegend.append("text")
