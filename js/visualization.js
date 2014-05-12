@@ -448,11 +448,11 @@ function drawSchools(type){
         $schoolDisplay.remove();
         setPanel();
       });
-      $schoolDisplay.find(".school-enrollment").html(getDisplayValue(school.enrollment, "enrollment"));
-      $schoolDisplay.find(".school-allocation").html(getDisplayValue(school.alloc, "alloc"));
-      $schoolDisplay.find(".school-math").html(getDisplayValue(school.math, "math"));
-      $schoolDisplay.find(".school-reading").html(getDisplayValue(school.reading, "reading"));
-      $schoolDisplay.find(".school-grad").html(getDisplayValue(school.grad, "grad"));
+      $schoolDisplay.find(".school-enrollment").html(getDisplayValue(school.enroll_val, "enroll_val"));
+      $schoolDisplay.find(".school-allocation").html(getDisplayValue(school.alloc_cur, "alloc_cur"));
+      $schoolDisplay.find(".school-math").html(getDisplayValue(school.math_perc, "math_perc"));
+      $schoolDisplay.find(".school-reading").html(getDisplayValue(school.reading_perc, "reading_perc"));
+      $schoolDisplay.find(".school-grad").html(getDisplayValue(school.grad_perc, "grad_perc"));
       return $schoolDisplay;
     }
 
@@ -554,10 +554,10 @@ function drawChart(){
 
 function updateChart(data){
   var ethdata = [
-    {name: "white", under18: data.pop_nothisp_white_under18, over18: data.pop_nothisp_white},
-    {name: "black", under18: data.pop_nothisp_black_under18, over18: data.pop_nothisp_black},
-    {name: "hispanic", under18: data.pop_hisp_under18, over18: data.pop_hisp},
-    {name: "other", under18: data.pop_nothisp_other_under18, over18: data.pop_nothisp_other}
+    {name: "white", under18: data.pop_nothisp_white_under18_perc, over18: data.pop_nothisp_white_perc},
+    {name: "black", under18: data.pop_nothisp_black_under18_perc, over18: data.pop_nothisp_black_perc},
+    {name: "hispanic", under18: data.pop_hisp_under18_perc, over18: data.pop_hisp_perc},
+    {name: "other", under18: data.pop_nothisp_other_under18_perc, over18: data.pop_nothisp_other_perc}
   ];
 
   chartSvg.selectAll(".ethnicity line")
