@@ -2,6 +2,10 @@ from settings import * # this is where the GOOGLE_SPREADSHEET_USER, etc would go
 from google_spreadsheet.api import SpreadsheetAPI
 import pandas as pd
 
+GOOGLE_SPREADSHEET_USER = 'pete@datakind.org'
+GOOGLE_SPREADSHEET_PASSWORD = 'J@k3_P0rw@y'
+GOOGLE_SPREADSHEET_SOURCE = ''
+
 # create spreasheets api object
 api = SpreadsheetAPI(GOOGLE_SPREADSHEET_USER, 
         GOOGLE_SPREADSHEET_PASSWORD, GOOGLE_SPREADSHEET_SOURCE)
@@ -28,7 +32,7 @@ def sheet_name_to_df(name, sheet_ix):
     return pd.DataFrame(sheet)
 
 
-def main():
+def create_full_data():
     # the Google Drive api strips spaces and underscores so we need to create
     # a list of the column names used in the visualization
     cols = [
@@ -44,7 +48,7 @@ def main():
         'single_mother_families', 'single_mother_families_margin', 
         'population_white_total', 'population_white_total_margin',
         'population_black_total', 'population_black_total_margin',
-        'population_hisp_total', 'population_hisp_total_margin', 
+        'population_hisp_total', 'population_hisp_total_margin',
         'total_neighborhood_poverty_numer', 'total_neighborhood_poverty_numer_margin',
         'total_neighborhood_poverty_denom', 'total_neighborhood_poverty_denom_margin',
         'homeownership_denom', 'homeownership_denom_margin', 'work_denom',
@@ -64,7 +68,9 @@ def main():
         'homeownership_numer', 'homeownership_numer_margin',
         'work_numer', 'work_numer_margin', 'median_family_income',
         'total_neighborhood_poverty', 'children_in_poverty', 'youth_ready_to_work',
-        'homeownership', 'work'
+        'homeownership', 'work', 'pop_nothisp_white', 'pop_nothisp_black',
+        'pop_nothisp_other', 'pop_hisp', 'pop_nothisp_white_under18', 
+        'pop_nothisp_black_under18', 'pop_nothisp_other_under18', 'pop_hisp_under18'
     ]
 
     # fetch the full data from Google Drive
@@ -81,6 +87,20 @@ def main():
     dcac = dcac.drop('rowid', 1)
     #write the csv
     dcac.to_csv('./full_data.csv', index=False)
+
+
+def create_source_data():
+    sources = sheet_name_to_df('DCAC DataBook v2 aggregation', 1)
+    sources = sources.ix[:, ['layer', 'source', 'url']]
+    sources.to_csv('./source_dummy.csv', index=False)
+
+
+def main():
+    print "Creating full data csv"
+    create_full_data()
+    print "Creating source data csv"
+    create_source_data()
+    print "Done"
 
 
 if __name__ == '__main__':
