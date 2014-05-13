@@ -884,3 +884,6 @@ $("#narrative-row button").click(function() {
     $(this).addClass('active');
 });
 
+$("#narrative a.close-box").click(function() {
+  $( "#narrative" ).fadeOut(400);
+});

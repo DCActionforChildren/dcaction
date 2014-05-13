@@ -34,7 +34,7 @@ fields_sum = {
     "B09001_004E",
     "B09001_003E"
   ],
-  'poverty_under_3' => [
+  'poverty_under_5' => [
     "B17001_004E",
     "B17001_018E"
   ],
