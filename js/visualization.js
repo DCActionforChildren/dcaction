@@ -680,6 +680,7 @@ function toggleMenu() {
     $this.parent().animate({ "left" : 0 }, 350, function(){ $("#main-container").removeClass("toggled"); });
   } else {
     $this.parent().animate({ "left" : $("#nav-panel").width() }, 350, function(){ $("#main-container").addClass("toggled"); });
+    removeNarrative();
   }
 }
 
@@ -876,6 +877,11 @@ function getSource(data, layerID){
   })
 };
 
+function removeNarrative() {
+  $( "#narrative" ).fadeOut(400);
+  $( "#narrative-row button" ).removeClass('active');
+};
+
 $("#narrative-row button").click(function() {
   if($(this).hasClass('active'))
     $(this).removeClass('active'); //change with .activatebutton
@@ -884,13 +890,10 @@ $("#narrative-row button").click(function() {
     $(this).addClass('active');
 });
 
-$("#narrative a.close-box").click(function() {
-  $( "#narrative" ).fadeOut(400);
-});
+$("#narrative a.close-box").click(removeNarrative);
 
 $("#narrative-row button.one").click(function() {
   $( "#narrative" ).fadeIn(400);
-  e.preventDefault();
   $('#narrative div.panel-body').hide();
   $('#' + $(this).data('rel')).show();
 });
