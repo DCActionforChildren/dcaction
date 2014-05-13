@@ -40,7 +40,7 @@ sm.packer = function() {
 
            if (!startPos[i]) {
              startPos[i] = { x: ax, y: ay };
-           } 
+           }
        }
 
        var j = 0;
@@ -64,7 +64,7 @@ sm.packer = function() {
    var draw = function() {
        for (var i = 0; i < elements.length; i++) {
            for (var j = 0; j < elements.length; j++) {
-               if (i == j) 
+               if (i == j)
                    continue;
 
                pack(nodes[i], nodes[j]);
@@ -81,7 +81,9 @@ sm.packer = function() {
 			n.y += (s.y - n.y) * .1;
 		 }
 
-	       e.setAttribute("transform", "translate(" + n.x + "," + n.y + ")");
+      if(!isNaN(n.x) && !isNaN(n.y)) {
+	     e.setAttribute("transform", "translate(" + n.x + "," + n.y + ")");
+      }
 		   e.setAttribute("r", n.r);
        }
    };
@@ -95,7 +97,7 @@ sm.packer = function() {
 
            v.normalize();
            v.mult((a.r + b.r + 5 - Math.sqrt(d)) * .5);
-			
+
 		   if (!a.sel) {
 			   a.x += v.x;
 	           a.y += v.y;

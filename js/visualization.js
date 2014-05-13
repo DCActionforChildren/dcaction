@@ -111,7 +111,7 @@ function init(){
     getSource(source_data,currentMetric)
     changeNeighborhoodData(currentMetric);
     $(this).parent().addClass("selected").siblings().removeClass("selected");
-    $('#legend-panel').show();
+    $("#legend-panel").show();
   });
 
   // $(".neighborhood-menu #no_neighborhood_data button").on("click", function(e){
@@ -122,9 +122,9 @@ function init(){
   // school type changes
   $(".school-type-menu > li").on("click", "a", function(e){
     e.preventDefault();
-    
+
     //$(this).parent().addClass("selected").siblings().removeClass("selected");
-    
+
     var $$parent = $(this).parent();
     if ($$parent.hasClass("selected")) {
       removeSchools($(this).attr("id"));
@@ -183,7 +183,7 @@ function drawChoropleth(){
       mapTypeControl: false,
       styles: gmap_style
     });
-    
+
     google.maps.event.addListenerOnce(gmap, "idle", function(){
       // adjust the zoom bar
       $("div[title='Zoom in']").parent().css({"margin-top":"60px"});
@@ -244,7 +244,7 @@ function drawChoropleth(){
           .style("fill-opacity",0.75);
 
         g.select("#schools").selectAll("circle").remove();
-        
+
         //if there is a highlighted neighborhood then rehighlightit.
         if(highlightedNeighborhood) {
           highlightNeigborhood(highlightedNeighborhood, true);
@@ -316,7 +316,7 @@ function changeNeighborhoodData(new_data_column) {
         return "Above " + legendNumber(jenks[2], jenks);
       } else {
         return "Above " + legendNumber(jenks[1], jenks);
-      };      
+      };
     } else {
       return legendNumber(previousElement(d, legend_jenks), legend_jenks) + " - " + legendNumber(d, legend_jenks);
     }
@@ -448,11 +448,11 @@ function drawSchools(type){
         $schoolDisplay.remove();
         setPanel();
       });
-      $schoolDisplay.find(".school-enrollment").html(getDisplayValue(school.enroll_val, "enroll_val"));
-      $schoolDisplay.find(".school-allocation").html(getDisplayValue(school.alloc_cur, "alloc_cur"));
-      $schoolDisplay.find(".school-math").html(getDisplayValue(school.math_perc, "math_perc"));
-      $schoolDisplay.find(".school-reading").html(getDisplayValue(school.reading_perc, "reading_perc"));
-      $schoolDisplay.find(".school-grad").html(getDisplayValue(school.grad_perc, "grad_perc"));
+      $schoolDisplay.find(".school-enrollment").html(getDisplayValue(school.enroll_val, "enroll_val", "val"));
+      $schoolDisplay.find(".school-allocation").html(getDisplayValue(school.alloc_cur, "alloc_cur", "cur"));
+      $schoolDisplay.find(".school-math").html(getDisplayValue(school.math_perc, "math_perc", "perc"));
+      $schoolDisplay.find(".school-reading").html(getDisplayValue(school.reading_perc, "reading_perc", "perc"));
+      $schoolDisplay.find(".school-grad").html(getDisplayValue(school.grad_perc, "grad_perc", "perc"));
       return $schoolDisplay;
     }
 
@@ -601,14 +601,14 @@ function drawLabels(data){
       name: Math.round(data[i].over18*100) + "% " + data[i].name,
       ethnicity: data[i].name, agegroup: "over18"};
     label_array.push(label);
-    
+
     anchor = {x: ord_scale("under18"), y: scale(data[i].under18), r: 4, ethnicity: data[i].name};
     anchor_array.push(anchor);
-    
+
     anchor = {x: ord_scale("over18"), y: scale(data[i].over18), r: 4, ethnicity: data[i].name};
     anchor_array.push(anchor);
   }
-  
+
   chartSvg.selectAll(".dot").data([]).exit().remove();
   chartSvg.selectAll(".label").data([]).exit().remove();
   chartSvg.selectAll(".link").data([]).exit().remove();
@@ -690,11 +690,12 @@ function displayPopBox(d) {
 
   d3.select(".neighborhood").html(highlighted.NBH_NAMES);
 
-  var val, key;
+  var val, key, typeDef;
   $.each($popbox.find("tr"), function(k, row){
     key = $(row).attr("data-type");
     val = highlighted[key];
-    $(row).find(".count").html(getDisplayValue(val, key));
+    typeDef = key.slice(key.lastIndexOf("_") + 1);
+    $(row).find(".count").html(getDisplayValue(val, key, typeDef));
   });
 }
 
@@ -705,7 +706,7 @@ function highlightNeigborhood(d, isOverlayDraw) {
   // paths: formatLatLng(d.geometry.coordinates[0])
   // }).getBounds();
   // gmap.fitBounds(polyBounds);
-  
+
   highlightedNeighborhood = d;
   var x, y, k;
 
@@ -777,7 +778,11 @@ function hoverNeighborhood(d) {
   }
 }
 
-function getDisplayValue(strNum, name) {
+
+//strNum = The Value for the metric.
+//name = The Display Name.
+//typeDef = The type of value (perc = percentage, val = a number, cur = a dollar amount)
+function getDisplayValue(strNum, name, typeDef) {
   var num = parseFloat(strNum);
   var number_formatter = d3.format(",");
 
@@ -785,16 +790,20 @@ function getDisplayValue(strNum, name) {
 
   name = name.toLowerCase();
 
-  if ((name.indexOf("alloc") !== -1) || (name.indexOf("amount") !== -1)) { //some kind of allocation or amount
-    return "$" + number_formatter(parseInt(num, 10));
-  } else if (name.indexOf("ratio") !== -1) { //a ratio
-    return num.toPrecision(2);
-  } else if (num <= 1) { //percentage
-    return parseInt(num * 100, 10) + "%";
+  switch(typeDef) {
+    case "perc":
+      return parseInt(num * 100, 10) + "%";
+    case "val":
+      num = Math.round(num);
+      return number_formatter(parseInt(num, 10));
+    case "cur":
+      return "$" + number_formatter(parseInt(num, 10));
   }
 
-    num = Math.round(num);
+  // just return the number if we can't figure out what type of value it is.
+  num = Math.round(num);
   return number_formatter(parseInt(num, 10));
+
 }
 
 function setVisMetric(metric, val, clear) {
@@ -807,10 +816,15 @@ function setVisMetric(metric, val, clear) {
     return;
   }
 
-  var metricText = $("a#" + metric).text();
-  $metric.text(metricText);
-  var newDesc = val === "" ? "N/A" : getDisplayValue(val, metricText);
-  $metricDesc.text(newDesc);
+  var $metricType = $("a#" + metric);
+  if($metricType.length > 0) {
+    var metricText = $metricType.text();
+    var typeDef = $metricType[0].id;
+    typeDef = typeDef.slice(typeDef.lastIndexOf("_") + 1);
+    $metric.text(metricText);
+    var newDesc = val === "" ? "N/A" : getDisplayValue(val, metricText, typeDef);
+    $metricDesc.text(newDesc);
+  }
 }
 
 function formatLatLng(coords){
@@ -839,7 +853,7 @@ if (!google.maps.Polygon.prototype.getBounds) {
 }
 
 function getSource(data, layerID){
-  if(layerID == 'no_neighborhood_data'){
+  if(layerID == "no_neighborhood_data"){
     d3.select("#source-title").text("").attr("href",null)
   }
   data.forEach(function(d){
