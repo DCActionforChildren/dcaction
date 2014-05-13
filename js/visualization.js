@@ -461,15 +461,14 @@ function drawSchools(type){
       event.preventDefault();
       $("#btnPanelClose").off("click", closePanel);
       $(".school-data").remove();
-      $("#schools_panel").toggleClass("hide");
+      $("#schools_panel").addClass("hide");
     }
 
     function setPanel() {
       var $schools = $("#schools_panel");
       var $panelBody = $schools.find(".panel-body");
-
-      if ($panelBody.children().length === 1) {
-        $schools.toggleClass("hide");
+      if ($panelBody.children(".school-data").length === 0) {
+        $schools.addClass("hide");
       }
     }
   });
@@ -754,6 +753,9 @@ function bringNeighborhoodToFront() {
 }
 
 function hoverNeighborhood(d) {
+  //keep active path as the displayed path.
+  if($("path.active").length > 0) { return; }
+
   //bring hovered neighborhood path to front.
   var neighborhood = d3.select(d3.event.target);
   neighborhood.each(function () {
