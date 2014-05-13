@@ -13,6 +13,15 @@
     <h1>Where resources and well-being vary in D.C.</h1>
     <p class="intro">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 </div>
+<div id="narrative-row" class="row" style="margin:10px 0;">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="row">
+      <div class="col-md-4"><button type="button" class="btn btn-primary btn-lg btn-block">Distressed neighborhoods</button></div>
+      <div class="col-md-4"><button type="button" class="btn btn-primary btn-lg btn-block">Child success</button></div>
+      <div class="col-md-4"><button type="button" class="btn btn-primary btn-lg btn-block">Assets</button></div>
+    </div>
+  </div> 
+</div>
 <div class="posrel">
   <div id="nav-panel" class="posabs">
     <ul class="nav nav-pills nav-stacked neighborhood-menu">
@@ -102,9 +111,22 @@
             <h4 class="chart">Demographic Breakdown</h4>
             <div class="chart"></div>
           </div>
-        </div> <!-- selected detail cards here -->
+        </div> <!-- narrative cards here -->
+        <div id="narrative" class="panel panel-default">
+          <a class="close-box" href="#"><img src="assets/close.png" /></a>
+          <div class="panel-body">
+            <p>More than one-quarter (11, or 28%) of DC neighborhood clusters have poverty rates of 30% or more. They are in all quadrants of the city but concentrated in parts of Northeast and Southeast, with rates particularly high in:</p>
+            <ul>
+              <li>Eastland Gardens/Kenilworth (46%)</li>
+              <li>Sheridan/Barry Farm/Buena Vista (44%)</li>
+              <li>Woodland/Fort Stanton/Garfield Heights/Knox Hill (44%)</li>
+            </ul>
+            <p>Many of these high poverty neighborhoods are overwhelmingly (more than 90%) black.</p>
+            <p>Conversely, slightly more than one-quarter (10, or 26%) of DC neighborhood clusters have poverty rates below 10%. They are mostly located in Northwest, including Colonial Village/Shepherd Park/North Portal Estates (4%), Hawthorne/Barnaby Woods/Chevy Chase (5%) and Kalorama Heights/Adams Morgan/Lanier Heights (5%). Many of these neighborhoods are predominantly white.</p>
+          </div>
+        </div> <!-- narrative cards here -->
         <div id="schools_panel" class="panel panel-default hide">
-        <button class="btn-danger btn-xs btn-panel-close" id="btnPanelClose">X Close</button>
+          <button class="btn-danger btn-xs btn-panel-close" id="btnPanelClose">X Close</button>
           <div class="panel-body">
               <div class="hide" id="school_data">
                   <h4 class="school-name"></h4>

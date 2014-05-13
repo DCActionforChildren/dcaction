@@ -875,3 +875,12 @@ function getSource(data, layerID){
     }
   })
 };
+
+$("#narrative-row button").click(function() {
+  if($(this).hasClass('active'))
+    $(this).removeClass('active'); //change with .activatebutton
+  else
+    $("button.active").removeClass("active");      
+    $(this).addClass('active');
+});
+

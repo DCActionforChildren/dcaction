@@ -133,6 +133,22 @@ circle.school:hover {
   right:20px;
 }
 
+#narrative {
+  position:absolute;
+  width:300px;
+  height: 560px;
+  top:20px;
+  right:20px;
+  background: #000;
+  color: #FFF;
+}
+
+#narrative .close-box {
+  position: absolute;
+  top:5px;
+  right: 5px;
+}
+
 #schools_panel {
   position:absolute;
   width:300px;
