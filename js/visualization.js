@@ -273,7 +273,7 @@ function changeNeighborhoodData(new_data_column) {
     legend_jenks.shift();
   }
   // jenks.push(_.max(jenks) + 0.01);
-  var color_palette = [ "#dad6c8", "#bcb7a6", "#9e9885", "#807963", "#625a42"];
+  var color_palette = [ "#9ae3ff", "#45ccff", "#00adef", "#00709a", "#003245"];
   activeData = new_data_column;
   choro_color = d3.scale.threshold()
     .domain(jenks)
@@ -711,7 +711,7 @@ function highlightNeigborhood(d, isOverlayDraw) {
   // paths: formatLatLng(d.geometry.coordinates[0])
   // }).getBounds();
   // gmap.fitBounds(polyBounds);
-
+  removeNarrative();
   highlightedNeighborhood = d;
   var x, y, k;
 
@@ -896,16 +896,26 @@ $("#narrative-row button.one").click(function() {
   $( "#narrative" ).fadeIn(400);
   $('#narrative div.panel-body').hide();
   $('#' + $(this).data('rel')).show();
+  changeNeighborhoodData("children_in_poverty_perc");
 });
 
 $("#narrative-row button.two").click(function() {
   $( "#narrative" ).fadeIn(400);
   $('#narrative div.panel-body').hide();
   $('#' + $(this).data('rel')).show();
+  changeNeighborhoodData("single_mother_families_perc");
 });
 
 $("#narrative-row button.three").click(function() {
   $( "#narrative" ).fadeIn(400);
   $('#narrative div.panel-body').hide();
   $('#' + $(this).data('rel')).show();
+  changeNeighborhoodData("reading_perc");
+});
+
+$("#narrative-row button.four").click(function() {
+  $( "#narrative" ).fadeIn(400);
+  $('#narrative div.panel-body').hide();
+  $('#' + $(this).data('rel')).show();
+  changeNeighborhoodData("math_perc");
 });
