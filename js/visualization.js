@@ -322,14 +322,19 @@ function changeNeighborhoodData(new_data_column) {
     }
   };
 
-  var legendNumber = function(d, jenks){
-    var top = _.max(legend_jenks);
-    if(top < 2){
+  var legendNumber = function(d, jenks, typeDef){
+    var column = String([new_data_column]);
+    if (column.split("_").pop() == 'perc'){
       return parseInt(d * 100, 10) + "%";
-    } else {
+    } else if(column.split("_").pop() == 'val'){
+      num = Math.round(d);
       var number_formatter = d3.format(",");
-      return number_formatter(Math.round(parseFloat(d)));
+      return number_formatter(parseInt(d, 10));
+    } else if(column.split("_").pop() == 'cur'){
+      var number_formatter = d3.format(",");
+      return "$" + number_formatter(parseInt(d, 10));
     }
+
   };
 
   var updatedLegend = d3.select("#legend").selectAll(".legend")
