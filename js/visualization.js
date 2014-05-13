@@ -887,3 +887,22 @@ $("#narrative-row button").click(function() {
 $("#narrative a.close-box").click(function() {
   $( "#narrative" ).fadeOut(400);
 });
+
+$("#narrative-row button.one").click(function() {
+  $( "#narrative" ).fadeIn(400);
+  e.preventDefault();
+  $('#narrative div.panel-body').hide();
+  $('#' + $(this).data('rel')).show();
+});
+
+$("#narrative-row button.two").click(function() {
+  $( "#narrative" ).fadeIn(400);
+  $('#narrative div.panel-body').hide();
+  $('#' + $(this).data('rel')).show();
+});
+
+$("#narrative-row button.three").click(function() {
+  $( "#narrative" ).fadeIn(400);
+  $('#narrative div.panel-body').hide();
+  $('#' + $(this).data('rel')).show();
+});
