@@ -333,6 +333,9 @@ function changeNeighborhoodData(new_data_column) {
     } else if(column.split("_").pop() == 'cur'){
       var number_formatter = d3.format(",");
       return "$" + number_formatter(parseInt(d, 10));
+    } else if(column.split("_").pop() == 'ratio'){
+      num = Math.round(d * 100)/100;
+      return num;
     }
 
   };
@@ -810,6 +813,9 @@ function getDisplayValue(strNum, name, typeDef) {
       return number_formatter(parseInt(num, 10));
     case "cur":
       return "$" + number_formatter(parseInt(num, 10));
+    case "ratio":
+      num = Math.round(num * 100)/100;
+      return num;
   }
 
   // just return the number if we can't figure out what type of value it is.
