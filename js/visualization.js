@@ -758,8 +758,12 @@ function bringNeighborhoodToFront() {
 }
 
 function hoverNeighborhood(d) {
-  //keep active path as the displayed path.
-  if($("path.active").length > 0) { return; }
+  // keep active path as the displayed path.
+  if($("path.active").length > 0) {
+    // keep centered neighborhood path up front
+    bringNeighborhoodToFront();
+    return;
+  }
 
   //bring hovered neighborhood path to front.
   var neighborhood = d3.select(d3.event.target);
