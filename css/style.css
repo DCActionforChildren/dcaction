@@ -142,13 +142,16 @@ circle.school:hover {
   background: #000;
   color: #FFF;
   display:none;
-  overflow: scroll;
 }
 
 #narrative .close-box {
   position: absolute;
   top:5px;
   right: 5px;
+}
+
+#narrative .panel-body {
+  overflow: scroll;
 }
 
 #schools_panel {
