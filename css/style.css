@@ -152,6 +152,7 @@ circle.school:hover {
 
 #narrative .panel-body {
   overflow: scroll;
+  height: 100%;
 }
 
 #schools_panel {
