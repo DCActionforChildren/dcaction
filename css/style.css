@@ -7,7 +7,7 @@ body, h1, h2, h3, h4, h5 {
 h1, h2, h3, h4, h5 {
   font-weight: bold;
 }
-.panel-body {
+#narrative .panel-body {
   padding: 20px;
 }
 .table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {

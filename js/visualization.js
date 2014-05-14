@@ -107,8 +107,8 @@ function init(){
   $(".neighborhood-menu > li").on("click", "a", function(e){
     e.preventDefault();
     currentMetric=(typeof $(this).attr("id")==="undefined")?null:$(this).attr("id");
-
-    getSource(source_data,currentMetric)
+console.log(currentMetric);
+    getSource(source_data,currentMetric);
     changeNeighborhoodData(currentMetric);
     $(this).parent().addClass("selected").siblings().removeClass("selected");
     $("#legend-panel").show();
