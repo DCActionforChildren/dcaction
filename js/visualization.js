@@ -238,8 +238,7 @@ function drawChoropleth(){
           .on("click", function(d) { highlightNeigborhood(d, false); })
           .style("fill",function(d) {
             if (currentMetric === null) { return "#aaaaaa"; }
-            var totalPop = all_data[d.properties.gis_id].population_total;
-            return totalPop > min_population ? choro_color(all_data[d.properties.gis_id][currentMetric]) : defaultColor;
+            else { return choro_color(all_data[d.properties.gis_id][currentMetric]); }
           })
           .style("fill-opacity",0.75);
 
@@ -336,6 +335,8 @@ function changeNeighborhoodData(new_data_column) {
     } else if(column.split("_").pop() == 'ratio'){
       num = Math.round(d * 100)/100;
       return num;
+    } else {
+      return d;
     }
 
   };
