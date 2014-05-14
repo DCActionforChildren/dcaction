@@ -906,26 +906,26 @@ $("#narrative-row button.one").click(function() {
   $( "#narrative" ).fadeIn(400);
   $('#narrative div.panel-body').hide();
   $('#' + $(this).data('rel')).show();
-  changeNeighborhoodData("children_in_poverty_perc");
+  $('#nav-panel #children_in_poverty_perc').trigger('click');
 });
 
 $("#narrative-row button.two").click(function() {
   $( "#narrative" ).fadeIn(400);
   $('#narrative div.panel-body').hide();
   $('#' + $(this).data('rel')).show();
-  changeNeighborhoodData("single_mother_families_perc");
+  $('#nav-panel #single_mother_families_perc').trigger('click');
 });
 
 $("#narrative-row button.three").click(function() {
   $( "#narrative" ).fadeIn(400);
   $('#narrative div.panel-body').hide();
   $('#' + $(this).data('rel')).show();
-  changeNeighborhoodData("reading_perc");
+  $('#nav-panel #reading_perc').trigger('click');
 });
 
 $("#narrative-row button.four").click(function() {
   $( "#narrative" ).fadeIn(400);
   $('#narrative div.panel-body').hide();
   $('#' + $(this).data('rel')).show();
-  changeNeighborhoodData("math_perc");
+  $('#nav-panel #math_perc').trigger('click');
 });
