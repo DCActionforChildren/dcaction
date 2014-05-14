@@ -897,7 +897,10 @@ $("#narrative-row button").click(function() {
     $(this).addClass('active');
 });
 
-$("#narrative a.close-box").click(removeNarrative);
+$("#narrative a.close-box").click(function (event) {
+  event.preventDefault();
+  removeNarrative();
+});
 
 $("#narrative-row button.one").click(function() {
   $( "#narrative" ).fadeIn(400);
