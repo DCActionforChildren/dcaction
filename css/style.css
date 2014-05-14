@@ -4,7 +4,9 @@ body, h1, h2, h3, h4, h5 {
 h1, h2, h3, h4, h5 {
   font-weight: bold;
 }
-
+.panel-body {
+  padding: 20px;
+}
 .table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
   padding: 2px;
 }
@@ -31,6 +33,28 @@ h1, h2, h3, h4, h5 {
 }
 .navbar-brand img {
   width: 80px;
+}
+#narrative-row .col-md-3 {
+  padding-right: 0px;
+  padding-left: 0px;
+  margin: -1px -1px 0px;
+}
+#narrative-row .btn {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  padding: 12px;
+  vertical-align: top;
+  text-align: left;
+  white-space: normal;
+}
+#narrative-row strong {
+  display: block;
+}
+#narrative-row img {
+  max-width: 120px;
+  margin-right: 15px;
+  float: left;
 }
 #nav-panel {
   background-color: #f8f8f8;
@@ -139,8 +163,9 @@ circle.school:hover {
   height: 560px;
   top:20px;
   right:20px;
-  background: #000;
-  color: #FFF;
+  background: #fff;
+  color: #000;
+  overflow: scroll;
   display:none;
 }
 
@@ -152,6 +177,12 @@ circle.school:hover {
 
 #narrative .panel-body {
   overflow: scroll;
+}
+
+#narrative h4.lead {
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 10px;
 }
 
 #schools_panel {
