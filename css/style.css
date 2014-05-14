@@ -177,6 +177,7 @@ circle.school:hover {
 
 #narrative .panel-body {
   overflow: scroll;
+  height: 100%;
 }
 
 #narrative h4.lead {
