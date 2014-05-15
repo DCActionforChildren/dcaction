@@ -157,7 +157,7 @@ function drawChoropleth(){
   queue()
     .defer(d3.json, "data/neighborhoods44.json")
     .defer(d3.csv, "data/neighborhoods2.csv")
-    .defer(d3.csv, "data/source_dummy.csv")
+    .defer(d3.csv, "data/source.csv")
     .await(setUpChoropleth);
 
   function setUpChoropleth(error, dc, choropleth,source) {
