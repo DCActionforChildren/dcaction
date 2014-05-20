@@ -13,7 +13,9 @@ h1, h2, h3, h4, h5 {
 .table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
   padding: 2px;
 }
-
+.gmnoprint {
+  margin-top: 0 !important;
+}
 .nav > li.disabled.nav-header > a {
   cursor: default;
   font-size: 12px;
@@ -36,28 +38,6 @@ h1, h2, h3, h4, h5 {
 }
 .navbar-brand img {
   width: 80px;
-}
-#narrative-row .col-md-3 {
-  padding-right: 0px;
-  padding-left: 0px;
-  margin: -1px -1px 0px;
-}
-#narrative-row .btn {
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
-  border-radius: 0px;
-  padding: 12px;
-  vertical-align: top;
-  text-align: left;
-  white-space: normal;
-}
-#narrative-row strong {
-  display: block;
-}
-#narrative-row img {
-  max-width: 120px;
-  margin-right: 15px;
-  float: left;
 }
 #nav-panel {
   background-color: #f8f8f8;
@@ -144,6 +124,18 @@ circle.school:hover {
 
 /* UI */
 
+#how-to .col-lg-4 {
+  overflow: hidden;
+}
+
+#how-to h4 {
+  background: #FFF;
+  padding: 3px;
+  position: absolute;
+  bottom: -11px;
+  left:1px;
+}
+
 #nav-panel {
   height: 600px;
   overflow: scroll;
@@ -158,6 +150,39 @@ circle.school:hover {
   width:300px;
   top:20px;
   right:20px;
+  z-index: 1;
+}
+
+#details p.lead {
+  display: none;
+}
+
+#narrative-row .col-md-3 {
+  padding-right: 0px;
+  padding-left: 0px;
+  margin: -1px -1px 0px;
+}
+
+#narrative-row .btn {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  padding: 12px;
+  vertical-align: top;
+  text-align: left;
+  white-space: normal;
+  max-height: 98px;
+}
+
+#narrative-row h4 {
+  display: block;
+  margin: 0;
+}
+
+#narrative-row img {
+  max-width: 120px;
+  margin-right: 15px;
+  float: left;
 }
 
 #narrative {
@@ -169,6 +194,7 @@ circle.school:hover {
   background: #fff;
   color: #000;
   display:none;
+  z-index: 2;
 }
 
 #narrative .close-box {
@@ -188,11 +214,20 @@ circle.school:hover {
   margin-bottom: 10px;
 }
 
+.menu-toggle {
+  width: 100px;
+}
+
+.menu-toggle strong {
+  display: block;
+}
+
 #schools_panel {
   position:absolute;
   width:300px;
   top:20px;
   right:330px;
+  z-index: 1;
 }
 
 p.lead {
@@ -210,7 +245,7 @@ span#visualized-metric {
 
 #source {
   position:absolute;
-  width:120px;
+  width:200px;
   bottom:20px;
   left:0;
   padding: 10px 10px 10px 20px;
@@ -220,7 +255,7 @@ span#visualized-metric {
 
 div#legend-panel {
   position:absolute;
-  bottom:200px;
+  bottom:150px;
   left:20px;
   width: 200px;
   height: 200px;
@@ -317,18 +352,19 @@ h4.school-name:after {
   color: #fff;
 }
 
-@media (max-width: 767px) {
-
-  #main-container,
-  #nav-panel,
-  li.nav-header a,
-  h4 {
-    font-size: 0.95rem !important;
-  }
-
+small {
+  margin-top: 10px;
+  color:#333;
+  display:block;
 }
 
 @media (max-width: 767px) {
+
+  #content-wrapper,
+  #nav-panel,
+  li.nav-header a {
+    font-size: 0.95rem !important;
+  }
 
   #details {
     position:absolute;
@@ -341,8 +377,38 @@ h4.school-name:after {
     display:none;
   }
 
-  div#legend-panel {
-    display: none;
+  div#legend-container,
+  div#legend-panel,
+  #narrative-row {
+    display: none !important;
   }
+
+  #narrative-row .btn .subhead {
+    display:none;
+  }
+
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+  #narrative-row .btn .subhead {
+    display:none;
+  }
+
+}
+
+@media (min-width: 980px) and (max-width:1199px) {
+
+  #narrative-row .btn .subhead {
+    display:none;
+  }
+
+}
+
+@media (min-width: 1200px) {
+
+  #narrative-row .btn .subhead {
+/*    display:none;
+*/  }
 
 }

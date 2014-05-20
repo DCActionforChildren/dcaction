@@ -10,11 +10,7 @@ var svg, projection, gmapProjection, path, g, gmap;
 var school_scale, school_data, activeId, choropleth_data, source_data;
 var all_data = {}, activeData = "population_total";
 var min_population = 100;
-var defaultColor = "#aaa",
-    fiveColors = ["#e5ffc7", "#d9fcb9", "#bbef8e", "#9ad363", "#6eb43f"],
-    fourColors = ["#e5ffc7", "#d9fcb9", "#bbef8e", "#6eb43f"],
-    threeColors = ["#e5ffc7", "#bbef8e", "#6eb43f"];
-
+var defaultColor = "#aaa";
 var chartSvg, labels, anchors, links, label_array = [], anchor_array = [];
 var chartMargin = {top: 30, right: 80, bottom: 10, left: 80};
 var chartWidth = 268, chartHeight = 150;
@@ -98,7 +94,6 @@ function init(){
   drawChoropleth();
   drawChart();
 
-
   // slide out menu
   $(".menu-toggle").on("click", toggleMenu);
 
@@ -112,12 +107,8 @@ console.log(currentMetric);
     changeNeighborhoodData(currentMetric);
     $(this).parent().addClass("selected").siblings().removeClass("selected");
     $("#legend-panel").show();
+    $("#details p.lead").show();
   });
-
-  // $(".neighborhood-menu #no_neighborhood_data button").on("click", function(e){
-  //   $('#legend-panel').css("display","none");
-  //   console.log("hello world");
-  // });
 
   // school type changes
   $(".school-type-menu > li").on("click", "a", function(e){
@@ -156,7 +147,7 @@ function drawChoropleth(){
 
   queue()
     .defer(d3.json, "data/neighborhoods44.json")
-    .defer(d3.csv, "data/neighborhoods2.csv")
+    .defer(d3.csv, "data/neighborhoods.csv")
     .defer(d3.csv, "data/source.csv")
     .await(setUpChoropleth);
 
@@ -298,6 +289,8 @@ function changeNeighborhoodData(new_data_column) {
     setVisMetric(null, null, true);
     removeSchools("clear");
     $(".selected").removeClass("selected");
+    $("#details p.lead").hide();
+    $("#legend-panel").hide();
   }
 
   var previousElement = function(n, a){
@@ -682,8 +675,10 @@ function toggleMenu() {
   var $this = $(".menu-toggle");
   if ($this.parent().hasClass("toggled")){
     $this.parent().animate({ "left" : 0 }, 350, function(){ $("#main-container").removeClass("toggled"); });
+    $(".menu-toggle strong").replaceWith( "<strong>See Menu</strong>" );
   } else {
     $this.parent().animate({ "left" : $("#nav-panel").width() }, 350, function(){ $("#main-container").addClass("toggled"); });
+    $(".menu-toggle strong").replaceWith( "<strong>Close Menu</strong>" );
     removeNarrative();
   }
 }
