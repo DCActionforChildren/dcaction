@@ -133,7 +133,19 @@ circle.school:hover {
   padding: 3px;
   position: absolute;
   bottom: -11px;
-  left:1px;
+  left:0;
+}
+
+#how-to .one {
+  background: url("../assets/one.png") center no-repeat;
+}
+
+#how-to .two {
+  background: url("../assets/two.png") center no-repeat;
+}
+
+#how-to .three {
+  background: url("../assets/three.png") center no-repeat;
 }
 
 #nav-panel {
