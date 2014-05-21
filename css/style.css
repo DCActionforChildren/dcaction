@@ -402,10 +402,6 @@ small {
 
 @media (min-width: 768px) and (max-width: 979px) {
 
-/*  #narrative-row .btn .subhead {
-    display:none;
-  }*/
-
   #how-to {
     display:none;
   }
@@ -413,10 +409,6 @@ small {
 }
 
 @media (min-width: 980px) and (max-width:1199px) {
-
-  #narrative-row .btn .subhead {
-    display:none;
-  }
 
   #how-to {
     display:none;
@@ -426,5 +418,13 @@ small {
 
 @media (min-width: 1200px) {
 
+
+}
+
+@media (min-width: 992px) and (max-width: 1700px) {
+
+  #narrative-row .btn .subhead {
+    display:none;
+  }
 
 }
