@@ -390,20 +390,23 @@ small {
   }
 
   div#legend-container,
-  div#legend-panel,
-  #narrative-row {
+  div#legend-panel {
     display: none !important;
   }
 
-  #narrative-row .btn .subhead {
-    display:none;
+  #how-to {
+    display: none;
   }
 
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
 
-  #narrative-row .btn .subhead {
+/*  #narrative-row .btn .subhead {
+    display:none;
+  }*/
+
+  #how-to {
     display:none;
   }
 
@@ -412,6 +415,10 @@ small {
 @media (min-width: 980px) and (max-width:1199px) {
 
   #narrative-row .btn .subhead {
+    display:none;
+  }
+
+  #how-to {
     display:none;
   }
 
