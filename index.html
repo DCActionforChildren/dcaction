@@ -12,11 +12,14 @@
   <div class="col-lg-6 col-sm-12">
     <a class="navbar-brand" href="#"><img src="assets/kidscount.jpg" alt="DC Action for Children Kids Count initiative"></a>
     <h1>Where resources and well-being vary in DC</h1>
+    <button class="btn btn-danger pull-right" data-toggle="modal" data-target="#myModal">
+      How to use Data Tools 2.0
+    </button>
     <p class="intro">DC Action for Children designed the interactive maps to bring to life our data on the well-being of children and families, neighborhood by neighborhood. The indicators and measures reflect DC KIDS COUNT’s neighborhood-centered analytical frame. Nearly all DC KIDS COUNT indicators and measures are calculated at the neighborhood level, which allows us to evaluate the assets and needs of neighborhoods where DC’s children live, play and learn. We invite you to use them to learn what you want to know about the health, safety and future success of children, families and neighborhoods in DC.</p>
     <p><strong>Choose among the select data narratives below for policy insights from DC Action for Children:</strong></p>
   </div>
   <div id="how-to" class="col-lg-6 col-sm-12">
-    <h2>How to use Data Tools 2.0</h2>
+<!--     <h2>How to use Data Tools 2.0</h2>
     <div class="row">
       <div class="col-lg-4">
         <div class="one" style="position:relative;height:100px;">
@@ -33,7 +36,7 @@
           <h4>Click neighborhood to freeze data</h4>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 <div id="narrative-row" class="row">
@@ -186,7 +189,6 @@
   <div id="main-container" class="posabs" style="position:relative;">
     <div class="menu-toggle posabs">
       <strong>See Menu</strong>
-      <span>Click to toggle data layers.</span>
     </div>
       <div id="content-wrapper" class="col-lg-12 col-md-12 col-sm-12">
         <div id="content"></div> <!-- d3 viz written in here -->
@@ -214,6 +216,39 @@
     <a href="http://www.dcactionforchildren.org/kids-count/dc-kids-count-data-tools%202.0%20methodology">Click here</a> for documentation related to methodology.
   </p>
 </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h2 class="modal-title" id="myModalLabel">How to use Data Tools 2.0</h2>
+      </div>
+      <div id="how-to" class="modal-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="one" style="position:relative;">
+              <h3>Click menu, select data layer</h3>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="two" style="position:relative;">
+              <h3>Select school points for data</h3>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="three" style="position:relative;">
+              <h3>Click neighborhood to freeze data</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   <!-- Libraries needed -->
   <script src="js/jquery.min.js" type="text/javascript"></script>
   <script src="js/d3.v3.min.js" charset="utf-8" type="text/javascript"></script>
