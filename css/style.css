@@ -400,25 +400,15 @@ small {
     display: none !important;
   }
 
-  #how-to {
-    display: none;
-  }
-
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
 
-  #how-to {
-    display:none;
-  }
 
 }
 
 @media (min-width: 980px) and (max-width:1199px) {
 
-  #how-to {
-    display:none;
-  }
 
 }
 
