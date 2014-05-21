@@ -15,6 +15,7 @@ h1, h2, h3, h4, h5 {
 }
 .gmnoprint {
   margin-top: 0 !important;
+  top: 10px !important;
 }
 .nav > li.disabled.nav-header > a {
   cursor: default;
