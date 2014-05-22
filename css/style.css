@@ -151,10 +151,10 @@ circle.school:hover {
 
 #how-to h3 {
   background: #FFF;
-  padding: 3px;
+  padding: 10px 10px 10px 0px;
   position: absolute;
   bottom: -11px;
-  right:0;
+  left: 0;
 }
 
 #how-to .one {
