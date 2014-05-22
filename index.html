@@ -9,23 +9,26 @@
 </head>
 <body>
 <div class="navbar navbar-default">
-  <div class="col-lg-6 col-sm-12">
+  <div class="col-lg-12 col-sm-12">
     <a class="navbar-brand" href="#"><img src="assets/kidscount.jpg" alt="DC Action for Children Kids Count initiative"></a>
-    <h1>Where resources and well-being vary in DC</h1>
-    <button class="btn btn-danger pull-right" data-toggle="modal" data-target="#myModal" style="margin: 0 0 5px 5px;">
+    <button class="btn btn-danger pull-right hidden-xs" data-toggle="modal" data-target="#myModal">
       How to use Data Tools 2.0
     </button>
+    <h1>Where resources and well-being vary in DC</h1>
     <p class="intro">DC Action for Children designed the interactive maps to bring to life our data on the well-being of children and families, neighborhood by neighborhood. The indicators and measures reflect DC KIDS COUNT’s neighborhood-centered analytical frame. Nearly all DC KIDS COUNT indicators and measures are calculated at the neighborhood level, which allows us to evaluate the assets and needs of neighborhoods where DC’s children live, play and learn. We invite you to use them to learn what you want to know about the health, safety and future success of children, families and neighborhoods in DC.</p>
-    <h4><strong>Choose among the select data narratives below for policy insights from DC Action for Children:</strong></h4>
+    <button class="btn btn-danger pull-right visible-xs" data-toggle="modal" data-target="#myModal">
+      How to use Data Tools 2.0
+    </button>
+    <h4><strong>Four key policy insights from DC Action for Children are:</strong></h4>
   </div>
 </div>
 <div id="narrative-row" class="row">
   <div class="col-md-12">
     <div class="row">
-      <div class="col-md-3 col-lg-3 col-sm-6"><button type="button" class="btn btn-default btn-block one" data-rel="one"><img src="assets/button-poverty.jpg"/><h4>Children in Poverty</h4> <span class="subhead">Among 25% of the poorest neighborhoods, more than 1 in 2 children live in poverty.</span></button></div>
-      <div class="col-md-3 col-lg-3 col-sm-6"><button type="button" class="btn btn-default btn-block two" data-rel="two"><img src="assets/button-singlemother.jpg"/><h4>Children in Single Mother Families</h4> <span class="subhead">Approximately 48% (almost 1 in 2) DC children live in families headed by single mothers.</span></button></div>
-      <div class="col-md-3 col-lg-3 col-sm-6"><button type="button" class="btn btn-default btn-block three" data-rel="three"><img src="assets/button-reading.jpg"/><h4>Students Proficient in Reading</h4> <span class="subhead">40% of DC neighborhoods have less than half of their students scoring proficient in reading.</span></button></div>
-      <div class="col-md-3 col-lg-3 col-sm-6"><button type="button" class="btn btn-default btn-block four" data-rel="four"><img src="assets/button-math.jpg"/><h4>Students Proficient in Math</h4> <span class="subhead">Half of all DC neighborhoods have less than 55% of their students proficient in math.</span></button></div>
+      <div class="col-md-3 col-lg-3 col-sm-6"><button data-filter="children_in_poverty_perc" type="button" class="btn btn-default btn-block one" data-rel="one"><img src="assets/button-poverty.jpg"/><h4>Children in Poverty</h4> <span class="subhead">Among 25% of the poorest neighborhoods, more than 1 in 2 children live in poverty.</span></button></div>
+      <div class="col-md-3 col-lg-3 col-sm-6"><button data-filter="single_mother_families_perc" type="button" class="btn btn-default btn-block two" data-rel="two"><img src="assets/button-singlemother.jpg"/><h4>Children in Single Mother Families</h4> <span class="subhead">Approximately 48% (almost 1 in 2) DC children live in families headed by single mothers.</span></button></div>
+      <div class="col-md-3 col-lg-3 col-sm-6"><button data-filter="reading_perc" type="button" class="btn btn-default btn-block three" data-rel="three"><img src="assets/button-reading.jpg"/><h4>Students Proficient in Reading</h4> <span class="subhead">40% of DC neighborhoods have less than half of their students scoring proficient in reading.</span></button></div>
+      <div class="col-md-3 col-lg-3 col-sm-6"><button data-filter="math_perc" type="button" class="btn btn-default btn-block four" data-rel="four"><img src="assets/button-math.jpg"/><h4>Students Proficient in Math</h4> <span class="subhead">Half of all DC neighborhoods have less than 55% of their students proficient in math.</span></button></div>
     </div>
   </div> 
 </div>
@@ -168,7 +171,8 @@
   </div>
   <div id="main-container" class="posabs" style="position:relative;">
     <div class="menu-toggle posabs">
-      <strong>See Menu</strong>
+      <strong class="closed">Choose a dataset</strong>
+      <strong class="open">Hide menu</strong>
     </div>
       <div id="content-wrapper" class="col-lg-12 col-md-12 col-sm-12">
         <div id="content"></div> <!-- d3 viz written in here -->
@@ -182,8 +186,8 @@
         </div>
       </div>
   </div><!-- /#main-container -->
-        <div class="row">
-          <div class="col-md-10 col-lg-10 col-sm-10 col-md-offset-1 col-lg-offset-1 col-sm-offset-1">
+        <div class="container-fluid">
+          <div class="col-md-12 col-lg-12 col-sm-12">
             <small>
               DC KIDS COUNT Data Tools 2.0 would not have been possible without the contributions of the following data super heroes: Nick McClellan, data ambassador and project manager; George Albamonte, Emily Chow, Josh De La Rosa, Alastair Dant, Charles Gutrie, Akil Harris, Jason Hoekstra, Solomon Kahn, Ben Klemens, Thu Nguyen, Max Richman, Jon Roberts, Aaron Schumacher, Margo Smith, Joshua Tokle, and Monique Williams. The joint project would not have been accomplished without our partners at DataKind, especially Jake Porway, Pete Darche and Shubha Bala.
             </small>
@@ -191,10 +195,9 @@
         </div>
 </div>
 <div class="footer">
-  <p align="center">
-    <a href="data/neighborhoods.csv">All of our data is open and available for download. <img src="assets/csv.png" /></a><br />
-    <a href="http://www.dcactionforchildren.org/dc-kids-count-data-tools-methodology">Click here</a> for documentation related to methodology.
-  </p>
+  <small align="center">
+    <a href="data/neighborhoods.csv"><img src="assets/csv.png" /> All of our data is open and available for download.</a> You can also read <a href="http://www.dcactionforchildren.org/dc-kids-count-data-tools-methodology">documentation</a> related to the methodology.
+  </small>
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">

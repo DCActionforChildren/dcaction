@@ -7,6 +7,11 @@ body, h1, h2, h3, h4, h5 {
 h1, h2, h3, h4, h5 {
   font-weight: bold;
 }
+p {
+  font-size: 1.1em;
+  line-height: 1.4em;
+  margin-bottom: 15px;
+}
 #narrative .panel-body {
   padding: 20px;
 }
@@ -37,8 +42,14 @@ h1, h2, h3, h4, h5 {
   margin-bottom: 0px;
   padding-right: 15px;
 }
+.navbar-brand {
+  padding: 0px 15px 0px 0px;
+}
 .navbar-brand img {
   width: 80px;
+}
+.navbar .btn.pull-right {
+  margin: 0 0 5px 5px;
 }
 #nav-panel {
   background-color: #f8f8f8;
@@ -81,11 +92,20 @@ h1, h2, h3, h4, h5 {
   cursor: pointer;
   left: 0px;
   top: 100px;
-  padding: 10px;
+  padding: 10px 15px;
   background-color: #ccc;
   z-index: 5;
 }
-
+.menu-toggle strong {
+  display: block;
+}
+.menu-toggle .open,
+.toggled .menu-toggle .closed {
+  display: none;
+}
+.toggled .menu-toggle .open {
+  display: block;
+}
 /* map */
 svg {
   fill: #FFF;
@@ -232,14 +252,6 @@ circle.school:hover {
   margin-bottom: 10px;
 }
 
-.menu-toggle {
-  width: 100px;
-}
-
-.menu-toggle strong {
-  display: block;
-}
-
 #schools_panel {
   position:absolute;
   width:300px;
@@ -263,18 +275,19 @@ span#visualized-metric {
 
 #source {
   position:absolute;
-  width:200px;
   bottom:20px;
   left:0;
   padding: 10px 10px 10px 20px;
   background-color: #ccc;
   z-index: 5;
+  max-width: 215px;
+  display: none;
 }
 
 div#legend-panel {
   position:absolute;
-  bottom:160px;
-  left:20px;
+  bottom: 90px;
+  left: 15px;
   width: 200px;
   height: 200px;
   display: none;
@@ -377,7 +390,6 @@ small {
 }
 
 @media (max-width: 767px) {
-
   #content-wrapper,
   #nav-panel,
   li.nav-header a {
@@ -386,7 +398,7 @@ small {
 
   #details {
     position:absolute;
-    width:150px;
+    width:240px;
     top:20px;
     right:20px;
   }
@@ -398,6 +410,12 @@ small {
   div#legend-container,
   div#legend-panel {
     display: none !important;
+  }
+  .navbar {
+    padding-right: 0px;
+  }
+  .btn.pull-right.visible-xs {
+    margin-bottom: 20px;
   }
 
 }
@@ -423,4 +441,11 @@ small {
     display:none;
   }
 
+}
+@media (max-width: 480px){
+  .btn.pull-right.visible-xs {
+    float: none!important;
+    margin-left: 0px;
+    width: 100%;
+  }
 }

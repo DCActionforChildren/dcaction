@@ -101,13 +101,15 @@ function init(){
   // choropleth color change
   $(".neighborhood-menu > li").on("click", "a", function(e){
     e.preventDefault();
-    currentMetric=(typeof $(this).attr("id")==="undefined")?null:$(this).attr("id");
-console.log(currentMetric);
-    getSource(source_data,currentMetric);
-    changeNeighborhoodData(currentMetric);
-    $(this).parent().addClass("selected").siblings().removeClass("selected");
-    $("#legend-panel").show();
-    $("#details p.lead").show();
+    if (!$(this).parent().hasClass('disabled')){
+      currentMetric=(typeof $(this).attr("id")==="undefined")?null:$(this).attr("id");
+  console.log(currentMetric);
+      getSource(source_data,currentMetric);
+      changeNeighborhoodData(currentMetric);
+      $(this).parent().addClass("selected").siblings().removeClass("selected");
+      $("#legend-panel").show();
+      $("#details p.lead").show();      
+    }
   });
 
   // school type changes
@@ -167,7 +169,8 @@ function drawChoropleth(){
       center: new google.maps.LatLng(38.89555, -77.01551),
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       streetViewControl: false,
-      panControl: false
+      panControl: false,
+      scrollwheel: false
     });
 
     gmap.setOptions({
@@ -354,7 +357,7 @@ function changeNeighborhoodData(new_data_column) {
     .style("fill", "black")
     .attr("dy",20)
     .attr("dx", 85)
-    .attr("font-size", "12px")
+    .attr("font-size", "13px")
     .attr("text-anchor", "middle")
     .text(function(d){ return legendText(d, legend_jenks); });
 
@@ -675,10 +678,8 @@ function toggleMenu() {
   var $this = $(".menu-toggle");
   if ($this.parent().hasClass("toggled")){
     $this.parent().animate({ "left" : 0 }, 350, function(){ $("#main-container").removeClass("toggled"); });
-    $(".menu-toggle strong").replaceWith( "<strong>See Menu</strong>" );
   } else {
     $this.parent().animate({ "left" : $("#nav-panel").width() }, 350, function(){ $("#main-container").addClass("toggled"); });
-    $(".menu-toggle strong").replaceWith( "<strong>Close Menu</strong>" );
     removeNarrative();
   }
 }
@@ -875,6 +876,8 @@ function getSource(data, layerID){
       d3.select("#source-title")
         .text(d.source)
         .attr("href",d.url);
+      $("#source").show();
+      return false;
     }
   })
 };
@@ -897,30 +900,9 @@ $("#narrative a.close-box").click(function (event) {
   removeNarrative();
 });
 
-$("#narrative-row button.one").click(function() {
+$('#narrative-row button').on('click', function(){
   $( "#narrative" ).fadeIn(400);
   $('#narrative div.panel-body').hide();
   $('#' + $(this).data('rel')).show();
-  $('#nav-panel #children_in_poverty_perc').trigger('click');
-});
-
-$("#narrative-row button.two").click(function() {
-  $( "#narrative" ).fadeIn(400);
-  $('#narrative div.panel-body').hide();
-  $('#' + $(this).data('rel')).show();
-  $('#nav-panel #single_mother_families_perc').trigger('click');
-});
-
-$("#narrative-row button.three").click(function() {
-  $( "#narrative" ).fadeIn(400);
-  $('#narrative div.panel-body').hide();
-  $('#' + $(this).data('rel')).show();
-  $('#nav-panel #reading_perc').trigger('click');
-});
-
-$("#narrative-row button.four").click(function() {
-  $( "#narrative" ).fadeIn(400);
-  $('#narrative div.panel-body').hide();
-  $('#' + $(this).data('rel')).show();
-  $('#nav-panel #math_perc').trigger('click');
+  $('#nav-panel #' + $(this).attr('data-filter')).trigger('click');
 });
