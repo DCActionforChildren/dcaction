@@ -1,4 +1,4 @@
-# DC Action for Children 2.0 Visualization
+# DC Action for Children Data Tool 2.0 Visualization
 
 See it here! http://datatools.dcactionforchildren.org
 
@@ -18,7 +18,7 @@ Data documentation is building in this hackpad, with short link:
 http://bit.ly/DCA4C2VizData
 
 Kids Count useful links: http://datacenter.kidscount.org/data#DC
-
+DC KIDS COUNT Data Tool 10:  http://www.dcactionforchildren.org/dc-kids-count-data-tools
 MapBox guide to CartoCSS
 
 https://www.mapbox.com/tilemill/docs/manual/carto/
