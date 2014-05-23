@@ -93,7 +93,6 @@ p {
   left: 0px;
   top: 100px;
   padding: 10px 15px;
-  background-color: #ccc;
   z-index: 5;
 }
 .menu-toggle strong {
@@ -397,16 +396,14 @@ small {
   }
 
   #details {
-    position:absolute;
-    width:240px;
-    top:20px;
-    right:20px;
+    position: relative;
+    width: auto;
+    top:auto;
+    right:auto;
   }
 
-  #details .chart {
-    display:none;
-  }
-
+  #details .chart,
+  .gmnoprint,
   div#legend-container,
   div#legend-panel {
     display: none !important;
@@ -417,7 +414,6 @@ small {
   .btn.pull-right.visible-xs {
     margin-bottom: 20px;
   }
-
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
@@ -436,7 +432,6 @@ small {
 }
 
 @media (min-width: 992px) and (max-width: 1700px) {
-
   #narrative-row .btn .subhead {
     display:none;
   }

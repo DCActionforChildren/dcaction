@@ -135,6 +135,7 @@ function init(){
     changeSchoolData(value);
     $(this).parent().addClass("selected").siblings().removeClass("selected");
   });
+
 }
 
 function transform(d) {
