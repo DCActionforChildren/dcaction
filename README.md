@@ -1,4 +1,4 @@
-# DC Action for Children Data Tool 2.0 Visualization
+# DC Action for Children 2.0 Visualization
 
 See it here! http://datatools.dcactionforchildren.org
 
