@@ -1,6 +1,6 @@
 # DC Action for Children 2.0 Visualization
 
-See it here! http://nickmcclellan.github.io/dcaction/
+See it here! http://datatools.dcactionforchildren.org
 
 
 Development-related links:
@@ -17,7 +17,7 @@ https://github.com/newamericafoundation/
 Data documentation is building in this hackpad, with short link:
 http://bit.ly/DCA4C2VizData
 
-Kids Count useful links:
+Kids Count useful links: http://datacenter.kidscount.org/data#DC
 
 MapBox guide to CartoCSS
 
