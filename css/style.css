@@ -18,10 +18,6 @@ p {
 .table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
   padding: 2px;
 }
-.gmnoprint {
-  margin-top: 0 !important;
-  top: 10px !important;
-}
 .nav > li.disabled.nav-header > a {
   cursor: default;
   font-size: 12px;
@@ -197,7 +193,7 @@ circle.school:hover {
 #narrative-row .col-md-3 {
   padding-right: 0px;
   padding-left: 0px;
-  margin: -1px -1px 0px;
+  margin: -1px -1px 0px 0px;
 }
 
 #narrative-row .btn {
@@ -241,7 +237,7 @@ circle.school:hover {
 }
 
 #narrative .panel-body {
-  overflow: scroll;
+  overflow-y: scroll;
   height: 100%;
 }
 
@@ -394,16 +390,19 @@ small {
   li.nav-header a {
     font-size: 0.95rem !important;
   }
-
+  #nav-panel {
+    width: 230px;
+    overflow-x: hidden;
+  }
   #details {
     position: relative;
     width: auto;
     top:auto;
     right:auto;
+    border-radius: 0px;
   }
 
   #details .chart,
-  .gmnoprint,
   div#legend-container,
   div#legend-panel {
     display: none !important;
@@ -432,10 +431,6 @@ small {
 }
 
 @media (min-width: 992px) and (max-width: 1700px) {
-  #narrative-row .btn .subhead {
-    display:none;
-  }
-
 }
 @media (max-width: 480px){
   .btn.pull-right.visible-xs {

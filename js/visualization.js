@@ -1,10 +1,6 @@
 var COUNT_SCHOOL_DISPLAY = 3;
 
-var width = $("#content").parent().width(),
-    height = 600,
-    centered;
-
-$("#content").css({"width":width,"height":height});
+var centered;
 
 var svg, projection, gmapProjection, path, g, gmap;
 var school_scale, school_data, activeId, choropleth_data, source_data;
@@ -91,8 +87,11 @@ $(document).ready(function() {
 }); // end document ready function
 
 function init(){
+  resizeContainer($("#content").parent().width());
   drawChoropleth();
   drawChart();
+
+  //====EVENT LISTENERS===//
 
   // slide out menu
   $(".menu-toggle").on("click", toggleMenu);
@@ -103,7 +102,6 @@ function init(){
     e.preventDefault();
     if (!$(this).parent().hasClass('disabled')){
       currentMetric=(typeof $(this).attr("id")==="undefined")?null:$(this).attr("id");
-  console.log(currentMetric);
       getSource(source_data,currentMetric);
       changeNeighborhoodData(currentMetric);
       $(this).parent().addClass("selected").siblings().removeClass("selected");
@@ -136,8 +134,36 @@ function init(){
     $(this).parent().addClass("selected").siblings().removeClass("selected");
   });
 
-}
+  // narrative
+  $("#narrative-row button").click(function() {
+    if($(this).hasClass('active'))
+      $(this).removeClass('active'); //change with .activatebutton
+    else
+      $("button.active").removeClass("active");      
+      $(this).addClass('active');
+  });
 
+  $("#narrative a.close-box").click(function (event) {
+    event.preventDefault();
+    removeNarrative();
+  });
+
+  $('#narrative-row button').on('click', function(){
+    $( "#narrative" ).fadeIn(400);
+    $('#narrative div.panel-body').hide();
+    $('#' + $(this).data('rel')).show();
+    $('#nav-panel #' + $(this).attr('data-filter')).trigger('click');
+  });
+
+  $(window).resize(function(){
+    resizeContainer($("#content").parent().width());
+  });
+}
+function resizeContainer(width){
+  var new_height = $(window).width() < 797 ? $("#content").parent().width() * 0.75 : 600;
+  $("#content").css({"width":width,"height":new_height});
+  $("#nav-panel").css({"height": new_height});
+}
 function transform(d) {
     d = new google.maps.LatLng(d.value[1], d.value[0]);
     d = projection.fromLatLngToDivPixel(d);
@@ -723,8 +749,8 @@ function highlightNeigborhood(d, isOverlayDraw) {
     k = 4;
     centered = d;
   } else {
-    x = width / 2;
-    y = height / 2;
+    x = $('#content').width() / 2;
+    y = $('#content').height() / 2;
     k = 1;
     centered = null;
   }
@@ -887,23 +913,3 @@ function removeNarrative() {
   $( "#narrative" ).fadeOut(400);
   $( "#narrative-row button" ).removeClass('active');
 };
-
-$("#narrative-row button").click(function() {
-  if($(this).hasClass('active'))
-    $(this).removeClass('active'); //change with .activatebutton
-  else
-    $("button.active").removeClass("active");      
-    $(this).addClass('active');
-});
-
-$("#narrative a.close-box").click(function (event) {
-  event.preventDefault();
-  removeNarrative();
-});
-
-$('#narrative-row button').on('click', function(){
-  $( "#narrative" ).fadeIn(400);
-  $('#narrative div.panel-body').hide();
-  $('#' + $(this).data('rel')).show();
-  $('#nav-panel #' + $(this).attr('data-filter')).trigger('click');
-});
