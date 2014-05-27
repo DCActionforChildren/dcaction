@@ -18,6 +18,10 @@ p {
 .table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
   padding: 2px;
 }
+.gmnoprint {
+  margin-top: 0 !important;
+  top: 10px !important;
+}
 .nav > li.disabled.nav-header > a {
   cursor: default;
   font-size: 12px;
@@ -390,19 +394,18 @@ small {
   li.nav-header a {
     font-size: 0.95rem !important;
   }
-  #nav-panel {
-    width: 230px;
-    overflow-x: hidden;
-  }
+
   #details {
-    position: relative;
-    width: auto;
-    top:auto;
-    right:auto;
-    border-radius: 0px;
+    position:absolute;
+    width:240px;
+    top:20px;
+    right:20px;
   }
 
-  #details .chart,
+  #details .chart {
+    display:none;
+  }
+
   div#legend-container,
   div#legend-panel {
     display: none !important;
@@ -413,6 +416,7 @@ small {
   .btn.pull-right.visible-xs {
     margin-bottom: 20px;
   }
+
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
@@ -431,6 +435,11 @@ small {
 }
 
 @media (min-width: 992px) and (max-width: 1700px) {
+
+  #narrative-row .btn .subhead {
+    display:none;
+  }
+
 }
 @media (max-width: 480px){
   .btn.pull-right.visible-xs {
@@ -438,4 +447,3 @@ small {
     margin-left: 0px;
     width: 100%;
   }
-}
