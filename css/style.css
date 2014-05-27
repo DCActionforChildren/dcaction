@@ -18,7 +18,7 @@ p {
 .table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
   padding: 2px;
 }
-.gmnoprint {
+.gmnoprint .gmnoprint {
   margin-top: 0 !important;
   top: 10px !important;
 }
