@@ -419,6 +419,17 @@ small {
   .btn.pull-right.visible-xs {
     margin-bottom: 20px;
   }
+  #narrative-row .btn {
+    height: 80px;
+  }
+  #narrative {
+    position: relative;
+    width: auto;
+    top:auto;
+    right:auto;
+    height: auto;
+    border-radius: 0px;
+  }
 
 }
 
