@@ -420,8 +420,6 @@ small {
     margin-bottom: 20px;
   }
 
-  .social-media { display:none; }
-
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
@@ -447,7 +445,8 @@ small {
 
 }
 @media (max-width: 480px){
-  .btn.pull-right.visible-xs {
+  .btn.pull-right.visible-xs,
+  .social-media {
     float: none!important;
     margin-left: 0px;
     width: 100%;
