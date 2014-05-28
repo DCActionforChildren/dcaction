@@ -394,10 +394,7 @@ small {
   li.nav-header a {
     font-size: 0.95rem !important;
   }
-  #nav-panel {
-    width: 230px;
-    overflow-x: hidden;
-  }
+
   #details {
     position: relative;
     width: auto;
@@ -411,12 +408,18 @@ small {
   div#legend-panel {
     display: none !important;
   }
+
+  div#legend-container,
+  div#legend-panel {
+    display: none !important;
+  }
   .navbar {
     padding-right: 0px;
   }
   .btn.pull-right.visible-xs {
     margin-bottom: 20px;
   }
+
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
@@ -435,6 +438,11 @@ small {
 }
 
 @media (min-width: 992px) and (max-width: 1700px) {
+
+  #narrative-row .btn .subhead {
+    display:none;
+  }
+
 }
 @media (max-width: 480px){
   .btn.pull-right.visible-xs {
