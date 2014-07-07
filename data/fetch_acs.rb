@@ -168,6 +168,16 @@ fields_sum = {
   'work_numer' => [
     'B08303_012E', 
     'B08303_013E'
+  ],
+  'no_hs_degree_25_plus_denom' => [
+    'B15001_011',
+    'B15001_019',
+    'B15001_027',
+    'B15001_035',
+    'B15001_052',
+    'B15001_060',
+    'B15001_068',
+    'B15001_076'
   ]
 }
 
@@ -261,11 +271,11 @@ fields_sub = {
     'B01001H_020E',
     'B01001H_021E'
   ],
-  'no_hs_degree_25_plus_denom' => [
-    'B15001_001E',
-    'B15001_003E',
-    'B15001_044E'
-  ]
+  # 'no_hs_degree_25_plus_denom' => [
+  #   'B15001_001E',
+  #   'B15001_003E',
+  #   'B15001_044E'
+  # ]
 }
 
 # This function performs the Census API query. It returns a hash of hashes of the form
