@@ -327,14 +327,18 @@ function changeNeighborhoodData(new_data_column) {
     return _.max(_.filter(a, function(d){ return d < n; } ));
   };
 
+  console.log(jenks.length);
+
   var legendText = function(d, jenks){
     if(d == _.min(jenks)) {
       return legendNumber(d, jenks) + " and below";
     } else if(d == _.max(jenks)){
       var top = d - 0.01;
-      if(jenks.length > 3) {
+      if(jenks.length == 5) {
         return "Above " + legendNumber(jenks[3], jenks);
-      } else if(jenks.length < 3 && jenks.length > 2) {
+      } else if(jenks.length == 4) {
+        return "Above " + legendNumber(jenks[2], jenks);
+      } else if(jenks.length == 3) {
         return "Above " + legendNumber(jenks[2], jenks);
       } else {
         return "Above " + legendNumber(jenks[1], jenks);

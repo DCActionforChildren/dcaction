@@ -182,6 +182,11 @@ circle.school:hover {
   padding: 5px 10px;
 }
 
+#nav-panel .label {
+  position: relative;
+  top: -3px;
+}
+
 #details {
   position:absolute;
   width:300px;
