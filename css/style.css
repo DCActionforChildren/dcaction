@@ -384,7 +384,7 @@ h4.school-name:after {
 
 /* Google Maps fix */
 
-div.gm-style div div {
+div.gm-style div:not(.gmnoprint) div {
   height: 0 !important;
 }
 

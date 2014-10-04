@@ -219,7 +219,11 @@ function drawChoropleth(){
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       streetViewControl: false,
       panControl: false,
-      scrollwheel: true
+      scrollwheel: true,
+      zoomControl: true,
+      zoomControlOptions: {
+        position: google.maps.ControlPosition.BOTTOM_LEFT
+      }
     });
 
     gmap.setOptions({
