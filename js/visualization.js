@@ -294,7 +294,7 @@ function changeNeighborhoodData(new_data_column) {
     legend_jenks.shift();
   }
   // jenks.push(_.max(jenks) + 0.01);
-  var color_palette = [ "#9ae3ff", "#45ccff", "#00adef", "#00709a", "#003245"];
+  var color_palette = [ "#feedde", "#fdbe85", "#fd8d3c", "#e6550d", "#a63603"];
   activeData = new_data_column;
   choro_color = d3.scale.threshold()
     .domain(jenks)
