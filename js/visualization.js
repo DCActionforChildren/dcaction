@@ -260,7 +260,8 @@ function drawChoropleth(){
           .on("click", function(d) { highlightNeigborhood(d, false); })
           .style("fill",function(d) {
             if (currentMetric === null) { return "#aaaaaa"; }
-            else { return choro_color(all_data[d.properties.gis_id][currentMetric]); }
+            else {return "#000000";}
+            //else { return choro_color(all_data[d.properties.gis_id][currentMetric]); }
           })
           .style("fill-opacity",0.75);
 
@@ -307,6 +308,7 @@ function changeNeighborhoodData(new_data_column) {
     .transition().duration(600)
     .style("fill", function(d) {
       if(typeof all_data[d.properties.gis_id] ==="undefined" || all_data[d.properties.gis_id].population_total < min_population || !all_data[d.properties.gis_id][new_data_column]){
+        console.log(d);
         return defaultColor;
       } else {
         return choro_color(all_data[d.properties.gis_id][new_data_column]);
