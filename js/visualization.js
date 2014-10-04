@@ -106,7 +106,7 @@ function init(){
       changeNeighborhoodData(currentMetric);
       $(this).parent().addClass("selected").siblings().removeClass("selected");
       $("#legend-panel").show();
-      $("#details p.lead").show();      
+      $("#details p.lead").show();
     }
   });
 
@@ -139,7 +139,7 @@ function init(){
     if($(this).hasClass('active'))
       $(this).removeClass('active'); //change with .activatebutton
     else
-      $("button.active").removeClass("active");      
+      $("button.active").removeClass("active");
       $(this).addClass('active');
   });
 
@@ -190,10 +190,11 @@ function drawChoropleth(){
     });
 
     gmap = new google.maps.Map(d3.select("#content").node(), {
-      zoom: 12,
-      minZoom: 12,
-      maxZoom: 14,
-      center: new google.maps.LatLng(38.89555, -77.01551),
+      zoom: 10,
+      minZoom: 10,
+      maxZoom: 10,
+      //center: new google.maps.LatLng(54.97, -1.60),
+      center: new google.maps.LatLng(38.8951, -77.0367),
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       streetViewControl: false,
       panControl: false,
