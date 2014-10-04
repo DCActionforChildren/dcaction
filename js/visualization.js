@@ -21,6 +21,21 @@ var currentMetric = null;
 var schoolType = "clear";
 var highlightedNeighborhood = null;
 
+var color_palettes = {
+  // greens
+  'default': [ "#edf8e9", "#bae4b3", "#74c476", "#31a354", "#006d2c"],
+  // blues
+  'indicator': [ "#eff3ff", "#bdd7e7", "#6baed6", "#3182bd", "#08519c"],
+  // purples
+  'index': [ "#f2f0f7", "#cbc9e2", "#9e9ac8", "#756bb1", "#54278f"],
+  // greys
+  // '': [ "#f7f7f7", "#cccccc", "#969696", "#636363", "#252525"],
+  // reds
+  // '': [ "#fee5d9", "#fcae91", "#fb6a4a", "#de2d26", "#a50f15"],
+  // oranges
+  'children': [ "#feedde", "#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
+};
+
 var gmap_style=[
   {
     "elementType": "labels.text.fill",
@@ -306,7 +321,10 @@ function changeNeighborhoodData(new_data_column) {
     legend_jenks.shift();
   }
   // jenks.push(_.max(jenks) + 0.01);
-  var color_palette = [ "#feedde", "#fdbe85", "#fd8d3c", "#e6550d", "#a63603"];
+
+  var data_group = new_data_column.split('_')[0];
+  var color_palette = (data_group in color_palettes) ? color_palettes[data_group] : color_palettes['default'];
+
   activeData = new_data_column;
   choro_color = d3.scale.threshold()
     .domain(jenks)
@@ -385,6 +403,9 @@ function changeNeighborhoodData(new_data_column) {
 
   updatedLegend.select("text")
     .text(function(d){ return legendText(d, legend_jenks);});
+
+  updatedLegend.select("rect")
+    .style("fill", function(d, i){ return color_palette[i]; })
 
   enterLegend = updatedLegend.enter().append("g")
     .attr("transform", function(d, i){ return "translate(0," + (i * 35) + ")"; })
