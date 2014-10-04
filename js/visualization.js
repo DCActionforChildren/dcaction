@@ -23,17 +23,17 @@ var highlightedNeighborhood = null;
 
 var color_palettes = {
   // greens
-  'default': [ "#edf8e9", "#bae4b3", "#74c476", "#31a354", "#006d2c"],
+  'default': ["#006d2c", "#31a354", "#74c476", "#bae4b3", "#edf8e9"],
   // blues
-  'indicator': [ "#eff3ff", "#bdd7e7", "#6baed6", "#3182bd", "#08519c"],
+  'indicator': ["#08519c", "#3182bd", "#6baed6", "#bdd7e7", "#eff3ff"],
   // purples
-  'index': [ "#f2f0f7", "#cbc9e2", "#9e9ac8", "#756bb1", "#54278f"],
+  'index': ["#54278f", "#756bb1", "#9e9ac8", "#cbc9e2", "#f2f0f7"],
   // greys
-  // '': [ "#f7f7f7", "#cccccc", "#969696", "#636363", "#252525"],
+  // '': ["#252525", "#636363", "#969696", "#cccccc", "#f7f7f7"],
   // reds
-  // '': [ "#fee5d9", "#fcae91", "#fb6a4a", "#de2d26", "#a50f15"],
+  // '': ["#a50f15", "#de2d26", "#fb6a4a", "#fcae91", "#fee5d9"],
   // oranges
-  'children': [ "#feedde", "#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
+  'children': ["#a63603", "#e6550d", "#fd8d3c", "#fdbe85", "#feedde"]
 };
 
 var gmap_style=[
@@ -181,7 +181,7 @@ function resizeContainer(){
   var footer_height = $('.footer').outerHeight(true);
   var new_height = $(window).height() - (header_height + narrative_height + footer_height + 20);
   new_height = Math.max(new_height, 600);
-  
+
   $("#content").css({"width":parent_width,"height":new_height});
   $("#nav-panel").css({"height": new_height});
 }
@@ -312,7 +312,7 @@ function drawChoropleth(){
 function changeNeighborhoodData(new_data_column) {
   var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[new_data_column]); }));
   var jenks = _.unique(_.compact(ss.jenks(data_values, 5)));
-  var legend_jenks = _.unique(_.compact(ss.jenks(data_values, 5)));
+  var legend_jenks = _.unique(_.compact(ss.jenks(data_values, 5))).reverse();
   if(jenks.length > 4){
     jenks.shift();
     jenks.pop();
