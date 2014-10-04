@@ -104,7 +104,7 @@ $(document).ready(function() {
 function init(){
   resizeContainer();
   drawChoropleth();
-  drawChart();
+//  drawChart();
 
   //====EVENT LISTENERS===//
 
@@ -757,7 +757,7 @@ function displayPopBox(d) {
   var $popbox = $("#pop-info"),
       highlighted = all_data[d.properties.gis_id];
 
-  d3.select(".neighborhood").html(highlighted.NBH_NAMES);
+  d3.select(".neighborhood").html(highlighted.NAME);
 
   var val, key, typeDef;
   $.each($popbox.find("tr"), function(k, row){
@@ -804,7 +804,7 @@ function highlightNeigborhood(d, isOverlayDraw) {
       //last neighborhood to display in popBox.
       activeId = d.properties.gis_id;
       setVisMetric(activeData, all_data[activeId][activeData]);
-      updateChart(all_data[activeId]);
+//      updateChart(all_data[activeId]);
     }
   } else {
     g.selectAll("#path" + highlightedNeighborhood.properties.NCID).classed("active", true);
@@ -846,7 +846,7 @@ function hoverNeighborhood(d) {
 
     if (activeData !== "no_neighborhood_data") {
       setVisMetric(activeData, all_data[activeId][activeData]);
-      updateChart(all_data[activeId]);
+//      updateChart(all_data[activeId]);
     } else {
       setVisMetric(null, null, true);
     }

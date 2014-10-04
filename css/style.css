@@ -40,7 +40,8 @@ p {
 .posfixed { position: fixed; }
 /* navbar */
 .navbar {
-  background: url('../assets/necpc-bg-header.png') repeat-x scroll center bottom #000;
+  background: url('../assets/necpc-bg-header.png') repeat-x scroll center bottom #fff;
+  border: 0;
   margin-bottom: 0px;
   padding-right: 15px;
   padding-bottom: 20px;
