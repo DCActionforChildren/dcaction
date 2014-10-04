@@ -6,7 +6,7 @@ require 'csv'
 require 'json'
 require 'rubyXL'
 
-CROSSWALK_FILE = 'Neighborhood Cluster - Census Tract 2010 Equivalency File - 7-11-2012.xlsx'
+CROSSWALK_FILE = 'neighbourhood Cluster - Census Tract 2010 Equivalency File - 7-11-2012.xlsx'
 TRACT_FILE = 'acs_tract_data.json'
 NBHD_FILE = 'acs_nbhd_data.csv'
 
@@ -16,7 +16,7 @@ tract_data = JSON.parse IO.read(TRACT_FILE)
 # using the crosswalk file, we build a hash of the form: 
 #   { nbhd_id => { tract_id => portion, tract_id => portion, ... }, ...} 
 # where portion indicates the portion of the tract that should be assigned 
-# to the given neighborhood.
+# to the given neighbourhood.
 
 crosswalk = {}
 
@@ -50,7 +50,7 @@ sheet.each do |row|
   end
 end
 
-# create a hash that aggregates variables to the neighborhood level using the
+# create a hash that aggregates variables to the neighbourhood level using the
 # above portions. By default, all variables are summed. For each field that ends
 # in _numer, it will be divided by the corresponding variable ending in _denom
 # to create a ratio. Field names in the list averaged_fields will be averaged.
@@ -104,7 +104,7 @@ end
 colnames = nbhds.first[1].keys
 
 CSV.open(NBHD_FILE, 'w') do |csv|
-  csv << ["neighborhood_id"] + colnames
+  csv << ["neighbourhood_id"] + colnames
 
   nbhds.each do |nbhd_id, vars|
     csv << [nbhd_id] + colnames.map {|s| vars[s]}
