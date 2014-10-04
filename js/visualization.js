@@ -87,7 +87,7 @@ $(document).ready(function() {
 }); // end document ready function
 
 function init(){
-  resizeContainer($("#content").parent().width());
+  resizeContainer();
   drawChoropleth();
   drawChart();
 
@@ -156,12 +156,18 @@ function init(){
   });
 
   $(window).resize(function(){
-    resizeContainer($("#content").parent().width());
+    resizeContainer();
   });
 }
-function resizeContainer(width){
-  var new_height = $(window).width() < 797 ? $("#content").parent().width() * 0.75 : 600;
-  $("#content").css({"width":width,"height":new_height});
+function resizeContainer(){
+  var parent_width = $("#content").parent().width();
+  var header_height = $('.navbar').outerHeight(true);
+  var narrative_height = $('#narrative-row').outerHeight(true);
+  var footer_height = $('.footer').outerHeight(true);
+  var new_height = $(window).height() - (header_height + narrative_height + footer_height + 20);
+  new_height = Math.max(new_height, 600);
+  
+  $("#content").css({"width":parent_width,"height":new_height});
   $("#nav-panel").css({"height": new_height});
 }
 function transform(d) {
@@ -340,7 +346,6 @@ function changeNeighborhoodData(new_data_column) {
     if(d == _.min(jenks)) {
       return legendNumber(d, jenks) + " and below";
     } else if(d == _.max(jenks)){
-      var top = d - 0.01;
       if(jenks.length == 5) {
         return "Above " + legendNumber(jenks[3], jenks);
       } else if(jenks.length == 4) {
