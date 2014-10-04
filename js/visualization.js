@@ -175,8 +175,8 @@ function transform(d) {
 function drawChoropleth(){
 
   queue()
-    .defer(d3.json, "data/neighborhoods44.json")
-    .defer(d3.csv, "data/neighborhoods.csv")
+    .defer(d3.json, "data/lsoa_ne_wgs84.geojson")
+    .defer(d3.csv, "data/lsoa_data.csv")
     .defer(d3.csv, "data/source.csv")
     .await(setUpChoropleth);
 
@@ -190,15 +190,15 @@ function drawChoropleth(){
     });
 
     gmap = new google.maps.Map(d3.select("#content").node(), {
-      zoom: 10,
-      minZoom: 10,
-      maxZoom: 10,
-      //center: new google.maps.LatLng(54.97, -1.60),
-      center: new google.maps.LatLng(38.8951, -77.0367),
+      zoom: 9,
+      minZoom: 8,
+      maxZoom: 12,
+      center: new google.maps.LatLng(54.97, -1.60),
+      //center: new google.maps.LatLng(38.8951, -77.0367),
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       streetViewControl: false,
       panControl: false,
-      scrollwheel: false
+      scrollwheel: true
     });
 
     gmap.setOptions({
