@@ -211,6 +211,11 @@ function drawChoropleth(){
       $("div[title='Zoom in']").parent().css({"margin-top":"60px"});
     });
 
+    google.maps.event.addListener(gmap, 'zoom_changed', function() {
+      currentMetric = $(".neighborhood-menu > li.selected a").attr('id');
+      changeNeighborhoodData(currentMetric);
+    });
+
     var overlay = new google.maps.OverlayView();
     svg = d3.select("#content").append("svg:svg");
 
@@ -263,7 +268,7 @@ function drawChoropleth(){
             else {return "#000000";}
             //else { return choro_color(all_data[d.properties.gis_id][currentMetric]); }
           })
-          .style("fill-opacity",0.75);
+          .style("fill-opacity",0.5);
 
         g.select("#schools").selectAll("circle").remove();
 
@@ -308,13 +313,12 @@ function changeNeighborhoodData(new_data_column) {
     .transition().duration(600)
     .style("fill", function(d) {
       if(typeof all_data[d.properties.gis_id] ==="undefined" || all_data[d.properties.gis_id].population_total < min_population || !all_data[d.properties.gis_id][new_data_column]){
-        console.log(d);
         return defaultColor;
       } else {
         return choro_color(all_data[d.properties.gis_id][new_data_column]);
       }
     })
-    .style("fill-opacity",0.75);
+    .style("fill-opacity",0.5);
 
   if(activeId && new_data_column !== "no_neighborhood_data") {
     setVisMetric(new_data_column, all_data[activeId][new_data_column]);
