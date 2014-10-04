@@ -21,6 +21,21 @@ var currentMetric = null;
 var schoolType = "clear";
 var highlightedNeighborhood = null;
 
+var color_palettes = {
+  // greens
+  'default': ["#006d2c", "#31a354", "#74c476", "#bae4b3", "#edf8e9"],
+  // blues
+  'indicator': ["#08519c", "#3182bd", "#6baed6", "#bdd7e7", "#eff3ff"],
+  // purples
+  'index': ["#54278f", "#756bb1", "#9e9ac8", "#cbc9e2", "#f2f0f7"],
+  // greys
+  // '': ["#252525", "#636363", "#969696", "#cccccc", "#f7f7f7"],
+  // reds
+  // '': ["#a50f15", "#de2d26", "#fb6a4a", "#fcae91", "#fee5d9"],
+  // oranges
+  'children': ["#a63603", "#e6550d", "#fd8d3c", "#fdbe85", "#feedde"]
+};
+
 var gmap_style=[
   {
     "elementType": "labels.text.fill",
@@ -87,9 +102,9 @@ $(document).ready(function() {
 }); // end document ready function
 
 function init(){
-  resizeContainer($("#content").parent().width());
+  resizeContainer();
   drawChoropleth();
-  drawChart();
+//  drawChart();
 
   //====EVENT LISTENERS===//
 
@@ -156,12 +171,18 @@ function init(){
   });
 
   $(window).resize(function(){
-    resizeContainer($("#content").parent().width());
+    resizeContainer();
   });
 }
-function resizeContainer(width){
-  var new_height = $(window).width() < 797 ? $("#content").parent().width() * 0.75 : 600;
-  $("#content").css({"width":width,"height":new_height});
+function resizeContainer(){
+  var parent_width = $("#content").parent().width();
+  var header_height = $('.navbar').outerHeight(true);
+  var narrative_height = $('#narrative-row').outerHeight(true);
+  var footer_height = $('.footer').outerHeight(true);
+  var new_height = $(window).height() - (header_height + narrative_height + footer_height + 20);
+  new_height = Math.max(new_height, 600);
+
+  $("#content").css({"width":parent_width,"height":new_height});
   $("#nav-panel").css({"height": new_height});
 }
 function transform(d) {
@@ -198,7 +219,11 @@ function drawChoropleth(){
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       streetViewControl: false,
       panControl: false,
-      scrollwheel: true
+      scrollwheel: true,
+      zoomControl: true,
+      zoomControlOptions: {
+        position: google.maps.ControlPosition.BOTTOM_LEFT
+      }
     });
 
     gmap.setOptions({
@@ -265,8 +290,8 @@ function drawChoropleth(){
           .on("click", function(d) { highlightNeigborhood(d, false); })
           .style("fill",function(d) {
             if (currentMetric === null) { return "#aaaaaa"; }
-            else {return "#000000";}
-            //else { return choro_color(all_data[d.properties.gis_id][currentMetric]); }
+            // else {return "#000000";}
+            else { return choro_color(all_data[d.properties.gis_id][currentMetric]); }
           })
           .style("fill-opacity",0.5);
 
@@ -291,7 +316,7 @@ function drawChoropleth(){
 function changeNeighborhoodData(new_data_column) {
   var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[new_data_column]); }));
   var jenks = _.unique(_.compact(ss.jenks(data_values, 5)));
-  var legend_jenks = _.unique(_.compact(ss.jenks(data_values, 5)));
+  var legend_jenks = _.unique(_.compact(ss.jenks(data_values, 5))).reverse();
   if(jenks.length > 4){
     jenks.shift();
     jenks.pop();
@@ -300,7 +325,10 @@ function changeNeighborhoodData(new_data_column) {
     legend_jenks.shift();
   }
   // jenks.push(_.max(jenks) + 0.01);
-  var color_palette = [ "#feedde", "#fdbe85", "#fd8d3c", "#e6550d", "#a63603"];
+
+  var data_group = new_data_column.split('_')[0];
+  var color_palette = (data_group in color_palettes) ? color_palettes[data_group] : color_palettes['default'];
+
   activeData = new_data_column;
   choro_color = d3.scale.threshold()
     .domain(jenks)
@@ -340,7 +368,6 @@ function changeNeighborhoodData(new_data_column) {
     if(d == _.min(jenks)) {
       return legendNumber(d, jenks) + " and below";
     } else if(d == _.max(jenks)){
-      var top = d - 0.01;
       if(jenks.length == 5) {
         return "Above " + legendNumber(jenks[3], jenks);
       } else if(jenks.length == 4) {
@@ -380,6 +407,9 @@ function changeNeighborhoodData(new_data_column) {
 
   updatedLegend.select("text")
     .text(function(d){ return legendText(d, legend_jenks);});
+
+  updatedLegend.select("rect")
+    .style("fill", function(d, i){ return color_palette[i]; })
 
   enterLegend = updatedLegend.enter().append("g")
     .attr("transform", function(d, i){ return "translate(0," + (i * 35) + ")"; })
@@ -731,7 +761,7 @@ function displayPopBox(d) {
   var $popbox = $("#pop-info"),
       highlighted = all_data[d.properties.gis_id];
 
-  d3.select(".neighborhood").html(highlighted.NBH_NAMES);
+  d3.select(".neighborhood").html(highlighted.NAME);
 
   var val, key, typeDef;
   $.each($popbox.find("tr"), function(k, row){
@@ -778,7 +808,7 @@ function highlightNeigborhood(d, isOverlayDraw) {
       //last neighborhood to display in popBox.
       activeId = d.properties.gis_id;
       setVisMetric(activeData, all_data[activeId][activeData]);
-      updateChart(all_data[activeId]);
+//      updateChart(all_data[activeId]);
     }
   } else {
     g.selectAll("#path" + highlightedNeighborhood.properties.NCID).classed("active", true);
@@ -820,7 +850,7 @@ function hoverNeighborhood(d) {
 
     if (activeData !== "no_neighborhood_data") {
       setVisMetric(activeData, all_data[activeId][activeData]);
-      updateChart(all_data[activeId]);
+//      updateChart(all_data[activeId]);
     } else {
       setVisMetric(null, null, true);
     }
