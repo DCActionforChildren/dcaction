@@ -23,17 +23,17 @@ var highlightedNeighborhood = null;
 
 var color_palettes = {
   // greens
-  'default': ["#006d2c", "#31a354", "#74c476", "#bae4b3", "#edf8e9"],
+  'default': [ "#edf8e9", "#bae4b3", "#74c476", "#31a354", "#006d2c"],
   // blues
-  'indicator': ["#08519c", "#3182bd", "#6baed6", "#bdd7e7", "#eff3ff"],
+  'indicator': [ "#eff3ff", "#bdd7e7", "#6baed6", "#3182bd", "#08519c"],
   // purples
-  'index': ["#54278f", "#756bb1", "#9e9ac8", "#cbc9e2", "#f2f0f7"],
+  'index': [ "#f2f0f7", "#cbc9e2", "#9e9ac8", "#756bb1", "#54278f"],
   // greys
-  // '': ["#252525", "#636363", "#969696", "#cccccc", "#f7f7f7"],
+  // '': [ "#f7f7f7", "#cccccc", "#969696", "#636363", "#252525"],
   // reds
-  // '': ["#a50f15", "#de2d26", "#fb6a4a", "#fcae91", "#fee5d9"],
+  // '': [ "#fee5d9", "#fcae91", "#fb6a4a", "#de2d26", "#a50f15"],
   // oranges
-  'children': ["#a63603", "#e6550d", "#fd8d3c", "#fdbe85", "#feedde"]
+  'children': [ "#feedde", "#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
 };
 
 var gmap_style=[
@@ -316,22 +316,17 @@ function drawChoropleth(){
 function changeNeighborhoodData(new_data_column) {
   var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[new_data_column]); }));
   var jenks = _.unique(_.compact(ss.jenks(data_values, 5)));
-  var legend_jenks = _.unique(_.compact(ss.jenks(data_values, 5))).reverse();
-  if(jenks.length > 4){
-    jenks.shift();
-    jenks.pop();
-  }
-  if(legend_jenks.length > 4){
-    legend_jenks.shift();
-  }
   // jenks.push(_.max(jenks) + 0.01);
 
   var data_group = new_data_column.split('_')[0];
   var color_palette = (data_group in color_palettes) ? color_palettes[data_group] : color_palettes['default'];
 
+  // trim lighter colours from palette (if necessary)
+  color_palette = color_palette.slice(6 - jenks.length);
+
   activeData = new_data_column;
   choro_color = d3.scale.threshold()
-    .domain(jenks)
+    .domain(jenks.slice(1,-1)) // ignore max and min vals. This slice is linear, so d3 should work things out from here.
     .range(color_palette);
   choropleth_data.forEach(function(d) {
     choropleth_data[d.gis_id] = +d[new_data_column];
@@ -362,27 +357,17 @@ function changeNeighborhoodData(new_data_column) {
     return _.max(_.filter(a, function(d){ return d < n; } ));
   };
 
-  console.log(jenks.length);
-
   var legendText = function(d, jenks){
     if(d == _.min(jenks)) {
-      return legendNumber(d, jenks) + " and below";
-    } else if(d == _.max(jenks)){
-      if(jenks.length == 5) {
-        return "Above " + legendNumber(jenks[3], jenks);
-      } else if(jenks.length == 4) {
-        return "Above " + legendNumber(jenks[2], jenks);
-      } else if(jenks.length == 3) {
-        return "Above " + legendNumber(jenks[2], jenks);
-      } else {
-        return "Above " + legendNumber(jenks[1], jenks);
-      };
+      return legendNumber(d) + " and below";
+    } else if(d > _.max(jenks)){
+      return "Above " + legendNumber(_.max(jenks));
     } else {
-      return legendNumber(previousElement(d, legend_jenks), legend_jenks) + " - " + legendNumber(d, legend_jenks);
+      return legendNumber(previousElement(d, jenks)) + " - " + legendNumber(d);
     }
   };
 
-  var legendNumber = function(d, jenks, typeDef){
+  var legendNumber = function(d, typeDef){
     var column = String([new_data_column]);
     if (column.split("_").pop() == 'perc'){
       return parseInt(d * 100, 10) + "%";
@@ -403,13 +388,13 @@ function changeNeighborhoodData(new_data_column) {
   };
 
   var updatedLegend = d3.select("#legend").selectAll(".legend")
-      .data(legend_jenks);
+      .data(jenks.slice(1).reverse());
 
   updatedLegend.select("text")
-    .text(function(d){ return legendText(d, legend_jenks);});
+    .text(function(d){ return legendText(d, jenks.slice(1,-1));});
 
   updatedLegend.select("rect")
-    .style("fill", function(d, i){ return color_palette[i]; })
+    .style("fill", function(d, i){ return color_palette[color_palette.length - i - 1]; })
 
   enterLegend = updatedLegend.enter().append("g")
     .attr("transform", function(d, i){ return "translate(0," + (i * 35) + ")"; })
@@ -418,7 +403,7 @@ function changeNeighborhoodData(new_data_column) {
   enterLegend.append("rect")
     .attr("width", 170)
     .attr("height", 30)
-    .style("fill", function(d, i){ return color_palette[i]; })
+    .style("fill", function(d, i){ return color_palette[color_palette.length - i - 1]; })
     .style("opacity", "0.75");
 
   enterLegend.append("text")
@@ -427,7 +412,7 @@ function changeNeighborhoodData(new_data_column) {
     .attr("dx", 85)
     .attr("font-size", "13px")
     .attr("text-anchor", "middle")
-    .text(function(d){ return legendText(d, legend_jenks); });
+    .text(function(d){ return legendText(d, jenks.slice(1,-1)); });
 
   updatedLegend.exit().remove();
 
