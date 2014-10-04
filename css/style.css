@@ -113,11 +113,12 @@ svg {
 path.nbhd {
   cursor: pointer;
   fill: #ccc;
-  fill-opacity: .75;
+  fill-opacity: .5;
   stroke: #FFF;
-  stroke-width: 1px;
+  stroke-width: 0;
 }
 path.nbhd:hover {
+  stroke-width: 1px;
   stroke: #444;
 }
 path.nbhd.active {
