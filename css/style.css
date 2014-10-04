@@ -1,11 +1,12 @@
 body {
   overflow-x: hidden;
 }
-body, h1, h2, h3, h4, h5 {
+body {
   font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 h1, h2, h3, h4, h5 {
-  font-weight: bold;
+  font-family: "Oswald","Impact",sans-serif;
+  font-weight: 400;
 }
 p {
   font-size: 1.1em;
@@ -39,8 +40,10 @@ p {
 .posfixed { position: fixed; }
 /* navbar */
 .navbar {
+  background: url('../assets/necpc-bg-header.png') repeat-x scroll center bottom #000;
   margin-bottom: 0px;
   padding-right: 15px;
+  padding-bottom: 20px;
 }
 .navbar-brand {
   padding: 30px;
