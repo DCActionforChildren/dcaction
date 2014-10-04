@@ -286,8 +286,8 @@ function drawChoropleth(){
           .on("click", function(d) { highlightNeigborhood(d, false); })
           .style("fill",function(d) {
             if (currentMetric === null) { return "#aaaaaa"; }
-            else {return "#000000";}
-            //else { return choro_color(all_data[d.properties.gis_id][currentMetric]); }
+            // else {return "#000000";}
+            else { return choro_color(all_data[d.properties.gis_id][currentMetric]); }
           })
           .style("fill-opacity",0.5);
 
