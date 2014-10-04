@@ -293,7 +293,7 @@ function drawChoropleth(){
             // else {return "#000000";}
             else { return choro_color(all_data[d.properties.gis_id][currentMetric]); }
           })
-          .style("fill-opacity",0.5);
+          .style("fill-opacity",0.75);
 
         g.select("#schools").selectAll("circle").remove();
 
@@ -341,7 +341,7 @@ function changeNeighborhoodData(new_data_column) {
         return choro_color(all_data[d.properties.gis_id][new_data_column]);
       }
     })
-    .style("fill-opacity",0.5);
+    .style("fill-opacity",0.75);
 
   if(activeId && new_data_column !== "no_neighborhood_data") {
     setVisMetric(new_data_column, all_data[activeId][new_data_column]);
