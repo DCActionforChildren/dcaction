@@ -315,8 +315,9 @@ function drawChoropleth(){
 
 function changeNeighborhoodData(new_data_column) {
   var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[new_data_column]); }));
+
+  // http://www.macwright.org/simple-statistics/#-jenks-data-number_of_classes-
   var jenks = _.unique(_.compact(ss.jenks(data_values, 5)));
-  // jenks.push(_.max(jenks) + 0.01);
 
   var data_group = new_data_column.split('_')[0];
   var color_palette = (data_group in color_palettes) ? color_palettes[data_group] : color_palettes['default'];
@@ -325,8 +326,9 @@ function changeNeighborhoodData(new_data_column) {
   color_palette = color_palette.slice(6 - jenks.length);
 
   activeData = new_data_column;
+  // https://github.com/mbostock/d3/wiki/Quantitative-Scales#threshold
   choro_color = d3.scale.threshold()
-    .domain(jenks.slice(1,-1)) // ignore max and min vals. This slice is linear, so d3 should work things out from here.
+    .domain(jenks.slice(1,-1))
     .range(color_palette);
   choropleth_data.forEach(function(d) {
     choropleth_data[d.gis_id] = +d[new_data_column];
