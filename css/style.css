@@ -1,11 +1,12 @@
 body {
   overflow-x: hidden;
 }
-body, h1, h2, h3, h4, h5 {
+body {
   font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 h1, h2, h3, h4, h5 {
-  font-weight: bold;
+  font-family: "Oswald","Impact",sans-serif;
+  font-weight: 400;
 }
 p {
   font-size: 1.1em;
@@ -39,14 +40,14 @@ p {
 .posfixed { position: fixed; }
 /* navbar */
 .navbar {
+  background: url('../assets/necpc-bg-header.png') repeat-x scroll center bottom #fff;
+  border: 0;
   margin-bottom: 0px;
   padding-right: 15px;
+  padding-bottom: 20px;
 }
 .navbar-brand {
-  padding: 0px 15px 0px 0px;
-}
-.navbar-brand img {
-  width: 80px;
+  padding: 30px;
 }
 .navbar .btn.pull-right {
   margin: 0 0 5px 5px;
@@ -113,11 +114,12 @@ svg {
 path.nbhd {
   cursor: pointer;
   fill: #ccc;
-  fill-opacity: .75;
+  fill-opacity: .5;
   stroke: #FFF;
-  stroke-width: 1px;
+  stroke-width: 0;
 }
 path.nbhd:hover {
+  stroke-width: 1px;
   stroke: #444;
 }
 path.nbhd.active {
@@ -382,7 +384,7 @@ h4.school-name:after {
 
 /* Google Maps fix */
 
-div.gm-style div div {
+div.gm-style div:not(.gmnoprint) div {
   height: 0 !important;
 }
 

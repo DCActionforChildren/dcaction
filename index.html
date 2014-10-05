@@ -3,129 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, user-scalable=no">
-  <title>Data Tools 2.0 | DC Action for Children</title>
+  <title>Data Tools 2.0 | North East Child Poverty Commission</title>
   <link href='//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 <div class="navbar navbar-default">
-  <div class="col-lg-12 col-sm-12">
-    <a class="navbar-brand" href="http://www.dcactionforchildren.org/"><img src="assets/kidscount.jpg" alt="DC Action for Children Kids Count initiative"></a>
+  <div class="col-lg-3 col-sm-3">
+    <a class="navbar-brand" href="http://www.nechildpoverty.org.uk/"><img src="assets/necpc-logo.png" alt="North East Child Poverty Commission"></a>
+  </div>
+  <div class="col-lg-9 col-sm-9">
     <button class="btn btn-danger pull-right hidden-xs" data-toggle="modal" data-target="#myModal">
       How to use Data Tools 2.0
     </button>
-    <h1>Where resources and well-being vary in DC</h1>
-    <p class="intro">DC Action for Children designed the interactive maps to bring to life our data on the well-being of children and families, neighborhood by neighborhood. The indicators and measures reflect DC KIDS COUNT’s neighborhood-centered analytical frame. Nearly all DC KIDS COUNT indicators and measures are calculated at the neighborhood level, which allows us to evaluate the assets and needs of neighborhoods where DC’s children live, play and learn. We invite you to use them to learn what you want to know about the health, safety and future success of children, families and neighborhoods in DC.</p>
+    <h1>North East Child Poverty Commission</h1>
+    <p class="intro">The North East Child Poverty Commission is a stakeholder group that believes that all children in the North East of England should have an equal chance in life. The Commission, which includes senior representatives from public, private and voluntary sectors, aim to be an effective lobbying, influencing and campaigning group that can help to build public support for actions that improve the lives of poor children living in the North East.</p>
     <div class="social-media pull-right">
-      <a href="https://twitter.com/share" class="twitter-share-button" data-text="See how children fare in your neighborhood with Data Tools 2.0" data-via="ActforDChildren">Tweet</a>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-text="See how children fare in North East England with Data Tools 2.0" data-via="nechildpoverty">Tweet</a>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
       <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fdatatools.dcactionforchildren.org&amp;width=85&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:85px; height:21px;" allowTransparency="true"></iframe>
     </div>
     <button class="btn btn-danger pull-right visible-xs" data-toggle="modal" data-target="#myModal">
       How to use Data Tools 2.0
     </button>
-    <h4><strong>Four key policy insights from DC Action for Children are:</strong></h4>
+    <h4><strong>Three stages in understanding child poverty are:</strong></h4>
   </div>
 </div>
 <div id="narrative-row" class="row">
   <div class="col-md-12">
     <!-- <div class="row"> -->
-      <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
-        <button data-filter="children_in_poverty_perc" type="button" class="btn btn-default btn-block one" data-rel="one">
-          <img class="hidden-xs" src="assets/button-poverty.jpg"/>
-          <h4>Children in Poverty</h4>
-          <span class="subhead visible-sm">Among 25% of the poorest neighborhoods, more than 1 in 2 children live in poverty.</span>
+      <div class="col-md-4 col-lg-4 col-sm-6 col-xs-6">
+        <button data-filter="children_u18_in_poverty_2014" type="button" class="btn btn-default btn-block one" data-rel="one">
+          <img class="hidden-xs" src="assets/button-poverty.png"/>
+          <h4>Causes of Poverty</h4>
+          <span class="subhead visible-sm">Text</span>
         </button>
       </div>
-      <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
+      <div class="col-md-4 col-lg-4 col-sm-6 col-xs-6">
         <button data-filter="single_mother_families_perc" type="button" class="btn btn-default btn-block two" data-rel="two">
           <img class="hidden-xs" src="assets/button-singlemother.jpg"/>
-          <h4>Children in Single Mother Families</h4>
+          <h4>Effects of Poverty</h4>
           <span class="subhead visible-sm">Approximately 48% (almost 1 in 2) DC children live in families headed by single mothers.</span>
         </button>
       </div>
-      <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
+      <div class="col-md-4 col-lg-4 col-sm-6 col-xs-6">
         <button data-filter="reading_perc" type="button" class="btn btn-default btn-block three" data-rel="three">
           <img class="hidden-xs" src="assets/button-reading.jpg"/>
-          <h4>Students Proficient in Reading</h4>
+          <h4>Solutions to Poverty</h4>
           <span class="subhead visible-sm">40% of DC neighborhoods have less than half of their students scoring proficient in reading.</span>
         </button>
       </div>
-      <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6">
-        <button data-filter="math_perc" type="button" class="btn btn-default btn-block four" data-rel="four">
-        <img class="hidden-xs" src="assets/button-math.jpg"/>
-          <h4>Students Proficient in Math</h4>
-          <span class="subhead visible-sm">Half of all DC neighborhoods have less than 55% of their students proficient in math.</span>
-        </button>
-      </div>
+
     <!-- </div> -->
-  </div> 
+  </div>
 </div>
 <div class="posrel">
   <div id="nav-panel" class="posabs">
     <ul class="nav nav-pills nav-stacked neighborhood-menu">
       <li><a id="no_neighborhood_data" href="#"><button type="button" class="btn btn-danger btn-sm" style="width:100%"><span class="glyphicon glyphicon-trash"></span> Clear selection</button></a></li>
     </ul>
-    <h4>School data</h4>
+    <!--<h4>School data</h4>
     <ul class="nav nav-pills nav-stacked school-type-menu">
       <li><a id="public" href="#">DC Public Schools</a></li>
       <li><a id="charter" href="#">DC Public Charter Schools</a></li>
-    </ul>
-    <h4>Neighborhood data</h4>
+    </ul> -->
+    <h4>Child Poverty Data</h4>
     <ul class="nav nav-pills nav-stacked neighborhood-menu">
-      <li class="nav-header disabled"><a>Neighborhood Demographics</a></li>
-        <li><a id="population_total_val" href="#">Total Population</a></li>
-        <li><a id="population_under_18_val" href="#">Children (Under 18)</a></li>
-        <li><a id="population_under_5_val" href="#">Young Child Population (Under 5)</a></li>
-        <li><a id="total_neighborhood_poverty_perc" href="#">Neighborhood Poverty Rate</a></li>
-        <li><a id="children_in_poverty_perc" href="#">Percentage of Children in Poverty</a></li>
-        <li><a id="single_mother_families_perc" href="#">Percentage of Children in Single Mother Families</a></li>
-        <li><a id="no_dip_18_perc" href="#">Percentage of Population Between 18 and 24 Without a Diploma</a></li>
-        <li><a id="no_dip_25_perc" href="#">Percentage of Population Over 25 Without a Diploma</a></li>
-        <li><a id="youth_ready_to_work_perc" href="#">Youth Employment Rate (Ages 16 to 24)</a><li>
-        <li><a id="engagement_perc" href="#">Political Engagement in the 2012 Election <span class="label label-danger">New</span></a></li>
-      <li class="nav-header disabled"><a>Child Health & Wellbeing</a></li>
-        <li><a id="medicaid_enroll_val" href="#">Children Enrolled in Medicaid</a></li>
-        <li><a id="prev_med_visit_val" href="#">Preventative Medical Visits by Children Enrolled in Medicaid</a></li>
-        <li><a id="dental_visit_val" href="#">Dental Visits by Children Enrolled in Medicaid</a></li>
-        <li><a id="er_ast_10_val" href="#">Asthma-Related ER Visits for Children</a></li>
-        <li><a id="fs_client_2012_val" href="#">Number of SNAP Recipients (Children & Adults)</a></li>
-      <li class="nav-header disabled"><a>Child Success</a></li>
-        <li><a id="math_perc" href="#">Percentage of Students Proficient in DC CAS (Math)</a></li>
-        <li><a id="reading_perc" href="#">Percentage of Students Proficient in DC CAS (Reading)</a></li>
-      <li class="nav-header disabled"><a>Child Care</a></li>
-        <li><a id="cc_cap_val" href="#">Infant/Toddler Child Care Capacity</a></li>
-        <li><a id="cc_pop_ratio" href="#">Ratio of Infant/Toddler Child Care Capacity to Under 3 Population</a></li>
-        <li><a id="cc_child_pov_ratio" href="#">Ratio of Infant/Toddler Child Care Capacity to Under 5 Poverty</a></li>
-        <!-- <li><a id="cc_sub_13_cur" href="#">Infant/Toddler Child Care Subsidies</a></li> -->
-      <li class="nav-header disabled"><a>Neighborhood Assets</a></li>
-        <li><a id="homeownership_perc" href="#">Percentage of Housing Units Owner Occupied</a></li>
-        <li><a id="vacants_val" href="#">Number of Properties Vacant or Blighted</a></li>
-        <li><a id="libraries_val" href="#">Number of Public Libraries</a></li>
-        <li><a id="grocery_val" href="#">Number of Grocery Stores</a></li>
-        <li><a id="rec_val" href="#">Number of Recreation Centers</a></li>
-        <li><a id="parks_val" href="#">Number of Parks</a></li>
-        <li><a id="metro_val" href="#">Number of WMATA Rail Stations</a></li>
-        <li><a id="bus_stops_val" href="#">Number of WMATA Bus Stops</a></li>
-      <li class="nav-header disabled"><a>Neighborhood Violent Crime</a></li>
-        <li><a id="total_crime_val" href="#">Total Violent Crime Count</a></li>
-        <li><a id="total_crime_pc_ratio" href="#">Total Violent Crime per 1,000 Residents</a></li>
-        <li><a id="homicide_val" href="#">Total Homicide Count</a></li>
-        <li><a id="homicide_pc_ratio" href="#">Homicides per 1,000 Residents</a></li>
-        <li><a id="assault_val" href="#">Total Assault with Deadly Weapon Count</a></li>
-        <li><a id="assault_pc_ratio" href="#">Assault with Deadly Weapon per 1,000 Residents</a></li>
-        <li><a id="robbery_val" href="#">Total Robbery Count</a></li>
-        <li><a id="robbery_pc_ratio" href="#">Robbery per 1,000 Residents</a></li>
-        <li><a id="sex_abuse_val" href="#">Total Sex Abuse Count</a></li>
-        <li><a id="sex_abuse_pc_ratio" href="#">Sex Abuse per 1,000 Residents</a></li>
+      <li class="nav-header disabled"><a>Child Poverty Levels</a></li>
+        <li><a id="children_u18_in_poverty_2007" href="#">Under 18s in Poverty 2007</a></li>
+        <li><a id="children_u18_in_poverty_2010" href="#">Under 18s in Poverty 2010</a></li>
+        <li><a id="children_u18_in_poverty_2014" href="#">Under 18s in Poverty 2014</a></li>
+        <li><a id="children_u18_in_poverty_delta_07_14" href="#">Change 2007 to 2014</a></li>
+        <li><a id="children_u18_in_poverty_delta_10_14" href="#">Change 2010 to 2014</a></li>
+      <li class="nav-header disabled"><a>Indicators of Child Poverty</a></li>
+        <li><a id="indicator_tax" href="#">Children in Tax Credit Households</a></li>
+        <li><a id="indicator_obesity" href="#">Obese Children</a></li>
+        <li><a id="indicator_dental_access" href="#">Dentist Vists</a></li>
+      <li class="nav-header disabled"><a>Aggregate Indexs</a></li>
+        <li><a id="index_imd" href="#">IM Index</a></li>
+        <li><a id="index_idaci" href="#">IDACI Index</a></li>
+        <li><a id="index_movement_scale" href="#">Poverty Movement Index</a></li>
     </ul>
   </div><!--/#nav-panel -->
         <div id="narrative" class="panel panel-default">
           <a class="close-box" href="#"><img src="assets/close.png" /></a>
           <div id="one" class="panel-body">
-            <h4 class="lead">Percentage of Children in Poverty</h4>
-            <p>The overall percentage of children in poverty in DC is approximately 30%, which equals about 30,000 children. Poverty is also concentrated in certain neighborhoods: Approximately 25% of the poorest neighborhoods have more than 1 in 2 children in poverty and 60% of all DC children who live in poverty. More than 35% of all DC children in poverty live in four neighborhoods: (1) Congress Heights, Bellevue, Washington Highlands; (2) Douglas, Shipley Terrace;(3) Columbia Heights, Mt. Pleasant, Pleasant Plains, Park View; and (4) Deanwood, Burrville, Grant Park, Lincoln Heights, Fairmont Heights. Many of these high poverty neighborhoods are overwhelmingly (more than 90%) black.</p>
+            <h4 class="lead">Causes of Poverty</h4>
+            <p>There are approximately 2,800,000 children living in poverty in the UK today. This is around 21% of all children. This is children living in households with less than £374 to live on each week.</p>
+            <p>The 'poverty line' is widely defined as 60% of the median income’.  In the UK the median income for a couple with 2 children is £623 per week. 60% of that is £374 per week. Families with income per week of less than £374 per week are living in poverty [1]. This is total income and not disposable income. This £374 has to cover housing, all utilities, food, clothing, travel, insurance, savings, leisure, hobbies and so on.</p>
+            <p>Many families that are in poverty are 'workless', in that no parent is working.  A workless household with a couple and 2 children living in it would receive approximately £270 per week, plus rent and council tax [2]. However, around 62% of children living in poverty live in a household where at least one parent works[3]. This is because low paid jobs, such as those on the minimum wage or part time or temporary contracts, are often not enough to provide an income above the 60% level.</p>
           </div>
           <div id="two" class="panel-body">
             <h4 class="lead">Percentage of Children in Single Mother Families</h4>
@@ -165,27 +132,27 @@
         <span id="visualized-metric">Total population</span><br />
         <span id="visualized-measure">605,759</span>
       </p>
-      <h4 class="neighborhood">Washington DC</h4>
+      <h4 class="neighborhood">Kingdom of Northumbria</h4>
       <table id="pop-info" class="table table-hover">
         <tr data-type="population_total_val">
           <td>Population (total)</td>
-          <td class="count align-right">605,759</td>
+          <td class="count align-right"></td>
         </tr>
         <tr data-type="population_under_18_val">
           <td>Population (under 18)</td>
-          <td class="count align-right">103,986</td>
+          <td class="count align-right"></td>
         </tr>
         <tr data-type="single_mother_families_perc">
           <td>Children in Single Mother Families</td>
-          <td class="count align-right">48%</td>
+          <td class="count align-right"></td>
         </tr>
-        <tr data-type="children_in_poverty_perc">
-          <td>Children in poverty</td>
-          <td class="count align-right">29%</td>
+        <tr data-type="children_u18_in_poverty_2014">
+          <td>Percentage of Children in Poverty</td>
+          <td class="count align-right"></td>
         </tr>
       </table>
-      <h4 class="chart">Demographic Breakdown</h4>
-      <div class="chart"></div>
+      <!-- <h4 class="chart">Demographic Breakdown</h4>
+      <div class="chart"></div> -->
     </div>
   </div> <!-- narrative cards here -->
   <div id="schools_panel" class="panel panel-default hide">
@@ -219,14 +186,14 @@
             </table>
         </div>
     </div>
-  </div>  
+  </div>
 </div>
 <div class="footer" style="position:relative;top:10px;">
   <small class="col-md-10 col-lg-10 col-sm-10 col-md-offset-1 col-lg-offset-1 col-sm-offset-1" style="text-align:center;clear:both;">
     <a href="http://www.dcactionforchildren.org/dc-kids-count-data-tools-acknowledgements">Credits &amp; acknowledgements</a> | <a href="http://www.dcactionforchildren.org/dc-kids-count-data-tools-methodology" target="_blank">Data &amp; Methodology</a> | <a href="http://www.dcactionforchildren.org/dc-kids-count-data-tools" target="_blank">Revisit version 2012</a>
   </small>
   <div class="clearfix"></div>
-  <div style="text-align:center;margin:20px 0;clear:both;"><iframe src="http://ghbtns.com/github-btn.html?user=DCActionforChildren&repo=dcaction&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></div>
+  <div style="text-align:center;margin:20px 0;clear:both;"><iframe src="http://ghbtns.com/github-btn.html?user=DataKind-UK&repo=child-poverty-commission-dashboard&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></div>
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">

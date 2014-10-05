@@ -21,6 +21,21 @@ var currentMetric = null;
 var schoolType = "clear";
 var highlightedNeighborhood = null;
 
+var color_palettes = {
+  // greens
+  'default': [ "#edf8e9", "#bae4b3", "#74c476", "#31a354", "#006d2c"],
+  // blues
+  'indicator': [ "#eff3ff", "#bdd7e7", "#6baed6", "#3182bd", "#08519c"],
+  // purples
+  'index': [ "#f2f0f7", "#cbc9e2", "#9e9ac8", "#756bb1", "#54278f"],
+  // greys
+  // '': [ "#f7f7f7", "#cccccc", "#969696", "#636363", "#252525"],
+  // reds
+  // '': [ "#fee5d9", "#fcae91", "#fb6a4a", "#de2d26", "#a50f15"],
+  // oranges
+  'children': [ "#feedde", "#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
+};
+
 var gmap_style=[
   {
     "elementType": "labels.text.fill",
@@ -87,9 +102,9 @@ $(document).ready(function() {
 }); // end document ready function
 
 function init(){
-  resizeContainer($("#content").parent().width());
+  resizeContainer();
   drawChoropleth();
-  drawChart();
+//  drawChart();
 
   //====EVENT LISTENERS===//
 
@@ -106,7 +121,7 @@ function init(){
       changeNeighborhoodData(currentMetric);
       $(this).parent().addClass("selected").siblings().removeClass("selected");
       $("#legend-panel").show();
-      $("#details p.lead").show();      
+      $("#details p.lead").show();
     }
   });
 
@@ -139,7 +154,7 @@ function init(){
     if($(this).hasClass('active'))
       $(this).removeClass('active'); //change with .activatebutton
     else
-      $("button.active").removeClass("active");      
+      $("button.active").removeClass("active");
       $(this).addClass('active');
   });
 
@@ -156,12 +171,18 @@ function init(){
   });
 
   $(window).resize(function(){
-    resizeContainer($("#content").parent().width());
+    resizeContainer();
   });
 }
-function resizeContainer(width){
-  var new_height = $(window).width() < 797 ? $("#content").parent().width() * 0.75 : 600;
-  $("#content").css({"width":width,"height":new_height});
+function resizeContainer(){
+  var parent_width = $("#content").parent().width();
+  var header_height = $('.navbar').outerHeight(true);
+  var narrative_height = $('#narrative-row').outerHeight(true);
+  var footer_height = $('.footer').outerHeight(true);
+  var new_height = $(window).height() - (header_height + narrative_height + footer_height + 20);
+  new_height = Math.max(new_height, 600);
+
+  $("#content").css({"width":parent_width,"height":new_height});
   $("#nav-panel").css({"height": new_height});
 }
 function transform(d) {
@@ -175,8 +196,8 @@ function transform(d) {
 function drawChoropleth(){
 
   queue()
-    .defer(d3.json, "data/neighborhoods44.json")
-    .defer(d3.csv, "data/neighborhoods.csv")
+    .defer(d3.json, "data/lsoa_ne_wgs84.geojson")
+    .defer(d3.csv, "data/lsoa_data.csv")
     .defer(d3.csv, "data/source.csv")
     .await(setUpChoropleth);
 
@@ -190,14 +211,19 @@ function drawChoropleth(){
     });
 
     gmap = new google.maps.Map(d3.select("#content").node(), {
-      zoom: 12,
-      minZoom: 12,
-      maxZoom: 14,
-      center: new google.maps.LatLng(38.89555, -77.01551),
+      zoom: 9,
+      minZoom: 8,
+      maxZoom: 12,
+      center: new google.maps.LatLng(54.97, -1.60),
+      //center: new google.maps.LatLng(38.8951, -77.0367),
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       streetViewControl: false,
       panControl: false,
-      scrollwheel: false
+      scrollwheel: true,
+      zoomControl: true,
+      zoomControlOptions: {
+        position: google.maps.ControlPosition.BOTTOM_RIGHT
+      }
     });
 
     gmap.setOptions({
@@ -208,6 +234,11 @@ function drawChoropleth(){
     google.maps.event.addListenerOnce(gmap, "idle", function(){
       // adjust the zoom bar
       $("div[title='Zoom in']").parent().css({"margin-top":"60px"});
+    });
+
+    google.maps.event.addListener(gmap, 'zoom_changed', function() {
+      currentMetric = $(".neighborhood-menu > li.selected a").attr('id');
+      changeNeighborhoodData(currentMetric);
     });
 
     var overlay = new google.maps.OverlayView();
@@ -259,6 +290,7 @@ function drawChoropleth(){
           .on("click", function(d) { highlightNeigborhood(d, false); })
           .style("fill",function(d) {
             if (currentMetric === null) { return "#aaaaaa"; }
+            // else {return "#000000";}
             else { return choro_color(all_data[d.properties.gis_id][currentMetric]); }
           })
           .style("fill-opacity",0.75);
@@ -283,20 +315,20 @@ function drawChoropleth(){
 
 function changeNeighborhoodData(new_data_column) {
   var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[new_data_column]); }));
+
+  // http://www.macwright.org/simple-statistics/#-jenks-data-number_of_classes-
   var jenks = _.unique(_.compact(ss.jenks(data_values, 5)));
-  var legend_jenks = _.unique(_.compact(ss.jenks(data_values, 5)));
-  if(jenks.length > 4){
-    jenks.shift();
-    jenks.pop();
-  }
-  if(legend_jenks.length > 4){
-    legend_jenks.shift();
-  }
-  // jenks.push(_.max(jenks) + 0.01);
-  var color_palette = [ "#9ae3ff", "#45ccff", "#00adef", "#00709a", "#003245"];
+
+  var data_group = new_data_column.split('_')[0];
+  var color_palette = (data_group in color_palettes) ? color_palettes[data_group] : color_palettes['default'];
+
+  // trim lighter colours from palette (if necessary)
+  color_palette = color_palette.slice(6 - jenks.length);
+
   activeData = new_data_column;
+  // https://github.com/mbostock/d3/wiki/Quantitative-Scales#threshold
   choro_color = d3.scale.threshold()
-    .domain(jenks)
+    .domain(jenks.slice(1,-1))
     .range(color_palette);
   choropleth_data.forEach(function(d) {
     choropleth_data[d.gis_id] = +d[new_data_column];
@@ -327,28 +359,17 @@ function changeNeighborhoodData(new_data_column) {
     return _.max(_.filter(a, function(d){ return d < n; } ));
   };
 
-  console.log(jenks.length);
-
   var legendText = function(d, jenks){
     if(d == _.min(jenks)) {
-      return legendNumber(d, jenks) + " and below";
-    } else if(d == _.max(jenks)){
-      var top = d - 0.01;
-      if(jenks.length == 5) {
-        return "Above " + legendNumber(jenks[3], jenks);
-      } else if(jenks.length == 4) {
-        return "Above " + legendNumber(jenks[2], jenks);
-      } else if(jenks.length == 3) {
-        return "Above " + legendNumber(jenks[2], jenks);
-      } else {
-        return "Above " + legendNumber(jenks[1], jenks);
-      };
+      return legendNumber(d) + " and below";
+    } else if(d > _.max(jenks)){
+      return "Above " + legendNumber(_.max(jenks));
     } else {
-      return legendNumber(previousElement(d, legend_jenks), legend_jenks) + " - " + legendNumber(d, legend_jenks);
+      return legendNumber(previousElement(d, jenks)) + " - " + legendNumber(d);
     }
   };
 
-  var legendNumber = function(d, jenks, typeDef){
+  var legendNumber = function(d, typeDef){
     var column = String([new_data_column]);
     if (column.split("_").pop() == 'perc'){
       return parseInt(d * 100, 10) + "%";
@@ -369,10 +390,13 @@ function changeNeighborhoodData(new_data_column) {
   };
 
   var updatedLegend = d3.select("#legend").selectAll(".legend")
-      .data(legend_jenks);
+      .data(jenks.slice(1).reverse());
 
   updatedLegend.select("text")
-    .text(function(d){ return legendText(d, legend_jenks);});
+    .text(function(d){ return legendText(d, jenks.slice(1,-1));});
+
+  updatedLegend.select("rect")
+    .style("fill", function(d, i){ return color_palette[color_palette.length - i - 1]; })
 
   enterLegend = updatedLegend.enter().append("g")
     .attr("transform", function(d, i){ return "translate(0," + (i * 35) + ")"; })
@@ -381,7 +405,7 @@ function changeNeighborhoodData(new_data_column) {
   enterLegend.append("rect")
     .attr("width", 170)
     .attr("height", 30)
-    .style("fill", function(d, i){ return color_palette[i]; })
+    .style("fill", function(d, i){ return color_palette[color_palette.length - i - 1]; })
     .style("opacity", "0.75");
 
   enterLegend.append("text")
@@ -390,7 +414,7 @@ function changeNeighborhoodData(new_data_column) {
     .attr("dx", 85)
     .attr("font-size", "13px")
     .attr("text-anchor", "middle")
-    .text(function(d){ return legendText(d, legend_jenks); });
+    .text(function(d){ return legendText(d, jenks.slice(1,-1)); });
 
   updatedLegend.exit().remove();
 
@@ -724,7 +748,7 @@ function displayPopBox(d) {
   var $popbox = $("#pop-info"),
       highlighted = all_data[d.properties.gis_id];
 
-  d3.select(".neighborhood").html(highlighted.NBH_NAMES);
+  d3.select(".neighborhood").html(highlighted.NAME);
 
   var val, key, typeDef;
   $.each($popbox.find("tr"), function(k, row){
@@ -771,7 +795,7 @@ function highlightNeigborhood(d, isOverlayDraw) {
       //last neighborhood to display in popBox.
       activeId = d.properties.gis_id;
       setVisMetric(activeData, all_data[activeId][activeData]);
-      updateChart(all_data[activeId]);
+//      updateChart(all_data[activeId]);
     }
   } else {
     g.selectAll("#path" + highlightedNeighborhood.properties.NCID).classed("active", true);
@@ -813,7 +837,7 @@ function hoverNeighborhood(d) {
 
     if (activeData !== "no_neighborhood_data") {
       setVisMetric(activeData, all_data[activeId][activeData]);
-      updateChart(all_data[activeId]);
+//      updateChart(all_data[activeId]);
     } else {
       setVisMetric(null, null, true);
     }
