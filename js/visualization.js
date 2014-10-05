@@ -222,7 +222,7 @@ function drawChoropleth(){
       scrollwheel: true,
       zoomControl: true,
       zoomControlOptions: {
-        position: google.maps.ControlPosition.BOTTOM_LEFT
+        position: google.maps.ControlPosition.BOTTOM_RIGHT
       }
     });
 
