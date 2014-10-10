@@ -8,7 +8,7 @@ $(document).ready(function() {
 //					.attr('width', 960)
 //					.attr('height', 500);
 //			
-//			var neighbourhoods = svg.append('g')
+//			var neighborhoods = svg.append('g')
 //					.attr('width', 960)
 //					.attr('height', 500)
 //					.attr('id', 'states');
@@ -16,7 +16,7 @@ $(document).ready(function() {
 //
 //			var path = d3.geo.path();
 //			d3.json("data/dc.json", function(json) {
-//				neighbourhoods.selectAll("path")
+//				neighborhoods.selectAll("path")
 //					.data(json.features)
 //					.enter().append("path")
 //					.attr("d", path);
