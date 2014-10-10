@@ -20,8 +20,8 @@ fields_rename = {
   'population_white_total' => 'B03002_003E',
   'population_black_total' => 'B03002_004E',
   'population_hisp_total' => 'B03002_012E',
-  'total_neighbourhood_poverty_numer' => 'B17001_002E',
-  'total_neighbourhood_poverty_denom' => 'B17001_001E',
+  'total_neighborhood_poverty_numer' => 'B17001_002E',
+  'total_neighborhood_poverty_denom' => 'B17001_001E',
   'homeownership_denom' => 'B11012_001E',
   'work_denom' => 'B08303_001E',
   'population_under_3' => 'B09001_003E'
@@ -301,7 +301,7 @@ def census_query(vars)
         end
       end
 
-      # tract ids in the neighbourhood file include the state and county number
+      # tract ids in the neighborhood file include the state and county number
       tract_id = '11001' + r['tract']
       if tracts.has_key? tract_id
         tracts[tract_id].merge! r
