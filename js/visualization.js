@@ -19,7 +19,7 @@ var dotRadius = 4;
 
 var currentMetric = null;
 var schoolType = "clear";
-var highlightedneighbourhood = null;
+var highlightedNeighborhood = null;
 
 var gmap_style=[
   {
@@ -74,7 +74,7 @@ var gmap_style=[
       { "color": "#cfddff" }
     ]
   },{
-     "featureType": "administrative.neighbourhood",
+     "featureType": "administrative.neighborhood",
      "elementType": "labels.text",
      "stylers": [
       { "visibility": "off" }
@@ -98,12 +98,12 @@ function init(){
 
   // event listeners for changing d3
   // choropleth color change
-  $(".neighbourhood-menu > li").on("click", "a", function(e){
+  $(".neighborhood-menu > li").on("click", "a", function(e){
     e.preventDefault();
     if (!$(this).parent().hasClass('disabled')){
       currentMetric=(typeof $(this).attr("id")==="undefined")?null:$(this).attr("id");
       getSource(source_data,currentMetric);
-      changeneighbourhoodData(currentMetric);
+      changeNeighborhoodData(currentMetric);
       $(this).parent().addClass("selected").siblings().removeClass("selected");
       $("#legend-panel").show();
       $("#details p.lead").show();      
@@ -175,8 +175,8 @@ function transform(d) {
 function drawChoropleth(){
 
   queue()
-    .defer(d3.json, "data/neighbourhoods44.json")
-    .defer(d3.csv, "data/neighbourhoods.csv")
+    .defer(d3.json, "data/neighborhoods44.json")
+    .defer(d3.csv, "data/neighborhoods.csv")
     .defer(d3.csv, "data/source.csv")
     .await(setUpChoropleth);
 
@@ -225,7 +225,7 @@ function drawChoropleth(){
       .attr("id","theSVGLayer");
 
       g = svg.append("g");
-      var neighbourhoods = g.append("g").attr("id", "neighbourhoods");
+      var neighborhoods = g.append("g").attr("id", "neighborhoods");
       g.append("g").attr("id", "schools");
       d3.select("#legend-container").append("svg")
           .attr("height", 200)
@@ -248,14 +248,14 @@ function drawChoropleth(){
 
         // Have to remove all the paths and readd them otherwise the visualization was highlighting the old path
         // and the new path when zooming.
-        neighbourhoods.selectAll("path").remove();
-        neighbourhoods.selectAll("path")
+        neighborhoods.selectAll("path").remove();
+        neighborhoods.selectAll("path")
           .data(dc.features)
           .enter().append("path")
           .attr("d", path)
           .attr("id", function (d) { return "path" + d.properties.NCID; })
           .attr("class", "nbhd")
-          .on("mouseover", hoverneighbourhood)
+          .on("mouseover", hoverNeighborhood)
           .on("click", function(d) { highlightNeigborhood(d, false); })
           .style("fill",function(d) {
             if (currentMetric === null) { return "#aaaaaa"; }
@@ -265,9 +265,9 @@ function drawChoropleth(){
 
         g.select("#schools").selectAll("circle").remove();
 
-        //if there is a highlighted neighbourhood then rehighlightit.
-        if(highlightedneighbourhood) {
-          highlightNeigborhood(highlightedneighbourhood, true);
+        //if there is a highlighted neighborhood then rehighlightit.
+        if(highlightedNeighborhood) {
+          highlightNeigborhood(highlightedNeighborhood, true);
         }
 
         redrawSchools();
@@ -281,7 +281,7 @@ function drawChoropleth(){
 
 } // drawChoropleth function
 
-function changeneighbourhoodData(new_data_column) {
+function changeNeighborhoodData(new_data_column) {
   var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[new_data_column]); }));
   var jenks = _.unique(_.compact(ss.jenks(data_values, 5)));
   var legend_jenks = _.unique(_.compact(ss.jenks(data_values, 5)));
@@ -302,7 +302,7 @@ function changeneighbourhoodData(new_data_column) {
     choropleth_data[d.gis_id] = +d[new_data_column];
   });
 
-  g.select("#neighbourhoods").selectAll("path")
+  g.select("#neighborhoods").selectAll("path")
     .transition().duration(600)
     .style("fill", function(d) {
       if(typeof all_data[d.properties.gis_id] ==="undefined" || all_data[d.properties.gis_id].population_total < min_population || !all_data[d.properties.gis_id][new_data_column]){
@@ -313,7 +313,7 @@ function changeneighbourhoodData(new_data_column) {
     })
     .style("fill-opacity",0.75);
 
-  if(activeId && new_data_column !== "no_neighbourhood_data") {
+  if(activeId && new_data_column !== "no_neighborhood_data") {
     setVisMetric(new_data_column, all_data[activeId][new_data_column]);
   } else {
     setVisMetric(null, null, true);
@@ -724,7 +724,7 @@ function displayPopBox(d) {
   var $popbox = $("#pop-info"),
       highlighted = all_data[d.properties.gis_id];
 
-  d3.select(".neighbourhood").html(highlighted.NBH_NAMES);
+  d3.select(".neighborhood").html(highlighted.NBH_NAMES);
 
   var val, key, typeDef;
   $.each($popbox.find("tr"), function(k, row){
@@ -743,7 +743,7 @@ function highlightNeigborhood(d, isOverlayDraw) {
   // }).getBounds();
   // gmap.fitBounds(polyBounds);
   removeNarrative();
-  highlightedneighbourhood = d;
+  highlightedNeighborhood = d;
   var x, y, k;
 
   if (d && centered !== d) {
@@ -760,58 +760,58 @@ function highlightNeigborhood(d, isOverlayDraw) {
   }
 
   // if this is being called from the overlay.draw handler then
-  // select the centered neighbourhood and bring it to the front.
+  // select the centered neighborhood and bring it to the front.
   if(!isOverlayDraw) {
     g.selectAll("path")
       .classed("active", centered && function(d) { return d === centered; });
 
-    // if d is a neighbourhood boundary and clicked
+    // if d is a neighborhood boundary and clicked
     if (d && all_data[d.properties.gis_id]){
       displayPopBox(d);
-      //last neighbourhood to display in popBox.
+      //last neighborhood to display in popBox.
       activeId = d.properties.gis_id;
       setVisMetric(activeData, all_data[activeId][activeData]);
       updateChart(all_data[activeId]);
     }
   } else {
-    g.selectAll("#path" + highlightedneighbourhood.properties.NCID).classed("active", true);
-    bringneighbourhoodToFront();
+    g.selectAll("#path" + highlightedNeighborhood.properties.NCID).classed("active", true);
+    bringNeighborhoodToFront();
   }
 }
 
-function bringneighbourhoodToFront() {
+function bringNeighborhoodToFront() {
   if (centered) {
-      var activeneighbourhood = d3.select(".active");
-      activeneighbourhood.each(function () {
+      var activeNeighborhood = d3.select(".active");
+      activeNeighborhood.each(function () {
         this.parentNode.appendChild(this);
       });
       return;
     }
 }
 
-function hoverneighbourhood(d) {
+function hoverNeighborhood(d) {
   // keep active path as the displayed path.
   if($("path.active").length > 0) {
-    // keep centered neighbourhood path up front
-    bringneighbourhoodToFront();
+    // keep centered neighborhood path up front
+    bringNeighborhoodToFront();
     return;
   }
 
-  //bring hovered neighbourhood path to front.
-  var neighbourhood = d3.select(d3.event.target);
-  neighbourhood.each(function () {
+  //bring hovered neighborhood path to front.
+  var neighborhood = d3.select(d3.event.target);
+  neighborhood.each(function () {
     this.parentNode.appendChild(this);
   });
 
-  //but also keep centered neighbourhood path up front
-  bringneighbourhoodToFront();
+  //but also keep centered neighborhood path up front
+  bringNeighborhoodToFront();
 
   if (d && all_data[d.properties.gis_id]){
     displayPopBox(d);
-    //last neighbourhood to display in popBox.
+    //last neighborhood to display in popBox.
     activeId = d.properties.gis_id;
 
-    if (activeData !== "no_neighbourhood_data") {
+    if (activeData !== "no_neighborhood_data") {
       setVisMetric(activeData, all_data[activeId][activeData]);
       updateChart(all_data[activeId]);
     } else {
@@ -899,7 +899,7 @@ if (!google.maps.Polygon.prototype.getBounds) {
 }
 
 function getSource(data, layerID){
-  if(layerID == "no_neighbourhood_data"){
+  if(layerID == "no_neighborhood_data"){
     d3.select("#source-title").text("").attr("href",null)
   }
   data.forEach(function(d){
