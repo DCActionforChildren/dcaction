@@ -11,7 +11,7 @@ $(document).ready(function() {
 //  zoomControl.addTo(map);
   var map = L.mapbox.map('map', 'mapbox.dc-bright')
 	.setView([38.9049,-77.0128], 11);
-	map.addLayer(L.mapbox.tileLayer('newamerica.dc-action-neighborhoods'));
+	map.addLayer(L.mapbox.tileLayer('newamerica.dc-action-neighbourhoods'));
 	
 //	$.get('data/combined_nick.json', function(schools){
 //
@@ -126,7 +126,7 @@ $(document).ready(function() {
 //	})
 
 
-//  var layer = L.mapbox.tileLayer('newamerica.dc-action-neighborhoods')
+//  var layer = L.mapbox.tileLayer('newamerica.dc-action-neighbourhoods')
 //  .on('load', function() {
 //    // get TileJSON data from the loaded layer
 //    var TileJSON = layer.getTileJSON();
