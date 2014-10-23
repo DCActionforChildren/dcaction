@@ -106,7 +106,7 @@ function init(){
       changeNeighborhoodData(currentMetric);
       $(this).parent().addClass("selected").siblings().removeClass("selected");
       $("#legend-panel").show();
-      $("#details p.lead").show();      
+      $("#details p.lead").show();
     }
   });
 
@@ -139,7 +139,7 @@ function init(){
     if($(this).hasClass('active'))
       $(this).removeClass('active'); //change with .activatebutton
     else
-      $("button.active").removeClass("active");      
+      $("button.active").removeClass("active");
       $(this).addClass('active');
   });
 
@@ -233,7 +233,7 @@ function drawChoropleth(){
           .attr("id", "legend");
 
       overlay.draw = function() {
-        var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[currentMetric]); }));
+        var data_values = _.filter(_.map(choropleth_data, function(d){ return parseFloat(d[currentMetric]); }), function(d){ return !isNaN(d); });
 
         var projection = this.getProjection(),
         padding = 10;
@@ -282,21 +282,17 @@ function drawChoropleth(){
 } // drawChoropleth function
 
 function changeNeighborhoodData(new_data_column) {
-  var data_values = _.compact(_.map(choropleth_data, function(d){ return parseFloat(d[new_data_column]); }));
-  var jenks = _.unique(_.compact(ss.jenks(data_values, 5)));
-  var legend_jenks = _.unique(_.compact(ss.jenks(data_values, 5)));
-  if(jenks.length > 4){
-    jenks.shift();
-    jenks.pop();
-  }
-  if(legend_jenks.length > 4){
-    legend_jenks.shift();
-  }
-  // jenks.push(_.max(jenks) + 0.01);
+  var data_values = _.filter(_.map(choropleth_data, function(d){ return parseFloat(d[new_data_column]); }), function(d){ return !isNaN(d); });
+  var jenks = _.filter(_.unique(ss.jenks(data_values, 5)), function(d){ return !isNaN(d); });
+
   var color_palette = [ "#9ae3ff", "#45ccff", "#00adef", "#00709a", "#003245"];
+
+  // trim lighter colours from palette (if necessary)
+  color_palette = color_palette.slice(6 - jenks.length);
+
   activeData = new_data_column;
   choro_color = d3.scale.threshold()
-    .domain(jenks)
+    .domain(jenks.slice(1,-1))
     .range(color_palette);
   choropleth_data.forEach(function(d) {
     choropleth_data[d.gis_id] = +d[new_data_column];
@@ -331,24 +327,15 @@ function changeNeighborhoodData(new_data_column) {
 
   var legendText = function(d, jenks){
     if(d == _.min(jenks)) {
-      return legendNumber(d, jenks) + " and below";
-    } else if(d == _.max(jenks)){
-      var top = d - 0.01;
-      if(jenks.length == 5) {
-        return "Above " + legendNumber(jenks[3], jenks);
-      } else if(jenks.length == 4) {
-        return "Above " + legendNumber(jenks[2], jenks);
-      } else if(jenks.length == 3) {
-        return "Above " + legendNumber(jenks[2], jenks);
-      } else {
-        return "Above " + legendNumber(jenks[1], jenks);
-      };
+      return "Less than " + legendNumber(d);
+    } else if(d > _.max(jenks)){
+      return legendNumber(_.max(jenks)) + " and above";
     } else {
-      return legendNumber(previousElement(d, legend_jenks), legend_jenks) + " - " + legendNumber(d, legend_jenks);
+      return legendNumber(previousElement(d, jenks)) + " - " + legendNumber(d);
     }
   };
 
-  var legendNumber = function(d, jenks, typeDef){
+  var legendNumber = function(d, typeDef){
     var column = String([new_data_column]);
     if (column.split("_").pop() == 'perc'){
       return parseInt(d * 100, 10) + "%";
@@ -369,10 +356,10 @@ function changeNeighborhoodData(new_data_column) {
   };
 
   var updatedLegend = d3.select("#legend").selectAll(".legend")
-      .data(legend_jenks);
+      .data(jenks.slice(1).reverse());
 
   updatedLegend.select("text")
-    .text(function(d){ return legendText(d, legend_jenks);});
+    .text(function(d){ return legendText(d, jenks.slice(1,-1));});
 
   enterLegend = updatedLegend.enter().append("g")
     .attr("transform", function(d, i){ return "translate(0," + (i * 35) + ")"; })
@@ -381,7 +368,7 @@ function changeNeighborhoodData(new_data_column) {
   enterLegend.append("rect")
     .attr("width", 170)
     .attr("height", 30)
-    .style("fill", function(d, i){ return color_palette[i]; })
+    .style("fill", function(d, i){ return color_palette[color_palette.length - i - 1]; })
     .style("opacity", "0.75");
 
   enterLegend.append("text")
@@ -390,7 +377,7 @@ function changeNeighborhoodData(new_data_column) {
     .attr("dx", 85)
     .attr("font-size", "13px")
     .attr("text-anchor", "middle")
-    .text(function(d){ return legendText(d, legend_jenks); });
+    .text(function(d){ return legendText(d, jenks.slice(1,-1)); });
 
   updatedLegend.exit().remove();
 
