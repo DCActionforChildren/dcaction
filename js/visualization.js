@@ -258,7 +258,7 @@ function drawChoropleth(){
           .on("mouseover", hoverNeighborhood)
           .on("click", function(d) { highlightNeigborhood(d, false); })
           .style("fill",function(d) {
-            if (currentMetric === null) { return "#aaaaaa"; }
+            if (currentMetric === null || all_data[d.properties.gis_id][currentMetric] === '0') { return "#aaaaaa"; }
             else { return choro_color(all_data[d.properties.gis_id][currentMetric]); }
           })
           .style("fill-opacity",0.75);
@@ -301,7 +301,10 @@ function changeNeighborhoodData(new_data_column) {
   g.select("#neighborhoods").selectAll("path")
     .transition().duration(600)
     .style("fill", function(d) {
-      if(typeof all_data[d.properties.gis_id] ==="undefined" || all_data[d.properties.gis_id].population_total < min_population || !all_data[d.properties.gis_id][new_data_column]){
+      if(typeof all_data[d.properties.gis_id] ==="undefined" ||
+        all_data[d.properties.gis_id].population_total < min_population ||
+        !all_data[d.properties.gis_id][new_data_column] ||
+        all_data[d.properties.gis_id][currentMetric] === '0'){
         return defaultColor;
       } else {
         return choro_color(all_data[d.properties.gis_id][new_data_column]);
@@ -323,7 +326,7 @@ function changeNeighborhoodData(new_data_column) {
     return _.max(_.filter(a, function(d){ return d < n; } ));
   };
 
-  console.log(jenks.length);
+  // console.log(jenks.length);
 
   var legendText = function(d, jenks){
     if(d == _.min(jenks)) {
@@ -337,14 +340,13 @@ function changeNeighborhoodData(new_data_column) {
 
   var legendNumber = function(d, typeDef){
     var column = String([new_data_column]);
+    var number_formatter = d3.format(",");
     if (column.split("_").pop() == 'perc'){
       return parseInt(d * 100, 10) + "%";
     } else if(column.split("_").pop() == 'val'){
       num = Math.round(d);
-      var number_formatter = d3.format(",");
       return number_formatter(parseInt(d, 10));
     } else if(column.split("_").pop() == 'cur'){
-      var number_formatter = d3.format(",");
       return "$" + number_formatter(parseInt(d, 10));
     } else if(column.split("_").pop() == 'ratio'){
       num = Math.round(d * 100)/100;
@@ -887,7 +889,7 @@ if (!google.maps.Polygon.prototype.getBounds) {
 
 function getSource(data, layerID){
   if(layerID == "no_neighborhood_data"){
-    d3.select("#source-title").text("").attr("href",null)
+    d3.select("#source-title").text("").attr("href",null);
   }
   data.forEach(function(d){
     if(d.layer == layerID){
@@ -897,10 +899,10 @@ function getSource(data, layerID){
       $("#source").show();
       return false;
     }
-  })
-};
+  });
+}
 
 function removeNarrative() {
   $( "#narrative" ).fadeOut(400);
   $( "#narrative-row button" ).removeClass('active');
-};
+}
