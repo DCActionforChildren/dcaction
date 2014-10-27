@@ -14,8 +14,7 @@ TRACT_FILE = 'acs_tract_data.json'
 fields_rename = {
   'population_total' => 'B01003_001E',
   'population_under_18' => 'B09001_001E',
-  'median_family_income_numer' => 'B09002_015E',
-  'median_family_income_denom' => 'B09002_001E',
+  'median_family_income_denom' => 'B00002_001E',
   'single_mother_families' => 'B09002_015E',
   'population_white_total' => 'B03002_003E',
   'population_black_total' => 'B03002_004E',
@@ -170,14 +169,14 @@ fields_sum = {
     'B08303_013E'
   ],
   'no_hs_degree_25_plus_denom' => [
-    'B15001_011',
-    'B15001_019',
-    'B15001_027',
-    'B15001_035',
-    'B15001_052',
-    'B15001_060',
-    'B15001_068',
-    'B15001_076'
+    'B15001_011E',
+    'B15001_019E',
+    'B15001_027E',
+    'B15001_035E',
+    'B15001_052E',
+    'B15001_060E',
+    'B15001_068E',
+    'B15001_076E'
   ]
 }
 
@@ -278,6 +277,12 @@ fields_sub = {
   # ]
 }
 
+# The following fields are products of ACS fields
+
+fields_prod = {
+  'median_family_income_numer' => ['B19119_001E', 'B00002_001E']
+}
+
 # This function performs the Census API query. It returns a hash of hashes of the form
 #     { tract1 => {var1 => val11, var2 => val12, ... },
 #       tract2 => {var1 => val12, var2 => val22, ... }, ... }
@@ -316,7 +321,7 @@ end
 
 # download all ACS variables and all corresponding margin-of-error variables.
 # margin-of-error variables are obtained by replace E by M in the ACS variable name 
-all_acs_fields = (fields_rename.values + fields_sum.values + fields_sub.values).flatten.uniq
+all_acs_fields = (fields_rename.values + fields_sum.values + fields_sub.values + fields_prod.values).flatten.uniq
 all_acs_fields += all_acs_fields.map {|name| name.sub('E', 'M')}
 tracts = census_query all_acs_fields
 
@@ -361,6 +366,17 @@ tracts.each do |tract_id, tract|
       tract[outname + "_margin"] += (tract[errname] / 1.645) ** 2
     end
     tract[outname+"_margin"] = Math.sqrt(tract[outname + "_margin"]) * 1.645
+  end
+
+  # TODO: compute margin of error for product field
+
+  fields_prod.each do |outname, acsfields|
+    tract[outname] = 1
+    tract[outname + "_margin"] = 0
+
+    acsfields.each do |acsname|
+      tract[outname] *= tract[acsname]
+    end
   end
 
 end

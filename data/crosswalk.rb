@@ -57,7 +57,7 @@ end
 #
 # MARGIN OF ERROR SHOULD BE IGNORED FOR AVERAGES AND RATIOS
 
-averaged_fields = ['median_family_income']
+averaged_fields = []
 
 nbhds = {}
 
