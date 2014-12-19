@@ -37,5 +37,5 @@ Connected project:
 
 ### Offshoot documentation that needs to be rolled in:
 
- * [data provenance and processing](http://bit.ly/DCA4C2VizData) (refs issue #129)
+ * [data provenance and processing](http://bit.ly/DCA4C2VizData) (refs [issue #129](https://github.com/DCActionforChildren/dcaction/issues/129))
  * [this repo's wiki](https://github.com/DCActionforChildren/dcaction/wiki) (refs [issue #130](https://github.com/DCActionforChildren/dcaction/issues/130))
