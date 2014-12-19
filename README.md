@@ -39,3 +39,4 @@ Connected project:
 
  * [updating census data steps](https://docs.google.com/document/d/1u9yJ1yJt6T4jOb_EUN6aXn-ugzuRCiNVmvRz19_k9cs/edit) (refs issue #124)
  * [data provenance and processing](http://bit.ly/DCA4C2VizData) (refs issue #129)
+ * [this repo's wiki](https://github.com/DCActionforChildren/dcaction/wiki) (refs [issue #130](https://github.com/DCActionforChildren/dcaction/issues/130))
