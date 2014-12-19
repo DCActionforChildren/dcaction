@@ -25,7 +25,7 @@ Connected project:
 4. Run a simple server to test local instance (e.g. go to directory in terminal and run simple Python server by entering `python -m SimpleHTTPServer`).
 5. Load the web address in your browser to view data tool.
 6. Go to data folder and change date in `fetch_acs.rb` and run in Ruby (may need to install gem/library dependencies) to create `acs_tract_data.json`.
-7. Then run [crosswalk.rb](https://github.com/jotok/dcaction/blob/gh-pages/data/crosswalk.rb) to which uses the cross-walk Excel in that folder transform `acs_tract_data.json` into `acs_nbhd_data.csv`.
+7. Then run [crosswalk.rb](/data/crosswalk.rb) to which uses the cross-walk Excel in that folder transform `acs_tract_data.json` into `acs_nbhd_data.csv`.
 8. Open up the [Google Spreadsheet](https://docs.google.com/spreadsheet/ccc?key=0AliQRBwTvad9dHpVQkltc05MS2FzdGpCRFZSb0djdFE#gid=35) for DataBook updating.
 9. Check that all indicators are accounted for and up-to-date in the “Comparison” tab, and that the variable names correspond to the descriptions and explanations in the [methodology](http://www.dcactionforchildren.org/dc-kids-count-data-tools-methodology).
 10. If ACS updates are needed, copy and paste the named variable columns (you can ignore the Census numerically-named ones in `acs_nbhd_data.csv` unless you need to debug) from `acs_nbhd_data.csv` file into an ACS tab and add NBHD cluster column for VLOOKUP.
