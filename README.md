@@ -17,16 +17,15 @@ Connected project:
 * [Kids Count data center](http://datacenter.kidscount.org/data#DC)
 
 
-US Census Bureau American Community Survey Annual DCAC DataTool Update Steps
-
+### US Census Bureau American Community Survey Annual DCAC DataTool Update Steps
 
 1. Make sure you have Github account and can work with git locally on your computer.
 2. Get access to the Repo on Github (https://github.com/DCActionforChildren/dcaction)
 3. Clone the repository to your local machine (e.g. git clone git@github.com:DCActionforChildren/dcaction.git)
 4. Run a simple server to test local instance (e.g. go to directory in terminal and run simple Python server by entering “python -m SimpleHTTPServer”)
 5. Load the web address in your browser to view data tool
-6. Go to Data folder and change date in fetch_acs.rb and run in Ruby (may need to install gem/library dependencies) to create 'acs_tract_data.json'.
-7. Then run crosswalk.rb to which uses the cross-walk Excel in that folder transform 'acs_tract_data.json' into acs_nbhd_data.csv
+6. Go to Data folder and change date in `fetch_acs.rb` and run in Ruby (may need to install gem/library dependencies) to create 'acs_tract_data.json'.
+7. Then run [crosswalk.rb](https://github.com/jotok/dcaction/blob/gh-pages/data/crosswalk.rb) to which uses the cross-walk Excel in that folder transform 'acs_tract_data.json' into acs_nbhd_data.csv
 8. Open up Google Spreadsheet for DataBook updating: https://docs.google.com/spreadsheet/ccc?key=0AliQRBwTvad9dHpVQkltc05MS2FzdGpCRFZSb0djdFE#gid=35
 9. Check that all indicators are accounted for and up-to-date in the “Comparison” tab, and that the variable names correspond to the descriptions and explanations in the methodology website: http://www.dcactionforchildren.org/dc-kids-count-data-tools-methodology
 10. If ACS updates are needed, copy and paste the named variable columns (you can ignore the Census numerically named ones in acs_nbhd_data.csv unless you need to debug) from acs_nbhd_data.csv file into an ACS tab and add NBHD cluster column for VLOOKUP.
