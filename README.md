@@ -1,36 +1,23 @@
-# DC Action for Children 2.0 Visualization
-
-See it here! http://datatools.dcactionforchildren.org
+# DC Action for Children Data Tools 2.0
 
 
-Development-related links:
+A data processing pipeline and interactive web visualization:
 
-There's a Trello, which has this short link:
-http://bit.ly/DCA4C2VizTrello
+ * [Data Tools 2.0 visualization](http://datatools.dcactionforchildren.org/)
+ * [Methodology documentation](https://www.dcactionforchildren.org/dc-kids-count-data-tools-methodology)
 
-Nick's repo (this one) is master for this project:
-https://github.com/nickmcclellan/dcaction
 
-See also this org, perhaps:
-https://github.com/newamericafoundation/
+Previous version:
 
-Data documentation is building in this hackpad, with short link:
-http://bit.ly/DCA4C2VizData
+ * [Data Tools 1.0 visualization](http://www.dcactionforchildren.org/dc-kids-count-data-tools)
 
-Kids Count useful links: http://datacenter.kidscount.org/data#DC
 
-DC KIDS COUNT Data Tool 10:  http://www.dcactionforchildren.org/dc-kids-count-data-tools
+Connected project:
 
-MapBox guide to CartoCSS
+* [Kids Count data center](http://datacenter.kidscount.org/data#DC)
 
-https://www.mapbox.com/tilemill/docs/manual/carto/
 
-Useful links for tapping into your data community
+Offshoot documentation that needs to be rolled in:
 
-http://meetup.com
-
-http://opendataday.org/
-
-http://hackforchange.org/
-
-http://datakind.org
+ * [updating census data steps](https://docs.google.com/document/d/1u9yJ1yJt6T4jOb_EUN6aXn-ugzuRCiNVmvRz19_k9cs/edit) (refs issue #124)
+ * [data provenance and processing](http://bit.ly/DCA4C2VizData) (refs issue #129)
