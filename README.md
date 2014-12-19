@@ -20,15 +20,15 @@ Connected project:
 ### Annual update process for US Census Bureau American Community Survey data
 
 1. Make sure you have a Github account and can work with git locally on your computer.
-2. Get access to the [dcaction repo](https://github.com/DCActionforChildren/dcaction).
+2. Get access to the [dcaction repo](https://github.com/DCActionforChildren/dcaction) (this one, if this is not a fork).
 3. Clone the repository to your local machine (e.g., `git clone git@github.com:DCActionforChildren/dcaction.git`).
 4. Run a simple server to test local instance (e.g. go to directory in terminal and run simple Python server by entering `python -m SimpleHTTPServer`).
 5. Load the web address in your browser to view data tool.
-6. Go to data folder and change date in `fetch_acs.rb` and run in Ruby (may need to install gem/library dependencies) to create `acs_tract_data.json`.
-7. Then run [crosswalk.rb](/data/crosswalk.rb) to which uses the cross-walk Excel in that folder transform `acs_tract_data.json` into `acs_nbhd_data.csv`.
+6. Go to data folder and change date in [fetch_acs.rb](/data/fetch_acs.rb) and run in Ruby (may need to install gem/library dependencies) to create [acs_tract_data.json](/data/acs_tract_data.json).
+7. Then run [crosswalk.rb](/data/crosswalk.rb) to which uses the cross-walk Excel in that folder transform [acs_tract_data.json](/data/acs_tract_data.json) into [acs_nbhd_data.csv](/data/acs_nbhd_data.csv).
 8. Open up the [Google Spreadsheet](https://docs.google.com/spreadsheet/ccc?key=0AliQRBwTvad9dHpVQkltc05MS2FzdGpCRFZSb0djdFE#gid=35) for DataBook updating.
 9. Check that all indicators are accounted for and up-to-date in the “Comparison” tab, and that the variable names correspond to the descriptions and explanations in the [methodology](http://www.dcactionforchildren.org/dc-kids-count-data-tools-methodology).
-10. If ACS updates are needed, copy and paste the named variable columns (you can ignore the Census numerically-named ones in `acs_nbhd_data.csv` unless you need to debug) from `acs_nbhd_data.csv` file into an ACS tab and add NBHD cluster column for VLOOKUP.
+10. If ACS updates are needed, copy and paste the named variable columns (you can ignore the Census numerically-named ones in `acs_nbhd_data.csv` unless you need to debug) from [acs_nbhd_data.csv](/data/acs_nbhd_data.csv) file into an ACS tab and add NBHD cluster column for VLOOKUP.
 11. Make sure the “neighborhoods CSV” spreadsheet tab is calculating from the appropriate ACS tab via a VLOOKUP. The VLOOKUP looks like this `=VALUE(VLOOKUP(A2,ACS2013!$A$1:$CA$45, 3, 0))` and looks at the clusterID in `A2` then matches it to the first column in `ACS2013!$A$1:$CA$45` then takes the value in the cell in column `3`.
 12. Once the “neighborhoods CSV” spreadsheet tab is updated accordingly, it can be exported to CSV and saved in the Data folder to power the visualization. It is recommended to do this locally and test thoroughly before pushing to the main repo.
 13. The visualization will then be powered by the new data file.
