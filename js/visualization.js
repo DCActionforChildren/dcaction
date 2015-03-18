@@ -210,6 +210,32 @@ function drawChoropleth(){
       $("div[title='Zoom in']").parent().css({"margin-top":"60px"});
     });
 
+    var maxBounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(38.85,-77.10),
+      new google.maps.LatLng(38.97,-76.82)
+    );
+
+    // If a drag ends outside of our max bounds, bounce back to the default center.
+    google.maps.event.addListener(gmap, "dragend", function() {
+      if (maxBounds.contains(gmap.getCenter())) { return; }
+
+     var c = gmap.getCenter(),
+         x = c.lng(),
+         y = c.lat(),
+         maxX = maxBounds.getNorthEast().lng(),
+         maxY = maxBounds.getNorthEast().lat(),
+         minX = maxBounds.getSouthWest().lng(),
+         minY = maxBounds.getSouthWest().lat();
+
+     if (x < minX) x = minX;
+     if (x > maxX) x = maxX;
+     if (y < minY) y = minY;
+     if (y > maxY) y = maxY;
+
+     gmap.panTo(new google.maps.LatLng(y, x));
+
+    });
+
     var overlay = new google.maps.OverlayView();
     svg = d3.select("#content").append("svg:svg");
 
