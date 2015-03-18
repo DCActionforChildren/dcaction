@@ -284,7 +284,7 @@ function drawChoropleth(){
           .on("mouseover", hoverNeighborhood)
           .on("click", function(d) { highlightNeigborhood(d, false); })
           .style("fill",function(d) {
-            if (currentMetric === null || all_data[d.properties.gis_id][currentMetric] === '0') { return "#aaaaaa"; }
+            if (currentMetric === null || all_data[d.properties.gis_id][currentMetric] === '0') { return defaultColor; }
             else { return choro_color(all_data[d.properties.gis_id][currentMetric]); }
           })
           .style("fill-opacity",0.75);
@@ -348,14 +348,15 @@ function changeNeighborhoodData(new_data_column) {
     $("#legend-panel").hide();
   }
 
+  var zeroElement = jenks[0] === 0 && jenks[1] === 1;
+
   var previousElement = function(n, a){
     return _.max(_.filter(a, function(d){ return d < n; } ));
   };
 
-  // console.log(jenks.length);
-
   var legendText = function(d, jenks){
     if(d == _.min(jenks)) {
+      if (zeroElement) { return "0"; }
       return "Less than " + legendNumber(d);
     } else if(d > _.max(jenks)){
       return legendNumber(_.max(jenks)) + " and above";
@@ -386,9 +387,6 @@ function changeNeighborhoodData(new_data_column) {
   var updatedLegend = d3.select("#legend").selectAll(".legend")
       .data(jenks.slice(1).reverse());
 
-  updatedLegend.select("text")
-    .text(function(d){ return legendText(d, jenks.slice(1,-1));});
-
   enterLegend = updatedLegend.enter().append("g")
     .attr("transform", function(d, i){ return "translate(0," + (i * 35) + ")"; })
     .attr("class", "legend");
@@ -396,7 +394,6 @@ function changeNeighborhoodData(new_data_column) {
   enterLegend.append("rect")
     .attr("width", 170)
     .attr("height", 30)
-    .style("fill", function(d, i){ return color_palette[color_palette.length - i - 1]; })
     .style("opacity", "0.75");
 
   enterLegend.append("text")
@@ -404,8 +401,16 @@ function changeNeighborhoodData(new_data_column) {
     .attr("dy",20)
     .attr("dx", 85)
     .attr("font-size", "13px")
-    .attr("text-anchor", "middle")
-    .text(function(d){ return legendText(d, jenks.slice(1,-1)); });
+    .attr("text-anchor", "middle");
+
+  updatedLegend.select("text")
+    .text(function(d){ return legendText(d, jenks.slice(1,-1));});
+
+  updatedLegend.select("rect")
+    .style("fill", function(d, i) {
+      if (zeroElement && jenks.length - i === 2) { return defaultColor; };
+      return color_palette[color_palette.length - i - 1];
+    });
 
   updatedLegend.exit().remove();
 
