@@ -3,7 +3,7 @@ var COUNT_SCHOOL_DISPLAY = 3;
 var centered;
 
 var svg, projection, gmapProjection, path, g, gmap;
-var school_scale, school_data, activeId, choropleth_data, source_data;
+var activeId, choropleth_data, source_data;
 var all_data = {}, activeData = "population_total";
 var min_population = 100;
 var defaultColor = "#aaa";
@@ -18,7 +18,6 @@ var color = d3.scale.category20();
 var dotRadius = 4;
 
 var currentMetric = null;
-var schoolType = "clear";
 var highlightedNeighborhood = null;
 
 var gmap_style=[
@@ -111,16 +110,16 @@ function init(){
   });
 
   // school type changes
-  $(".school-type-menu > li").on("click", "a", function(e){
+  $(".points-menu > li").on("click", "a", function(e){
     e.preventDefault();
 
     //$(this).parent().addClass("selected").siblings().removeClass("selected");
 
     var $$parent = $(this).parent();
     if ($$parent.hasClass("selected")) {
-      removeSchools($(this).attr("id"));
+      removePoints($(this).attr("id"));
     } else {
-      drawSchools($(this).attr("id"));
+      drawPoints($(this).attr("id"));
     }
     $$parent.toggleClass("selected");
 
@@ -296,7 +295,7 @@ function drawChoropleth(){
           highlightNeigborhood(highlightedNeighborhood, true);
         }
 
-        redrawSchools();
+        redrawPoints();
       };
     };
 
@@ -342,7 +341,7 @@ function changeNeighborhoodData(new_data_column) {
     setVisMetric(new_data_column, all_data[activeId][new_data_column]);
   } else {
     setVisMetric(null, null, true);
-    removeSchools("clear");
+    removePoints("clear");
     $(".selected").removeClass("selected");
     $("#details p.lead").hide();
     $("#legend-panel").hide();
@@ -416,54 +415,32 @@ function changeNeighborhoodData(new_data_column) {
 
 }
 
-function redrawSchools() {
+function redrawPoints() {
   if($("#public").parent().hasClass("selected")) {
-    drawSchools("public");
+    drawPoints("dcps");
   }
 
-  if($("#charter").parent().hasClass("selected")) {
-    drawSchools("charter");
+  if($("#charters").parent().hasClass("selected")) {
+    drawPoints("charters");
   }
 }
 
-function drawSchools(type){
-  schoolType=type;
+function drawPoints(type) {
+  if (!type || type === "clear") { return; }
 
   var packer = sm.packer(),
-      file = "",
-      prop, color;
+      color;
 
-  //this could be cleaned up if we use a consistent naming convention.
-  switch(type) {
-    case "public":
-      file = "data/schools.json";
-      prop = "schools";
-      break;
-    case "charter":
-      file = "data/charters.json";
-      prop = "charters";
-      break;
-  }
-
-    //switched this to read json.
-    d3.json(file, function(data){
-    if(type === "clear") {
-      prop = "clear";
-      data = {
-        "clear": []
-      };
-    }
-    school_data = data[prop];
-    school_scale = d3.scale.sqrt().range([1,10]);
-    var circle = g.select("#schools").selectAll("circle").data(data[prop], function(d) {
+  d3.json('data/' + type + '.json', function (data){
+    var circle = g.select("#schools").selectAll("circle").data(data[type], function(d) {
       return d.name;
     });
     var circleEnter = circle.enter().append("circle")
-    .attr("class", "school " + type)
-    .attr("r", 4)
-    .attr("transform", function(d) {
-      return "translate(" + gmapProjection([d.long, d.lat]) + ")";})
-    .append("title").text(function(d){return d.name;});
+      .attr("class", "poi " + type)
+      .attr("r", 4)
+      .attr("transform", function(d) {
+        return "translate(" + gmapProjection([d.long, d.lat]) + ")";})
+      .append("title").text(function(d){return d.name;});
 
     circle.on("click", displaySchoolData);
     packMetros();
@@ -535,30 +512,12 @@ function drawSchools(type){
   }
 }
 
-function removeSchools(type) {
+function removePoints(type) {
   if (type == "clear") {
     g.select("#schools").selectAll("circle").remove();
   } else {
     g.select("#schools").selectAll("circle." + type).remove();
   }
-}
-
-
-function changeSchoolData(new_data_column) {
-  if (typeof new_data_column === "string"){
-    matchScaleToData(school_scale, function(d){return +d[new_data_column];});
-  }
-  g.select("#schools").selectAll("circle")
-    .transition().duration(600)
-    .attr("r", function(d) {
-      return typeof new_data_column !== "string" ? 4 : school_scale(d[new_data_column]);
-    });
-}
-
-function matchScaleToData(scale, fieldFunction) {
-  var minimum = d3.min(school_data, fieldFunction),
-      maximum = d3.max(school_data, fieldFunction);
-  scale.domain([minimum, maximum]);
 }
 
 function drawChart(){

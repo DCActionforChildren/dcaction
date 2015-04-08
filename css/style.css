@@ -124,21 +124,21 @@ path.nbhd.active {
   stroke: #077CA8;
   stroke-width: 2px;
 }
-circle.school {
+circle.poi {
   cursor: pointer;
   fill-opacity: 0.5;
   /*fill: #000099;*/
 }
 
-circle.charter {
+circle.charters {
   fill: #900;
 }
 
-circle.public {
+circle.dcps {
   fill: #009;
 }
 
-circle.school:hover {
+circle.poi:hover {
   fill-opacity: 1;
 }
 
