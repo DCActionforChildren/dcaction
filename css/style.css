@@ -138,6 +138,10 @@ circle.dcps {
   fill: #009;
 }
 
+circle.hospitals {
+  fill: #090;
+}
+
 circle.poi:hover {
   fill-opacity: 1;
 }

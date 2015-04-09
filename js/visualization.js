@@ -251,7 +251,7 @@ function drawChoropleth(){
 
       g = svg.append("g");
       var neighborhoods = g.append("g").attr("id", "neighborhoods");
-      g.append("g").attr("id", "schools");
+      g.append("g").attr("id", "points");
       d3.select("#legend-container").append("svg")
           .attr("height", 200)
         .append("g")
@@ -288,7 +288,7 @@ function drawChoropleth(){
           })
           .style("fill-opacity",0.75);
 
-        g.select("#schools").selectAll("circle").remove();
+        g.select("#points").selectAll("circle").remove();
 
         //if there is a highlighted neighborhood then rehighlightit.
         if(highlightedNeighborhood) {
@@ -416,13 +416,9 @@ function changeNeighborhoodData(new_data_column) {
 }
 
 function redrawPoints() {
-  if($("#public").parent().hasClass("selected")) {
-    drawPoints("dcps");
-  }
-
-  if($("#charters").parent().hasClass("selected")) {
-    drawPoints("charters");
-  }
+  $('.points-menu').children('li.selected').each(function () {
+    drawPoints($(this).children('a').attr('id'));
+  });
 }
 
 function drawPoints(type) {
@@ -432,7 +428,7 @@ function drawPoints(type) {
       color;
 
   d3.json('data/' + type + '.json', function (data){
-    var circle = g.select("#schools").selectAll("circle").data(data[type], function(d) {
+    var circle = g.select("#points").selectAll("circle").data(data[type], function(d) {
       return d.name;
     });
     var circleEnter = circle.enter().append("circle")
@@ -507,16 +503,16 @@ function drawPoints(type) {
   });
 
   function packMetros() {
-    var elements = d3.selectAll("#schools circle")[0];
+    var elements = d3.selectAll("#points circle")[0];
     packer.elements(elements).start();
   }
 }
 
 function removePoints(type) {
   if (type == "clear") {
-    g.select("#schools").selectAll("circle").remove();
+    g.select("#points").selectAll("circle").remove();
   } else {
-    g.select("#schools").selectAll("circle." + type).remove();
+    g.select("#points").selectAll("circle." + type).remove();
   }
 }
 

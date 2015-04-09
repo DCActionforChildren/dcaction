@@ -1,11 +1,11 @@
 {
   "hospitals": [
     {
-      "lon": -77.01024721169087,
+      "long": -77.01024721169087,
       "lat": 38.9292844182696,
       "OBJECTID": 1,
       "GIS_ID": "Hosp_013",
-      "NAME": "Veterans Affairs Medical Center",
+      "name": "Veterans Affairs Medical Center",
       "ADDRESS": "50 IRVING STREET NW",
       "SSL": "Null",
       "WEB_URL": "http://www.washingtondc.va.gov/",
@@ -21,11 +21,11 @@
       "PEDIATRIC_MINOR_TRAUMA": ""
     },
     {
-      "lon": -76.98104111966836,
+      "long": -76.98104111966836,
       "lat": 38.941375894387996,
       "OBJECTID": 2,
       "GIS_ID": "Hosp_008",
-      "NAME": "The HSC Pediatric Center",
+      "name": "The HSC Pediatric Center",
       "ADDRESS": "1731 BUNKER HILL ROAD NE",
       "SSL": "Null",
       "WEB_URL": "http://www.hscpediatriccenter.org/",
@@ -41,11 +41,11 @@
       "PEDIATRIC_MINOR_TRAUMA": ""
     },
     {
-      "lon": -77.10924121787133,
+      "long": -77.10924121787133,
       "lat": 38.93622858606184,
       "OBJECTID": 3,
       "GIS_ID": "Hosp_012",
-      "NAME": "Sibley Memorial Hospital",
+      "name": "Sibley Memorial Hospital",
       "ADDRESS": "5255 LOUGHBORO ROAD NW",
       "SSL": "Null",
       "WEB_URL": "http://www.sibley.org/",
@@ -61,11 +61,11 @@
       "PEDIATRIC_MINOR_TRAUMA": ""
     },
     {
-      "lon": -77.01322778253795,
+      "long": -77.01322778253795,
       "lat": 38.82485870917855,
       "OBJECTID": 4,
       "GIS_ID": "Hosp_007",
-      "NAME": "Specialty Hospital of Washington â€“ Hadley",
+      "name": "Specialty Hospital of Washington â€“ Hadley",
       "ADDRESS": "4601 MARTIN LUTHER KING JR AVENUE SW",
       "SSL": "Null",
       "WEB_URL": "http://www.specialtyhospitalofwashington.com/",
@@ -81,11 +81,11 @@
       "PEDIATRIC_MINOR_TRAUMA": ""
     },
     {
-      "lon": -76.99123160929223,
+      "long": -76.99123160929223,
       "lat": 38.94329505774601,
       "OBJECTID": 5,
       "GIS_ID": "Hosp_011",
-      "NAME": "Providence Hospital",
+      "name": "Providence Hospital",
       "ADDRESS": "1150 VARNUM STREET NE",
       "SSL": "Null",
       "WEB_URL": "http://www.provhosp.org/",
@@ -101,11 +101,11 @@
       "PEDIATRIC_MINOR_TRAUMA": ""
     },
     {
-      "lon": -77.01565058702786,
+      "long": -77.01565058702786,
       "lat": 38.92965973635284,
       "OBJECTID": 6,
       "GIS_ID": "Hosp_014",
-      "NAME": "MedStar Washington Hospital Center",
+      "name": "MedStar Washington Hospital Center",
       "ADDRESS": "110 IRVING STREET NW",
       "SSL": "Null",
       "WEB_URL": "https://www.medstarhealth.org/washington/pages/default.aspx",
@@ -121,11 +121,11 @@
       "PEDIATRIC_MINOR_TRAUMA": ""
     },
     {
-      "lon": -77.02009603816175,
+      "long": -77.02009603816175,
       "lat": 38.917556196144936,
       "OBJECTID": 7,
       "GIS_ID": "Hosp_009",
-      "NAME": "Howard University Hospital",
+      "name": "Howard University Hospital",
       "ADDRESS": "2041 GEORGIA AVENUE NW",
       "SSL": "Null",
       "WEB_URL": "http://www.huhealthcare.com",
@@ -141,11 +141,11 @@
       "PEDIATRIC_MINOR_TRAUMA": "Y"
     },
     {
-      "lon": -77.01334577024807,
+      "long": -77.01334577024807,
       "lat": 38.93055031364139,
       "OBJECTID": 8,
       "GIS_ID": "Hosp_010",
-      "NAME": "MedStar National Rehabilitation Hospital",
+      "name": "MedStar National Rehabilitation Hospital",
       "ADDRESS": "102 IRVING STREET NW",
       "SSL": "Null",
       "WEB_URL": "https://www.medstarhealth.org/nrh/pages/default.aspx",
@@ -161,11 +161,11 @@
       "PEDIATRIC_MINOR_TRAUMA": ""
     },
     {
-      "lon": -77.01439600787107,
+      "long": -77.01439600787107,
       "lat": 38.927273865682935,
       "OBJECTID": 9,
       "GIS_ID": "Hosp_001",
-      "NAME": "Childrens National Medical Center",
+      "name": "Childrens National Medical Center",
       "ADDRESS": "111 MICHIGAN AVENUE NW",
       "SSL": "Null",
       "WEB_URL": "http://www.childrensnational.org/",
@@ -181,11 +181,11 @@
       "PEDIATRIC_MINOR_TRAUMA": "Y"
     },
     {
-      "lon": -76.98475297637381,
+      "long": -76.98475297637381,
       "lat": 38.83602661895948,
       "OBJECTID": 10,
       "GIS_ID": "Hosp_006",
-      "NAME": "United Medical Center",
+      "name": "United Medical Center",
       "ADDRESS": "1310 SOUTHERN AVENUE SE",
       "SSL": "Null",
       "WEB_URL": "http://www.united-medicalcenter.com/",
@@ -201,11 +201,11 @@
       "PEDIATRIC_MINOR_TRAUMA": ""
     },
     {
-      "lon": -77.07528329660444,
+      "long": -77.07528329660444,
       "lat": 38.91205804343557,
       "OBJECTID": 11,
       "GIS_ID": "Hosp_005",
-      "NAME": "MedStar Georgetown University Hospital",
+      "name": "MedStar Georgetown University Hospital",
       "ADDRESS": "3800 RESERVOIR ROAD NW",
       "SSL": "Null",
       "WEB_URL": "https://www.medstarhealth.org/georgetown/Pages/default.aspx",
@@ -221,11 +221,11 @@
       "PEDIATRIC_MINOR_TRAUMA": "Y"
     },
     {
-      "lon": -77.05063897504047,
+      "long": -77.05063897504047,
       "lat": 38.90132679317856,
       "OBJECTID": 12,
       "GIS_ID": "Hosp_015",
-      "NAME": "George Washington University Hospital",
+      "name": "George Washington University Hospital",
       "ADDRESS": "900 23RD STREET NW",
       "SSL": "Null",
       "WEB_URL": "http://gwhospital.com/",
@@ -241,11 +241,11 @@
       "PEDIATRIC_MINOR_TRAUMA": ""
     },
     {
-      "lon": -77.07796475171578,
+      "long": -77.07796475171578,
       "lat": 38.94391041535698,
       "OBJECTID": 13,
       "GIS_ID": "Hosp_016",
-      "NAME": "Psychiatric Institute of Washington",
+      "name": "Psychiatric Institute of Washington",
       "ADDRESS": "4228 WISCONSIN AVENUE NW",
       "SSL": "Null",
       "WEB_URL": "http://www.psychinstitute.com/",
@@ -261,11 +261,11 @@
       "PEDIATRIC_MINOR_TRAUMA": ""
     },
     {
-      "lon": -76.98865925532085,
+      "long": -76.98865925532085,
       "lat": 38.848575699641295,
       "OBJECTID": 14,
       "GIS_ID": "Hosp_019",
-      "NAME": "Saint Elizabeths Hospital",
+      "name": "Saint Elizabeths Hospital",
       "ADDRESS": "1100 ALABAMA AVENUE SE",
       "SSL": "Null",
       "WEB_URL": "http://www.nlm.nih.gov/hmd/medtour/elizabeths.html",
@@ -281,11 +281,11 @@
       "PEDIATRIC_MINOR_TRAUMA": ""
     },
     {
-      "lon": -76.99535887373578,
+      "long": -76.99535887373578,
       "lat": 38.89232958171308,
       "OBJECTID": 15,
       "GIS_ID": "Hosp_020",
-      "NAME": "Specialty Hospital of Washington â€“ Capitol Hill",
+      "name": "Specialty Hospital of Washington â€“ Capitol Hill",
       "ADDRESS": "700 CONSTITUTION AVENUE NE",
       "SSL": "Null",
       "WEB_URL": "http://www.specialtyhospitalofwashington.com/",
@@ -301,11 +301,11 @@
       "PEDIATRIC_MINOR_TRAUMA": ""
     },
     {
-      "lon": -77.01405961293928,
+      "long": -77.01405961293928,
       "lat": 38.92850002830666,
       "OBJECTID": 16,
       "GIS_ID": "Hosp_002",
-      "NAME": "MedStar Clinical Research Center",
+      "name": "MedStar Clinical Research Center",
       "ADDRESS": "108 IRVING STREET NW",
       "SSL": "3129    0804",
       "WEB_URL": "https://www.medstarhealth.org/washington/pages/default.aspx",
@@ -321,11 +321,11 @@
       "PEDIATRIC_MINOR_TRAUMA": ""
     },
     {
-      "lon": -77.01359959722507,
+      "long": -77.01359959722507,
       "lat": 38.92864574717339,
       "OBJECTID": 17,
       "GIS_ID": "Hosp_003",
-      "NAME": "MedStar Health",
+      "name": "MedStar Health",
       "ADDRESS": "100 IRVING STREET NW",
       "SSL": "3129    0804",
       "WEB_URL": "https://www.medstarhealth.org/washington/pages/default.aspx",
@@ -341,11 +341,11 @@
       "PEDIATRIC_MINOR_TRAUMA": ""
     },
     {
-      "lon": -77.01017865717219,
+      "long": -77.01017865717219,
       "lat": 38.9305169413559,
       "OBJECTID": 18,
       "GIS_ID": "Hosp_004",
-      "NAME": "Veteran Affairs Medical Center Fisher House",
+      "name": "Veteran Affairs Medical Center Fisher House",
       "ADDRESS": "50 IRVING STREET NW",
       "SSL": "PAR 01210027",
       "WEB_URL": "https://www.fisherhouse.org/programs/houses/house-locations/dc-va-medical-center/",
