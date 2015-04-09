@@ -1,0 +1,19 @@
+﻿X,Y,OBJECTID,GIS_ID,NAME,ADDRESS,SSL,WEB_URL,TYPE,AID,ADULT_MEDICAL,ADULT_MINOR_TRAUMA,ADULT_MAJOR_TRAUMA,CRITICAL_BURNS,OBSTETRICS,PEDIATRIC_MEDICAL,PEDIATRIC_MAJOR_TRAUMA,PEDIATRIC_MINOR_TRAUMA
+-77.010247211690867,38.929284418269603,1,Hosp_013,Veterans Affairs Medical Center,50 IRVING STREET NW,Null,http://www.washingtondc.va.gov/,Specialty,243205,Y,Y,,,,,,
+-76.981041119668362,38.941375894387996,2,Hosp_008,The HSC Pediatric Center,1731 BUNKER HILL ROAD NE,Null,http://www.hscpediatriccenter.org/,Specialty,286452,,,,,,,,
+-77.109241217871329,38.936228586061837,3,Hosp_012,Sibley Memorial Hospital,5255 LOUGHBORO ROAD NW,Null,http://www.sibley.org/,Hospital,295156,Y,Y,<Null>,,Y,,,
+-77.013227782537953,38.82485870917855,4,Hosp_007,Specialty Hospital of Washington – Hadley,4601 MARTIN LUTHER KING JR AVENUE SW,Null,http://www.specialtyhospitalofwashington.com/,Hospital,295152,,,,,,,,
+-76.991231609292228,38.943295057746013,5,Hosp_011,Providence Hospital,1150 VARNUM STREET NE,Null,http://www.provhosp.org/,Hospital,289609,Y,Y,,,Y,,,
+-77.015650587027864,38.929659736352839,6,Hosp_014,MedStar Washington Hospital Center,110 IRVING STREET NW,Null,https://www.medstarhealth.org/washington/pages/default.aspx,Hospital,228314,Y,Y,Y,Y,Y,,,
+-77.020096038161753,38.917556196144936,7,Hosp_009,Howard University Hospital,2041 GEORGIA AVENUE NW,Null,http://www.huhealthcare.com,Hospital,279523,Y,Y,Y,,Y,Y,,Y
+-77.013345770248065,38.93055031364139,8,Hosp_010,MedStar National Rehabilitation Hospital,102 IRVING STREET NW,Null,https://www.medstarhealth.org/nrh/pages/default.aspx,Specialty,243364,,,<Null>,<Null>,,,,
+-77.014396007871071,38.927273865682935,9,Hosp_001,Childrens National Medical Center,111 MICHIGAN AVENUE NW,Null,http://www.childrensnational.org/,Specialty,243365,,,,Y,,Y,,Y
+-76.984752976373812,38.83602661895948,10,Hosp_006,United Medical Center,1310 SOUTHERN AVENUE SE,Null,http://www.united-medicalcenter.com/,Hospital,277936,Y,Y,,,Y,Y,,
+-77.075283296604439,38.912058043435572,11,Hosp_005,MedStar Georgetown University Hospital,3800 RESERVOIR ROAD NW,Null,https://www.medstarhealth.org/georgetown/Pages/default.aspx,Hospital,291547,Y,Y,,,Y,Y,,Y
+-77.050638975040471,38.901326793178562,12,Hosp_015,George Washington University Hospital,900 23RD STREET NW,Null,http://gwhospital.com/,Hospital,242349,Y,Y,Y,,Y,,,
+-77.077964751715783,38.943910415356982,13,Hosp_016,Psychiatric Institute of Washington,4228 WISCONSIN AVENUE NW,Null,http://www.psychinstitute.com/,Specialty,222976,,,,,,,,
+-76.988659255320854,38.848575699641295,14,Hosp_019,Saint Elizabeths Hospital,1100 ALABAMA AVENUE SE,Null,http://www.nlm.nih.gov/hmd/medtour/elizabeths.html,Specialty,307946,,,,,,,,
+-76.995358873735782,38.892329581713078,15,Hosp_020,Specialty Hospital of Washington – Capitol Hill,700 CONSTITUTION AVENUE NE,Null,http://www.specialtyhospitalofwashington.com/,Specialty,295162,,,,,,,,
+-77.014059612939278,38.928500028306658,16,Hosp_002,MedStar Clinical Research Center,108 IRVING STREET NW,3129    0804,https://www.medstarhealth.org/washington/pages/default.aspx,Specialty,303039,,,,,,,,
+-77.013599597225067,38.928645747173391,17,Hosp_003,MedStar Health,100 IRVING STREET NW,3129    0804,https://www.medstarhealth.org/washington/pages/default.aspx,Specialty,303037,,,,,,,,
+-77.01017865717219,38.930516941355897,18,Hosp_004,Veteran Affairs Medical Center Fisher House,50 IRVING STREET NW,PAR 01210027,https://www.fisherhouse.org/programs/houses/house-locations/dc-va-medical-center/,Specialty,309786,,,,,,,,
