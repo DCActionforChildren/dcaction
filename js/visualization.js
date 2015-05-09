@@ -214,6 +214,20 @@ function drawChoropleth(){
       }
     });
 
+    // var dcBounds = new google.maps.LatLngBounds(
+    //   new google.maps.LatLng(38.791,-77.12),
+    //   new google.maps.LatLng(38.996,-76.909)
+    // );
+    
+    // Using this hack-y solution as fitBounds frequently produces maps that are too small.
+
+    var containerHeight = $("#content-wrapper").height();
+
+    gmap.setZoom(
+      containerHeight < 250 ? 10 :
+      containerHeight < 520 ? 11 : 12
+    );
+
     var maxBounds = new google.maps.LatLngBounds(
       new google.maps.LatLng(38.85,-77.10),
       new google.maps.LatLng(38.97,-76.82)
