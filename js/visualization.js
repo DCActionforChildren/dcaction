@@ -5,7 +5,8 @@ var COUNT_SCHOOL_DISPLAY = 3;
 var centered;
 
 var svg, projection, gmapProjection, path, g, gmap;
-var activeId, choropleth_data, source_data;
+var activeId = 'dc',
+    choropleth_data, source_data;
 var all_data = {}, activeData = "population_total";
 var min_population = 100;
 var defaultColor = "#aaa";
@@ -325,7 +326,7 @@ function drawChoropleth(){
           .attr("id", function (d) { return "path" + d.properties.NCID; })
           .attr("class", "nbhd")
           .on("mouseover", hoverNeighborhood)
-          .on("mouseout", function () { displayPopBox(); })
+          .on("mouseout", function () { activeId = 'dc'; $("#visualized-measure").text(""); displayPopBox(); })
           .on("click", function(d) { highlightNeigborhood(d, false); })
           .style("fill",function(d) {
             if (currentMetric === null || all_data[d.properties.gis_id][currentMetric] === '0') { return defaultColor; }
@@ -903,7 +904,7 @@ function setVisMetric(metric, val, clear) {
     var typeDef = $metricType[0].id;
     typeDef = typeDef.slice(typeDef.lastIndexOf("_") + 1);
     $metric.text(metricText);
-    var newDesc = val === "" ? "N/A" : getDisplayValue(val, metricText, typeDef);
+    var newDesc = activeId === 'dc' ? '' : val === "" ? "N/A" : getDisplayValue(val, metricText, typeDef);
     $metricDesc.text(newDesc);
   }
 }
