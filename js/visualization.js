@@ -458,7 +458,7 @@ function drawPoints(type) {
         .append("title").text(function(d){return d.name;});
     }
 
-    poi.on("click", displayPointsData);
+    if (isSchool) { poi.on("click", displayPointsData); }
     packMetros();
 
 
