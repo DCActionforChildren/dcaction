@@ -60,18 +60,18 @@
       </div>
   </div> 
 </div>-->
-<div class="posrel">
+<div class="posrel" style="width: 100%; overflow-x: hidden;">
   <div id="nav-panel" class="posabs">
     <ul class="nav nav-pills nav-stacked neighborhood-menu">
       <li><a id="no_neighborhood_data" href="#"><button type="button" class="btn btn-danger btn-sm" style="width:100%"><span class="glyphicon glyphicon-trash"></span> Clear selection</button></a></li>
     </ul>
-    <h4>School data</h4>
-    <ul class="nav nav-pills nav-stacked schools-menu points-menu">
+    <h4 class="hidden-xs">School data</h4>
+    <ul class="nav nav-pills nav-stacked schools-menu points-menu hidden-xs">
       <li><a id="dcps" href="#">DC Public Schools</a></li>
       <li><a id="charters" href="#">DC Public Charter Schools</a></li>
     </ul>
-    <h4>Points of interest</h4>
-    <ul class="nav nav-pills nav-stacked poi-menu points-menu">
+    <h4 class="hidden-xs">Points of interest</h4>
+    <ul class="nav nav-pills nav-stacked poi-menu points-menu hidden-xs">
       <li><a id="libraries" href="#">Libraries <span class="label label-danger">New</span></a></li>
       <li><a id="hospitals" href="#">Hospitals <span class="label label-danger">New</span></a></li>
     </ul>
@@ -160,6 +160,9 @@
         <div id="source">
           <h3 id="sources" class="panel-title">Sources</h3>
             <a id="source-title"></a>
+        </div>
+        <div id="zoom-toggle">
+          <input id="zoom-box" type="checkbox" checked></input> <label for="zoom-box">Enable Zoom</label>
         </div>
       </div>
   </div><!-- /#main-container -->

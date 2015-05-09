@@ -168,7 +168,7 @@ function init(){
   });
 }
 function resizeContainer(width){
-  var new_height = $(window).width() < 797 ? $("#content").parent().width() * 0.75 : 600;
+  var new_height = $(window).width() < 797 ? Math.max($("#content").parent().width() * 0.75, 320) : 600;
   $("#content").css({"width":width,"height":new_height});
   $("#nav-panel").css({"height": new_height});
 }
@@ -218,10 +218,23 @@ function drawChoropleth(){
       scrollwheel: false,
       mapTypeControl: false,
       styles: gmap_style,
+      draggable: !browserSupportsTouch,
       zoomControl: !browserSupportsTouch,
       zoomControlOptions: {
         style: google.maps.ZoomControlStyle.SMALL
       }
+    });
+
+    if (browserSupportsTouch) {
+      $('#zoom-box').prop('checked', false);
+    }
+
+    $('#zoom-box').change(function () {
+      var checked = ($(this).prop('checked'));
+      gmap.setOptions({
+        draggable: checked,
+        zoomControl: checked
+      });
     });
 
     // var dcBounds = new google.maps.LatLngBounds(

@@ -82,7 +82,6 @@ p {
   -webkit-box-shadow: 0px 0px 15px #CCC;
   -moz-box-shadow: 0px 0px 15px #CCC;
   box-shadow: 0px 0px 15px #CCC;
-  overflow-x:hidden;
 }
 #content-wrapper {
   padding-left: 0px;
@@ -308,6 +307,17 @@ span#visualized-metric {
   display: none;
 }
 
+#zoom-toggle {
+  position: absolute;
+  bottom: 7px;
+  left: 0;
+  height: 42px;
+  padding: 10px 14px;
+  display: none;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.75);
+}
+
 div#legend-panel {
   position:absolute;
   bottom: 90px;
@@ -460,6 +470,33 @@ small {
     right:auto;
     height: auto;
     border-radius: 0px;
+  }
+
+  .menu-toggle {
+    top: auto;
+    bottom: 51px;
+    margin-left: -40px;
+    padding-left: 55px;
+  }
+
+  .menu-toggle strong.open:before {
+    content: "\003e";
+    display: block;
+    position: absolute;
+    left: 14px;
+    top: 4px;
+    font-size: 20px;
+  }
+
+  #source {
+    left: auto;
+    right: 0;
+    top: auto;
+    bottom: 0;
+  }
+
+  #zoom-toggle {
+    display: block;
   }
 
 }
