@@ -1,4 +1,12 @@
-import json
+# Written by Krishna Chakka (krishna.chakka@gmail.com)
+# and Abhishek Sharma (absharma@gmail.com) during DataKind DC 2015
+# Purpose:
+# 	Adds neighborhood id and gis_id to a points json file
+# To execute:
+#	python NC_Coordinates_builder.py <jsonLocationsFile> ...
+# Output:
+# <jsonLocationFile>_transformed.json
+
 import getCoordinates
 import os
 import pprint,argparse
