@@ -3,7 +3,7 @@ var COUNT_SCHOOL_DISPLAY = 3;
 var centered;
 
 var svg, projection, gmapProjection, path, g, gmap;
-var school_scale, school_data, activeId, choropleth_data, source_data;
+var activeId, choropleth_data, source_data;
 var all_data = {}, activeData = "population_total";
 var min_population = 100;
 var defaultColor = "#aaa";
@@ -18,7 +18,6 @@ var color = d3.scale.category20();
 var dotRadius = 4;
 
 var currentMetric = null;
-var schoolType = "clear";
 var highlightedNeighborhood = null;
 
 var gmap_style=[
@@ -82,6 +81,8 @@ var gmap_style=[
   }
 ];
 
+var browserSupportsTouch = 'ontouchstart' in document.documentElement;
+
 $(document).ready(function() {
   init();
 }); // end document ready function
@@ -110,28 +111,35 @@ function init(){
     }
   });
 
-  // school type changes
-  $(".school-type-menu > li").on("click", "a", function(e){
+  // school points
+  $(".schools-menu > li").on("click", "a", function(e){
     e.preventDefault();
-
-    //$(this).parent().addClass("selected").siblings().removeClass("selected");
 
     var $$parent = $(this).parent();
     if ($$parent.hasClass("selected")) {
-      removeSchools($(this).attr("id"));
+      removePoints($(this).attr("id"));
     } else {
-      drawSchools($(this).attr("id"));
+      drawPoints($(this).attr("id"));
     }
     $$parent.toggleClass("selected");
 
   });
 
-  // circle changes
-  $(".school-menu > li").on("click", "a", function(e){
+  // other points
+  $(".poi-menu > li").on("click", "a", function(e){
     e.preventDefault();
-    var value = $(this).attr("id") === "no_school_data" ? 4 : $(this).attr("id");
-    changeSchoolData(value);
-    $(this).parent().addClass("selected").siblings().removeClass("selected");
+
+    var $$parent = $(this).parent();
+    if ($$parent.hasClass("selected")) {
+      removePoints($(this).attr("id"));
+    } else {
+      $$parent.siblings().each(function () {
+        removePoints($(this).removeClass("selected")
+          .children("a").attr("id"));
+      });
+      drawPoints($(this).attr("id"));
+    }
+    $$parent.toggleClass("selected");
   });
 
   // narrative
@@ -191,24 +199,34 @@ function drawChoropleth(){
 
     gmap = new google.maps.Map(d3.select("#content").node(), {
       zoom: 12,
-      minZoom: 12,
+      minZoom: 10,
       maxZoom: 14,
       center: new google.maps.LatLng(38.89555, -77.01551),
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       streetViewControl: false,
       panControl: false,
-      scrollwheel: false
-    });
-
-    gmap.setOptions({
+      scrollwheel: false,
       mapTypeControl: false,
-      styles: gmap_style
+      styles: gmap_style,
+      zoomControl: !browserSupportsTouch,
+      zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.SMALL
+      }
     });
 
-    google.maps.event.addListenerOnce(gmap, "idle", function(){
-      // adjust the zoom bar
-      $("div[title='Zoom in']").parent().css({"margin-top":"60px"});
-    });
+    // var dcBounds = new google.maps.LatLngBounds(
+    //   new google.maps.LatLng(38.791,-77.12),
+    //   new google.maps.LatLng(38.996,-76.909)
+    // );
+    
+    // Using this hack-y solution as fitBounds frequently produces maps that are too small.
+
+    var containerHeight = $("#content-wrapper").height();
+
+    gmap.setZoom(
+      containerHeight < 250 ? 10 :
+      containerHeight < 520 ? 11 : 12
+    );
 
     var maxBounds = new google.maps.LatLngBounds(
       new google.maps.LatLng(38.85,-77.10),
@@ -252,7 +270,7 @@ function drawChoropleth(){
 
       g = svg.append("g");
       var neighborhoods = g.append("g").attr("id", "neighborhoods");
-      g.append("g").attr("id", "schools");
+      g.append("g").attr("id", "points");
       d3.select("#legend-container").append("svg")
           .attr("height", 200)
         .append("g")
@@ -289,14 +307,14 @@ function drawChoropleth(){
           })
           .style("fill-opacity",0.75);
 
-        g.select("#schools").selectAll("circle").remove();
+        g.select("#points").selectAll(".poi").remove();
 
         //if there is a highlighted neighborhood then rehighlightit.
         if(highlightedNeighborhood) {
           highlightNeigborhood(highlightedNeighborhood, true);
         }
 
-        redrawSchools();
+        redrawPoints();
       };
     };
 
@@ -342,7 +360,7 @@ function changeNeighborhoodData(new_data_column) {
     setVisMetric(new_data_column, all_data[activeId][new_data_column]);
   } else {
     setVisMetric(null, null, true);
-    removeSchools("clear");
+    removePoints("clear");
     $(".selected").removeClass("selected");
     $("#details p.lead").hide();
     $("#legend-panel").hide();
@@ -416,60 +434,47 @@ function changeNeighborhoodData(new_data_column) {
 
 }
 
-function redrawSchools() {
-  if($("#public").parent().hasClass("selected")) {
-    drawSchools("public");
-  }
-
-  if($("#charter").parent().hasClass("selected")) {
-    drawSchools("charter");
-  }
+function redrawPoints() {
+  $('.points-menu').children('li.selected').each(function () {
+    drawPoints($(this).children('a').attr('id'));
+  });
 }
 
-function drawSchools(type){
-  schoolType=type;
+function drawPoints(type) {
+  if (!type || type === "clear") { return; }
 
-  var packer = sm.packer(),
-      file = "",
-      prop, color;
+  var isSchool = type === "dcps" || type === "charters",
+      packer = sm.packer(),
+      color;
 
-  //this could be cleaned up if we use a consistent naming convention.
-  switch(type) {
-    case "public":
-      file = "data/schools.json";
-      prop = "schools";
-      break;
-    case "charter":
-      file = "data/charters.json";
-      prop = "charters";
-      break;
-  }
-
-    //switched this to read json.
-    d3.json(file, function(data){
-    if(type === "clear") {
-      prop = "clear";
-      data = {
-        "clear": []
-      };
-    }
-    school_data = data[prop];
-    school_scale = d3.scale.sqrt().range([1,10]);
-    var circle = g.select("#schools").selectAll("circle").data(data[prop], function(d) {
+  d3.json('data/' + type + '.json', function (data){
+    var poi = g.select("#points").selectAll(".poi").data(data[type], function(d) {
       return d.name;
     });
-    var circleEnter = circle.enter().append("circle")
-    .attr("class", "school " + type)
-    .attr("r", 4)
-    .attr("transform", function(d) {
-      return "translate(" + gmapProjection([d.long, d.lat]) + ")";})
-    .append("title").text(function(d){return d.name;});
 
-    circle.on("click", displaySchoolData);
+    if (type === "charters") {
+      poi.enter().append("rect")
+        .attr("class", "poi " + type + (isSchool ? " school" : ""))
+        .attr("width", 7)
+        .attr("height", 7)
+        .attr("r", 4)
+        .attr("transform", function(d) {
+          return "translate(" + gmapProjection([d.long, d.lat]) + ")";})
+        .append("title").text(function(d){return d.name;});
+    } else {
+      poi.enter().append("circle")
+        .attr("class", "poi " + type + (isSchool ? " school" : ""))
+        .attr("r", 4)
+        .attr("transform", function(d) {
+          return "translate(" + gmapProjection([d.long, d.lat]) + ")";})
+        .append("title").text(function(d){return d.name;});
+    }
+
+    if (isSchool) { poi.on("click", displayPointsData); }
     packMetros();
 
 
-    function displaySchoolData(school) {
+    function displayPointsData(school) {
       var $schools = $("#schools_panel");
       var $panelBody = $schools.find(".panel-body");
       var $schoolData = $panelBody.children(".school-data");
@@ -530,35 +535,17 @@ function drawSchools(type){
   });
 
   function packMetros() {
-    var elements = d3.selectAll("#schools circle")[0];
+    var elements = d3.selectAll("#points .poi")[0];
     packer.elements(elements).start();
   }
 }
 
-function removeSchools(type) {
+function removePoints(type) {
   if (type == "clear") {
-    g.select("#schools").selectAll("circle").remove();
+    g.select("#points").selectAll(".poi").remove();
   } else {
-    g.select("#schools").selectAll("circle." + type).remove();
+    g.select("#points").selectAll(".poi." + type).remove();
   }
-}
-
-
-function changeSchoolData(new_data_column) {
-  if (typeof new_data_column === "string"){
-    matchScaleToData(school_scale, function(d){return +d[new_data_column];});
-  }
-  g.select("#schools").selectAll("circle")
-    .transition().duration(600)
-    .attr("r", function(d) {
-      return typeof new_data_column !== "string" ? 4 : school_scale(d[new_data_column]);
-    });
-}
-
-function matchScaleToData(scale, fieldFunction) {
-  var minimum = d3.min(school_data, fieldFunction),
-      maximum = d3.max(school_data, fieldFunction);
-  scale.domain([minimum, maximum]);
 }
 
 function drawChart(){
