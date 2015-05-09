@@ -1,295 +1,67 @@
 # encoding: UTF-8
-# TODO: remove assumption that all ACS data is integral?
 
 require 'json'
 require 'open-uri'
+require 'yaml'
 
-BASE_URL = "http://api.census.gov/data/2013/acs5?"
-GEO = 'for=tract:*&in=state:11'
-TRACT_FILE = 'acs_tract_data.json'
+DEFAULT_OUTPUT_FILE = 'acs_tract_data.json'
+DEFAULT_OUTPUT_ACS_VARIABLES = false
 
-# the following fields will be simply renamed from ACS
+config_file = ARGV.shift || 'config.yaml'
+config = YAML::load open(config_file).read
 
-fields_rename = {
-  'population_total' => 'B01003_001E',
-  'population_under_18' => 'B09001_001E',
-  'median_family_income_denom' => 'B00002_001E',
-  'single_mother_families' => 'B09002_015E',
-  'population_white_total' => 'B03002_003E',
-  'population_black_total' => 'B03002_004E',
-  'population_hisp_total' => 'B03002_012E',
-  'total_neighborhood_poverty_numer' => 'B17001_002E',
-  'total_neighborhood_poverty_denom' => 'B17001_001E',
-  'homeownership_denom' => 'B11012_001E',
-  'work_denom' => 'B08303_001E',
-  'population_under_3' => 'B09001_003E'
-}
+acs_year = config['api']['acs_year'] or raise ArgumentError, 'No ACS year specified'
+acs_period = config['api']['acs_period'] or raise ArgumentError, 'No ACS period specified'
 
-# the following fields are sums of ACS fields
+raise ArgumentError, 'No ACS geography specified' unless config['api']['acs_geography']
 
-fields_sum = {
-  'population_under_5' => [
-    "B09001_004E",
-    "B09001_003E"
-  ],
-  'poverty_under_5' => [
-    "B17001_004E",
-    "B17001_018E"
-  ],
-  'children_in_poverty_numer' => [
-    "B17001_004E",
-    "B17001_005E",
-    "B17001_006E",
-    "B17001_007E",
-    "B17001_008E",
-    "B17001_009E",
-    "B17001_018E",
-    "B17001_019E",
-    "B17001_020E",
-    "B17001_021E",
-    "B17001_022E",
-    "B17001_023E"
-  ],
-  'children_in_poverty_denom' => [
-     "B17001_033E",
-     "B17001_034E",
-     "B17001_035E",
-     "B17001_036E",
-     "B17001_037E",
-     "B17001_038E",
-     "B17001_047E",
-     "B17001_048E",
-     "B17001_049E",
-     "B17001_050E",
-     "B17001_051E",
-     "B17001_052E", 
-     "B17001_004E",
-     "B17001_005E",
-     "B17001_006E",
-     "B17001_007E",
-     "B17001_008E",
-     "B17001_009E",
-     "B17001_018E",
-     "B17001_019E",
-     "B17001_020E",
-     "B17001_021E",
-     "B17001_022E",
-     "B17001_023E"
-  ],
-  'population_other_total' => [
-    'B03002_005E',
-    'B03002_006E', 
-    'B03002_007E',
-    'B03002_008E',
-    'B03002_009E',
-  ],
-  'white_under_18' => [
-    'B01001H_003E',
-    'B01001H_004E',
-    'B01001H_005E',
-    'B01001H_006E',
-    'B01001H_018E',
-    'B01001H_019E',
-    'B01001H_020E',
-    'B01001H_021E'
-  ],
-  'black_under_18' => [
-    'B01001B_003E',
-    'B01001B_004E',
-    'B01001B_005E',
-    'B01001B_006E',
-    'B01001B_018E',
-    'B01001B_019E',
-    'B01001B_020E',
-    'B01001B_021E'
-  ],
-  'hispanic_under_18' => [
-    'B01001I_003E',
-    'B01001I_004E',
-    'B01001I_005E',
-    'B01001I_006E',
-    'B01001I_018E',
-    'B01001I_019E',
-    'B01001I_020E',
-    'B01001I_021E'
-  ],
-  'no_hs_degree_25_plus_numer' => [
-    'B15001_012E',
-    'B15001_013E',
-    'B15001_020E',
-    'B15001_021E',
-    'B15001_028E',
-    'B15001_029E',
-    'B15001_036E',
-    'B15001_037E',
-    'B15001_053E',
-    'B15001_054E',
-    'B15001_061E',
-    'B15001_062E',
-    'B15001_069E',
-    'B15001_070E',
-    'B15001_077E',
-    'B15001_078E'
-  ],
-  'no_hs_degree_18_24_numer' => [
-    'B15001_004E',
-    'B15001_005E',
-    'B15001_045E',
-    'B15001_046E'
-  ],
-  'no_hs_degree_18_24_denom' => [
-    'B15001_003E',
-    'B15001_044E'
-  ],
-  'youth_ready_to_work_numer'  => [
-    'B23001_007E',
-    'B23001_014E',
-    'B23001_021E',
-    'B23001_093E',
-    'B23001_100E',
-    'B23001_107E'
-  ],
-  'youth_ready_to_work_denom' => [
-    'B23001_006E',
-    'B23001_013E',
-    'B23001_020E',
-    'B23001_092E',
-    'B23001_099E',
-    'B23001_106E'
-  ],
-  'homeownership_numer' => [
-    'B11012_004E',
-    'B11012_008E',
-    'B11012_011E',
-    'B11012_014E'
-  ],
-  'work_numer' => [
-    'B08303_012E', 
-    'B08303_013E'
-  ],
-  'no_hs_degree_25_plus_denom' => [
-    'B15001_011E',
-    'B15001_019E',
-    'B15001_027E',
-    'B15001_035E',
-    'B15001_052E',
-    'B15001_060E',
-    'B15001_068E',
-    'B15001_076E'
-  ]
-}
+# construct the base URL
 
-# the following fields are computed by taking the first ACS field and subtracting the rest
+base_url = "http://api.census.gov/data/#{acs_year}/acs#{acs_period}?"
+puts "Using base URL: #{base_url}"
 
-fields_sub = {
-  'white_18' => [
-    'B01001H_001E',
-    'B01001H_003E',
-    'B01001H_004E',
-    'B01001H_005E',
-    'B01001H_006E',
-    'B01001H_018E',
-    'B01001H_019E',
-    'B01001H_020E',
-    'B01001H_021E'
-  ],
-  'black_18' => [
-    'B01001B_001E',
-    'B01001B_003E',
-    'B01001B_004E',
-    'B01001B_005E',
-    'B01001B_006E',
-    'B01001B_018E',
-    'B01001B_019E',
-    'B01001B_020E',
-    'B01001B_021E'
-  ],
-  'hispanic_18' => [
-    'B01001I_001E',
-    'B01001I_003E',
-    'B01001I_004E',
-    'B01001I_005E',
-    'B01001I_006E',
-    'B01001I_018E',
-    'B01001I_019E',
-    'B01001I_020E',
-    'B01001I_021E'
-  ],
-  'other_18' => [
-    'B09001_001E',
-    'B01001B_003E',
-    'B01001B_004E',
-    'B01001B_005E',
-    'B01001B_006E',
-    'B01001B_018E',
-    'B01001B_019E',
-    'B01001B_020E',
-    'B01001B_021E',
-    'B01001H_003E',
-    'B01001H_004E',
-    'B01001H_005E',
-    'B01001H_006E',
-    'B01001H_018E',
-    'B01001H_019E',
-    'B01001H_020E',
-    'B01001H_021E',
-    'B01001I_003E',
-    'B01001I_004E',
-    'B01001I_005E',
-    'B01001I_006E',
-    'B01001I_018E',
-    'B01001I_019E',
-    'B01001I_020E',
-    'B01001I_021E'
-  ],
-  'other_under_18' => [
-    'B09001_001E',
-    'B01001I_003E',
-    'B01001I_004E',
-    'B01001I_005E',
-    'B01001I_006E',
-    'B01001I_018E',
-    'B01001I_019E',
-    'B01001I_020E',
-    'B01001I_021E',
-    'B01001B_003E',
-    'B01001B_004E',
-    'B01001B_005E',
-    'B01001B_006E',
-    'B01001B_018E',
-    'B01001B_019E',
-    'B01001B_020E',
-    'B01001B_021E',
-    'B01001H_003E',
-    'B01001H_004E',
-    'B01001H_005E',
-    'B01001H_006E',
-    'B01001H_018E',
-    'B01001H_019E',
-    'B01001H_020E',
-    'B01001H_021E'
-  ],
-  # 'no_hs_degree_25_plus_denom' => [
-  #   'B15001_001E',
-  #   'B15001_003E',
-  #   'B15001_044E'
-  # ]
-}
+# construct the geo parameter
 
-# The following fields are products of ACS fields
+geo_for_key, geo_for_value = config['api']['acs_geography']['for'].first
+geo_for_value = "*" if geo_for_value =~ /all/i
+geo_for = "#{geo_for_key}:#{geo_for_value}"
 
-fields_prod = {
-  'median_family_income_numer' => ['B19119_001E', 'B00002_001E']
-}
+geo_in = config['api']['acs_geography']['in'].first.join(':')
+
+geo = "for=#{geo_for}&in=#{geo_in}"
+puts "Using Census geography: #{geo}"
+
+# get the remaining configuration variables
+
+if config.include? 'output'
+  output_file = config['output']['file'] || DEFAULT_OUTPUT_FILE
+  output_acs_variables = config['output']['acs_variables'] || DEFAULT_OUTPUT_ACS_VARIABLES
+else
+  output_file = DEFAULT_OUTPUT_FILE
+  output_acs_variables = DEFAULT_OUTPUT_ACS_VARIABLES
+end
+
+puts "Using output file: #{output_file}"
+
+['fields_rename', 'fields_sum', 'fields_sub', 'fields_prod'].each do |name|
+  unless config.include? name
+    puts "WARNING: #{name} does not appear in configuration"
+  end
+end
+
+fields_rename = config['fields_rename'] || []
+fields_sum = config['fields_sum'] || []
+fields_sub = config['fields_sub'] || []
+fields_prod = config['fields_prod'] || []
 
 # This function performs the Census API query. It returns a hash of hashes of the form
 #     { tract1 => {var1 => val11, var2 => val12, ... },
 #       tract2 => {var1 => val12, var2 => val22, ... }, ... }
 #
-def census_query(vars)
+def census_query(vars, base_url, geo)
   tracts = {}
   vars.each_slice(50) do |v|
-    url = [BASE_URL, 'get=' + v.join(','), GEO].join('&')
+    url = [base_url, 'get=' + v.join(','), geo].join('&')
     puts "Fetching #{v.length} fields from ACS..."
     puts "URL: #{url}"
     resp = JSON.parse open(url).read
@@ -322,7 +94,7 @@ end
 # margin-of-error variables are obtained by replace E by M in the ACS variable name 
 all_acs_fields = (fields_rename.values + fields_sum.values + fields_sub.values + fields_prod.values).flatten.uniq
 all_acs_fields += all_acs_fields.map {|name| name.sub('E', 'M')}
-tracts = census_query all_acs_fields
+tracts = census_query all_acs_fields, base_url, geo
 
 # compute dcaction variables from census variables
 
@@ -380,8 +152,16 @@ tracts.each do |tract_id, tract|
 
 end
 
+# remove ACS variables from output
+
+unless output_acs_variables
+  tracts.each_value do |tract|
+    all_acs_fields.each {|f| tract.delete f}
+  end
+end
+
 # write the result to a json file
 
-File.open(TRACT_FILE, 'w') do |f|
+File.open(output_file, 'w') do |f|
   f.puts JSON.pretty_generate(tracts)
 end
