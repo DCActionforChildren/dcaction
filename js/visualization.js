@@ -124,7 +124,7 @@ function init(){
   });
 
   // other points
-  $(".points-menu > li").on("click", "a", function(e){
+  $(".poi-menu > li").on("click", "a", function(e){
     e.preventDefault();
 
     var $$parent = $(this).parent();
