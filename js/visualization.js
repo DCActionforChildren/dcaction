@@ -1,3 +1,5 @@
+var hash = window.location.hash;
+
 var COUNT_SCHOOL_DISPLAY = 3;
 
 var centered;
@@ -344,6 +346,8 @@ function drawChoropleth(){
 
     // Bind our overlay to the map…
     overlay.setMap(gmap);
+
+    if (hash) { $('a' + hash).click(); }
 
   } // setUpChoropleth function
 
