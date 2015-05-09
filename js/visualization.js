@@ -81,6 +81,8 @@ var gmap_style=[
   }
 ];
 
+var browserSupportsTouch = 'ontouchstart' in document.documentElement;
+
 $(document).ready(function() {
   init();
 }); // end document ready function
@@ -197,23 +199,19 @@ function drawChoropleth(){
 
     gmap = new google.maps.Map(d3.select("#content").node(), {
       zoom: 12,
-      minZoom: 12,
+      minZoom: 10,
       maxZoom: 14,
       center: new google.maps.LatLng(38.89555, -77.01551),
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       streetViewControl: false,
       panControl: false,
-      scrollwheel: false
-    });
-
-    gmap.setOptions({
+      scrollwheel: false,
       mapTypeControl: false,
-      styles: gmap_style
-    });
-
-    google.maps.event.addListenerOnce(gmap, "idle", function(){
-      // adjust the zoom bar
-      $("div[title='Zoom in']").parent().css({"margin-top":"60px"});
+      styles: gmap_style,
+      zoomControl: !browserSupportsTouch,
+      zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.SMALL
+      }
     });
 
     var maxBounds = new google.maps.LatLngBounds(
