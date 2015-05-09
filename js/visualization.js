@@ -341,13 +341,13 @@ function drawChoropleth(){
         }
 
         redrawPoints();
+
+        if (hash) { $('a' + hash).click(); }
       };
     };
 
     // Bind our overlay to the map…
     overlay.setMap(gmap);
-
-    if (hash) { $('a' + hash).click(); }
 
   } // setUpChoropleth function
 
