@@ -197,6 +197,16 @@ function drawChoropleth(){
       choropleth_data[d.gis_id] = +d.population_total;
     });
 
+    all_data.dc = {
+      NBH_NAMES: "Washington, DC",
+      population_total_val: 619371,
+      population_under_18_val: 105291,
+      single_mother_families_perc: 0.469,
+      children_in_poverty_perc: 0.287
+    };
+
+    displayPopBox();
+
     gmap = new google.maps.Map(d3.select("#content").node(), {
       zoom: 12,
       minZoom: 10,
@@ -300,6 +310,7 @@ function drawChoropleth(){
           .attr("id", function (d) { return "path" + d.properties.NCID; })
           .attr("class", "nbhd")
           .on("mouseover", hoverNeighborhood)
+          .on("mouseout", function () { displayPopBox(); })
           .on("click", function(d) { highlightNeigborhood(d, false); })
           .style("fill",function(d) {
             if (currentMetric === null || all_data[d.properties.gis_id][currentMetric] === '0') { return defaultColor; }
@@ -729,7 +740,7 @@ function displayPopBox(d) {
   }
 
   var $popbox = $("#pop-info"),
-      highlighted = all_data[d.properties.gis_id];
+      highlighted = d ? all_data[d.properties.gis_id] : all_data.dc;
 
   d3.select(".neighborhood").html(highlighted.NBH_NAMES);
 
@@ -842,7 +853,7 @@ function getDisplayValue(strNum, name, typeDef) {
 
   switch(typeDef) {
     case "perc":
-      return parseInt(num * 100, 10) + "%";
+      return parseInt(Math.round(num * 100), 10) + "%";
     case "val":
       num = Math.round(num);
       return number_formatter(parseInt(num, 10));
