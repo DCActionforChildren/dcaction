@@ -400,6 +400,12 @@ h4.school-name:after {
   left: 0;
 }
 
+/* Google Maps fix */
+
+div.gm-style > div > div {
+  height: 0 !important;
+}
+
  .btn-panel-close {
   float: right;
   margin: 5px;
