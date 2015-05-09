@@ -109,11 +109,9 @@ function init(){
     }
   });
 
-  // school type changes
-  $(".points-menu > li").on("click", "a", function(e){
+  // school points
+  $(".schools-menu > li").on("click", "a", function(e){
     e.preventDefault();
-
-    //$(this).parent().addClass("selected").siblings().removeClass("selected");
 
     var $$parent = $(this).parent();
     if ($$parent.hasClass("selected")) {
@@ -125,12 +123,21 @@ function init(){
 
   });
 
-  // circle changes
-  $(".school-menu > li").on("click", "a", function(e){
+  // other points
+  $(".points-menu > li").on("click", "a", function(e){
     e.preventDefault();
-    var value = $(this).attr("id") === "no_school_data" ? 4 : $(this).attr("id");
-    changeSchoolData(value);
-    $(this).parent().addClass("selected").siblings().removeClass("selected");
+
+    var $$parent = $(this).parent();
+    if ($$parent.hasClass("selected")) {
+      removePoints($(this).attr("id"));
+    } else {
+      $$parent.siblings().each(function () {
+        removePoints($(this).removeClass("selected")
+          .children("a").attr("id"));
+      });
+      drawPoints($(this).attr("id"));
+    }
+    $$parent.toggleClass("selected");
   });
 
   // narrative
@@ -438,11 +445,11 @@ function drawPoints(type) {
         return "translate(" + gmapProjection([d.long, d.lat]) + ")";})
       .append("title").text(function(d){return d.name;});
 
-    circle.on("click", displaySchoolData);
+    circle.on("click", displayPointsData);
     packMetros();
 
 
-    function displaySchoolData(school) {
+    function displayPointsData(school) {
       var $schools = $("#schools_panel");
       var $panelBody = $schools.find(".panel-body");
       var $schoolData = $panelBody.children(".school-data");
