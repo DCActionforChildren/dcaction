@@ -31,6 +31,8 @@ fields_rename:
   homeownership_denom: B11012_001E
   work_denom: B08303_001E
   population_under_3: B09001_003E
+  female_householder_no_husband_numer: B09002_015E
+  female_householder_no_husband_denom: B09002_001E
 
 # Each variable in this section is defined by a list of ACS variables.
 # The named variable is computed by adding up the ACS variables.
