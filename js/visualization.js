@@ -436,17 +436,29 @@ function drawPoints(type) {
       color;
 
   d3.json('data/' + type + '.json', function (data){
-    var circle = g.select("#points").selectAll(".poi").data(data[type], function(d) {
+    var poi = g.select("#points").selectAll(".poi").data(data[type], function(d) {
       return d.name;
     });
-    var circleEnter = circle.enter().append("circle")
-      .attr("class", "poi " + type + (isSchool ? " school" : ""))
-      .attr("r", 4)
-      .attr("transform", function(d) {
-        return "translate(" + gmapProjection([d.long, d.lat]) + ")";})
-      .append("title").text(function(d){return d.name;});
 
-    circle.on("click", displayPointsData);
+    if (type === "charters") {
+      poi.enter().append("rect")
+        .attr("class", "poi " + type + (isSchool ? " school" : ""))
+        .attr("width", 7)
+        .attr("height", 7)
+        .attr("r", 4)
+        .attr("transform", function(d) {
+          return "translate(" + gmapProjection([d.long, d.lat]) + ")";})
+        .append("title").text(function(d){return d.name;});
+    } else {
+      poi.enter().append("circle")
+        .attr("class", "poi " + type + (isSchool ? " school" : ""))
+        .attr("r", 4)
+        .attr("transform", function(d) {
+          return "translate(" + gmapProjection([d.long, d.lat]) + ")";})
+        .append("title").text(function(d){return d.name;});
+    }
+
+    poi.on("click", displayPointsData);
     packMetros();
 
 

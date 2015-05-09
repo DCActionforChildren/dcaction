@@ -124,10 +124,11 @@ path.nbhd.active {
   stroke: #077CA8;
   stroke-width: 2px;
 }
-circle.poi {
+.poi {
   cursor: pointer;
-  fill-opacity: 0.8;
+  fill-opacity: 0.75;
   fill: #e2b640;
+  stroke: #fff;
 }
 
 .poi.school {
