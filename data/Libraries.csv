@@ -1,0 +1,31 @@
+﻿X,Y,OBJECTID,GIS_ID,NAME,ADDRESS,PHONE,STATUS,WEB_URL,ADDRESS_ID
+-76.97932916027321,38.897860612835082,1,Libr_32,Rosedale Neighborhood Library,1701 Gales Street NE,"202-671-3121
+",Open,http://www.dclibrary.org/rosedale,307101
+-77.066009610754705,38.913442017065805,2,Libr_25,Georgetown Neighborhood Library,3260 R Street NW,(202) 727-0232,Open,http://www.dclibrary.org/georgetown,295142
+-77.026139719672315,38.942207685179035,3,Libr_26,Petworth Neighborhood Library,4200 Kansas Avenue NW,(202) 243-1188,Open,http://www.dclibrary.org/petworth,295146
+-77.037147710113103,38.930474556608239,4,Libr_31,Mt. Pleasant Neighborhood Library,3160 16th Street NW,"202-671-3121
+202-671-3121
+(202) 671-3121",Open,http://www.dclibrary.org/mtpleasant,295138
+-77.022214772939236,38.912465472085891,5,Libr_28,Watha T. Daniel/Shaw Neighborhood Library,1630 7th Street NW,(202) 727-1288,Open,http://www.dclibrary.org/watha,308201
+-76.932543834195315,38.908471649726927,6,Libr_29,Deanwood Neighborhood Library,1350 49th Street NE,(202) 698-1175,Open,http://www.dclibrary.org/deanwood,307551
+-76.947773320419856,38.894188678043136,7,Libr_2,Dorothy I Height/Benning Neighborhood Library,3935 Benning Road NE,(202) 281-2583,Open,http://www.dclibrary.org/dorothy,295144
+-76.929579467980361,38.888962286296433,8,Libr_3,Capitol View Neighborhood Library,5001 Central Avenue SE,(202) 645-0755,Open,http://www.dclibrary.org/capitolview,15509
+-77.075459021314956,38.96557695120655,9,Libr_4,Chevy Chase Neighborhood Library,5625 Connecticut Avenue NW,(202) 282-0021,Open,http://www.dclibrary.org/chevychase,263960
+-77.057844888211861,38.933823261483923,10,Libr_5,Cleveland Park Neighborhood Library,3310 Connecticut Avenue NW,(202) 282-3080,Open,http://www.dclibrary.org/clevelandpark,221190
+-76.953980866361093,38.864818787981271,11,Libr_7,Francis A. Gregory Neighborhood Library,3660 Alabama Avenue SE,(202) 698-6373,Open,http://www.dclibrary.org/francis,290019
+-76.999586598978198,38.955135595484577,12,Libr_8,Lamond-Riggs Neighborhood Library,5401 South Dakota Avenue NE,(202) 541-6255,Open,"http://www.dclibrary.org/lamond
+",288645
+-77.024768551253501,38.898699116426073,13,Libr_9,Martin Luther King Jr. Memorial Library,901 G Street NW,(202) 727-0321,Open,http://www.dclibrary.org/mlk,239815
+-76.996361266804925,38.894414334422727,14,Libr_10,Northeast Neighborhood Library,330 7th Street NE,(202) 698-3320,Open,http://www.dclibrary.org/northeast,37106
+-77.079889064489862,38.947615846003856,15,Libr_11,Tenley-Friendship Neighborhood Library,4450 Wisconsin Avenue NW,(202) 727-1488,Open,http://www.dclibrary.org/tenley,284921
+-77.09717695867846,38.918389252462426,16,Libr_12,Palisades Neighborhood Library,4901 V Street NW,(202) 282-3139,Open,http://www.dclibrary.org/palisades,224474
+-76.99651773463215,38.884091909699784,17,Libr_14,Southeast Neighborhood Library,403 7th Street SE,(202) 698-3377,Open,http://www.dclibrary.org/southeast,280068
+-77.015834062777458,38.878705402197774,18,Libr_15,Southwest Neighborhood Library,900 Wesley Place SW,(202) 724-4752,Open,http://www.dclibrary.org/southwest,295165
+-77.027037739910057,38.980288354069415,19,Libr_16,Juanita E. Thornton-Shepherd Park Library,7420 Georgia Avenue NW,(202) 541-6100,Open,http://www.dclibrary.org/juanita,253522
+-77.020159155537456,38.974444213198424,20,Libr_17,Takoma Park Neighborhood Library,416 Cedar Street NW,(202) 576-7252,Open,http://www.dclibrary.org/takomapark,251267
+-76.981253592330461,38.846194308105964,21,Libr_19,Parklands-Turner Neighborhood Library,1547 Alabama Avenue SE,(202) 645-4532,Open,http://www.dclibrary.org/parklands,304504
+-77.009356726358192,38.831338356640934,22,Libr_20,William O. Lockridge/Bellevue Neighborhood Library,115 Atlantic Street SW,(202) 243-1184,Open,http://www.dclibrary.org/bellevue,302935
+-77.051100201299363,38.904026937545162,23,Libr_21,West End Neighborhood Library,1101 24th Street NW,(202) 724-8707,Open,http://www.dclibrary.org/westend,218248
+-76.97862792843307,38.927448190697383,24,Libr_22,Woodridge Neighborhood Library,1801 Hamlin Street NE,(202) 541-6226,Open,http://www.dclibrary.org/woodridge,286483
+-77.013210538577653,38.904036465781239,25,Libr_23,Northwest One Neighborhood Library,155 L Street NW,(202) 939-5946,Open,http://www.dclibrary.org/northwest,307736
+-76.978487714387626,38.865904180441873,26,Libr_24,Anacostia Neighborhood Library,1800 Good Hope Road SE,(202) 715-7707,Open,http://www.dclibrary.org/anacostia,53560
