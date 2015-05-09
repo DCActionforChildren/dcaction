@@ -126,20 +126,12 @@ path.nbhd.active {
 }
 circle.poi {
   cursor: pointer;
-  fill-opacity: 0.5;
-  /*fill: #000099;*/
+  fill-opacity: 0.8;
+  fill: #e2b640;
 }
 
-circle.charters {
-  fill: #900;
-}
-
-circle.dcps {
-  fill: #009;
-}
-
-circle.hospitals {
-  fill: #090;
+.poi.school {
+  fill: #d75452;
 }
 
 circle.poi:hover {

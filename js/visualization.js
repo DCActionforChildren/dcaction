@@ -295,7 +295,7 @@ function drawChoropleth(){
           })
           .style("fill-opacity",0.75);
 
-        g.select("#points").selectAll("circle").remove();
+        g.select("#points").selectAll(".poi").remove();
 
         //if there is a highlighted neighborhood then rehighlightit.
         if(highlightedNeighborhood) {
@@ -431,15 +431,16 @@ function redrawPoints() {
 function drawPoints(type) {
   if (!type || type === "clear") { return; }
 
-  var packer = sm.packer(),
+  var isSchool = type === "dcps" || type === "charters",
+      packer = sm.packer(),
       color;
 
   d3.json('data/' + type + '.json', function (data){
-    var circle = g.select("#points").selectAll("circle").data(data[type], function(d) {
+    var circle = g.select("#points").selectAll(".poi").data(data[type], function(d) {
       return d.name;
     });
     var circleEnter = circle.enter().append("circle")
-      .attr("class", "poi " + type)
+      .attr("class", "poi " + type + (isSchool ? " school" : ""))
       .attr("r", 4)
       .attr("transform", function(d) {
         return "translate(" + gmapProjection([d.long, d.lat]) + ")";})
@@ -510,16 +511,16 @@ function drawPoints(type) {
   });
 
   function packMetros() {
-    var elements = d3.selectAll("#points circle")[0];
+    var elements = d3.selectAll("#points .poi")[0];
     packer.elements(elements).start();
   }
 }
 
 function removePoints(type) {
   if (type == "clear") {
-    g.select("#points").selectAll("circle").remove();
+    g.select("#points").selectAll(".poi").remove();
   } else {
-    g.select("#points").selectAll("circle." + type).remove();
+    g.select("#points").selectAll(".poi." + type).remove();
   }
 }
 
