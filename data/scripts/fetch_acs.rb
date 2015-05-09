@@ -4,6 +4,7 @@ require 'json'
 require 'open-uri'
 require 'yaml'
 
+DEFAULT_OUTPUT_DIRECTORY = 'outputs'
 DEFAULT_OUTPUT_FILE = 'acs_tract_data.json'
 DEFAULT_OUTPUT_ACS_VARIABLES = false
 
@@ -34,12 +35,16 @@ puts "Using Census geography: #{geo}"
 # get the remaining configuration variables
 
 if config.include? 'output'
+  output_directory = config['output']['directory'] || DEFAULT_OUTPUT_DIRECTORY
   output_file = config['output']['file'] || DEFAULT_OUTPUT_FILE
   output_acs_variables = config['output']['acs_variables'] || DEFAULT_OUTPUT_ACS_VARIABLES
 else
+  output_directory = DEFAULT_OUTPUT_DIRECTORY
   output_file = DEFAULT_OUTPUT_FILE
   output_acs_variables = DEFAULT_OUTPUT_ACS_VARIABLES
 end
+
+output_file = File.join output_directory, output_file
 
 puts "Using output file: #{output_file}"
 

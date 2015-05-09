@@ -6,7 +6,7 @@ require 'csv'
 require 'json'
 require 'rubyXL'
 
-CROSSWALK_FILE = 'Neighborhood Cluster - Census Tract 2010 Equivalency File - 7-11-2012.xlsx'
+CROSSWALK_FILE = '../inputs/Neighborhood Cluster - Census Tract 2010 Equivalency File - 7-11-2012.xlsx'
 TRACT_FILE = 'acs_tract_data.json'
 NBHD_FILE = 'acs_nbhd_data.csv'
 
