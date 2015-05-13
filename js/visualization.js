@@ -326,7 +326,13 @@ function drawChoropleth(){
           .attr("id", function (d) { return "path" + d.properties.NCID; })
           .attr("class", "nbhd")
           .on("mouseover", hoverNeighborhood)
-          .on("mouseout", function () { activeId = 'dc'; $("#visualized-measure").text(""); displayPopBox(); })
+          .on("mouseout", function () {
+            if ($("path.active").length === 0) {
+              activeId = 'dc';
+              $("#visualized-measure").text("");
+              displayPopBox();
+            }
+          })
           .on("click", function(d) { highlightNeigborhood(d, false); })
           .style("fill",function(d) {
             if (currentMetric === null || all_data[d.properties.gis_id][currentMetric] === '0') { return defaultColor; }
