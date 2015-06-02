@@ -100,51 +100,6 @@ function init(){
   // slide out menu
   $(".menu-toggle").on("click", toggleMenu);
 
-  // event listeners for changing d3
-  // choropleth color change
-  $("#nav-panel > ul > li").on("click", "a", function(e){
-    e.preventDefault();
-    if (!$(this).parent().hasClass('disabled')){
-      currentMetric=(typeof $(this).attr("id")==="undefined")?null:$(this).attr("id");
-      getSource(source_data,currentMetric);
-      changeNeighborhoodData(currentMetric);
-      $(this).parent().addClass("selected").siblings().removeClass("selected");
-      $("#legend-panel").show();
-      $("#details p.lead").show();
-    }
-  });
-
-  // school points
-  $(".schools-menu > li").on("click", "a", function(e){
-    e.preventDefault();
-
-    var $$parent = $(this).parent();
-    if ($$parent.hasClass("selected")) {
-      removePoints($(this).attr("id"));
-    } else {
-      drawPoints($(this).attr("id"));
-    }
-    $$parent.toggleClass("selected");
-
-  });
-
-  // other points
-  $(".poi-menu > li").on("click", "a", function(e){
-    e.preventDefault();
-
-    var $$parent = $(this).parent();
-    if ($$parent.hasClass("selected")) {
-      removePoints($(this).attr("id"));
-    } else {
-      $$parent.siblings().each(function () {
-        removePoints($(this).removeClass("selected")
-          .children("a").attr("id"));
-      });
-      drawPoints($(this).attr("id"));
-    }
-    $$parent.toggleClass("selected");
-  });
-
   // narrative
   $("#narrative-row button").click(function() {
     if($(this).hasClass('active'))
@@ -387,6 +342,51 @@ function populateNavPanel(data) {
         $menu.append(fieldTemplate(field));
       });
     }
+  });
+
+  // event listeners for changing d3
+  // choropleth color change
+  $(".layer-toggle-menu > li").on("click", "a", function(e){
+    e.preventDefault();
+    if (!$(this).parent().hasClass('disabled')){
+      currentMetric=(typeof $(this).attr("id")==="undefined")?null:$(this).attr("id");
+      getSource(source_data,currentMetric);
+      changeNeighborhoodData(currentMetric);
+      $(this).parent().addClass("selected").siblings().removeClass("selected");
+      $("#legend-panel").show();
+      $("#details p.lead").show();
+    }
+  });
+
+  // school points
+  $(".schools-menu > li").on("click", "a", function(e){
+    e.preventDefault();
+
+    var $$parent = $(this).parent();
+    if ($$parent.hasClass("selected")) {
+      removePoints($(this).attr("id"));
+    } else {
+      drawPoints($(this).attr("id"));
+    }
+    $$parent.toggleClass("selected");
+
+  });
+
+  // other points
+  $(".poi-menu > li").on("click", "a", function(e){
+    e.preventDefault();
+
+    var $$parent = $(this).parent();
+    if ($$parent.hasClass("selected")) {
+      removePoints($(this).attr("id"));
+    } else {
+      $$parent.siblings().each(function () {
+        removePoints($(this).removeClass("selected")
+          .children("a").attr("id"));
+      });
+      drawPoints($(this).attr("id"));
+    }
+    $$parent.toggleClass("selected");
   });
 }
 
