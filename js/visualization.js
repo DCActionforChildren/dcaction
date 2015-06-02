@@ -102,7 +102,7 @@ function init(){
 
   // event listeners for changing d3
   // choropleth color change
-  $(".neighborhood-menu > li").on("click", "a", function(e){
+  $("#nav-panel > ul > li").on("click", "a", function(e){
     e.preventDefault();
     if (!$(this).parent().hasClass('disabled')){
       currentMetric=(typeof $(this).attr("id")==="undefined")?null:$(this).attr("id");
@@ -186,12 +186,15 @@ function transform(d) {
 function drawChoropleth(){
 
   queue()
+    .defer(d3.csv, "data/fields.csv")
     .defer(d3.json, "data/neighborhoods44.json")
     .defer(d3.csv, "data/neighborhoods.csv")
     .defer(d3.csv, "data/source.csv")
     .await(setUpChoropleth);
 
-  function setUpChoropleth(error, dc, choropleth,source) {
+  function setUpChoropleth(error, fields, dc, choropleth, source) {
+    populateNavPanel(fields);
+
     //clean choropleth data for display.
     choropleth_data = choropleth;
     source_data = source;
@@ -359,6 +362,33 @@ function drawChoropleth(){
   } // setUpChoropleth function
 
 } // drawChoropleth function
+
+function populateNavPanel(data) {
+  var fieldTemplate = _.template(
+        '<li><a id="<%= field.id %>" href="#"><%- field.name %> <% if (field.new === "TRUE") { %><span class="label label-danger">New</span></a><% } %></li>',
+        { variable: 'field' }
+      ),
+      categoryTemplate = _.template('<li class="nav-header disabled"><a><%=category%></a></li>', {variable: 'category'});
+
+  _.chain(data).groupBy('type').each(function (fields, type) {
+    var $menu = $('.' + type + '-menu');
+
+    $menu.empty();
+
+    if (type === 'neighborhood') {
+      _.chain(fields).groupBy('category').each(function (fields, category) {
+        $menu.append(categoryTemplate(category));
+        _.forEach(fields, function (field) {
+          $menu.append(fieldTemplate(field));
+        });
+      });
+    } else {
+      _.forEach(fields, function (field) {
+        $menu.append(fieldTemplate(field));
+      });
+    }
+  });
+}
 
 function changeNeighborhoodData(new_data_column) {
   var data_values = _.filter(_.map(choropleth_data, function(d){ return parseFloat(d[new_data_column]); }), function(d){ return !isNaN(d); });
