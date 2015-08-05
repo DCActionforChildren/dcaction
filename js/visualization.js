@@ -100,51 +100,6 @@ function init(){
   // slide out menu
   $(".menu-toggle").on("click", toggleMenu);
 
-  // event listeners for changing d3
-  // choropleth color change
-  $(".neighborhood-menu > li").on("click", "a", function(e){
-    e.preventDefault();
-    if (!$(this).parent().hasClass('disabled')){
-      currentMetric=(typeof $(this).attr("id")==="undefined")?null:$(this).attr("id");
-      getSource(source_data,currentMetric);
-      changeNeighborhoodData(currentMetric);
-      $(this).parent().addClass("selected").siblings().removeClass("selected");
-      $("#legend-panel").show();
-      $("#details p.lead").show();
-    }
-  });
-
-  // school points
-  $(".schools-menu > li").on("click", "a", function(e){
-    e.preventDefault();
-
-    var $$parent = $(this).parent();
-    if ($$parent.hasClass("selected")) {
-      removePoints($(this).attr("id"));
-    } else {
-      drawPoints($(this).attr("id"));
-    }
-    $$parent.toggleClass("selected");
-
-  });
-
-  // other points
-  $(".poi-menu > li").on("click", "a", function(e){
-    e.preventDefault();
-
-    var $$parent = $(this).parent();
-    if ($$parent.hasClass("selected")) {
-      removePoints($(this).attr("id"));
-    } else {
-      $$parent.siblings().each(function () {
-        removePoints($(this).removeClass("selected")
-          .children("a").attr("id"));
-      });
-      drawPoints($(this).attr("id"));
-    }
-    $$parent.toggleClass("selected");
-  });
-
   // narrative
   $("#narrative-row button").click(function() {
     if($(this).hasClass('active'))
@@ -186,12 +141,15 @@ function transform(d) {
 function drawChoropleth(){
 
   queue()
+    .defer(d3.csv, "data/fields.csv")
     .defer(d3.json, "data/neighborhoods44.json")
     .defer(d3.csv, "data/neighborhoods.csv")
     .defer(d3.csv, "data/source.csv")
     .await(setUpChoropleth);
 
-  function setUpChoropleth(error, dc, choropleth,source) {
+  function setUpChoropleth(error, fields, dc, choropleth, source) {
+    populateNavPanel(fields);
+
     //clean choropleth data for display.
     choropleth_data = choropleth;
     source_data = source;
@@ -326,7 +284,13 @@ function drawChoropleth(){
           .attr("id", function (d) { return "path" + d.properties.NCID; })
           .attr("class", "nbhd")
           .on("mouseover", hoverNeighborhood)
-          .on("mouseout", function () { activeId = 'dc'; $("#visualized-measure").text(""); displayPopBox(); })
+          .on("mouseout", function () {
+            if ($("path.active").length === 0) {
+              activeId = 'dc';
+              $("#visualized-measure").text("");
+              displayPopBox();
+            }
+          })
           .on("click", function(d) { highlightNeigborhood(d, false); })
           .style("fill",function(d) {
             if (currentMetric === null || all_data[d.properties.gis_id][currentMetric] === '0') { return defaultColor; }
@@ -353,6 +317,78 @@ function drawChoropleth(){
   } // setUpChoropleth function
 
 } // drawChoropleth function
+
+function populateNavPanel(data) {
+  var fieldTemplate = _.template(
+        '<li><a id="<%= field.id %>" href="#"><%- field.name %> <% if (field.new === "TRUE") { %><span class="label label-danger">New</span></a><% } %></li>',
+        { variable: 'field' }
+      ),
+      categoryTemplate = _.template('<li class="nav-header disabled"><a><%=category%></a></li>', {variable: 'category'});
+
+  _.chain(data).groupBy('type').each(function (fields, type) {
+    var $menu = $('.' + type + '-menu');
+
+    $menu.empty();
+
+    if (type === 'neighborhood') {
+      _.chain(fields).groupBy('category').each(function (fields, category) {
+        $menu.append(categoryTemplate(category));
+        _.forEach(fields, function (field) {
+          $menu.append(fieldTemplate(field));
+        });
+      });
+    } else {
+      _.forEach(fields, function (field) {
+        $menu.append(fieldTemplate(field));
+      });
+    }
+  });
+
+  // event listeners for changing d3
+  // choropleth color change
+  $(".layer-toggle-menu > li").on("click", "a", function(e){
+    e.preventDefault();
+    if (!$(this).parent().hasClass('disabled')){
+      currentMetric=(typeof $(this).attr("id")==="undefined")?null:$(this).attr("id");
+      getSource(source_data,currentMetric);
+      changeNeighborhoodData(currentMetric);
+      $(this).parent().addClass("selected").siblings().removeClass("selected");
+      $("#legend-panel").show();
+      $("#details p.lead").show();
+    }
+  });
+
+  // school points
+  $(".schools-menu > li").on("click", "a", function(e){
+    e.preventDefault();
+
+    var $$parent = $(this).parent();
+    if ($$parent.hasClass("selected")) {
+      removePoints($(this).attr("id"));
+    } else {
+      drawPoints($(this).attr("id"));
+    }
+    $$parent.toggleClass("selected");
+
+  });
+
+  // other points
+  $(".poi-menu > li").on("click", "a", function(e){
+    e.preventDefault();
+
+    var $$parent = $(this).parent();
+    if ($$parent.hasClass("selected")) {
+      removePoints($(this).attr("id"));
+    } else {
+      $$parent.siblings().each(function () {
+        removePoints($(this).removeClass("selected")
+          .children("a").attr("id"));
+      });
+      drawPoints($(this).attr("id"));
+    }
+    $$parent.toggleClass("selected");
+  });
+}
 
 function changeNeighborhoodData(new_data_column) {
   var data_values = _.filter(_.map(choropleth_data, function(d){ return parseFloat(d[new_data_column]); }), function(d){ return !isNaN(d); });
