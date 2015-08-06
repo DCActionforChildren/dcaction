@@ -127,3 +127,28 @@ By default, `crosswalk.rb` creates weighted sums of tract-level variables. If in
 calculate a weighted average of tract-level data, add the name of the variable to be averaged to the `averaged_fields` array.
 
 
+# next steps
+
+## new generic crosswalk file
+
+We want to build a new crosswalk file that will replace crosswalk.rb but will be more generic.
+
+Input:
+* data file in csv or json
+* mapping file in csv with three columns: old geo id, new geo id, fraction of old geo contained in new geo
+* command line arguments:
+    * data file type
+    * column name for old geo id (optional, use name from crosswalk file if none specified)
+    * output file name, output column name
+
+Output:
+* merged file with the same data variables and the new geo ID
+
+Wish liest:
+* checking the margin of error calculations at each step of the data update process (including in the fetch_acs script)
+
+## coding latitude and longitude
+
+* Polish the exist script
+* it also needs to take generic inputs and outputs
+* add functionality to geocode addresses
