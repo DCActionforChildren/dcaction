@@ -22,20 +22,19 @@ cc_child_pov_ratio,"OSSE, July 2013",http://osse.dc.gov/
 cc_sub_13_cur,"OSSE, July 2013",http://osse.dc.gov/
 homeownership_perc,2009-2013 ACS,http://factfinder2.census.gov/faces/nav/jsf/pages/programs.xhtml?program=acs
 vacants_val,"DC Department of Consumer and Regulatory Affairs, 2014",http://dcra.dc.gov/publication/blight-and-vacant-buildings-list
-libraries_val,"DC Public Libraries, 2012",http://dclibrary.org/
 grocery_val,"DC Office of Planning, 2012",http://planning.dc.gov/DC/Planning
 rec_val,"DC Department of Parks and Recreation, 2010",http://dpr.dc.gov/
 parks_val,"DC Department of Parks and Recreation, 2011",http://dpr.dc.gov/
 metro_val,"WMATA, 2007",http://dcatlas.dcgis.dc.gov/metadata/MetroStnFullPt.html
 bus_stops_val,"WMATA, 2011",http://dcatlas.dcgis.dc.gov/metadata/BusStopPt.html
-total_crime_val,"DC Metropolitan Police Department, 2012",http://crimemap.dc.gov/Download.aspx
-total_crime_pc_ratio,"DC Metropolitan Police Department, 2012",http://crimemap.dc.gov/Download.aspx
-homicide_val,"DC Metropolitan Police Department, 2012",http://crimemap.dc.gov/Download.aspx
-homicide_pc_ratio,"DC Metropolitan Police Department, 2012",http://crimemap.dc.gov/Download.aspx
-assault_val,"DC Metropolitan Police Department, 2012",http://crimemap.dc.gov/Download.aspx
-assault_pc_ratio,"DC Metropolitan Police Department, 2012",http://crimemap.dc.gov/Download.aspx
-robbery_val,"DC Metropolitan Police Department, 2012",http://crimemap.dc.gov/Download.aspx
-robbery_pc_ratio,"DC Metropolitan Police Department, 2012",http://crimemap.dc.gov/Download.aspx
-sex_abuse_val,"DC Metropolitan Police Department, 2012",http://crimemap.dc.gov/Download.aspx
-sex_abuse_pc_ratio,"DC Metropolitan Police Department, 2012",http://crimemap.dc.gov/Download.aspx
+total_crime_val,"DC Metropolitan Police Department, 2014",http://crimemap.dc.gov/Download.aspx
+total_crime_pc_ratio,"DC Metropolitan Police Department, 2014",http://crimemap.dc.gov/Download.aspx
+homicide_val,"DC Metropolitan Police Department, 2014",http://crimemap.dc.gov/Download.aspx
+homicide_pc_ratio,"DC Metropolitan Police Department, 2014",http://crimemap.dc.gov/Download.aspx
+assault_val,"DC Metropolitan Police Department, 2014",http://crimemap.dc.gov/Download.aspx
+assault_pc_ratio,"DC Metropolitan Police Department, 2014",http://crimemap.dc.gov/Download.aspx
+robbery_val,"DC Metropolitan Police Department, 2014",http://crimemap.dc.gov/Download.aspx
+robbery_pc_ratio,"DC Metropolitan Police Department, 2014",http://crimemap.dc.gov/Download.aspx
+sex_abuse_val,"DC Metropolitan Police Department, 2014",http://crimemap.dc.gov/Download.aspx
+sex_abuse_pc_ratio,"DC Metropolitan Police Department, 2014",http://crimemap.dc.gov/Download.aspx
 median_family_income_val,2009-2013 ACS,http://factfinder2.census.gov/faces/nav/jsf/pages/programs.xhtml?program=acs

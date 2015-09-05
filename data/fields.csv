@@ -1,8 +1,8 @@
 id,name,type,category,new
 dcps,DC Public Schools,schools,,
 charters,DC Public Charter Schools,schools,,
-libraries,Libraries,poi,,TRUE
-hospitals,Hospitals,poi,,TRUE
+libraries,Libraries,poi,,
+hospitals,Hospitals,poi,,
 population_total_val,Total Population,neighborhood,Neighborhood Demographics,
 population_under_18_val,Children (Under 18),neighborhood,Neighborhood Demographics,
 population_under_5_val,Young Child Population (Under 5),neighborhood,Neighborhood Demographics,
@@ -13,7 +13,7 @@ no_dip_18_perc,Percentage of Population Between 18 and 24 Without a Diploma,neig
 no_dip_25_perc,Percentage of Population Over 25 Without a Diploma,neighborhood,Neighborhood Demographics,
 youth_ready_to_work_perc,Youth Employment Rate (Ages 16 to 24),neighborhood,Neighborhood Demographics,
 engagement_perc,Political Engagement in the 2012 Election,neighborhood,Neighborhood Demographics,
-median_family_income_val,Average Median Income,neighborhood,Neighborhood Demographics,TRUE
+median_family_income_val,Average Median Income,neighborhood,Neighborhood Demographics,
 medicaid_enroll_val,Children Enrolled in Medicaid,neighborhood,Child Health & Wellbeing,
 prev_med_visit_val,Preventative Medical Visits by Children Enrolled in Medicaid,neighborhood,Child Health & Wellbeing,
 dental_visit_val,Dental Visits by Children Enrolled in Medicaid,neighborhood,Child Health & Wellbeing,
@@ -26,7 +26,6 @@ cc_pop_ratio,Ratio of Infant/Toddler Child Care Capacity to Under 3 Population,n
 cc_child_pov_ratio,Ratio of Infant/Toddler Child Care Capacity to Under 5 Poverty,neighborhood,Child Care,
 homeownership_perc,Percentage of Housing Units Owner Occupied,neighborhood,Neighborhood Assets,
 vacants_val,Number of Properties Vacant or Blighted,neighborhood,Neighborhood Assets,
-libraries_val,Number of Public Libraries,neighborhood,Neighborhood Assets,
 grocery_val,Number of Grocery Stores,neighborhood,Neighborhood Assets,
 rec_val,Number of Recreation Centers,neighborhood,Neighborhood Assets,
 parks_val,Number of Parks,neighborhood,Neighborhood Assets,
