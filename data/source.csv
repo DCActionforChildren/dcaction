@@ -9,9 +9,9 @@ no_dip_18_perc,2009-2013 ACS,http://factfinder2.census.gov/faces/nav/jsf/pages/p
 no_dip_25_perc,2009-2013 ACS,http://factfinder2.census.gov/faces/nav/jsf/pages/programs.xhtml?program=acs
 youth_ready_to_work_perc,2009-2013 ACS,http://factfinder2.census.gov/faces/nav/jsf/pages/programs.xhtml?program=acs
 engagement_perc,"D.C. Board of Elections, 2012",https://www.dcboee.org/election_info/election_results/2012/November-6-General-Election/
-medicaid_enroll_val,"DC Department of Health Care Finance, 2011",http://dhcf.dc.gov/
-prev_med_visit_val,"DC Department of Health Care Finance, 2011",http://dhcf.dc.gov/
-dental_visit_val,"DC Department of Health Care Finance, 2011",http://dhcf.dc.gov/
+medicaid_enroll_val,"DC Department of Health Care Finance, 2014",http://dhcf.dc.gov/
+prev_med_visit_val,"DC Department of Health Care Finance, 2014",http://dhcf.dc.gov/
+dental_visit_val,"DC Department of Health Care Finance, 2014",http://dhcf.dc.gov/
 er_ast_10_val,"DC Department of Health, 2010",http://doh.dc.gov/
 fs_client_2012_val,"DC Department of Human Services, 2012",http://dhs.dc.gov/
 math_perc,"OSSE, 2013",http://osse.dc.gov/
