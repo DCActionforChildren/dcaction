@@ -23,9 +23,12 @@ def importFile(fileName, geo_old):
         data.reset_index(level=0, inplace=True)
         data[geo_old] = data[geo_old].convert_objects(convert_numeric = True)
         data.drop('index', axis=1, inplace=True)
+        data.columns = map(str.lower, data.columns)
         return data
     elif 'csv' in fileName:
-        return pd.read_csv(fileName)
+        data = pd.read_csv(fileName)
+        data.columns = map(str.lower, data.columns)
+        return data
 
 # input: df / output: df
 # cross is the df containing the crosswalk
@@ -33,9 +36,10 @@ def importFile(fileName, geo_old):
 # geo_old is a string defining which column contains the common geography
 # geo_new is a string defining which column contains the new geography
 # weight is a string defining which column contains the weighting column
-def processing(cross, data, geo_old, geo_new, weight):
+def processing(cross, data, geo_old, geo_new, weight, weight2):
 	# merge two files into one file with data cols, geoid_original, geoid_new, weight
 	merged = pd.merge(cross,data,on=geo_old)
+	#merged.to_csv("merged.csv")
 
 	columns = list(merged) #get a list of columns
 
@@ -45,9 +49,11 @@ def processing(cross, data, geo_old, geo_new, weight):
 	indices = [columns.index(y) for y in toRemove]
 	toNumeric = [i for j, i in enumerate(columns) if j not in indices]
 
+	merged['weightfinal'] = merged[weight].multiply(merged[weight2]) #multiply all the weights
+
 	for col in toNumeric:
 		merged[col] = merged[col].convert_objects(convert_numeric = True) #convert to numeric
-		merged[col] = merged[col].multiply(merged[weight]) #multiply data by weights column
+		merged[col] = merged[col].multiply(merged['weightfinal']) #multiply data by calculated weights column
 
 	#aggregate based on geoid_new
 	grouped = merged.groupby([geo_new]).sum()
@@ -66,7 +72,7 @@ def main():
 	geo_old=e3.get()
 	geo_new=e4.get()
 	weight=e5.get()
-	outname=e6.get()
+	weight2=e6.get()
 
 	#import crosswalk and data files
 	data = importFile(datafile, geo_old)
@@ -78,12 +84,17 @@ def main():
 		cross['weight'] = 1
 		weight = 'weight'
 		print 'No weight column specified, setting all weights equal to 1.'
+	if len(weight2) == 0:
+		cross['weight2'] = 1
+		weight2 = weight2
+		print 'No second weight column specified, setting all secondary weights to 1.'
 
 	#merge, weight, and output new dataframe	
-	final = processing(cross, data, geo_old, geo_new, weight)
+	final = processing(cross, data, geo_old, geo_new, weight, weight2)
 
 	#output new file to csv
-	final.to_csv(outname)
+	name = datafile.split(".")[0]
+	final.to_csv("{0}_{1}.csv".format(name, geo_new))
 
 # make form for user inputs
 # cannot press enter until all fields are filled
@@ -91,9 +102,9 @@ def main():
 window = Tk()
 window.title('data converter')
 
-Button(window, text='Quit', command=window.quit).grid(row=6,column=1, pady=4)
+Button(window, text='Quit', command=window.quit).grid(row=7,column=1, pady=4)
 enter = Button(window, text='Enter', command=main)
-enter.grid(row=6,column=0, pady=4)
+enter.grid(row=7,column=0, pady=4)
 enter.config(state='disabled')
 
 def disableButton(*args):
@@ -101,9 +112,9 @@ def disableButton(*args):
 	cross = stringvar2.get()
 	geo_old = stringvar3.get()
 	geo_new = stringvar4.get()
-	output = stringvar5.get()
+#	output = stringvar7.get()
 
-	if data and cross and geo_old and geo_new and output:
+	if data and cross and geo_old and geo_new:
 		enter.config(state='normal')
 	else:
 		enter.config(state='disabled')
@@ -113,26 +124,30 @@ Label(window, text='Path to crosswalk file').grid(row=1, column=0, sticky='we')
 Label(window, text='Old geography\n(geography coverting from)').grid(row=2, column=0, sticky='we')
 Label(window, text='New geography\n(geography coverting to)').grid(row=3, column=0, sticky='we')
 Label(window, text='Weight column\n(in crosswalk file)').grid(row=4, column=0, sticky='we')
-Label(window, text='Name of output file').grid(row=5, column=0, sticky='we')
+Label(window, text='Optional Second weight column\n(in crosswalk file)').grid(row=5, column=0, sticky='we')
+#Label(window, text='Name of output file').grid(row=6, column=0, sticky='we')
 
 stringvar1 = StringVar(window)
 stringvar2 = StringVar(window)
 stringvar3 = StringVar(window)
 stringvar4 = StringVar(window)
 stringvar5 = StringVar(window)
+stringvar6 = StringVar(window)
+#stringvar7 = StringVar(window)
 
 stringvar1.trace('w', disableButton)
 stringvar2.trace('w', disableButton)
 stringvar3.trace('w', disableButton)
 stringvar4.trace('w', disableButton)
-stringvar5.trace('w', disableButton)
+#stringvar7.trace('w', disableButton)
 
 e1 = Entry(window, textvariable=stringvar1)
 e2 = Entry(window, textvariable=stringvar2)
 e3 = Entry(window, textvariable=stringvar3)
 e4 = Entry(window, textvariable=stringvar4)
 e5 = Entry(window)
-e6 = Entry(window, textvariable=stringvar5)
+e6 = Entry(window)
+#e7 = Entry(window, textvariable=stringvar5)
 
 e1.grid(row=0, column=1, sticky='we')
 e2.grid(row=1, column=1, sticky='we')
@@ -140,23 +155,25 @@ e3.grid(row=2, column=1, sticky='we')
 e4.grid(row=3, column=1, sticky='we')
 e5.grid(row=4, column=1, sticky='we')
 e6.grid(row=5, column=1, sticky='we')
+#e7.grid(row=6, column=1, sticky='we')
 
 #insert default values into form
 # #medicaid data
-# e1.insert(10, 'cw_test/medicaid_data.csv')
-# e2.insert(10, 'cw_test/zip_neighborhood.csv')
-# e3.insert(10, 'zip')
-# e4.insert(10, 'neighborhood')
-# e5.insert(10, 'portion')
-# e6.insert(10, 'cw_test/test3.csv')
+e1.insert(10, 'cw_test/medicaid_data.csv')
+e2.insert(10, 'cw_test/zip_tract_nhd.csv')
+e3.insert(10, 'zip')
+e4.insert(10, 'clusterid')
+e5.insert(10, 'portion')
+e6.insert(10, 'res_ratio')
 
 #acs data
-e1.insert(10, 'cw_test/acs_tract_data.json')
-e2.insert(10, 'cw_test/tract_neighborhood.csv')
-e3.insert(10, 'tract')
-e4.insert(10, 'neighborhood')
-e5.insert(10, 'portion')
-e6.insert(10, 'cw_test/test4.csv')
+# e1.insert(10, 'cw_test/acs_tract_data.json')
+# e2.insert(10, 'cw_test/tract_neighborhood.csv')
+# e3.insert(10, 'tract')
+# e4.insert(10, 'neighborhood')
+# e5.insert(10, 'portion')
+# e6.insert(10, '')
+#e7.insert(10, 'cw_test/test4.csv')
 
 
 window.columnconfigure(1, weight=1)
