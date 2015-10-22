@@ -202,7 +202,7 @@ function drawChoropleth(){
     //   new google.maps.LatLng(38.791,-77.12),
     //   new google.maps.LatLng(38.996,-76.909)
     // );
-    
+
     // Using this hack-y solution as fitBounds frequently produces maps that are too small.
 
     var containerHeight = $("#content-wrapper").height();
@@ -512,8 +512,8 @@ function drawPoints(type) {
       packer = sm.packer(),
       color;
 
-  d3.json('data/' + type + '.json', function (data){
-    var poi = g.select("#points").selectAll(".poi").data(data[type], function(d) {
+  d3.csv('data/' + type + '.csv', function (data) {
+    var poi = g.select("#points").selectAll(".poi").data(data, function(d) {
       return d.name;
     });
 

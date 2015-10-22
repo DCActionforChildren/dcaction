@@ -1,4 +1,4 @@
-﻿X,Y,OBJECTID,GIS_ID,NAME,ADDRESS,PHONE,STATUS,WEB_URL,ADDRESS_ID
+﻿long,lat,OBJECTID,GIS_ID,name,ADDRESS,PHONE,STATUS,WEB_URL,ADDRESS_ID
 -76.97932916027321,38.897860612835082,1,Libr_32,Rosedale Neighborhood Library,1701 Gales Street NE,"202-671-3121
 ",Open,http://www.dclibrary.org/rosedale,307101
 -77.066009610754705,38.913442017065805,2,Libr_25,Georgetown Neighborhood Library,3260 R Street NW,(202) 727-0232,Open,http://www.dclibrary.org/georgetown,295142
