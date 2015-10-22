@@ -151,7 +151,7 @@ def main(args):
 
             tract[outname + "_margin"] = math.sqrt(tract[outname + "_margin"]) * 1.645
 
-        # TODO: compute margin of error for product fiel
+        # TODO: compute margin of error for product field
 
         for outname, acsfields in fields_prod.items():
             tract[outname] = 1

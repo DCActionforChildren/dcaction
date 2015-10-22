@@ -14,6 +14,7 @@
 import pandas as pd
 from Tkinter import *
 from ttk import *
+import os, sys
 
 #input: csv/json/other delimited files / output: df
 def importFile(fileName, geo_old):
@@ -39,24 +40,31 @@ def importFile(fileName, geo_old):
 def processing(cross, data, geo_old, geo_new, weight, weight2):
 	# merge two files into one file with data cols, geoid_original, geoid_new, weight
 	merged = pd.merge(cross,data,on=geo_old)
-	#merged.to_csv("merged.csv")
 
 	columns = list(merged) #get a list of columns
 
 	# convert all columns we need to do math on to numeric
 	# not sure this is necessary, but it was causing me problems with the zip code file
-	toRemove = [geo_old, geo_new, weight]
+	toRemove = [geo_old, geo_new]
 	indices = [columns.index(y) for y in toRemove]
 	toNumeric = [i for j, i in enumerate(columns) if j not in indices]
 
-	merged['weightfinal'] = merged[weight].multiply(merged[weight2]) #multiply all the weights
-
+	if weight == None and weight2 == None:
+		merged['weightfinal'] = 1 # no weights at all! everything equals 1.
+	elif weight != None and weight2 == None:
+		merged['weightfinal'] = merged[weight] #no second weight, just use the first one
+	else:
+		merged['weightfinal'] = merged[weight].multiply(merged[weight2]) #multiply all the weights
+		
 	for col in toNumeric:
 		merged[col] = merged[col].convert_objects(convert_numeric = True) #convert to numeric
 		merged[col] = merged[col].multiply(merged['weightfinal']) #multiply data by calculated weights column
 
 	#aggregate based on geoid_new
 	grouped = merged.groupby([geo_new]).sum()
+
+	#calculate the rations
+
 
 	#keep only geo_new, weighted columns
 	#toNumeric.append(geo_new)
@@ -67,34 +75,39 @@ def processing(cross, data, geo_old, geo_new, weight, weight2):
 #input: csv/json via user form / output: csv
 def main():
 	#user inputs
-	datafile=e1.get()
-	crossfile=e2.get()
+	datafile= os.path.join('inputs', e1.get()) 
+	crossfile= os.path.join('inputs', e2.get())
 	geo_old=e3.get()
 	geo_new=e4.get()
-	weight=e5.get()
-	weight2=e6.get()
 
 	#import crosswalk and data files
 	data = importFile(datafile, geo_old)
 	cross = importFile(crossfile, geo_old)
 
+
 	#if there's no weight column defined for crosswalk
 	#print warning and set equal to 1
-	if len(weight) == 0:
-		cross['weight'] = 1
-		weight = 'weight'
+	if len(e5.get()) > 0:
+		weight=e5.get()
+	else:
+		weight = None
 		print 'No weight column specified, setting all weights equal to 1.'
-	if len(weight2) == 0:
-		cross['weight2'] = 1
-		weight2 = weight2
+
+	if len(e6.get()) > 0:	
+		weight2=e6.get()
+	else:
+		weight2 = None
 		print 'No second weight column specified, setting all secondary weights to 1.'
 
 	#merge, weight, and output new dataframe	
 	final = processing(cross, data, geo_old, geo_new, weight, weight2)
 
 	#output new file to csv
-	name = datafile.split(".")[0]
-	final.to_csv("{0}_{1}.csv".format(name, geo_new))
+	name = e1.get().split(".")[0]
+	finalfile = "{0}_{1}.csv".format(name, geo_new)
+	output_file = os.path.join('outputs', finalfile)
+	final.to_csv(output_file)
+	print 'Completed, converted final named {0}'.format(finalfile)
 
 # make form for user inputs
 # cannot press enter until all fields are filled
@@ -112,7 +125,6 @@ def disableButton(*args):
 	cross = stringvar2.get()
 	geo_old = stringvar3.get()
 	geo_new = stringvar4.get()
-#	output = stringvar7.get()
 
 	if data and cross and geo_old and geo_new:
 		enter.config(state='normal')
@@ -124,8 +136,7 @@ Label(window, text='Path to crosswalk file').grid(row=1, column=0, sticky='we')
 Label(window, text='Old geography\n(geography coverting from)').grid(row=2, column=0, sticky='we')
 Label(window, text='New geography\n(geography coverting to)').grid(row=3, column=0, sticky='we')
 Label(window, text='Weight column\n(in crosswalk file)').grid(row=4, column=0, sticky='we')
-Label(window, text='Optional Second weight column\n(in crosswalk file)').grid(row=5, column=0, sticky='we')
-#Label(window, text='Name of output file').grid(row=6, column=0, sticky='we')
+Label(window, text='Optional second weight column\n(in crosswalk file)').grid(row=5, column=0, sticky='we')
 
 stringvar1 = StringVar(window)
 stringvar2 = StringVar(window)
@@ -133,13 +144,11 @@ stringvar3 = StringVar(window)
 stringvar4 = StringVar(window)
 stringvar5 = StringVar(window)
 stringvar6 = StringVar(window)
-#stringvar7 = StringVar(window)
 
 stringvar1.trace('w', disableButton)
 stringvar2.trace('w', disableButton)
 stringvar3.trace('w', disableButton)
 stringvar4.trace('w', disableButton)
-#stringvar7.trace('w', disableButton)
 
 e1 = Entry(window, textvariable=stringvar1)
 e2 = Entry(window, textvariable=stringvar2)
@@ -147,7 +156,6 @@ e3 = Entry(window, textvariable=stringvar3)
 e4 = Entry(window, textvariable=stringvar4)
 e5 = Entry(window)
 e6 = Entry(window)
-#e7 = Entry(window, textvariable=stringvar5)
 
 e1.grid(row=0, column=1, sticky='we')
 e2.grid(row=1, column=1, sticky='we')
@@ -155,12 +163,11 @@ e3.grid(row=2, column=1, sticky='we')
 e4.grid(row=3, column=1, sticky='we')
 e5.grid(row=4, column=1, sticky='we')
 e6.grid(row=5, column=1, sticky='we')
-#e7.grid(row=6, column=1, sticky='we')
 
 #insert default values into form
 # #medicaid data
-e1.insert(10, 'cw_test/medicaid_data.csv')
-e2.insert(10, 'cw_test/zip_tract_nhd.csv')
+e1.insert(10, 'medicaid_data.csv')
+e2.insert(10, 'zip_tract_nhd.csv')
 e3.insert(10, 'zip')
 e4.insert(10, 'clusterid')
 e5.insert(10, 'portion')
