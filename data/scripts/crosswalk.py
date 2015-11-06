@@ -1,142 +1,161 @@
-# to-do
-# make the gui less ugly/clean up that code
-
-# add support for more input files other than json/csv -- this will make initial form more complicated, is it worth it?
-
-# need to add option for how to parse json file -- right now tracts are put in index column, so a lot of adjustment specific to the acs tract to neighborhood conversion has to take place, not sure this will work for all json files
-
-# also census tracts are by default parsed as dates in json file, need to make sure that's turned off
-
-# check ruby code to make sure math is being done correctly -- initial sanity check shows population totals are the same in the file produced by this code and the file produced by the ruby code
-
-# right now this only works for files in the same directory as the script and outputs the resulting csv to the same directory, so this needs to handle inputs/outputs to other places. cw_test currently holds all the test files used to make this work.
-
 import pandas as pd
+import numpy as np
 from Tkinter import *
 from ttk import *
 import os, sys
 
-#input: csv/json/other delimited files / output: df
-def importFile(fileName, geo_old):
-    if 'json' in fileName:
-        data = pd.read_json(fileName, orient='index', convert_axes=0) # make sure tracts remain tracts, not dates
+# Function to import file whether json or csv. Input: csv/json / output: df.
+def import_file(file_name, geo_old):
+    if "json" in file_name:
+        data = pd.read_json(file_name, orient="index", convert_axes=0) # make sure tracts remain tracts, not dates
         data[geo_old] = data.index
         data.reset_index(level=0, inplace=True)
         data[geo_old] = data[geo_old].convert_objects(convert_numeric = True)
-        data.drop('index', axis=1, inplace=True)
-        data.columns = map(str.lower, data.columns)
-        return data
-    elif 'csv' in fileName:
-        data = pd.read_csv(fileName)
-        data.columns = map(str.lower, data.columns)
-        return data
+        data.drop("index", axis=1, inplace=True)
+        data.columns = map(lambda x: x.lower(), data.columns)
+    elif "csv" in file_name:
+        data = pd.read_csv(file_name)
+        data.columns = map(lambda x: x.lower(), data.columns)
+    return data
 
-# input: df / output: df
-# cross is the df containing the crosswalk
-# data is the df containing the data to be converted
-# geo_old is a string defining which column contains the common geography
-# geo_new is a string defining which column contains the new geography
-# weight is a string defining which column contains the weighting column
-def processing(cross, data, geo_old, geo_new, weight, weight2):
-	# merge two files into one file with data cols, geoid_original, geoid_new, weight
+# Function to merge crosswalk and data file and multiple data by weights. Input: df / output: df.
+def merge_and_weight(cross, data, geo_old, geo_new, weight, weight2):
 	merged = pd.merge(cross,data,on=geo_old)
 
-	columns = list(merged) #get a list of columns
+	columns = list(merged)
 
-	# convert all columns we need to do math on to numeric
-	# not sure this is necessary, but it was causing me problems with the zip code file
-	toRemove = [geo_old, geo_new]
-	indices = [columns.index(y) for y in toRemove]
-	toNumeric = [i for j, i in enumerate(columns) if j not in indices]
-
-	if weight == None and weight2 == None:
-		merged['weightfinal'] = 1 # no weights at all! everything equals 1.
-	elif weight != None and weight2 == None:
-		merged['weightfinal'] = merged[weight] #no second weight, just use the first one
-	else:
-		merged['weightfinal'] = merged[weight].multiply(merged[weight2]) #multiply all the weights
+	# Get single weight column, then multiply all data columns by weight
+	indices = [columns.index(y) for y in [geo_old, geo_new, weight, weight2]]
+	data_cols = [i for j, i in enumerate(columns) if j not in indices]
+	
+	merged['weight_tot'] = merged[weight].multiply(merged[weight2])
 		
-	for col in toNumeric:
-		merged[col] = merged[col].convert_objects(convert_numeric = True) #convert to numeric
-		merged[col] = merged[col].multiply(merged['weightfinal']) #multiply data by calculated weights column
+	for col in data_cols:
+		merged[col] = merged[col].convert_objects(convert_numeric = True)
+		merged[col] = merged[col].multiply(merged['weight_tot'])
 
-	#aggregate based on geoid_new
-	grouped = merged.groupby([geo_new]).sum()
+	data_cols.append(geo_new)
+	return merged.loc[:, data_cols]
 
-	#calculate the rations
+# Function to calculate square root of sum of squares
+def sqrt_sos(data, columns, geo_new):
+	for col in columns:
+		if col != geo_new:
+			data[col] = data[col]**2
 
+	data_agg = data.groupby([geo_new]).sum()
 
-	#keep only geo_new, weighted columns
-	#toNumeric.append(geo_new)
-	final = grouped.loc[:, toNumeric]
+	for col in columns:
+		if col != geo_new:
+			data_agg[col] = data_agg[col]**.5
+	return data_agg
 
-	return final
-
-#input: csv/json via user form / output: csv
+# Main function launched with GUI form. Input: csv/json via user form / output: csv.
 def main():
-	#user inputs
-	datafile= os.path.join('inputs', e1.get()) 
-	crossfile= os.path.join('inputs', e2.get())
-	geo_old=e3.get()
-	geo_new=e4.get()
+	# User inputs/get data from files
+	data_file = os.path.join("inputs", e1.get()) 
+	cross_file = os.path.join("inputs", e2.get())
+	geo_old = e3.get()
+	geo_new = e4.get()
 
-	#import crosswalk and data files
-	data = importFile(datafile, geo_old)
-	cross = importFile(crossfile, geo_old)
+	data = import_file(data_file, geo_old)
+	cross = import_file(cross_file, geo_old)
 
-
-	#if there's no weight column defined for crosswalk
-	#print warning and set equal to 1
+	# If there's no weight column or secondary weight column defined for crosswalk, print warning and set equal to 1
 	if len(e5.get()) > 0:
-		weight=e5.get()
+		weight = e5.get()
 	else:
-		weight = None
-		print 'No weight column specified, setting all weights equal to 1.'
+		weight = "weight"
+		cross[weight] = 1
+		print "No weight column specified, setting all weights equal to 1."
 
 	if len(e6.get()) > 0:	
-		weight2=e6.get()
+		weight2 = e6.get()
 	else:
-		weight2 = None
-		print 'No second weight column specified, setting all secondary weights to 1.'
+		weight2 = "weight2"
+		cross[weight2]= 1
+		print "No second weight column specified, setting all secondary weights to 1."
 
-	#merge, weight, and output new dataframe	
-	final = processing(cross, data, geo_old, geo_new, weight, weight2)
+	# Merge crosswalk and data, weight data for new geography
+	merged = merge_and_weight(cross, data, geo_old, geo_new, weight, weight2)
 
-	#output new file to csv
+	# Merge data and calculate ratios for counts and MOEs
+	# Split data into count and margin columns, to simplify code for aggregation/calculations
+	columns = list(merged)
+	counts = [x for x in columns if "_margin" not in x]
+	margins = [x for x in columns if "_margin" in x]
+	margins.append(geo_new)
+
+	count_data = merged.loc[:, counts]
+	margin_data = merged.loc[:, margins] 
+
+	# Sum counts by new geography, aggregate MOEs using sum of squares
+	count_agg = count_data.groupby([geo_new]).sum()
+	margin_agg = sqrt_sos(margin_data, margins, geo_new)
+
+	# Calculate ratios
+	bases = [r.replace("_numer","") for r in counts if "_numer" in r]
+
+	for base in bases:
+		numer = "{}_numer".format(base)
+		denom = "{}_denom".format(base)
+		ratio = "{}_ratio".format(base)
+		numer_margin = "{}_numer_margin".format(base)
+		denom_margin = "{}_denom_margin".format(base)
+		ratio_margin = "{}_ratio_margin".format(base)
+
+		try:
+			count_agg[ratio] = count_agg[numer] / count_agg[denom]
+			count_agg[np.isinf(count_agg)] = 1 # Inf set equal to 1
+			count_agg.drop([numer, denom], axis=1, inplace=True)
+		except:
+			print "{0} or {1} missing for variable {2}.".format(numer, denom, ratio)
+
+		if base in margins:
+			try:
+				# Margin for ratios uses formula from appendix for derived ratios because it is more conservative (eg yields wider margins) and doesn't yield negatives under root
+				# Source: https://www.census.gov/content/dam/Census/library/publications/2009/acs/ACSResearch.pdf
+				margin_agg[ratio_margin] = ((margin_agg[numer_margin]**2 + ((count_agg[ratio]**2)*margin_agg[denom_margin]**2))**.5)/count_agg[denom]
+				margin_agg.drop([numer_margin, denom_margin], axis=1, inplace=True)
+			except:
+				print "{0}, {1}, {2}, {3} for variable {4}.".format(numer_margin, denom_margin, ratio, denom, ratio_margin)
+
+	final = pd.concat([count_agg, margin_agg], axis=1)
+
+	# Output new file to csv
 	name = e1.get().split(".")[0]
 	finalfile = "{0}_{1}.csv".format(name, geo_new)
-	output_file = os.path.join('outputs', finalfile)
+	output_file = os.path.join("outputs", finalfile)
 	final.to_csv(output_file)
-	print 'Completed, converted final named {0}'.format(finalfile)
+	print "Completed. Converted final data set named {}.".format(finalfile)
 
-# make form for user inputs
-# cannot press enter until all fields are filled
-# figure out how to make the gray backgrounds go away
+# Make form for user inputs
+# Cannot press enter until all fields are filled
 window = Tk()
-window.title('data converter')
+window.title("Crosswalk Script")
 
-Button(window, text='Quit', command=window.quit).grid(row=7,column=1, pady=4)
-enter = Button(window, text='Enter', command=main)
+Button(window, text="Quit", command=window.quit).grid(row=7,column=1, pady=4)
+enter = Button(window, text="Enter", command=main)
 enter.grid(row=7,column=0, pady=4)
-enter.config(state='disabled')
+enter.config(state="disabled")
 
-def disableButton(*args):
+def disable_button(*args):
 	data = stringvar1.get()
 	cross = stringvar2.get()
 	geo_old = stringvar3.get()
 	geo_new = stringvar4.get()
 
 	if data and cross and geo_old and geo_new:
-		enter.config(state='normal')
+		enter.config(state="normal")
 	else:
-		enter.config(state='disabled')
+		enter.config(state="disabled")
 
-Label(window, text='Path to data file').grid(row=0, column=0, sticky='we')
-Label(window, text='Path to crosswalk file').grid(row=1, column=0, sticky='we')
-Label(window, text='Old geography\n(geography coverting from)').grid(row=2, column=0, sticky='we')
-Label(window, text='New geography\n(geography coverting to)').grid(row=3, column=0, sticky='we')
-Label(window, text='Weight column\n(in crosswalk file)').grid(row=4, column=0, sticky='we')
-Label(window, text='Optional second weight column\n(in crosswalk file)').grid(row=5, column=0, sticky='we')
+Label(window, text="Path to data file").grid(row=0, column=0, sticky="we")
+Label(window, text="Path to crosswalk file").grid(row=1, column=0, sticky="we")
+Label(window, text="Old geography\n(geography coverting from)").grid(row=2, column=0, sticky="we")
+Label(window, text="New geography\n(geography coverting to)").grid(row=3, column=0, sticky="we")
+Label(window, text="Weight column\n(in crosswalk file)").grid(row=4, column=0, sticky="we")
+Label(window, text="Optional second weight column\n(in crosswalk file)").grid(row=5, column=0, sticky="we")
 
 stringvar1 = StringVar(window)
 stringvar2 = StringVar(window)
@@ -145,10 +164,10 @@ stringvar4 = StringVar(window)
 stringvar5 = StringVar(window)
 stringvar6 = StringVar(window)
 
-stringvar1.trace('w', disableButton)
-stringvar2.trace('w', disableButton)
-stringvar3.trace('w', disableButton)
-stringvar4.trace('w', disableButton)
+stringvar1.trace("w", disable_button)
+stringvar2.trace("w", disable_button)
+stringvar3.trace("w", disable_button)
+stringvar4.trace("w", disable_button)
 
 e1 = Entry(window, textvariable=stringvar1)
 e2 = Entry(window, textvariable=stringvar2)
@@ -157,36 +176,31 @@ e4 = Entry(window, textvariable=stringvar4)
 e5 = Entry(window)
 e6 = Entry(window)
 
-e1.grid(row=0, column=1, sticky='we')
-e2.grid(row=1, column=1, sticky='we')
-e3.grid(row=2, column=1, sticky='we')
-e4.grid(row=3, column=1, sticky='we')
-e5.grid(row=4, column=1, sticky='we')
-e6.grid(row=5, column=1, sticky='we')
+e1.grid(row=0, column=1, sticky="we")
+e2.grid(row=1, column=1, sticky="we")
+e3.grid(row=2, column=1, sticky="we")
+e4.grid(row=3, column=1, sticky="we")
+e5.grid(row=4, column=1, sticky="we")
+e6.grid(row=5, column=1, sticky="we")
 
-#insert default values into form
+# #insert default values into form
 # #medicaid data
-e1.insert(10, 'medicaid_data.csv')
-e2.insert(10, 'zip_tract_nhd.csv')
-e3.insert(10, 'zip')
-e4.insert(10, 'clusterid')
-e5.insert(10, 'portion')
-e6.insert(10, 'res_ratio')
+# e1.insert(10, 'medicaid_data.csv')
+# e2.insert(10, 'zip_tract_nhd.csv')
+# e3.insert(10, 'zip')
+# e4.insert(10, 'clusterid')
+# e5.insert(10, 'portion')
+# e6.insert(10, 'res_ratio')
 
-#acs data
-# e1.insert(10, 'cw_test/acs_tract_data.json')
-# e2.insert(10, 'cw_test/tract_neighborhood.csv')
+# # #acs data
+# e1.insert(10, 'acs_tract_data.json')
+# e2.insert(10, 'tract_neighborhood.csv')
 # e3.insert(10, 'tract')
 # e4.insert(10, 'neighborhood')
 # e5.insert(10, 'portion')
 # e6.insert(10, '')
-#e7.insert(10, 'cw_test/test4.csv')
-
 
 window.columnconfigure(1, weight=1)
 
-#style = Style()
-#style.configure('.', font=('Helvetica', 12, 'bold'))
-
-if __name__ == '__main__': 
+if __name__ == "__main__": 
 	window.mainloop()
