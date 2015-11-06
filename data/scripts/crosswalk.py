@@ -107,7 +107,6 @@ def main():
 		try:
 			count_agg[ratio] = count_agg[numer] / count_agg[denom]
 			count_agg[np.isinf(count_agg)] = 1 # Inf set equal to 1
-			count_agg.drop([numer, denom], axis=1, inplace=True)
 		except:
 			print "{0} or {1} missing for variable {2}.".format(numer, denom, ratio)
 
@@ -116,9 +115,11 @@ def main():
 				# Margin for ratios uses formula from appendix for derived ratios because it is more conservative (eg yields wider margins) and doesn't yield negatives under root
 				# Source: https://www.census.gov/content/dam/Census/library/publications/2009/acs/ACSResearch.pdf
 				margin_agg[ratio_margin] = ((margin_agg[numer_margin]**2 + ((count_agg[ratio]**2)*margin_agg[denom_margin]**2))**.5)/count_agg[denom]
-				margin_agg.drop([numer_margin, denom_margin], axis=1, inplace=True)
 			except:
 				print "{0}, {1}, {2}, {3} for variable {4}.".format(numer_margin, denom_margin, ratio, denom, ratio_margin)
+
+		count_agg.drop([numer, denom], axis=1, inplace=True) #these need to go at the end because margin calculation needs denom var
+		margin_agg.drop([numer_margin, denom_margin], axis=1, inplace=True)
 
 	final = pd.concat([count_agg, margin_agg], axis=1)
 
@@ -182,23 +183,6 @@ e3.grid(row=2, column=1, sticky="we")
 e4.grid(row=3, column=1, sticky="we")
 e5.grid(row=4, column=1, sticky="we")
 e6.grid(row=5, column=1, sticky="we")
-
-# #insert default values into form
-# #medicaid data
-# e1.insert(10, 'medicaid_data.csv')
-# e2.insert(10, 'zip_tract_nhd.csv')
-# e3.insert(10, 'zip')
-# e4.insert(10, 'clusterid')
-# e5.insert(10, 'portion')
-# e6.insert(10, 'res_ratio')
-
-# # #acs data
-# e1.insert(10, 'acs_tract_data.json')
-# e2.insert(10, 'tract_neighborhood.csv')
-# e3.insert(10, 'tract')
-# e4.insert(10, 'neighborhood')
-# e5.insert(10, 'portion')
-# e6.insert(10, '')
 
 window.columnconfigure(1, weight=1)
 
