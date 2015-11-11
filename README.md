@@ -8,7 +8,7 @@ The tool currently uses DC's geographies and data which can be repurposed for ot
 
 * [How it works](#how-it-works)
 * [Setting up your own version](#setting-up-your-own-version)
-  * [What does it takes to set up my own version of something similar?](#what-does-it-take-to-set-up-my-own-version-of-something-similar)
+  * [What does it take to set up my own version of something similar?](#what-does-it-take-to-set-up-my-own-version-of-something-similar)
   * [What features can I reuse for my version?](#what-features-can-i-reuse-for-my-version)
 * [Pulling together the data](#pulling-together-the-data)
   * [Data sources and methodology](#data-sources-and-methodology)
@@ -33,7 +33,7 @@ This section talks about how to set up your own version.
 
 The [first part](#what-does-it-take-to-set-up-my-own-version-of-something-similar) steps you through that process of deploying your own. The [second part](#what-features-can-i-reuse-for-my-version) talks about the key features that may be useful to you depending on where you are in the world.
 
-### What does it takes to set up my own version of something similar?
+### What does it take to set up my own version of something similar?
 
 *What category best describes you?*
 
