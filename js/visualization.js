@@ -43,7 +43,7 @@ function init(){
 
 function drawChoropleth(){
   projection = d3.geo.mercator()
-    .center([-77.01551, 38.90755]) // Dunbar High School
+    .center([37.4669, 122.1397]) // Dunbar High School
     .scale(150000)
     .translate([width/2, height/2]);
 
