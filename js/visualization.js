@@ -171,7 +171,7 @@ function drawChoropleth(){
     gmap = new google.maps.Map(d3.select("#content").node(), {
       zoom: 12,
       minZoom: 10,
-      maxZoom: 2000,
+      maxZoom: 20,
       center: new google.maps.LatLng(37.4669, 122.1397),
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       streetViewControl: false,
