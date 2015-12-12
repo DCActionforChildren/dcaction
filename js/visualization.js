@@ -218,7 +218,7 @@ function drawChoropleth(){
     );
 
     // If a drag ends outside of our max bounds, bounce back to the default center.
-    /*google.maps.event.addListener(gmap, "dragend", function() {
+    google.maps.event.addListener(gmap, "dragend", function() {
       if (maxBounds.contains(gmap.getCenter())) { return; }
 
      var c = gmap.getCenter(),
@@ -240,7 +240,7 @@ function drawChoropleth(){
 
     var overlay = new google.maps.OverlayView();
     svg = d3.select("#content").append("svg:svg");
-*/
+
     // Add the container when the overlay is added to the map.
     overlay.onAdd = function() {
 
