@@ -10,7 +10,7 @@ $(document).ready(function() {
 //  var zoomControl = new L.Control.Zoom({ position: 'topright'} );
 //  zoomControl.addTo(map);
   var map = L.mapbox.map('map', 'mapbox.dc-bright')
-	.setView([38.9049,-77.0128], 11);
+	.setView([37.4669, 122.1397], 11);
 	map.addLayer(L.mapbox.tileLayer('newamerica.dc-action-neighborhoods'));
 	
 	$.get('data/schools.json', function(schools){
