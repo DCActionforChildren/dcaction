@@ -1,4 +1,5 @@
-import itertools, json, math, os, re, sys, urllib.request, yaml
+#edited to work with python 2.7
+import itertools, json, math, os, re, sys, urllib2, yaml
 
 DEFAULT_OUTPUT_DIRECTORY = "outputs"
 DEFAULT_OUTPUT_FILE = "acs_tract_data.json"
@@ -16,10 +17,13 @@ def census_query(acs_variables, base_url, geo):
     while start_index <= len(acs_variables):
         v = acs_variables[start_index:(start_index + 50)]
         url = "&".join([base_url, "get=" + ",".join(v), geo])
-        print("Fetching {} fields from ACS...".format(len(v)))
-        print("URL: " + url)
-        resp = json.loads(urllib.request.urlopen(url).read().decode("UTF-8"))
-        colnames, *data = resp
+        print "Fetching {} fields from ACS...".format(len(v))
+        print "URL: " + url
+        # resp = json.loads(urllib.request.urlopen(url).read().decode("UTF-8"))
+        resp = json.loads(urllib2.urlopen(url).read().decode("UTF-8"))
+        # colnames, *data = resp
+        colnames = resp[0]
+        data = resp[1:]
 
         for row in data:
             r = dict(zip(colnames, row))
@@ -65,7 +69,7 @@ def main(args):
     # construct the base URL
 
     base_url = "http://api.census.gov/data/{}/acs{}?".format(acs_year, acs_period)
-    print("Using base URL: " + base_url)
+    print "Using base URL: " + base_url
 
     # construct the geo parameter
 
@@ -92,11 +96,11 @@ def main(args):
         output_acs_variables = DEFAULT_OUTPUT_ACS_VARIABLES
 
     output_file = os.path.join(output_directory, output_file)
-    print("Using output file: " + output_file)
+    print "Using output file: " + output_file
 
     for name in ["fields_rename", "fields_sum", "fields_sub", "fields_prod"]:
         if name not in config:
-            print("WARNING: {} does not appear in configuration".format(name))
+            print "WARNING: {} does not appear in configuration".format(name)
 
     fields_rename = config["fields_rename"] or {}
     fields_sum = config["fields_sum"] or {}
@@ -114,6 +118,9 @@ def main(args):
     all_acs_fields |= set(re.sub("E", "M", s) for s in all_acs_fields)
     tracts = census_query(all_acs_fields, base_url, geo)
 
+    # print all_acs_fields
+    # print tracts['11001000300']
+
     # compute named variables from ACS variables
 
     for tract_id, tract in tracts.items():
@@ -123,9 +130,9 @@ def main(args):
             tract[outname] = tract[acsname]
             tract[outname + "_margin"] = tract[errname]
 
-        # We found some Census documentation suggesting that we use the
-        # sqrt(sum of squares) for the margin of error for aggregate estimates.
-        # https://www.census.gov/acs/www/Downloads/data_documentation/Statistical_Testing/ACS_2008_Statistical_Testing.pdf
+        # # We found some Census documentation suggesting that we use the
+        # # sqrt(sum of squares) for the margin of error for aggregate estimates.
+        # # https://www.census.gov/acs/www/Downloads/data_documentation/Statistical_Testing/ACS_2008_Statistical_Testing.pdf
 
         for outname, acsfields in fields_sum.items():
             tract[outname] = 0
@@ -139,7 +146,10 @@ def main(args):
             tract[outname + "_margin"] = math.sqrt(tract[outname + "_margin"]) * 1.645
 
         for outname, acsfields in fields_sub.items():
-            first, *rest = acsfields
+            # first, *rest = acsfields
+            first = acsfields[0]
+            rest = acsfields[1:]
+
             errname = re.sub("E", "M", first)
             tract[outname] = tract[first]
             tract[outname + "_margin"] = (tract[errname] / 1.645) ** 2
@@ -158,19 +168,20 @@ def main(args):
             tract[outname + "_margin"] = 0
 
             for acsname in acsfields:
-                tract[outname] *= tract[acsname]
+                try:
+                    tract[outname] *= tract[acsname]
+                except TypeError:
+                    pass
 
-        # remove ACS variables from output
+    # remove ACS variables from output
+    if not output_acs_variables:
+        for tract in tracts.values():
+            for f in all_acs_fields:
+                del(tract[f])
 
-        if not output_acs_variables:
-            for tract in tracts.values():
-                for f in all_acs_fields:
-                    del(tract[f])
-
-        # write the result to a JSON file
-
-        with open(outname, "w") as f:
-            json.dump(tracts, f, indent=2)
+    # write the result to a JSON file
+    with open(output_file, "w") as f:
+        json.dump(tracts, f, indent=2)
 
 
 if __name__ == "__main__":

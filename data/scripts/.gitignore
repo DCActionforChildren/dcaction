@@ -1,0 +1,8 @@
+
+#data files
+*.ipynb
+*.json
+
+#os files
+.DS_Store
+.DS_Store?
