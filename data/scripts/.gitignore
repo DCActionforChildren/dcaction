@@ -2,6 +2,7 @@
 #data files
 *.ipynb
 *.json
+readme_updates.md
 
 #os files
 .DS_Store
