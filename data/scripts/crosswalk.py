@@ -53,24 +53,24 @@ def sqrt_sos(data, columns, geo_new):
 # Main function launched with GUI form. Input: csv/json via user form / output: csv.
 def main():
 	# User inputs/get data from files
-	data_file = os.path.join("inputs", e1.get()) 
-	cross_file = os.path.join("inputs", e2.get())
-	geo_old = e3.get()
-	geo_new = e4.get()
+	data_file = os.path.join("inputs", e1.get().lower()) 
+	cross_file = os.path.join("inputs/crosswalks", e2.get().lower())
+	geo_old = e3.get().lower()
+	geo_new = e4.get().lower()
 
 	data = import_file(data_file, geo_old)
 	cross = import_file(cross_file, geo_old)
 
 	# If there's no weight column or secondary weight column defined for crosswalk, print warning and set equal to 1
 	if len(e5.get()) > 0:
-		weight = e5.get()
+		weight = e5.get().lower()
 	else:
 		weight = "weight"
 		cross[weight] = 1
 		print "No weight column specified, setting all weights equal to 1."
 
 	if len(e6.get()) > 0:	
-		weight2 = e6.get()
+		weight2 = e6.get().lower()
 	else:
 		weight2 = "weight2"
 		cross[weight2]= 1
@@ -151,8 +151,8 @@ def disable_button(*args):
 	else:
 		enter.config(state="disabled")
 
-Label(window, text="Path to data file").grid(row=0, column=0, sticky="we")
-Label(window, text="Path to crosswalk file").grid(row=1, column=0, sticky="we")
+Label(window, text="Data filename\n(should be in 'inputs' folder)").grid(row=0, column=0, sticky="we")
+Label(window, text="Crosswalk filename\n(should be in 'inputs' folder)").grid(row=1, column=0, sticky="we")
 Label(window, text="Old geography\n(geography coverting from)").grid(row=2, column=0, sticky="we")
 Label(window, text="New geography\n(geography coverting to)").grid(row=3, column=0, sticky="we")
 Label(window, text="Weight column\n(in crosswalk file)").grid(row=4, column=0, sticky="we")
