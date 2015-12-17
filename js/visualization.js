@@ -629,10 +629,10 @@ function drawChart(){
     .append("text").text("Over 18").attr("class","axisTitle").attr("text-anchor","middle").attr("x",0).attr("y",-10);
 
   var ethdata = [
-    {name: "white", under18: 0.23, over18: 0.32},
-    {name: "black", under18: 0.60, over18: 0.55},
-    {name: "hispanic", under18: 0.10, over18: 0.06},
-    {name: "other", under18: 0.07, over18: 0.05}
+    {name: "white", under18: 0.193, over18: 0.370},
+    {name: "black", under18: 0.625, over18: 0.449},
+    {name: "hispanic", under18: 0.136, over18: 0.087},
+    {name: "other", under18: 0.123, over18: 0.093}
   ];
 
   var ethnicity = chartSvg.selectAll(".ethnicity")
