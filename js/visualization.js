@@ -392,7 +392,7 @@ function populateNavPanel(data) {
 
 function changeNeighborhoodData(new_data_column) {
   var data_values = _.filter(_.map(choropleth_data, function(d){ return parseFloat(d[new_data_column]); }), function(d){ return !isNaN(d); });
-  var jenks = _.filter(_.unique(ss.jenks(data_values, 5)), function(d){ return !isNaN(d); });
+  var jenks = _.filter(_.unique(ss.jenks(data_values, Math.min(5, data_values.length))), function(d){ return !isNaN(d); });
 
   var color_palette = [ "#9ae3ff", "#45ccff", "#00adef", "#00709a", "#003245"];
 
@@ -442,6 +442,7 @@ function changeNeighborhoodData(new_data_column) {
       if (zeroElement) { return "0"; }
       return "Less than " + legendNumber(d);
     } else if(d > _.max(jenks)){
+      if (jenks.length === 0) { return "0 and above"; }
       return legendNumber(_.max(jenks)) + " and above";
     } else {
       return legendNumber(previousElement(d, jenks)) + " - " + legendNumber(d);
