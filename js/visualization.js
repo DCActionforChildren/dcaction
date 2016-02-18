@@ -662,10 +662,10 @@ function drawChart(){
 
 function updateChart(data){
   var ethdata = [
-    {name: "white", under18: data.pop_nothisp_white_under18_perc, over18: data.pop_nothisp_white_perc},
-    {name: "black", under18: data.pop_nothisp_black_under18_perc, over18: data.pop_nothisp_black_perc},
-    {name: "hispanic", under18: data.pop_hisp_under18_perc, over18: data.pop_hisp_perc},
-    {name: "other", under18: data.pop_nothisp_other_under18_perc, over18: data.pop_nothisp_other_perc}
+    {name: "white", under18: data.pop_nothisp_white_under18_perc || 0, over18: data.pop_nothisp_white_perc || 0},
+    {name: "black", under18: data.pop_nothisp_black_under18_perc || 0, over18: data.pop_nothisp_black_perc || 0},
+    {name: "hispanic", under18: data.pop_hisp_under18_perc || 0, over18: data.pop_hisp_perc || 0},
+    {name: "other", under18: data.pop_nothisp_other_under18_perc || 0, over18: data.pop_nothisp_other_perc || 0}
   ];
 
   chartSvg.selectAll(".ethnicity line")
