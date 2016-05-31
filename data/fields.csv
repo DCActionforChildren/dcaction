@@ -22,7 +22,7 @@ fs_client_2012_val,Number of SNAP Recipients (Children & Adults),neighborhood,Ch
 math_perc,Percentage of Students Proficient in DC CAS (Math),neighborhood,Child Success,
 reading_perc,Percentage of Students Proficient in DC CAS (Reading),neighborhood,Child Success,
 parcc_math,Percentage of Students Meeting or Exceeding Expectations on PARCC (Math),,Child Success,
-parcc_read,Percentage of Students Meeting or Exceeding Expectations on PARCC (English),,Child Success,
+parcc_read,Percentage of Students Meeting or Exceeding Expectations on PARCC (Reading),,Child Success,
 cc_cap_val,Infant/Toddler Child Care Capacity,neighborhood,Child Care,
 cc_pop_ratio,Ratio of Infant/Toddler Child Care Capacity to Under 3 Population,neighborhood,Child Care,
 cc_child_pov_ratio,Ratio of Infant/Toddler Child Care Capacity to Under 5 Poverty,neighborhood,Child Care,
