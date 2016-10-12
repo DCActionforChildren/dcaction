@@ -2,6 +2,7 @@ id,name,type,category,new
 dcps,DC Public Schools,schools,,
 charters,DC Public Charter Schools,schools,,
 libraries,Libraries,poi,,
+primary care centers,Primary Care Centers,poi,,
 hospitals,Hospitals,poi,,
 population_total_val,Total Population,neighborhood,Neighborhood Demographics,
 population_under_18_val,Children (Under 18),neighborhood,Neighborhood Demographics,
