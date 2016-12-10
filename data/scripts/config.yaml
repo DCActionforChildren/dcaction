@@ -1,5 +1,5 @@
 api:
-  acs_year: 2014
+  acs_year: 2015
   acs_period: 5   # use 5-year estimates
 
   # Return all tracts for DC (state = 11)
@@ -28,7 +28,8 @@ fields_rename:
   population_hisp_total: B03002_012E
   total_neighborhood_poverty_numer: B17001_002E
   total_neighborhood_poverty_denom: B17001_001E
-  homeownership_denom: B11012_001E
+  homeownership_numer: B25003_002E
+  homeownership_denom: B25003_001E
   work_denom: B08303_001E
   population_under_3: B09001_003E
   female_householder_no_husband_numer: B09002_015E
@@ -72,7 +73,7 @@ fields_sum:
     - B17001_049E
     - B17001_050E
     - B17001_051E
-    - B17001_052E 
+    - B17001_052E
     - B17001_004E
     - B17001_005E
     - B17001_006E
@@ -85,7 +86,7 @@ fields_sum:
     - B17001_021E
     - B17001_022E
     - B17001_023E
-      
+
   population_other_total:
     - B03002_005E
     - B03002_006E
@@ -167,14 +168,8 @@ fields_sum:
     - B23001_099E
     - B23001_106E
 
-  homeownership_numer:
-    - B11012_004E
-    - B11012_008E
-    - B11012_011E
-    - B11012_014E
-
   work_numer:
-    - B08303_012E 
+    - B08303_012E
     - B08303_013E
 
   no_hs_degree_25_plus_denom:
