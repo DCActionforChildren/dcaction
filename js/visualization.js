@@ -160,10 +160,10 @@ function drawChoropleth(){
 
     all_data.dc = {
       NBH_NAMES: "Washington, DC",
-      population_total_val: 633736,
-      population_under_18_val: 107989,
-      single_mother_families_perc: 0.4263,
-      children_in_poverty_perc: 0.275
+      population_total_val: 647484,
+      population_under_18_val: 110588,
+      single_mother_families_perc: 0.421,
+      children_in_poverty_perc: 0.266
     };
 
     displayPopBox();
