@@ -25,7 +25,7 @@ vacants_val,"DC Department of Consumer and Regulatory Affairs, 2014",http://dcra
 grocery_val,"DC Office of Planning, 2012",http://planning.dc.gov/DC/Planning
 rec_val,"DC Department of Parks and Recreation, 2010",http://dpr.dc.gov/
 parks_val,"DC Department of Parks and Recreation, 2011",http://dpr.dc.gov/
-metro_val,"WMATA, 2007",http://dcatlas.dcgis.dc.gov/metadata/MetroStnFullPt.html
+metro_val,"WMATA",http://dcatlas.dcgis.dc.gov/metadata/MetroStnFullPt.html
 bus_stops_val,"WMATA, 2011",http://dcatlas.dcgis.dc.gov/metadata/BusStopPt.html
 total_crime_val,"DC Metropolitan Police Department, 2015",http://crimemap.dc.gov/Download.aspx
 total_crime_pc_ratio,"DC Metropolitan Police Department, 2015",http://crimemap.dc.gov/Download.aspx
