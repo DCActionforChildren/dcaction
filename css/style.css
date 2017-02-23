@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 body {
   overflow-x: hidden;
 }
@@ -530,4 +531,481 @@ small {
     margin-left: 0px;
     width: 100%;
   }
+=======
+body {
+  overflow-x: hidden;
+}
+body, h1, h2, h3, h4, h5 {
+  font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+}
+p {
+  font-size: 1.1em;
+  line-height: 1.4em;
+  margin-bottom: 15px;
+}
+#narrative .panel-body {
+  padding: 20px;
+}
+.table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
+  padding: 2px;
+}
+.gmnoprint .gmnoprint {
+  margin-top: 0 !important;
+  top: 10px !important;
+}
+.nav > li.disabled.nav-header > a {
+  cursor: default;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 5px 10px !important;
+  color: #000;
+}
+
+.align-right { text-align: right; }
+.align-left { text-align: left; }
+
+.posrel { position: relative; }
+.posabs { position: absolute; }
+.posfixed { position: fixed; }
+/* navbar */
+.navbar {
+  margin-bottom: 0px;
+  padding-right: 15px;
+}
+.navbar-brand {
+  padding: 0px 15px 0px 0px;
+}
+.navbar-brand img {
+  width: 80px;
+}
+.navbar .btn.pull-right {
+  margin: 0 0 5px 5px;
+}
+#nav-panel {
+  background-color: #f8f8f8;
+  width: 300px;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+#nav-panel h4 {
+  padding-left: 10px;
+  padding-right: 15px;
+}
+.nav-pills > li > a {
+  border-radius: 0px;
+  color: #444;
+  background-color: #F0F4F8;
+}
+.nav-pills > li > a:hover {
+  background-color: #D8DCE2
+}
+.nav-pills > li.selected > a {
+  background-color: #C6CEDA;
+  color: #000;
+}
+#main-container {
+  top: 0px;
+  left: 0px;
+  background-color: #FFF;
+  width: 100%;
+  -webkit-box-shadow: 0px 0px 15px #CCC;
+  -moz-box-shadow: 0px 0px 15px #CCC;
+  box-shadow: 0px 0px 15px #CCC;
+  overflow-x:hidden;
+}
+#content-wrapper {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.menu-toggle {
+  cursor: pointer;
+  left: 0px;
+  top: 100px;
+  padding: 10px 15px;
+  z-index: 5;
+}
+.menu-toggle strong {
+  display: block;
+}
+.menu-toggle .open,
+.toggled .menu-toggle .closed {
+  display: none;
+}
+.toggled .menu-toggle .open {
+  display: block;
+}
+/* map */
+svg {
+  fill: #FFF;
+}
+
+path.nbhd {
+  cursor: pointer;
+  fill: #ccc;
+  fill-opacity: .75;
+  stroke: #FFF;
+  stroke-width: 1px;
+}
+path.nbhd:hover {
+  stroke: #444;
+}
+path.nbhd.active {
+  stroke: #077CA8;
+  stroke-width: 2px;
+}
+circle.school {
+  cursor: pointer;
+  fill-opacity: 0.5;
+  /*fill: #000099;*/
+}
+
+circle.charter {
+  fill: #900;
+}
+
+circle.public {
+  fill: #009;
+}
+
+circle.school:hover {
+  fill-opacity: 1;
+}
+
+/* UI */
+
+#how-to .col-lg-4 {
+  overflow: hidden;
+}
+
+#how-to h3 {
+  background: #FFF;
+  padding: 10px 10px 10px 0px;
+  position: absolute;
+  bottom: -11px;
+  left: 0;
+}
+
+#how-to .one {
+  background: url("../assets/one.png") center no-repeat;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+#how-to .two {
+  background: url("../assets/two.png") center no-repeat;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+#how-to .three {
+  background: url("../assets/three.png") center no-repeat;
+  height: 200px;
+}
+
+#nav-panel {
+  height: 600px;
+  overflow: scroll;
+}
+
+#nav-panel .nav > li > a {
+  padding: 5px 10px;
+}
+
+#nav-panel .label {
+  position: relative;
+  top: -3px;
+}
+
+#details {
+  position:absolute;
+  width:300px;
+  top:20px;
+  right:20px;
+  z-index: 1;
+}
+
+#details p.lead {
+  display: none;
+}
+
+#narrative-row .col-md-3 {
+  padding-right: 0px;
+  padding-left: 0px;
+  margin: -1px -1px 0px 0px;
+}
+
+#narrative-row .btn {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  padding: 12px;
+  vertical-align: top;
+  text-align: left;
+  white-space: normal;
+  max-height: 98px;
+}
+
+#narrative-row h4 {
+  display: block;
+  margin: 0;
+}
+
+#narrative-row img {
+  max-width: 120px;
+  margin-right: 15px;
+  float: left;
+}
+
+#narrative {
+  position:absolute;
+  width:300px;
+  height: 560px;
+  top:20px;
+  right:20px;
+  background: #fff;
+  color: #000;
+  display:none;
+  z-index: 2;
+}
+
+#narrative .close-box {
+  position: absolute;
+  top:-10px;
+  right:-10px;
+}
+
+#narrative .panel-body {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+#narrative h4.lead {
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+#schools_panel {
+  position:absolute;
+  width:300px;
+  top:20px;
+  right:330px;
+  z-index: 1;
+}
+
+p.lead {
+  text-align: center;
+}
+
+/*span#visualized-metric,
+span#visualized-measure {
+display:none;
+}*/
+
+span#visualized-metric {
+  font-weight:bold;
+}
+
+#source {
+  position:absolute;
+  bottom:20px;
+  left:0;
+  padding: 10px 10px 10px 20px;
+  background-color: #ccc;
+  z-index: 5;
+  max-width: 215px;
+  display: none;
+}
+
+div#legend-panel {
+  position:absolute;
+  bottom: 90px;
+  left: 15px;
+  width: 200px;
+  height: 200px;
+  display: none;
+}
+
+.legendStep {
+  width:100%;
+  height: 25px;
+  margin-bottom: 5px;
+  padding: 3px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.stepOne { background: #e5ffc7;}
+.stepTwo { background: #d9fcb9;}
+.stepThree { background: #bbef8e;}
+.stepFour { background: #9ad363;}
+.stepFive { background: #6eb43f;}
+
+
+h4.school-name {
+  cursor: pointer;
+}
+
+h4.school-name:after {
+  content: "Click name to remove";
+  font-size: 10px;
+  color: #999;
+  font-style: italic;
+  display: block;
+  margin-top: 3px;
+}
+
+/* Chart */
+.label {
+  font: 11px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+.axis text {
+  font-family: font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;;
+  font-size: 14px;
+  font-weight: normal;
+  fill: black;
+}
+.link {
+  stroke:gray;
+  stroke-width:0.5
+}
+
+/* Google Maps */
+
+.stations, .stations svg.marker {
+  position: absolute;
+}
+
+.stations svg.marker {
+  width: 60px;
+  height: 20px;
+  padding-right: 100px;
+  font: 10px sans-serif;
+}
+
+.stations circle {
+  fill: brown;
+  stroke: black;
+  stroke-width: 1.5px;
+}
+
+#theSVGLayer {
+  position: absolute;
+  top: -4000px;
+  left: -4000px;
+  width: 8000px;
+  height: 8000px;
+}
+
+#theDiv {
+  top: 0;
+  left: 0;
+}
+
+/* Google Maps fix */
+
+div.gm-style div div {
+  height: 0 !important;
+}
+
+ .btn-panel-close {
+  float: right;
+  margin: 5px;
+  border: none;
+  color: #fff;
+}
+
+small {
+  margin-top: 10px;
+  color:#333;
+  display:block;
+}
+
+@media (max-width: 767px) {
+  #content-wrapper,
+  #nav-panel,
+  li.nav-header a {
+    font-size: 0.95rem !important;
+  }
+
+  #details {
+    position: relative;
+    width: auto;
+    top:auto;
+    right:auto;
+    border-radius: 0px;
+  }
+
+  #details .chart,
+  div#legend-container,
+  div#legend-panel {
+    display: none !important;
+  }
+
+  div#legend-container,
+  div#legend-panel {
+    display: none !important;
+  }
+  .navbar {
+    padding-right: 0px;
+  }
+  .btn.pull-right.visible-xs {
+    margin-bottom: 20px;
+  }
+  #narrative-row .btn {
+    height: 80px;
+  }
+  #narrative {
+    position: relative;
+    width: auto;
+    top:auto;
+    right:auto;
+    height: auto;
+    border-radius: 0px;
+  }
+
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+
+}
+
+@media (min-width: 980px) and (max-width:1199px) {
+
+
+}
+
+@media (min-width: 1200px) {
+
+
+}
+
+@media (min-width: 992px) and (max-width: 1700px) {
+
+  #narrative-row .btn .subhead {
+    display:none;
+  }
+
+}
+@media (max-width: 480px){
+  .btn.pull-right.visible-xs,
+  .social-media {
+    float: none!important;
+    margin-left: 0px;
+    width: 100%;
+  }
+>>>>>>> Stashed changes
 }
