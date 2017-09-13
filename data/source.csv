@@ -24,7 +24,7 @@ homeownership_perc,2011-2015 ACS,http://factfinder2.census.gov/faces/nav/jsf/pag
 vacants_val,"DC Department of Consumer and Regulatory Affairs, 2017",https://dcra.dc.gov/publication/blight-and-vacant-buildings-list
 grocery_val,"DC Open Data, 2017",http://opendata.dc.gov/datasets/1d7c9d0e3aac49c1aa88d377a3bae430_4?geometry=-77.185%2C38.829%2C-76.721%2C38.909
 rec_val,"DC Department of Parks and Recreation, 2017",http://dpr.dc.gov/
-parks_val,"DC Department of Parks and Recreation, 2011",http://dpr.dc.gov/
+parks_val,"DC Department of Parks and Recreation, 2017",http://dpr.dc.gov/
 metro_val,"WMATA, 2017",http://dcatlas.dcgis.dc.gov/metadata/MetroStnFullPt.html
 bus_stops_val,"WMATA, 2011",http://dcatlas.dcgis.dc.gov/metadata/BusStopPt.html
 total_crime_val,"DC Metropolitan Police Department, 2016",http://crimemap.dc.gov/Download.aspx
