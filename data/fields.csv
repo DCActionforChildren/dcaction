@@ -17,7 +17,6 @@ median_family_income_val,Average Median Income,neighborhood,Neighborhood Demogra
 medicaid_enroll_val,Children Enrolled in Medicaid,neighborhood,Child Health & Wellbeing,
 prev_med_visit_val,Preventative Medical Visits by Children Enrolled in Medicaid,neighborhood,Child Health & Wellbeing,
 dental_visit_val,Dental Visits by Children Enrolled in Medicaid,neighborhood,Child Health & Wellbeing,
-er_ast_10_val,Asthma-Related ER Visits for Children,neighborhood,Child Health & Wellbeing,
 fs_client_2012_val,Number of SNAP Recipients (Children & Adults),neighborhood,Child Health & Wellbeing,
 math_perc,Percentage of Students Meeting or Exceeding Expectations on PARCC (Math),neighborhood,Child Success,
 reading_perc,Percentage of Students Meeting or Exceeding Expectations on PARCC (Reading),neighborhood,Child Success,
