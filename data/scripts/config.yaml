@@ -8,7 +8,7 @@ api:
     in: {state: 11}
 
 output:
-  directory: outputs
+  directory: inputs
   file: acs_tract_data.json
   acs_variables: false
 
