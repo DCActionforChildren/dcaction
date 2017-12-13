@@ -15,10 +15,10 @@ dental_visit_val,"DC Department of Health Care Finance, 2014",http://dhcf.dc.gov
 fs_client_2012_val,"DC Department of Human Services, 2014",http://dhs.dc.gov/
 math_perc,"OSSE, 2017",http://osse.dc.gov/
 reading_perc,"OSSE, 2017",http://osse.dc.gov/
-cc_cap_val,"OSSE, July 2014",http://osse.dc.gov/
-cc_pop_ratio,"OSSE, July 2014",http://osse.dc.gov/
-cc_child_pov_ratio,"OSSE, July 2014",http://osse.dc.gov/
-cc_sub_13_cur,"OSSE, July 2014",http://osse.dc.gov/
+cc_cap_val,"OSSE, 2014",http://osse.dc.gov/
+cc_pop_ratio,"OSSE, 2014",http://osse.dc.gov/
+cc_child_pov_ratio,"OSSE, 2014",http://osse.dc.gov/
+cc_sub_13_cur,"OSSE, 2014",http://osse.dc.gov/
 homeownership_perc,2011-2015 ACS,http://factfinder2.census.gov/faces/nav/jsf/pages/programs.xhtml?program=acs
 vacants_val,"DC Department of Consumer and Regulatory Affairs, 2017",https://dcra.dc.gov/publication/blight-and-vacant-buildings-list
 grocery_val,"DC Open Data, 2017",http://opendata.dc.gov/datasets/1d7c9d0e3aac49c1aa88d377a3bae430_4?geometry=-77.185%2C38.829%2C-76.721%2C38.909
@@ -28,12 +28,4 @@ metro_val,"WMATA, 2017",http://dcatlas.dcgis.dc.gov/metadata/MetroStnFullPt.html
 bus_stops_val,"WMATA, 2011",http://dcatlas.dcgis.dc.gov/metadata/BusStopPt.html
 total_crime_val,"DC Metropolitan Police Department, 2016",http://crimemap.dc.gov/Download.aspx
 total_crime_pc_ratio,"DC Metropolitan Police Department, 2016",http://crimemap.dc.gov/Download.aspx
-homicide_val,"DC Metropolitan Police Department, 2016",http://crimemap.dc.gov/Download.aspx
-homicide_pc_ratio,"DC Metropolitan Police Department, 2016",http://crimemap.dc.gov/Download.aspx
-assault_val,"DC Metropolitan Police Department, 2016",http://crimemap.dc.gov/Download.aspx
-assault_pc_ratio,"DC Metropolitan Police Department, 2016",http://crimemap.dc.gov/Download.aspx
-robbery_val,"DC Metropolitan Police Department, 2016",http://crimemap.dc.gov/Download.aspx
-robbery_pc_ratio,"DC Metropolitan Police Department, 2016",http://crimemap.dc.gov/Download.aspx
-sex_abuse_val,"DC Metropolitan Police Department, 2016",http://crimemap.dc.gov/Download.aspx
-sex_abuse_pc_ratio,"DC Metropolitan Police Department, 2016",http://crimemap.dc.gov/Download.aspx
 median_family_income_val,2011-2015 ACS,http://factfinder2.census.gov/faces/nav/jsf/pages/programs.xhtml?program=acs

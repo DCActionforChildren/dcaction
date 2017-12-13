@@ -1,5 +1,5 @@
 api:
-  acs_year: 2013
+  acs_year: 2016
   acs_period: 5   # use 5-year estimates
 
   # Return all tracts for DC (state = 11)
