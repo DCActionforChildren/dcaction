@@ -576,7 +576,6 @@ function drawPoints(type) {
         setPanel();
       });
       $schoolDisplay.find(".school-enrollment").html(getDisplayValue(school.enroll_val, "enroll_val", "val"));
-      $schoolDisplay.find(".school-grade").html(school.grade_inc);
       $schoolDisplay.find(".school-tanfsnap").html(getDisplayValue(school.tanfsnap_perc, "tanfsnap_perc", "perc"));
       $schoolDisplay.find(".school-attendance").html(getDisplayValue(school.isa_perc, "isa_perc", "perc"));
       $schoolDisplay.find(".school-math").html(getDisplayValue(school.math_perc, "math_perc", "perc"));
